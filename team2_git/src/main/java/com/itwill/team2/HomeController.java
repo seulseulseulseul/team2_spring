@@ -35,5 +35,43 @@ public class HomeController {
 		
 		return "home";
 	}
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String home2() {
+		//처리
+		// /WEB-INF/views/insertForm.jsp => 이동
+		return "about";
+	}
+	@RequestMapping(value = "/blog", method = RequestMethod.GET)
+	public String home3() {
+		return "blog";
+	}
+	@RequestMapping(value = "/blog-single", method = RequestMethod.GET)
+	public String home4() {
+		return "blog-single";
+	}
+	@RequestMapping(value = "/classes", method = RequestMethod.GET)
+	public String home5() {
+		return "classes";
+	}
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String home6() {
+		return "contact";
+	}
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String home7() {
+		return "index";
+	}
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String home8() {
+		return "main";
+	}
+	@RequestMapping(value = "/schedule", method = RequestMethod.GET)
+	public String home9() {
+		return "schedule";
+	}
+	@RequestMapping(value = "/trainer", method = RequestMethod.GET)
+	public String home10() {
+		return "trainer";
+	}
 	
 }
