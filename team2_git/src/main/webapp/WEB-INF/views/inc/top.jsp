@@ -13,12 +13,12 @@
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/index" class="nav-link">Home</a></li>
-			          <li class="nav-item"><a href="${pageContext.request.contextPath}/about" class="nav-link">About</a></li>
-			          <li class="nav-item"><a href="${pageContext.request.contextPath}/trainer" class="nav-link">Trainer</a></li>
-			          <li class="nav-item"><a href="${pageContext.request.contextPath}/classes" class="nav-link">Classes</a></li>
-			          <li class="nav-item"><a href="${pageContext.request.contextPath}/schedule" class="nav-link">Schedule</a></li>
-			          <li class="nav-item"><a href="${pageContext.request.contextPath}/blog" class="nav-link">Blog</a></li>
-<%-- 			          <li class="nav-item active"><a href="${pageContext.request.contextPath}/blog" class="nav-link">Blog</a></li> --%>
+			          <li class="nav-item"><a href="${pageContext.request.contextPath}/about" class="nav-link">트레이너소개</a></li>
+			          <li class="nav-item"><a href="${pageContext.request.contextPath}/center/list" class="nav-link">고객센터</a></li>
+			          <li class="nav-item"><a href="${pageContext.request.contextPath}/classes" class="nav-link">공지사항</a></li>
+			          <li class="nav-item"><a href="${pageContext.request.contextPath}/schedule" class="nav-link">일반회원가입</a></li>
+			          <li class="nav-item"><a href="${pageContext.request.contextPath}/blog" class="nav-link">로그인</a></li>
+			          <li class="nav-item active"><a href="${pageContext.request.contextPath}/blog" class="nav-link">트레이너회원가입</a></li>
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
 			        </ul>
 			      </div>

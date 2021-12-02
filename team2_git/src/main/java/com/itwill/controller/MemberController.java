@@ -4,7 +4,6 @@ package com.itwill.controller;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwill.domain.MemberDTO;
 import com.itwill.service.MemberService;
-import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
 
 @Controller
 public class MemberController {

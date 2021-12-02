@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.itwill</groupId>
-	<artifactId>myweb</artifactId>
+	<artifactId>team2</artifactId>
 	<name>StringProject</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -74,6 +74,14 @@
 		    <groupId>commons-io</groupId>
 		    <artifactId>commons-io</artifactId>
 		    <version>2.4</version>
+		</dependency>
+		
+<!-- 		JSON 변경 -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.13.0</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->

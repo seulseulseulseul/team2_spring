@@ -5,12 +5,9 @@ package com.itwill.dao;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+
 import org.springframework.stereotype.Repository;
 
 import com.itwill.domain.MemberDTO;
