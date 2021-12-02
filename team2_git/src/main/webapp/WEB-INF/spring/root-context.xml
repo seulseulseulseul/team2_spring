@@ -7,7 +7,7 @@
 		<!--  디비연결 1,2 단계  객체생성-->
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-			<property name="url" value="jdbc:mysql://localhost:3306/jspdb2"></property>
+			<property name="url" value="jdbc:mysql://localhost:3306/team2"></property>
 			<property name="username" value="root"></property>
 			<property name="password" value="1234"></property>
 		</bean>

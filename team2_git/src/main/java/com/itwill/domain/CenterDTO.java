@@ -9,7 +9,7 @@ public class CenterDTO {
 	private String admin_id;
 	private String b_title;
 	private String b_content;
-	private Timestamp date;
+	private Timestamp b_date;
 	private int b_reply;
 	private int secret;
 	public int getB_reply() {
@@ -60,11 +60,11 @@ public class CenterDTO {
 	public void setB_content(String b_content) {
 		this.b_content = b_content;
 	}
-	public Timestamp getDate() {
-		return date;
+	public Timestamp getB_date() {
+		return b_date;
 	}
-	public void setDate(Timestamp date) {
-		this.date = date;
+	public void setB_date(Timestamp b_date) {
+		this.b_date = b_date;
 	}
 	
 }

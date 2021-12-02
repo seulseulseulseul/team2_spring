@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwill.mapper.CenterMapper">
+
+	<insert id = "insertCenter">
+	insert into center(b_num,t_num,u_num,admin_id,b_title,b_content,b_date,b_reply,secret)
+	 values(#{b_num},#{t_num},#{u_num},#{admin_id},#{b_title},#{b_content},#{b_date},#{b_reply},#{secret})
+	</insert>
+	
+	<select id = "getMaxNum" resultType="java.lang.Integer">
+		select max(b_num) from center
+	</select>
+	
+	<select id = "getCenterList" resultType="com.itwill.domain.CenterDTO">
+		select * from center order by b_num desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id= "getCenterCount" resultType="java.lang.Integer">
+		select count(*) from center
+	</select>
+
+</mapper>
