@@ -1,4 +1,4 @@
-package com.itwill.service;
+package com.itwill.dao;
 
 
 
@@ -8,9 +8,9 @@ import com.itwill.domain.MemberDTO;
 
 
 
-public interface MemberService {
-	//자식클래스 공통된 틀 제시, 부모인터페이스
-	//추상 메서드 정의
+public interface MemberDAO {
+	//부모의 공통된 틀, 인터페이스
+	//추상메서드 정의
 	public void insertMember(MemberDTO memberDTO); 
 	
 	//리턴할 형 MemberDTO userCheck(memberDTO) 메서드

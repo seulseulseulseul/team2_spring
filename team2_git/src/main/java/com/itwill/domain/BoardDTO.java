@@ -1,4 +1,4 @@
-package board;
+package com.itwill.domain;
 
 import java.sql.Timestamp;
 

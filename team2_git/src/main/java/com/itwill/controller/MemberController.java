@@ -12,9 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.itwillbs.domain.MemberDTO;
-import com.itwillbs.service.MemberService;
-import com.itwillbs.service.MemberServiceImpl;
+import com.itwill.domain.MemberDTO;
+import com.itwill.service.MemberService;
 import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
 
 @Controller

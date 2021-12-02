@@ -8,9 +8,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.itwillbs.dao.MemberDAO;
-import com.itwillbs.dao.MemberDAOImpl;
-import com.itwillbs.domain.MemberDTO;
+import com.itwill.dao.MemberDAO;
+import com.itwill.domain.MemberDTO;
+
+
 
 @Service
 public class MemberServiceImpl implements MemberService {

@@ -1,4 +1,4 @@
-package user;
+package com.itwill.domain;
 
 import java.sql.Timestamp;
 
