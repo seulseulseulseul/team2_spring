@@ -10,7 +10,7 @@ public interface CenterDAO {
 	
 	public Integer getMaxNum();
 	
-//	public List<CenterDTO> getCenterList(PageDTO pageDTO);
-//	
-//	public Integer getCenterCount();
+	public List<CenterDTO> getCenterList(PageDTO pageDTO);
+	
+	public Integer getCenterCount();
 }
