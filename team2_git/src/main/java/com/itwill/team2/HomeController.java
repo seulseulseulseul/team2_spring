@@ -76,15 +76,4 @@ public class HomeController {
 		return "trainer";
 	}
 	
-	@RequestMapping(value = "/member/user_register", method = RequestMethod.GET)
-	public String home11() {
-		return "/member/user_register";
-	}
-	
-	@RequestMapping(value = "/member/user_registerPro", method = RequestMethod.POST)
-	public String home11Pro() {
-		System.out.println("회원가입 처리");
-		return "redirect:/member/user_login";
-	}
-	
 }
