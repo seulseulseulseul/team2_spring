@@ -1,24 +1,21 @@
 package com.itwill.service;
 
-
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.itwill.dao.MemberDAO;
-import com.itwill.domain.MemberDTO;
-
+import com.itwill.dao.user_MemberDAO;
+import com.itwill.domain.user_MemberDTO;
 
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class user_MemberServiceImpl implements user_MemberService {
 	//멤버변수
 //	MemberDAO memberDAO = new MemberDAOImpl();
 	@Inject
-	private MemberDAO memberDAO;
+	private user_MemberDAO user_memberDAO;
 	//set메서드
 //	@Inject
 //	public void setMemberDAO(MemberDAO memberDAO) {
@@ -27,10 +24,10 @@ public class MemberServiceImpl implements MemberService {
 	
 	//리턴값 없음 insertMember(MemberDTO memberDTO) 메서드 정의
 	@Override
-	public void insertMember(MemberDTO memberDTO) {
-		System.out.println("MemberServiceImpl insertMember()");
+	public void user_insertMember(user_MemberDTO user_memberDTO) {
+		System.out.println("user_MemberServiceImpl user_insertMember()");
 		//처리단계에서 날짜생성해서 저장
-		memberDTO.setDate(new Timestamp(System.currentTimeMillis()));
+//		user_memberDTO.setDate(new Timestamp(System.currentTimeMillis()));
 		
 		//1. 객체생성
 //		MemberDAOImpl memberDAO = new MemberDAOImpl();
@@ -48,38 +45,38 @@ public class MemberServiceImpl implements MemberService {
 		//스프링 객체생성 방법 => 의존관계 주입(DI Dependency Injection)
 		//멤버변수 정의 <= 외부에 있는 xml에서 MemberServiceImpl 객체생성한 것을 전달해오면 받음
 		//받아오는 방법 1. 생성자  2. set 메서드
-		memberDAO.insertMember(memberDTO);
+		user_memberDAO.user_insertMember(user_memberDTO);
 	}
 
 	@Override
-	public MemberDTO userCheck(MemberDTO memberDTO) {
-		System.out.println("MemberServiceImpl userCheck()");
-		return memberDAO.userCheck(memberDTO);
+	public user_MemberDTO user_userCheck(user_MemberDTO user_memberDTO) {
+		System.out.println("user_MemberServiceImpl user_userCheck()");
+		return user_memberDAO.user_userCheck(user_memberDTO);
 	}
 
 	@Override
-	public MemberDTO getMember(String id) {
-		System.out.println("MemberServiceImpl getMember()");
-		return memberDAO.getMember(id);
+	public user_MemberDTO user_getMember(String u_id) {
+		System.out.println("user_MemberServiceImpl user_getMember()");
+		return user_memberDAO.user_getMember(u_id);
 	}
 
-	@Override
-	public MemberDTO updateMember(MemberDTO memberDTO) {
-		System.out.println("MemberServiceImpl updateMember()");
-		return memberDAO.updateMember(memberDTO);
-	}
-
-	@Override
-	public void deleteMember(MemberDTO memberDTO) {
-		System.out.println("MemberServiceImpl deleteMember()");
-		memberDAO.deleteMember(memberDTO);
-	}
-
-	@Override
-	public List<MemberDTO> getMemberList() {
-		System.out.println("MemberServiceImpl getMemberList()");
-		return memberDAO.getMemberList();
-	}
+//	@Override
+//	public MemberDTO updateMember(MemberDTO memberDTO) {
+//		System.out.println("MemberServiceImpl updateMember()");
+//		return memberDAO.updateMember(memberDTO);
+//	}
+//
+//	@Override
+//	public void deleteMember(MemberDTO memberDTO) {
+//		System.out.println("MemberServiceImpl deleteMember()");
+//		memberDAO.deleteMember(memberDTO);
+//	}
+//
+//	@Override
+//	public List<MemberDTO> getMemberList() {
+//		System.out.println("MemberServiceImpl getMemberList()");
+//		return memberDAO.getMemberList();
+//	}
 
 
 }

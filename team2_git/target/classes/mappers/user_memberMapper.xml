@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwill.mapper.user_memberMapper">
+
+	<insert id = "user_insertMember">
+		insert into user(u_id,u_pass,u_name,u_nic,u_email,u_phone) values(#{u_id},#{u_pass},#{u_name},#{u_nic},#{u_email},#{u_phone})
+	</insert>
+	
+	<select id="userCheck" resultType="com.itwill.domain.user_MemberDTO">
+		select * from user where u_id=#{u_id} and u_pass=#{u_pass}
+	</select>
+	
+<!-- 	<select id="getMember" resultType="com.itwill.domain.MemberDTO"> -->
+<!-- 		select * from member where id=#{id} -->
+<!-- 	</select> -->
+  
+<!--  	<update id="updateMember"> -->
+<!-- 		update member set name=#{name} where id=#{id} -->
+<!-- 	</update> -->
+	
+<!-- 	<delete id="deleteMember"> -->
+<!-- 		delete from member where id=#{id} -->
+<!-- 	</delete> -->
+	
+<!-- 	<select id="getMemberList" resultType="com.itwill.domain.MemberDTO"> -->
+<!-- 		select * from member -->
+<!-- 	</select> -->
+</mapper>
