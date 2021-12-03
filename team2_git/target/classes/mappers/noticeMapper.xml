@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwill.mapper.NoticeMapper">
+
+	<insert id = "insertNotice">
+	insert into center(b_num,t_num,u_num,admin_id,b_title,b_content,b_date)
+	 values(#{b_num},#{t_num},#{u_num},#{admin_id},#{b_title},#{b_content},#{b_date})
+	</insert>
+	
+	<select id = "getMaxNum" resultType="java.lang.Integer">
+		select max(b_num) from notice
+	</select>
+	
+	<select id = "getNoticeList" resultType="com.itwill.domain.NoticeDTO">
+		select * from notice order by b_num desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id= "getNoticeCount" resultType="java.lang.Integer">
+		select count(*) from notice
+	</select>
+	
+	<select id="getNotice" resultType="com.itwill.domain.NoticeDTO">
+		select * from notice where b_num=#{b_num}
+	</select>
+	
+	<update id="updateNotice">
+		update notice set b_title=#{b_title}, b_content=#{b_content} where b_num=#{b_num}; 
+	</update>
+	
+	<delete id="deleteNotice">
+		delete from notice where b_num=#{b_num}
+	</delete>
+
+</mapper>
