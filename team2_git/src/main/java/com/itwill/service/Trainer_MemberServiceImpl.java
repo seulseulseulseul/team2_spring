@@ -7,17 +7,17 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.itwill.dao.MemberDAO;
-import com.itwill.domain.MemberDTO;
-
+import com.itwill.dao.Trainer_MemberDAO;
+import com.itwill.dao.Trainer_MemberDAOImpl;
+import com.itwill.domain.Trainer_MemberDTO;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 
 	//멤버변수 
 //	MemberDAO memberDAO=new MemberDAOImpl();
 	@Inject
-	private MemberDAO memberDAO;
+	private Trainer_MemberDAO trainer_memberDAO;
 	
 	//set메서드 
 //	@Inject
@@ -27,14 +27,13 @@ public class MemberServiceImpl implements MemberService{
 
 	// 리턴값없음 insertMember(MemberDTO memberDTO) 메서드 정의
 	@Override
-	public void trainer_register(MemberDTO memberDTO) {
-		System.out.println("MemberServiceImpl trainer_register()()");
-		// 처리단계에서 날짜 생성 해서 저장
-		memberDTO.setDate(new Timestamp(System.currentTimeMillis()));
+	public void trainer_register(Trainer_MemberDTO trainer_memberDTO) {
+		System.out.println("MemberServiceImpl trainer_register()");
 		
 		// 1. 객체생성
 		// MemberDAOImpl 객체생성
-//	MemberDAOImpl memberDAO=new MemberDAOImpl();
+//	MemberDAOImpl 
+		//trainer_memberDAO=new Trainer_MemberDAOImpl();
 	// insertMember(memberDTO) 메서드 호출
 //	memberDAO.insertMember(memberDTO);
 		
@@ -51,36 +50,28 @@ public class MemberServiceImpl implements MemberService{
 		// 멤버변수 정의  <= 외부에 있는 xml에서 MemberDAOImpl 객체생성한것을 전달해오면 받음
 		// 받아오는 방법  1. 생성자  2. set메서드
 		
-		memberDAO.trainer_register()(trainer_memberDTO);
+		trainer_memberDAO.trainer_register(trainer_memberDTO);
 		
 	}
 
 	@Override
-	public MemberDTO userCheck(MemberDTO memberDTO) {
-		System.out.println("MemberServiceImpl userCheck()");
-		return memberDAO.userCheck(memberDTO);
+	public Trainer_MemberDTO trainer_userCheck(Trainer_MemberDTO trainer_memberDTO) {
+		System.out.println("MemberServiceImpl trainer_userCheck()");
+		return trainer_memberDAO.trainer_userCheck(trainer_memberDTO);
 	}
 
 	@Override
-	public MemberDTO getMember(String id) {
+	public Trainer_MemberDTO trainer_getMember(String t_id) {
 		
-		return memberDAO.getMember(id);
+		return trainer_memberDAO.trainer_getMember(t_id);
 	}
 
 	@Override
-	public void updateMember(MemberDTO memberDTO) {
-		memberDAO.updateMember(memberDTO);
+	public void trainer_updateMember(Trainer_MemberDTO trainer_memberDTO) {
+		
+		trainer_memberDAO.trainer_updateMember(trainer_memberDTO);
 	}
 
-	@Override
-	public void deleteMember(MemberDTO memberDTO) {
-		memberDAO.deleteMember(memberDTO);
-	}
-
-	@Override
-	public List<MemberDTO> getMemberList() {
-		return memberDAO.getMemberList();
-	}
 
 }
 

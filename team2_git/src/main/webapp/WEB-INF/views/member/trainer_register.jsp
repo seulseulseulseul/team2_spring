@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
+    <title>member/trainer_register.jsp</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -29,7 +29,9 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
-    
+     
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <script type="text/javascript" src="trainer_CheckForm.js"></script>    
     <script type="text/javascript">
  function CheckId() {
 //		alert("함수호출");
@@ -121,7 +123,7 @@ function openZipSearch() {
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">트레이너 회원가입</h3>
-                <form action="trainer_registerPro.jsp" id="join" method="post" onsubmit="return trainer_CheckForm();">
+                <form action="${pageContext.request.contextPath}/member/trainer_registerPro" id="join" method="post" onsubmit="return trainer_CheckForm();">
 								<div class="form-group">
 									<label>ID</label>
 									<input type="button" value="아이디 중복체크" onclick="CheckId()" class="dup" ><br>
