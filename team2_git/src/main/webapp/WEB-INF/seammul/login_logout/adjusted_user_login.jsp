@@ -5,6 +5,7 @@
   <head>
     <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
+    <title>seammul/adjusted_user_login.jsp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
@@ -53,8 +54,9 @@
               <div class="comment-form-wrap pt-5">
                 <h4>유저 로그인</h4>
                 
-					   <%-- <form action="${pageContext.request.contextPath}/member/loginPro" method="post"> --%>
-							<form action="user_loginPro.jsp" id="join" method="post">
+<!-- 							<form action="user_loginPro.jsp" id="join" method="post"> -->
+							<form action="${pageContext.request.contextPath}/user_loginPro.jsp" id="join" method="post">
+							
 								<div class="form-group">
 									<label>ID</label>
 									<input type="text" name="u_id" id="u_id" class="form-control">
