@@ -54,7 +54,7 @@ public class CenterDAOImpl implements CenterDAO{
 		System.out.println("CenterDAOImpl insertReply()");
 		sqlSession.insert(namespace+".insertReply",centerDTO);
 	}
-
+ 
 	@Override
 	public Integer getMaxReply(int b_num) {
 		return sqlSession.selectOne(namespace+".getMaxReply",b_num);
