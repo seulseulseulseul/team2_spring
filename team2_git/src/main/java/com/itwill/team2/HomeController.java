@@ -37,12 +37,7 @@ public class HomeController {
 		
 		return "home";
 	}
-	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String home2() {
-		//처리
-		// /WEB-INF/views/insertForm.jsp => 이동
-		return "about";
-	}
+	
 	@RequestMapping(value = "/blog", method = RequestMethod.GET)
 	public String home3() {
 		return "blog";

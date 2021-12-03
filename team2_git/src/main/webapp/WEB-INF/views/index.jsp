@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<script>
+
+function aboutTest(tid){
+	
+	location.href = "/trainer/about";
+}
+
+</script>
 <html lang="en">
   <head>
     <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
@@ -67,7 +76,8 @@
 				<div class="row">
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-6.jpg);"></div>
+							<div onclick="aboutTest(1)" class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-6.jpg);">
+							</div>
 							<div class="text mt-4">
 								<h3 class="mb-4">Power Yoga</h3>
 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
