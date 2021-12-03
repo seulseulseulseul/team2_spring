@@ -8,7 +8,7 @@ import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ReplyDTO;
 
 @Service
-public interface ReplyService {
+public interface ReplyService { //test
 	
 	public void insertBoard(ReplyDTO replyDTO);
 	

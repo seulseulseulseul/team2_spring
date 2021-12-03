@@ -21,8 +21,8 @@ public class ReplyController {
 	private ReplyService replyService;
 	
 	// 댓글작성
-	@RequestMapping(value = "/reply/comment", method = RequestMethod.POST)
-	public ResponseEntity<ReplyDTO> idcheck(HttpSession session, HttpServletRequest request) {
+	@RequestMapping(value = "/reply/insert", method = RequestMethod.POST)
+	public ResponseEntity<ReplyDTO> insert(HttpSession session, HttpServletRequest request) {
 		// /member/idcheck?id=값
 		String u_id = session.getAttribute("u_id").toString();
 		String nic = session.getAttribute("nic").toString();
@@ -60,8 +60,6 @@ public class ReplyController {
 			
 		}
 	}
-	
-	
 	
 	// 댓글 수정
 	@RequestMapping(value = "/reply/update", method = RequestMethod.GET)
