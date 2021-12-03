@@ -24,7 +24,7 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 //		template=new SimpleJdbcTemplate(dataSource);
 //	}
 	
-	private static final String namespace="com.itwill.mapper.Trainer_memberMapper";
+	private static final String namespace="com.itwill.mapper.trainer_memberMapper";
 
 	// 리턴값없음 insertMember(MemberDTO memberDTO) 메서드 정의
 //	String insertsql="insert into member(id,pass,name,date) values(?,?,?,?)";
