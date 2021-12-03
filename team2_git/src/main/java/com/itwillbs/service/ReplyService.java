@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.itwillbs.service;
 
 import java.util.List;
@@ -28,10 +27,3 @@ public interface ReplyService {
 	public ReplyDTO numCheck(ReplyDTO replyDTO);
 
 }
-=======
-package com.itwillbs.service;
-
-public class ReplyService {
-
-}
->>>>>>> branch 'jhjh2' of https://github.com/seulseulseulseul/team2_spring.git
