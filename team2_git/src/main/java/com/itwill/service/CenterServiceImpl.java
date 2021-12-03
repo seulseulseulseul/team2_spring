@@ -74,4 +74,19 @@ public class CenterServiceImpl implements CenterService{
 		return centerDAO.getReplyList(b_num);
 	}
 
+	@Override
+	public void deleteCenter(int b_num) {
+		centerDAO.deleteCenter(b_num);
+	}
+
+	@Override
+	public void deleteReply(CenterDTO centerDTO) {
+		centerDAO.deleteReply(centerDTO);
+	}
+
+	@Override
+	public void updateCenter(CenterDTO centerDTO) {
+		centerDAO.updateCenter(centerDTO);
+	}
+
 }

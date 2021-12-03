@@ -62,32 +62,32 @@
             <p>${centerDTO.b_content}
             </p>
           	<div class="form-group">
-         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/update">
-         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/list">
-         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
+         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}'">
+         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/list'">
+         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
          	 </div>
-		    답변 목록
+
 	 <div class="pt-5 mt-5">
-              <h3 class="mb-5">답변</h3>
+              <h3 class="mb-3">답변</h3>
               <ul class="comment-list">
         	<c:forEach var="centerDTO2" items="${replyList}">
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="{pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
+                    <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h5>${centerDTO2.b_title}</h5>
                     <div class="meta">${centerDTO2.b_date}</div>
                     <p>${centerDTO2.b_content}</p>
-                    <p><a href="deleteReply?b_num=${centerDTO2.b_num}&b_reply=${centerDTO2.b_reply}" class="reply">삭제</a></p>
+                    <p><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/center/deleteReply?b_num=${centerDTO2.b_num}&b_reply=${centerDTO2.b_reply}" class="reply">삭제</a></p>
                   </div>
                 </li>
 			 </c:forEach>
              </ul>
       </div>
-	 답변 등록
+
 	 <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">답변 등록</h3>
+                <h3 class="mb-3">답변 등록</h3>
                 <form action="${pageContext.request.contextPath}/center/insertReply" class="bg-light p-4" method="post">
                 <input type="hidden" name="b_num" value="${centerDTO.b_num}">
                   <div class="form-group">

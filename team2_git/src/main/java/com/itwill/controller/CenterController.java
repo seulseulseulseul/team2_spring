@@ -82,5 +82,30 @@ public class CenterController {
 		centerService.insertReply(centerDTO);
 		return "redirect:/center/content?b_num="+centerDTO.getB_num();
 	}
+	@RequestMapping(value = "/center/delete", method = RequestMethod.GET)
+	public String delete(int b_num){
+		centerService.deleteCenter(b_num);
+		return "redirect:/center/list";
+	}
+	@RequestMapping(value = "/center/deleteReply", method = RequestMethod.GET)
+	public String deleteReply(CenterDTO centerDTO){
+		centerService.deleteReply(centerDTO);
+		return "redirect:/center/content?b_num="+centerDTO.getB_num();
+	}
 	
+	@RequestMapping(value = "/center/update", method = RequestMethod.GET)
+	public String update(HttpServletRequest request,Model model){
+		//원래 게시글 정보 받아오기
+		int b_num = Integer.parseInt(request.getParameter("b_num"));
+		CenterDTO centerDTO = centerService.getCenter(b_num);
+		//데이터 담기
+		model.addAttribute("centerDTO",centerDTO);
+		return "center/update";
+	}
+	@RequestMapping(value = "/center/updatePro", method = RequestMethod.POST)
+	public String updatePro(CenterDTO centerDTO){
+		//수정하기
+		centerService.updateCenter(centerDTO);
+		return "redirect:/center/content?b_num="+centerDTO.getB_num();
+	}
 }

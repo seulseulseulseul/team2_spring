@@ -42,4 +42,16 @@
 	<select id = "getReplyList" resultType="com.itwill.domain.CenterDTO">
 		select * from center where b_num = #{b_num} and b_reply>0 order by b_reply
 	</select>
+	
+	<delete id = "delete">
+		delete from center where b_num=#{b_num}
+	</delete>
+	
+	<delete id = "deleteReply">
+		delete from center where b_num=#{b_num} and b_reply= #{b_reply}
+	</delete>
+	
+	<update id="updateCenter">
+		update center set b_title=#{b_title},b_content=#{b_content} where b_num=#{b_num} and b_reply=0
+	</update>
 </mapper>
