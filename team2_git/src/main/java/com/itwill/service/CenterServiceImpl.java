@@ -33,14 +33,45 @@ public class CenterServiceImpl implements CenterService{
 
 	@Override
 	public List<CenterDTO> getCenterList(PageDTO pageDTO) {
-		// TODO Auto-generated method stub
+		//pageSize, pageNum 담아옴
+		//currentPage startRow endRow
+		int currentPage = Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow = startRow+pageDTO.getPageSize()-1;
+				
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow-1); //디비 startRow-1
+		pageDTO.setEndRow(endRow);
+				
 		return centerDAO.getCenterList(pageDTO);
 	}
 
 	@Override
 	public Integer getCenterCount() {
-		// TODO Auto-generated method stub
+	
 		return centerDAO.getCenterCount();
+	}
+
+	@Override
+	public Integer isReply(int b_num) {
+		return centerDAO.isReply(b_num);
+	}
+	
+	@Override
+	public CenterDTO getCenter(int b_num) {
+		return centerDAO.getCenter(b_num);
+	}
+
+	@Override
+	public void insertReply(CenterDTO centerDTO) {
+		int b_num = centerDTO.getB_num();
+		centerDTO.setB_reply(centerDAO.getMaxReply(b_num)+1);
+		centerDAO.insertReply(centerDTO);
+	}
+
+	@Override
+	public List<CenterDTO> getReplyList(int b_num) {
+		return centerDAO.getReplyList(b_num);
 	}
 
 }

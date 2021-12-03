@@ -39,4 +39,29 @@ public class CenterDAOImpl implements CenterDAO{
 		return sqlSession.selectOne(namespace+".getCenterCount");
 	}
 	
+	@Override
+	public Integer isReply(int b_num) {
+		return sqlSession.selectOne(namespace+".isReply",b_num);
+	}
+
+	@Override
+	public CenterDTO getCenter(int b_num) {
+		return sqlSession.selectOne(namespace+".getCenter",b_num);
+	}
+
+	@Override
+	public void insertReply(CenterDTO centerDTO) {
+		System.out.println("CenterDAOImpl insertReply()");
+		sqlSession.insert(namespace+".insertReply",centerDTO);
+	}
+
+	@Override
+	public Integer getMaxReply(int b_num) {
+		return sqlSession.selectOne(namespace+".getMaxReply",b_num);
+	}
+
+	@Override
+	public List<CenterDTO> getReplyList(int b_num) {
+		return sqlSession.selectList(namespace+".getReplyList",b_num);
+	}
 }

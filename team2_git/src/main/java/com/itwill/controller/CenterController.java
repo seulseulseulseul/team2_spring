@@ -14,7 +14,6 @@ import com.itwill.domain.CenterDTO;
 import com.itwill.domain.PageDTO;
 import com.itwill.service.CenterService;
 
-
 @Controller
 public class CenterController {
 	@Inject
@@ -49,14 +48,39 @@ public class CenterController {
 		 pageDTO.setPageNum(pageNum);
 		 
 		 List<CenterDTO> centerList = centerService.getCenterList(pageDTO);
-		 
+		
 		 int count = centerService.getCenterCount();
 		 pageDTO.setCount(count);
+		 
+//		 //답변여부 확인 및 날짜형식 포맷
+//		 int b_reply = centerService.isReply(b_num);
+		 for (CenterDTO centerDTO : centerList) {
+			 int isReply = centerService.isReply(centerDTO.getB_num());
+			 centerDTO.setIsReply(isReply);
+//			 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+//			 dateFormat.format(centerDTO.getB_date());
+		}
 		 
 		 //데이터담기
 		 model.addAttribute("centerList",centerList);
 		 model.addAttribute("pageDTO",pageDTO);
-		 
-		return "board/list";
+		return "center/list";
 	}
+	
+	@RequestMapping(value = "/center/content", method = RequestMethod.GET)
+	public String content(HttpServletRequest request,Model model){
+		int b_num = Integer.parseInt(request.getParameter("b_num"));
+		CenterDTO centerDTO = centerService.getCenter(b_num);
+		List<CenterDTO> replyList = centerService.getReplyList(b_num);
+		model.addAttribute("replyList",replyList);
+		model.addAttribute("centerDTO",centerDTO);
+		return "center/content";
+	}
+	@RequestMapping(value = "/center/insertReply", method = RequestMethod.POST)
+	public String insertReply(CenterDTO centerDTO){
+		System.out.println("CenterController insertPro()");
+		centerService.insertReply(centerDTO);
+		return "redirect:/center/content?b_num="+centerDTO.getB_num();
+	}
+	
 }
