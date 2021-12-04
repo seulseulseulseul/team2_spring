@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 public class CommuDTO {
 	private int c_num; // 글번호
 	private String u_id; // 회원아이디
-	private String t_id; // 트레이너아이디
 	private String nic; // 작성자닉네임
 	private String subject; // 글제목
 	private String content; // 글내용
@@ -30,12 +29,6 @@ public class CommuDTO {
 	}
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
-	}
-	public String getT_id() {
-		return t_id;
-	}
-	public void setT_id(String t_id) {
-		this.t_id = t_id;
 	}
 	public String getSubject() {
 		return subject;

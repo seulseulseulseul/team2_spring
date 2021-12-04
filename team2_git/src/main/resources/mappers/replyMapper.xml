@@ -5,7 +5,7 @@
   
 <mapper namespace="com.itwillbs.mapper.ReplyMapper">
 
-	<select id = "getMaxR_num" resultType="java.lang.Integer">
+	<select id = "getMaxNum" resultType="java.lang.Integer">
 		select max(r_num) from reply
 	</select>
 

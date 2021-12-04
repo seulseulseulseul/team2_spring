@@ -23,7 +23,7 @@ public class ReplyController {
 	// 댓글작성
 	@RequestMapping(value = "/reply/insert", method = RequestMethod.POST)
 	public ResponseEntity<ReplyDTO> insert(HttpSession session, HttpServletRequest request) {
-		// /member/idcheck?id=값
+		// 세션에서 id와 닉네임 받아오기
 		String u_id = session.getAttribute("u_id").toString();
 		String nic = session.getAttribute("nic").toString();
 		

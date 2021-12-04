@@ -24,7 +24,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 	
 	@Override
 	public Integer getMaxNum() {
-		return sqlSession.selectOne(namespace+".getMaxR_num");
+		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 	@Override
 	public void insertBoard(ReplyDTO commentDTO) {

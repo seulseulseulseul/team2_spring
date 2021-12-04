@@ -10,7 +10,7 @@
 	</select>
 
 	<insert id = "insertBoard">
-		insert into commu(c_num,u_id,subject,content,readcount,date,file) values(#{c_num},#{u_id},#{subject},#{content},#{readcount},#{date},#{file})
+		insert into commu(c_num,u_id,nic,subject,content,readcount,date,file) values(#{c_num},#{u_id},#{nic},#{subject},#{content},#{readcount},#{date},#{file})
 	</insert>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.CommuDTO">

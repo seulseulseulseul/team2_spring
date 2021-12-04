@@ -37,17 +37,13 @@ public class CommuController {
 	
 	@RequestMapping(value = "/commu/insert", method = RequestMethod.GET)
 	public String insert(HttpSession session){
-		
-		// 세션에서 정보 가져오기
-		String u_id=session.getAttribute("u_id").toString();
-		String nic=session.getAttribute("nic").toString();
-		
 		// 로그인 여부 확인
-		if(u_id==null){
+		if(session.getAttribute("u_id")==null){
 			return "redirect:/remember/login";
+			
+		} else {
+			return "commu/insert";
 		}
-		
-		return "commu/insert";
 		
 	}
 	@RequestMapping(value = "/commu/insertPro", method = RequestMethod.POST)
@@ -57,24 +53,28 @@ public class CommuController {
 		String nic=session.getAttribute("nic").toString();
 		
 		// 로그인 여부 확인
-		if(u_id==null){
+		if(session.getAttribute("u_id")==null){
 			return "redirect:/member/login";
 		}
 		
 		// request 정보 commuDTO에 담아 전달
 		CommuDTO commuDTO = new CommuDTO();
 		commuDTO.setU_id(u_id);
+		commuDTO.setNic(nic);
 		commuDTO.setSubject(request.getParameter("subject"));
 		commuDTO.setContent(request.getParameter("content"));
 		//파일 업로드
-		// 파일 이름 랜덤문자_파일이름 변경
-		UUID uid=UUID.randomUUID();
-		String fileName=uid.toString()+"_"+file.getOriginalFilename();
-		// 업로드 파일을 복사해서 => upload 복사해서 넣기
-		File targetFile=new File(uploadPath,fileName);
-		FileCopyUtils.copy(file.getBytes(), targetFile);
-		//BoardDTO 복사된 파일 이름 저장
-		commuDTO.setFile(fileName);
+		if(request.getParameter("file") != null) {
+			// 파일 이름 랜덤문자_파일이름 변경
+			UUID uid=UUID.randomUUID();
+			String fileName=uid.toString()+"_"+file.getOriginalFilename();
+			// 업로드 파일을 복사해서 => upload 복사해서 넣기
+			File targetFile=new File(uploadPath,fileName);
+			FileCopyUtils.copy(file.getBytes(), targetFile);
+			//BoardDTO 복사된 파일 이름 저장
+			commuDTO.setFile(fileName);
+			
+		}
 		
 		commuService.insertBoard(commuDTO);
 		
@@ -188,9 +188,6 @@ public class CommuController {
 	}
 	@RequestMapping(value = "/commu/delete", method = RequestMethod.GET)
 	public String delete(HttpSession session, HttpServletRequest request){
-		
-		// 글 삭제시 댓글 모두 삭제기능 추가
-		
 		// CommuDTO 객체 생성
 		CommuDTO commuDTO = new CommuDTO();
 		// 본인확인에 필요한 정보 session에서 가져오기
@@ -201,6 +198,8 @@ public class CommuController {
 		// 본인확인
 		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
 			commuService.deleteBoard(commuDTO);
+			// 글 삭제시 댓글 모두 삭제기능 추가
+			asdf
 			return "commu/delete";
 			
 		} else { // 본인이 아닐 경우

@@ -18,7 +18,7 @@ public interface CommuService {
 	
 	public void updateBoard(CommuDTO commuDTO);
 	
-	public void deleteBoard(CommuDTO commuDTO);
+	public void deleteBoard(int c_num);
 	
 	public void updateReadcount(int c_num);
 	

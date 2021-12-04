@@ -46,12 +46,12 @@ public class CommuDAOImpl implements CommuDAO {
 		sqlSession.update(namespace + ".updateBoard", commuDTO);
 	}
 	@Override
-	public void deleteBoard(int num) {
-		sqlSession.delete(namespace + ".deleteBoard", num);
+	public void deleteBoard(int c_num) {
+		sqlSession.delete(namespace + ".deleteBoard", c_num);
 	}
 	@Override
-	public void updateReadcount(int num) {
-		sqlSession.update(namespace + ".updateReadcount", num);
+	public void updateReadcount(int c_num) {
+		sqlSession.update(namespace + ".updateReadcount", c_num);
 	}
 	@Override
 	public Integer getBoardCount() {

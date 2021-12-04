@@ -18,7 +18,7 @@ public class CommuServiceImpl implements CommuService{
 	
 	@Inject
 	private CommuDAO commuDAO;
-
+	// 커뮤니티글 작성
 	@Override
 	public void insertBoard(CommuDTO commuDTO) {
 		// 전체글 개수 조회
@@ -35,7 +35,7 @@ public class CommuServiceImpl implements CommuService{
 		
 		commuDAO.insertBoard(commuDTO);
 	}
-
+	// 커뮤니티글 목록 불러오기
 	@Override
 	public List<CommuDTO> getBoardList(PageDTO pageDTO) {
 		// pageSize, pageNum 담아옴
@@ -50,47 +50,33 @@ public class CommuServiceImpl implements CommuService{
 		
 		return commuDAO.getBoardList(pageDTO);
 	}
-	
+	// 커뮤니티글 불러오기
 	@Override
 	public CommuDTO getBoard(CommuDTO commuDTO) {
-		// 작성자 본인 여부 확인
-		if(commuDAO.numCheck(commuDTO)!=null) {
-			// 작성자 본인일 경우
-			
-		}
 		return commuDAO.getBoard(commuDTO);
 	}
-
+	// 커뮤니티글 수정
 	@Override
 	public void updateBoard(CommuDTO commuDTO) {
-		// 작성자 본인 여부 확인
-		if(commuDAO.numCheck(commuDTO) != null) {
-			// 작성자 본인일 경우
-			commuDAO.updateBoard(commuDTO);
-		} else {
-			
-		}
+		commuDAO.updateBoard(commuDTO);
 	}
-
+	// 커뮤니티글 삭제
 	@Override
-	public void deleteBoard(CommuDTO commuDTO) {
-		// 작성자 본인 여부 확인
-		if(commuDAO.numCheck(commuDTO) != null) {
-			commuDAO.deleteBoard(commuDTO.getC_num());
-		}
+	public void deleteBoard(int c_num) {
+		commuDAO.deleteBoard(c_num);
 	}
-
+	// 조회수 +1
 	@Override
-	public void updateReadcount(int num) {
-		commuDAO.updateReadcount(num);
+	public void updateReadcount(int c_num) {
+		commuDAO.updateReadcount(c_num);
 		
 	}
-	
+	// 전체 커뮤니티글 개수 조회
 	@Override
 	public Integer getBoardCount() {
 		return commuDAO.getBoardCount();
 	}
-	
+	// 본인 확인
 	@Override
 	public CommuDTO numCheck(CommuDTO commuDTO) {
 		return commuDAO.numCheck(commuDTO);

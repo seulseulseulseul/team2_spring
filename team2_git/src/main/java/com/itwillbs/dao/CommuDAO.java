@@ -21,9 +21,9 @@ public interface CommuDAO {
 	
 	public void updateBoard(CommuDTO commuDTO);
 	
-	public void deleteBoard(int num);
+	public void deleteBoard(int c_num);
 	
-	public void updateReadcount(int num);
+	public void updateReadcount(int c_num);
 	
 	public Integer getBoardCount();
 }
