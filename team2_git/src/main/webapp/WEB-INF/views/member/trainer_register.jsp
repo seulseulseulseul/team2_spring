@@ -30,74 +30,27 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
      
+     
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
-//  function CheckId() {
-// //		alert("함수호출");
-// 		var t_id=$("input[id='t_id']");
-// 		if(t_id.val()==""){
-// 			alert("아이디 입력하세요");
-// 			t_id.focus();
-// 			return false;
-// 		}
-// 		//창열기
-// 		window.open("trainer_CheckId.jsp?t_id="+t_id.val(),"","width=500,height=300");
-// 	}
 
+    function t_CheckId() {
+    		$.ajax({
+    			url:"${pageContext.request.contextPath}/member/trainer_IdCheck",
+    			type:"post",
+    			dataType:"json",
+    			data:{"t_id":$("#t_id").val()},
+    			success:function(data){
+    				if(data==1){
+    					alert("중복된 아이디입니다.");
+    				}else if(data ==0){
+    					$("#trainer_IdCheck").attr("value","Y");
+    					alert("사용가능한 아이디입니다.");
+    				}
+    			}
+    		})}
+    	
  </script>
- 
- <!-- 우편번호 api 받아오기 -->
-
-<!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
-<script>
-// function openZipSearch() {
-//     new daum.Postcode({
-//         oncomplete: function(data) {
-//             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-//             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-//             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-//             var addr = ''; // 주소 변수
-//             var extraAddr = ''; // 참고항목 변수
-
-//             //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-//             if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-//                 addr = data.roadAddress;
-//             } else { // 사용자가 지번 주소를 선택했을 경우(J)
-//                 addr = data.jibunAddress;
-//             }
-
-//             // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-//             if(data.userSelectedType === 'R'){
-//                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-//                 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-//                 if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-//                     extraAddr += data.bname;
-//                 }
-//                 // 건물명이 있고, 공동주택일 경우 추가한다.
-//                 if(data.buildingName !== '' && data.apartment === 'Y'){
-//                     extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-//                 }
-//                 // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-//                 if(extraAddr !== ''){
-//                     extraAddr = ' (' + extraAddr + ')';
-//                 }
-//                 // 조합된 참고항목을 해당 필드에 넣는다.
-// //                 document.getElementById("extraAddress").value = extraAddr;
-            
-//             } else {
-//                 document.getElementById("t_extraAddress").value = '';
-//             }
-
-//             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-//             document.getElementById('t_postcode').value = data.zonecode;
-//             document.getElementById("t_address").value = addr;
-//             // 커서를 상세주소 필드로 이동한다.
-//             document.getElementById("t_detailAddress").focus();
-//         }
-//     }).open();
-// }
-</script> 
 
   </head>
   <body>
@@ -122,11 +75,10 @@
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">트레이너 회원가입</h3>
-<!--                 onsubmit="return trainer_CheckForm();" -->
                 <form action="${pageContext.request.contextPath}/member/trainer_registerPro" id="join" method="post" >
 								<div class="form-group">
 									<label>ID</label>
-									<input type="button" value="아이디 중복체크" onclick="CheckId()" class="dup" ><br>
+									<button type="button" value="N" id="trainer_IdCheck" onclick="t_CheckId();" class="btn btn-primary">아이디 중복확인</button><br>
 									<input type="text" name="t_id" id="t_id" class="form-control" placeholder="아이디확인 필수" >
 								</div>								
 								<div class="form-group">
@@ -143,8 +95,8 @@
 								</div>
 								<div class="form-group">
 								<label>우편번호</label>
-								<button type="button" onclick="openZipSearch()" class="btn btn-primary">우편번호 검색</button><br>
-								<input type="text" name="t_postcode" id="t_postcode" class="form-control">
+								<button type="button" onclick="searchPostCode();" class="btn btn-primary">우편번호 검색</button><br>
+								<input type="text" name="t_postcode" id="t_postcode" class="form-control" readonly placeholder="주소를 입력해주세요">
 								</div>
 								<div class="form-group">
 								<label>헬스장위치(주소)</label>
@@ -152,7 +104,7 @@
 								</div>
 								<div class="form-group">
 								<label>헬스장 상세주소</label>
-									<input type="text" name="t_detailAddress" id="t_detailAddress" class="form-control"><br>
+									<input type="text" name="t_detailAddress" id="t_detailAddress" class="form-control" placeholder="주소를 입력해주세요"><br>
 								</div>
 								<div class="form-group">
 									<label>전화번호</label>
@@ -163,7 +115,7 @@
 									<input type="email" name="t_email" id="t_email" class="form-control">
 								</div>
 								<div class="form-group text-right">
-									<button type="submit" class="btn btn-primary btn-block">회원가입</button>
+									<button type="submit" class="btn btn-primary btn-block"  onclick="return trainer_CheckForm();">회원가입</button>
 								</div>
 								<div class="form-group text-center">
 									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/start_login.jsp">로그인</a>
@@ -197,7 +149,9 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/addressapi.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/trainer_CheckForm.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
@@ -215,6 +169,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-    
+ 
   </body>
 </html>

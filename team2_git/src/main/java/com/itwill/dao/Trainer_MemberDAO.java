@@ -5,17 +5,20 @@ import java.util.List;
 import com.itwill.domain.Trainer_MemberDTO;
 
 public interface Trainer_MemberDAO {
-	//ë¶€ëª¨ì˜ ê³µí†µëœ í‹€ , ì¸í„°í˜ì´ìŠ¤
-	// ì¶”ìƒë©”ì„œë“œ ì •ì˜
+	//ºÎ¸ğÀÇ °øÅëµÈ Æ² , ÀÎÅÍÆäÀÌ½º
+	// Ãß»ó¸Ş¼­µå Á¤ÀÇ
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO);
 	
-//  ë¦¬í„´í• í˜• MemberDTO   userCheck(memberDTO)ë©”ì„œë“œ
+//  ¸®ÅÏÇÒÇü MemberDTO   userCheck(memberDTO)¸Ş¼­µå
 	public Trainer_MemberDTO trainer_userCheck(Trainer_MemberDTO trainer_memberDTO);
 	
-	// ë¦¬í„´í• í˜• MemberDTO getMember(String id)
+	// ¸®ÅÏÇÒÇü MemberDTO getMember(String id)
 	public Trainer_MemberDTO trainer_getMember(String t_id);
 	
 	// memberService.updateMember(memberDTO);
-		public void trainer_updateMember(Trainer_MemberDTO trainer_memberDTO);
-
+	public void trainer_updateMember(Trainer_MemberDTO trainer_memberDTO);
+	
+	// ¾ÆÀÌµğ Áßº¹Ã¼Å©
+	public int trainer_IdCheck(Trainer_MemberDTO trainer_memberDTO);
 }
+ 	

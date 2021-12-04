@@ -14,41 +14,41 @@ import com.itwill.domain.Trainer_MemberDTO;
 @Service
 public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 
-	//ë©¤ë²„ë³€ìˆ˜ 
+	//¸â¹öº¯¼ö 
 //	MemberDAO memberDAO=new MemberDAOImpl();
 	@Inject
 	private Trainer_MemberDAO trainer_memberDAO;
 	
-	//setë©”ì„œë“œ 
+	//set¸Ş¼­µå 
 //	@Inject
 //	public void setMemberDAO(MemberDAO memberDAO) {
 //		this.memberDAO = memberDAO;
 //	}
 
-	// ë¦¬í„´ê°’ì—†ìŒ insertMember(MemberDTO memberDTO) ë©”ì„œë“œ ì •ì˜
+	// ¸®ÅÏ°ª¾øÀ½ insertMember(MemberDTO memberDTO) ¸Ş¼­µå Á¤ÀÇ
 	@Override
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("MemberServiceImpl trainer_register()");
 		
-		// 1. ê°ì²´ìƒì„±
-		// MemberDAOImpl ê°ì²´ìƒì„±
+		// 1. °´Ã¼»ı¼º
+		// MemberDAOImpl °´Ã¼»ı¼º
 //	MemberDAOImpl 
 		//trainer_memberDAO=new Trainer_MemberDAOImpl();
-	// insertMember(memberDTO) ë©”ì„œë“œ í˜¸ì¶œ
+	// insertMember(memberDTO) ¸Ş¼­µå È£Ãâ
 //	memberDAO.insertMember(memberDTO);
 		
-		// 2. ê°ì²´ìƒì„±  ìˆ˜ì •ìµœì†Œí™” ë°©ë²• =>  ë¶€ëª¨ì¸í„°í˜ì´ìŠ¤ í‹€  => ë¶€ëª¨ = ìì‹ ê°ì²´ìƒì„± 
-		//  ë¶€ëª¨ì¸í„°í˜ì´ìŠ¤ í‹€  íŒ¨í‚¤ì§€ com.itwillbs.dao ì¸í„°í˜ì´ìŠ¤ íŒŒì¼ MemberDAO ì¶”ìƒë©”ì„œë“œ ì •ì˜ 
-		//              MemberDAOImpl ë¶€ëª¨ì¸í„°í˜ì´ìŠ¤ ìƒì† MemberDAO  ë©”ì„œë“œ ì˜¤ë²„ë¼ì´ë”©
-//		// ë¶€ëª¨ì¸í„°í˜ì´ìŠ¤ MemberDAO  = ìì‹í´ë˜ìŠ¤ ê°ì²´ìƒì„± MemberDAOImpl 
+		// 2. °´Ã¼»ı¼º  ¼öÁ¤ÃÖ¼ÒÈ­ ¹æ¹ı =>  ºÎ¸ğÀÎÅÍÆäÀÌ½º Æ²  => ºÎ¸ğ = ÀÚ½Ä °´Ã¼»ı¼º 
+		//  ºÎ¸ğÀÎÅÍÆäÀÌ½º Æ²  ÆĞÅ°Áö com.itwillbs.dao ÀÎÅÍÆäÀÌ½º ÆÄÀÏ MemberDAO Ãß»ó¸Ş¼­µå Á¤ÀÇ 
+		//              MemberDAOImpl ºÎ¸ğÀÎÅÍÆäÀÌ½º »ó¼Ó MemberDAO  ¸Ş¼­µå ¿À¹ö¶óÀÌµù
+//		// ºÎ¸ğÀÎÅÍÆäÀÌ½º MemberDAO  = ÀÚ½ÄÅ¬·¡½º °´Ã¼»ı¼º MemberDAOImpl 
 //		MemberDAO memberDAO=new MemberDAOImpl();
-//		// ë¶€ëª¨ì¸í„°í˜ì´ìŠ¤ ë³€ìˆ˜.insertMember(memberDTO) ë©”ì„œë“œ í˜¸ì¶œ
+//		// ºÎ¸ğÀÎÅÍÆäÀÌ½º º¯¼ö.insertMember(memberDTO) ¸Ş¼­µå È£Ãâ
 //		memberDAO.insertMember(memberDTO);
 		
-		// 3. ê°ì²´ìƒì„±
-		// ìŠ¤í”„ë§ ê°ì²´ìƒì„± ë°©ë²• => ì˜ì¡´ê´€ê³„ ì£¼ì… (DI Dependency Injection)
-		// ë©¤ë²„ë³€ìˆ˜ ì •ì˜  <= ì™¸ë¶€ì— ìˆëŠ” xmlì—ì„œ MemberDAOImpl ê°ì²´ìƒì„±í•œê²ƒì„ ì „ë‹¬í•´ì˜¤ë©´ ë°›ìŒ
-		// ë°›ì•„ì˜¤ëŠ” ë°©ë²•  1. ìƒì„±ì  2. setë©”ì„œë“œ
+		// 3. °´Ã¼»ı¼º
+		// ½ºÇÁ¸µ °´Ã¼»ı¼º ¹æ¹ı => ÀÇÁ¸°ü°è ÁÖÀÔ (DI Dependency Injection)
+		// ¸â¹öº¯¼ö Á¤ÀÇ  <= ¿ÜºÎ¿¡ ÀÖ´Â xml¿¡¼­ MemberDAOImpl °´Ã¼»ı¼ºÇÑ°ÍÀ» Àü´ŞÇØ¿À¸é ¹ŞÀ½
+		// ¹Ş¾Æ¿À´Â ¹æ¹ı  1. »ı¼ºÀÚ  2. set¸Ş¼­µå
 		
 		trainer_memberDAO.trainer_register(trainer_memberDTO);
 		
@@ -72,6 +72,11 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 		trainer_memberDAO.trainer_updateMember(trainer_memberDTO);
 	}
 
+	@Override
+	public int trainer_IdCheck(Trainer_MemberDTO trainer_memberDTO){
+		int result = trainer_memberDAO.trainer_IdCheck(trainer_memberDTO);
+		return result;
+	}
 
 }
 

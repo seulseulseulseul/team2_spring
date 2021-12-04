@@ -87,8 +87,4 @@ function trainer_CheckForm(){
 
 }
 
-//아이디 체크 메소드 만들기
-function trainer_CheckId() {
-	//새로운 창을 띄워주자
-	window.open("trainer_CheckId2.jsp", "아이디 중복 확인", "width=500, height=300");
-}
+	
