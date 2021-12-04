@@ -115,16 +115,31 @@ public class CommuController {
 	public String content(HttpServletRequest request, Model model){
 		// commuDTO 인스턴스 생성
 		CommuDTO commuDTO = new CommuDTO();
-		commuDTO.setC_num(Integer.parseInt(request.getParameter("c_num")));
-		// c_num을 저장한 commuDTO 전달하여 글정보 리턴
+		// 커뮤니티글 번호 저장
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		commuDTO.setC_num(c_num);
+		// c_num을 저장한 commuDTO 전달하여 글정보 불러오기
 		commuDTO = commuService.getBoard(commuDTO);
-		// replyDTO 인스턴스 생성
-		ReplyDTO replyDTO = new ReplyDTO();
+		
+		// 한화면에 보여줄 댓글개수  10개 설정
+		int pageSize=10;
+		 
+		// 댓글 페이지번호 가져오기 
+		String pageNum=request.getParameter("pageNum");
+		// 페이지번호가 없으면 -> 1
+		if(pageNum==null){
+			pageNum="1";
+		}
+		
+		PageDTO pageDTO=new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		
 		// 댓글목록 불러오기
-		replyDTO = replyService.getBoardList();
+		List<ReplyDTO> replyList = replyService.getBoardList(c_num, pageDTO);
 		
 		model.addAttribute("commuDTO", commuDTO);
-		model.addAttribute("replyDTO", replyDTO);
+		model.addAttribute("replyList", replyList);
 		
 		return "commu/content";
 	}
@@ -198,14 +213,36 @@ public class CommuController {
 		// 본인확인
 		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
 			commuService.deleteBoard(commuDTO);
-			// 글 삭제시 댓글 모두 삭제기능 추가
-			asdf
 			return "commu/delete";
 			
 		} else { // 본인이 아닐 경우
 			return "redirect:/commu/list";
 			
 		}
+	}
+	@RequestMapping(value = "/commu/deletePro", method = RequestMethod.GET)
+	public void deletePro(HttpSession session, HttpServletRequest request){
+		// CommuDTO 객체 생성
+		CommuDTO commuDTO = new CommuDTO();
+		// 본인확인에 필요한 정보 session에서 가져오기
+		commuDTO.setU_id(session.getAttribute("u_id").toString());
+		// 본인확인에 필요한 글번호 request에서 가져오기
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		commuDTO.setC_num(c_num);
+		
+		// 본인확인
+		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
+			// 커뮤니티글 삭제
+			commuService.deleteBoard(commuDTO);
+			// 알림창
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('게시글이 삭제되었습니다.'); location.href='이동주소';</script>");
+			out.flush();
+			// 커뮤니티글 삭제 시 댓글 모두 삭제
+			replyService.deleteBoardAll(c_num);
+		} 
+		return "redirect:/commu/list";
 	}
 	
 }

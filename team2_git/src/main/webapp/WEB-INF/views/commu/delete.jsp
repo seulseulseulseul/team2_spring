@@ -9,12 +9,9 @@
 <script type="text/javascript">
 if(window.confirm("정말로 삭제하시겠습니까?")){
 <%
-request.setCharacterEncoding("utf-8");
-int num = Integer.parseInt(request.getParameter("num"));
-CommuDAO commuDAO = new CommuDAO();
-commuDAO.deleteBoard(num);
+	location.href="${pageContext.request.contextPath}/commu/deletePro?c_num=${c_num}"+;
 %>
-	location.href="list.jsp";
+	location.href="list";
 }else{
 	history.back();
 }

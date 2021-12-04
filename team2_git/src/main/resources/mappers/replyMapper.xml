@@ -9,11 +9,11 @@
 		select max(r_num) from reply
 	</select>
 
-	<insert id = "insertReply">
+	<insert id = "insertBoard">
 		insert into reply(r_num,c_num,depth,u_id,nic,content,date) values(#{r_num},#{c_num},#{depth},#{u_id},#{nic},#{content},#{date})
 	</insert>
 	
-	<select id="getReplyList" resultType="com.itwillbs.domain.ReplyDTO">
+	<select id="getBoardList" resultType="com.itwillbs.domain.ReplyDTO">
 		select * from reply where c_num=#{c_num} order by r_num desc limit #{startRow}, #{pageSize}
 	</select>
 	
@@ -21,15 +21,15 @@
 		select * from reply where r_num=#{r_num} and u_id=#{u_id}
 	</select>
 	
-	<update id="updateReply">
+	<update id="updateBoard">
 		update reply set content=#{content}, where r_num=#{r_num}
 	</update>
 	
-	<delete id="deleteReply">
+	<delete id="deleteBoard">
 		delete from reply where r_num=#{r_num}
 	</delete>
 	
-	<delete id="deleteReplyAll">
+	<delete id="deleteBoardAll">
 		delete from reply where c_num=#{c_num}
 	</delete>
 	

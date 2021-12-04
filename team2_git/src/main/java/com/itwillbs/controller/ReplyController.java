@@ -18,16 +18,32 @@ import com.itwillbs.service.ReplyService;
 @RestController
 public class ReplyController {
 	
+	@Inject
 	private ReplyService replyService;
 	
 	// 댓글작성
 	@RequestMapping(value = "/reply/insert", method = RequestMethod.POST)
 	public ResponseEntity<ReplyDTO> insert(HttpSession session, HttpServletRequest request) {
-		// 세션에서 id와 닉네임 받아오기
-		String u_id = session.getAttribute("u_id").toString();
-		String nic = session.getAttribute("nic").toString();
+		// 로그인 여부 확인
+		if(session.getAttribute("u_id")==null){
+			return "redirect:/remember/login";
+		}
 		
-		ReplyDTO replyDTO=replyService.getMember(id);
+		// ReplyDTO 객체 생성
+		ReplyDTO replyDTO = new ReplyDTO();
+		// 세션에서 id, 닉네임 받아오기
+		replyDTO.setU_id(session.getAttribute("u_id").toString());
+		replyDTO.setNic(session.getAttribute("nic").toString());
+		// request에서 게시글 번호 받아오기
+		int c_num = Integer.parseInt(request.getParameter("c_num"))
+		replyDTO.setC_num(c_num);
+		
+		// replyDTO 전달하여 댓글 작성
+		replyService.insertBoard(replyDTO);
+		
+		// 댓글 목록 불러오기
+		replyService.getBoardList(c_num);
+		
 		String result="";
 		if(replyDTO==null) {
 			
@@ -39,13 +55,28 @@ public class ReplyController {
 		//데이터 담아서 ajax 호출한 곳으로 리턴
 		return entity;
 	}
+	// 댓글 목록
+	@RequestMapping(value = "/reply/replyList", method = RequestMethod.GET)
+	public ResponseEntity<List<ReplyDTO>> list2(HttpServletRequest request) {
+		
+		int c_num = request.getParameter("c_num")
+		
+		List<ReplyDTO> replyList = ReplyService.getBoardList(c_num);
+	
+		ResponseEntity<List<MemberDTO>> entity=new ResponseEntity<List<MemberDTO>>(memberList, HttpStatus.OK);
+		
+		// memberList => 자동으로 JSON으로 변경하는 프로그램 설치 => pom.xml jackson-databind
+		
+		//데이터 담아서 ajax 호출한 곳으로 리턴
+		return entity;
+	}
 	
 	// 댓글 삭제
 	@RequestMapping(value = "/reply/delete", method = RequestMethod.GET)
 	public String delete(HttpSession session, HttpServletRequest request){
 		// CommuDTO 객체 생성
 		ReplyDTO replyDTO = new ReplyDTO();
-		// 본인확인에 필요한 정보 session에서 가져오기
+		// 본인확인에 필요한 아이디 session에서 가져오기
 		replyDTO.setU_id(session.getAttribute("u_id").toString());
 		// 본인확인에 필요한 댓글번호 request에서 가져오기
 		replyDTO.setR_num(Integer.parseInt(request.getParameter("r_num")));

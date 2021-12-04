@@ -14,13 +14,13 @@ public interface ReplyService {
 	
 	public List<ReplyDTO> getBoardList(int c_num, PageDTO pageDTO);
 	
-	public ReplyDTO getBoard(ReplyDTO replyDTO);
+	// public ReplyDTO getBoard(ReplyDTO replyDTO);
 	
 	public void updateBoard(ReplyDTO replyDTO);
 	
-	public void deleteBoard(ReplyDTO replyDTO);
+	public void deleteBoard(int r_num);
 	
-	public void deleteBoardAll(ReplyDTO replyDTO);
+	public void deleteBoardAll(int c_num);
 	
 	public Integer getBoardCount(int c_num);
 	

@@ -18,13 +18,14 @@ public class CommuServiceImpl implements CommuService{
 	
 	@Inject
 	private CommuDAO commuDAO;
+	
 	// 커뮤니티글 작성
 	@Override
 	public void insertBoard(CommuDTO commuDTO) {
-		// 전체글 개수 조회
+		// 조회수 0, 작성시간 입력
 		commuDTO.setReadcount(0);
 		commuDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		// c_num 설정
+		// 커뮤니티글 번호 설정
 		if(commuDAO.getMaxNum()==null) {
 			//글이 없는경우 1로 설정
 			commuDTO.setC_num(1);

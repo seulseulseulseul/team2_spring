@@ -27,32 +27,28 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 	@Override
-	public void insertBoard(ReplyDTO commentDTO) {
-		sqlSession.insert(namespace + ".insertComment", commentDTO);
+	public void insertBoard(ReplyDTO replyDTO) {
+		sqlSession.insert(namespace + ".insertBoard", replyDTO);
 	}
 	@Override
 	public List<ReplyDTO> getBoardList(PageDTO pageDTO) {
 		return sqlSession.selectList(namespace + ".getBoardList", pageDTO);
 	}
 	@Override
-	public CommuDTO getBoard(CommuDTO commuDTO) {
-		return sqlSession.selectOne(namespace + ".getBoard", commuDTO);
+	public CommuDTO numCheck(ReplyDTO replyDTO) {
+		return sqlSession.selectOne(namespace + ".numCheck", replyDTO);
 	}
 	@Override
-	public CommuDTO numCheck(CommuDTO commuDTO) {
-		return sqlSession.selectOne(namespace + ".numCheck", commuDTO);
+	public void updateBoard(ReplyDTO replyDTO) {
+		sqlSession.update(namespace + ".updateBoard", replyDTO);
 	}
 	@Override
-	public void updateBoard(CommuDTO commuDTO) {
-		sqlSession.update(namespace + ".updateBoard", commuDTO);
+	public void deleteBoard(int r_num) {
+		sqlSession.delete(namespace + ".deleteBoard", r_num);
 	}
 	@Override
-	public void deleteBoard(int num) {
-		sqlSession.delete(namespace + ".deleteBoard", num);
-	}
-	@Override
-	public void updateReadcount(int num) {
-		sqlSession.update(namespace + ".updateReadcount", num);
+	public void deleteBoardAll(int c_num) {
+		sqlSession.delete(namespace + ".deleteBoard", c_num);
 	}
 	@Override
 	public Integer getBoardCount() {
