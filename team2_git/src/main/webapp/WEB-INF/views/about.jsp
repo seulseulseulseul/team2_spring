@@ -6,6 +6,13 @@
 <html lang="en">
   <head>
     <title>트레이너 소개</title>
+    
+    <h2>
+    
+    
+    
+    </h2>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
@@ -57,7 +64,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           <div class="col-md-12 heading-section ftco-animate text-center">
                 
          <!--  왼쪽 메뉴 -->
-            <h2 class="mb-1">트레이너
+            <h2 class="mb-1">${NAME}
 <%--              <%= memberDTO.getT_nic()%> --%>
             </h2>
           </div>
@@ -164,12 +171,12 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
     <h2 class="mb-1">트레이너  소개 동영상<br></h2> 
 <%--     <%= memberDTO.getT_nic()%> --%>
       <p align = "middle">
+		
 		<iframe width="80%" height="500"  title="YouTube video player"
-		<!-- 이부분은 잘못되어있음 나중에 설명해줌  -->
-<%-- 		src="<%=memberDTO.getVideo()%>?autoplay=1&amp;mute=1" --%>
-       frameborder="0" allow="accelerometer; autoplay;
+			src="${URL}?autoplay=1&amp;mute=1">
        clipboard-write; encrypted-media; gyroscope; 
        picture-in-picture" allowfullscreen></iframe>
+       
        </p>  
        </div>
        </div>

@@ -6,17 +6,18 @@ import java.util.Map;
 
 //import javax.annotation.Resources;
 import javax.inject.Inject;
+import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 
 import java.io.IOException;
 
 import java.io.Reader;
-
-
+import java.sql.Connection;
 
 import org.apache.ibatis.io.Resources;
 
@@ -34,45 +35,17 @@ public class TrainerDAO{
 	
 	//@Autowired
 	@Inject
-	private static SqlSession sqlSession;
-	
-//	sqlSession = SqlMapClient.getSqlSession();
-	
-//	private static final String namespace="com.itwill.mapper.TraninrMapper";
+	private SqlSession sqlSession;
 	
 	
-//	static void setting() {
-//		try {
-//
-//            String resource = "classpath:/mybatis-config.xml";
-//
-//            Reader reader = Resources.getResourceAsReader(resource);
-//
-//            SqlSessionFactory sqlMapper = new SqlSessionFactoryBuilder().build(reader);
-//
-//             
-//
-//            sqlSession =  sqlMapper.openSession(true);
-//
-//             
-//
-//        } catch (IOException e) {
-//
-//            e.printStackTrace();
-//
-//        }
-//		
-//	}
-	
-   
-	
- public static List getTrainer(String tid) {
+ public List getTrainer(String tid) {
 
- // TODO Auto-generated method stub
-	 
-//	 setting();
 	 
 	 System.out.println("sqlSession >>>>" + sqlSession);
+	 
+//	 Map map = sqlSession.selectMap("com.itwill.mapper.TraninrMapper.getTrainer",tid);
+	 
+//	 System.out.println("map >>>" + map);
 	 
 	 return sqlSession.selectList("com.itwill.mapper.TraninrMapper.getTrainer",tid);
 	 

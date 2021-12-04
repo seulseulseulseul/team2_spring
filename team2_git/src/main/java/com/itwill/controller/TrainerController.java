@@ -1,6 +1,8 @@
 package com.itwill.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +32,8 @@ public class TrainerController {
 //		return "about";
 //	}
 	
+	
+	//jsp , do 구분 팀원끼리 얘기하기 . 
 	@RequestMapping(value = "/trainer/about", method = RequestMethod.GET)
 	public String getTrainerInfo(HttpServletRequest req, HttpServletResponse res){
 		
@@ -38,6 +42,7 @@ public class TrainerController {
 		// 잘봐방 
 		
 		System.out.println("/trainer/about 접속완료");
+		
 		
 		String url = "";
 		
@@ -53,7 +58,31 @@ public class TrainerController {
 			
 //			trainerService.getTrainerInfo(tId);
 			
-			req.setAttribute("TRAINNERINFO", trainerService.getTrainerInfo(tId));
+
+			List temp = trainerService.getTrainerInfo(tId);
+			
+			System.out.println("temp >>>" + temp.get(0));
+			
+			Map map = (Map)temp.get(0);
+			
+			req.setAttribute("NAME",map.get("T_NAME"));
+			req.setAttribute("TID", map.get("T_ID"));
+			req.setAttribute("URL", map.get("VIDEO"));
+			
+			
+			//t_pass 불러오기
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			url = "about";
 		}

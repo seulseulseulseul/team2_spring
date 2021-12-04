@@ -10,14 +10,14 @@
 <!-- 	<insert id = "getTrainer"> -->
 <!-- 	</insert> -->
 	
-	<select id = "getTrainer" resultType="map" parameterMap="java.lang.String">
+	<select id = "getTrainer" resultType="map" parameterType="java.lang.String">
 	
 	<!-- 이게 호출 인자에 따라서 map형태 아니면 list 형태로 반환됨 ok
 	저기 내부에 이제 dto가 잇다고 생각하면 이해하기쉬울듯 
 	 --> 
 	
-	SELECT * 	
-	 T_NUM
+	SELECT 
+	 T_NUM 
 	,T_ID
 	,T_PASS
 	,T_NAME
@@ -33,7 +33,7 @@
 	,PROFILE_PHOTO
 	,T_DETAILADDRESS
 	,VIDEO
-	,T_POSTECODE
+	<!--,T_POSTECODE  얘 없음 나중에 확인해봐 ㅇㅋ-->
 	  
 	FROM TRAINER
 	
