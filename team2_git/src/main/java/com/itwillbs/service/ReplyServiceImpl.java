@@ -63,5 +63,13 @@ public class ReplyServiceImpl implements ReplyService{
 	public ReplyDTO numCheck(ReplyDTO replyDTO) {
 		return replyDAO.numCheck(replyDTO);
 	}
+	// 댓글목록의 마지막 페이지
+	@Override
+	public Integer getLastPage(int c_num) {
+		// 커뮤니티글의 댓글 개수
+		int boardCount = replyDAO.getBoardCount(c_num);
+		
+		return ((boardCount-1)/pageSize) + (boardCount%pageSize==0?0:1);
+	}
 
 }

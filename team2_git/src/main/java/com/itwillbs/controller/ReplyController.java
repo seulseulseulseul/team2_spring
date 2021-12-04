@@ -41,16 +41,21 @@ public class ReplyController {
 		// replyDTO 전달하여 댓글 작성
 		replyService.insertBoard(replyDTO);
 		
-		// 댓글 목록 불러오기
-		replyService.getBoardList(c_num);
+		// 한화면에 보여줄 댓글개수 10개 설정
+		int pageSize=10;
+		// 댓글 마지막 페이지번호 불러오기 
+		String pageNum= replyService.getLastPage(c_num).toString();
 		
-		String result="";
-		if(replyDTO==null) {
-			
-		} else {
-			
-		}
-		ResponseEntity<ReplyDTO> entity=new ResponseEntity<ReplyDTO>(result, HttpStatus.OK);
+		PageDTO pageDTO=new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		
+		// 댓글 목록 불러오기
+		List<ReplyDTO> replyList=replyService.getBoardList(c_num);
+		
+		ResponseEntity<ReplyDTO> entity=new ResponseEntity<ReplyDTO>(replyList, HttpStatus.OK);
+		
+		// replyList => 자동으로 JSON으로 변경하는 프로그램 설치 => pom.xml jackson-databind
 		
 		//데이터 담아서 ajax 호출한 곳으로 리턴
 		return entity;
@@ -58,14 +63,26 @@ public class ReplyController {
 	// 댓글 목록
 	@RequestMapping(value = "/reply/replyList", method = RequestMethod.GET)
 	public ResponseEntity<List<ReplyDTO>> list2(HttpServletRequest request) {
+		// request에서 게시글 번호 받아오기
+		int c_num = request.getParameter("c_num");
 		
-		int c_num = request.getParameter("c_num")
+		// 한화면에 보여줄 댓글개수 10개 설정
+		int pageSize=10;
+		// 댓글 페이지번호 가져오기 
+		String pageNum=request.getParameter("pageNum");
+		// 페이지번호가 없으면 -> 1
+		if(pageNum==null){
+			pageNum="1";
+		}
+		PageDTO pageDTO=new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
 		
 		List<ReplyDTO> replyList = ReplyService.getBoardList(c_num);
 	
-		ResponseEntity<List<MemberDTO>> entity=new ResponseEntity<List<MemberDTO>>(memberList, HttpStatus.OK);
+		ResponseEntity<ReplyDTO> entity=new ResponseEntity<ReplyDTO>(replyList, HttpStatus.OK);
 		
-		// memberList => 자동으로 JSON으로 변경하는 프로그램 설치 => pom.xml jackson-databind
+		// replyList => 자동으로 JSON으로 변경하는 프로그램 설치 => pom.xml jackson-databind
 		
 		//데이터 담아서 ajax 호출한 곳으로 리턴
 		return entity;
@@ -114,23 +131,5 @@ public class ReplyController {
 		
 		return "commu/update";
 	}
-	
-	
-	
-	
-	
-	
-//	@RequestMapping(value = "/member/list2", method = RequestMethod.GET)
-//	public ResponseEntity<List<MemberDTO>> list2(HttpServletRequest request) {
-//		
-//		List<MemberDTO> memberList=MemberService.getMemberList();
-//	
-//		ResponseEntity<List<MemberDTO>> entity=new ResponseEntity<List<MemberDTO>>(memberList, HttpStatus.OK);
-//		
-//		// memberList => 자동으로 JSON으로 변경하는 프로그램 설치 => pom.xml jackson-databind
-//		
-//		//데이터 담아서 ajax 호출한 곳으로 리턴
-//		return entity;
-//	}
 	
 }

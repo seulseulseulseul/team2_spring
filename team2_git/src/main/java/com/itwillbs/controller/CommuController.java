@@ -38,10 +38,10 @@ public class CommuController {
 	@RequestMapping(value = "/commu/insert", method = RequestMethod.GET)
 	public String insert(HttpSession session){
 		// 로그인 여부 확인
-		if(session.getAttribute("u_id")==null){
+		if(session.getAttribute("u_id")==null){ // 비로그인
 			return "redirect:/remember/login";
 			
-		} else {
+		} else { // 로그인
 			return "commu/insert";
 		}
 		
@@ -78,7 +78,12 @@ public class CommuController {
 		
 		commuService.insertBoard(commuDTO);
 		
-		return "redirect:/commu/list";
+		// 알림창
+		public String alert(RedirectAttributes ra) {
+	        ra.addFlashAttribute("msg", "커뮤니티글이 작성되었습니다.");
+		}
+		
+		return "redirect:/commu/alert";
 	}
 	@RequestMapping(value = "/commu/list", method = RequestMethod.GET)
 	public String list(HttpServletRequest request,Model model){
@@ -121,16 +126,14 @@ public class CommuController {
 		// c_num을 저장한 commuDTO 전달하여 글정보 불러오기
 		commuDTO = commuService.getBoard(commuDTO);
 		
-		// 한화면에 보여줄 댓글개수  10개 설정
+		// 한화면에 보여줄 댓글개수 10개 설정
 		int pageSize=10;
-		 
 		// 댓글 페이지번호 가져오기 
 		String pageNum=request.getParameter("pageNum");
 		// 페이지번호가 없으면 -> 1
 		if(pageNum==null){
 			pageNum="1";
 		}
-		
 		PageDTO pageDTO=new PageDTO();
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
@@ -159,9 +162,13 @@ public class CommuController {
 			
 			model.addAttribute("commuDTO", commuDTO);
 			
-			return "commu/update";	
+			return "commu/updatePro";	
 		} else { // 본인이 아닐 경우
-			return "redirect:/commu/list";
+			// 알람창
+			public String alert(RedirectAttributes ra) {
+		        ra.addFlashAttribute("msg", "자신의 글만 수정할 수 있습니다.");
+		        return "redirect:/commu/alert";
+			}
 		}
 	}
 	@RequestMapping(value = "/commu/updatePro", method = RequestMethod.POST)
@@ -193,31 +200,43 @@ public class CommuController {
 			}
 			
 			commuService.insertBoard(commuDTO);
-			
-			return "redirect:/commu/list";
+			// 알림창
+			public String alert(RedirectAttributes ra) {
+		        ra.addFlashAttribute("msg", "커뮤니티글이 수정되었습니다.");
+			}
 			
 		} else { // 본인이 아닐 경우
-			return "redirect:/commu/list";
+			// 알림창
+			public String alert(RedirectAttributes ra) {
+		        ra.addFlashAttribute("msg", "자신의 글만 수정할 수 있습니다.");
+			}
 		}
 		
+		return "redirect:/commu/alert";
 	}
 	@RequestMapping(value = "/commu/delete", method = RequestMethod.GET)
-	public String delete(HttpSession session, HttpServletRequest request){
+	public String delete(HttpSession session, HttpServletRequest request, RedirectAttributes ra){
 		// CommuDTO 객체 생성
 		CommuDTO commuDTO = new CommuDTO();
 		// 본인확인에 필요한 정보 session에서 가져오기
 		commuDTO.setU_id(session.getAttribute("u_id").toString());
 		// 본인확인에 필요한 글번호 request에서 가져오기
-		commuDTO.setC_num(Integer.parseInt(request.getParameter("c_num")));
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		commuDTO.setC_num(c_num);
 		
 		// 본인확인
 		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
+			// 커뮤니티글 삭제
 			commuService.deleteBoard(commuDTO);
-			return "commu/delete";
+			
+	        return "/commu/deletePro";
 			
 		} else { // 본인이 아닐 경우
-			return "redirect:/commu/list";
-			
+			// 알림창
+			public String alert(RedirectAttributes ra) {
+		        ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
+		        return "redirect:/commu/alert";
+			}
 		}
 	}
 	@RequestMapping(value = "/commu/deletePro", method = RequestMethod.GET)
@@ -234,15 +253,19 @@ public class CommuController {
 		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
 			// 커뮤니티글 삭제
 			commuService.deleteBoard(commuDTO);
-			// 알림창
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('게시글이 삭제되었습니다.'); location.href='이동주소';</script>");
-			out.flush();
-			// 커뮤니티글 삭제 시 댓글 모두 삭제
+			// 커뮤니티글에 속한 댓글 모두 삭제
 			replyService.deleteBoardAll(c_num);
-		} 
-		return "redirect:/commu/list";
+			// 알림창
+			public String alert(RedirectAttributes ra) {
+		        ra.addFlashAttribute("msg", "커뮤니티글이 삭제되었습니다.");
+			}
+		} else { // 본인이 아닐 경우
+			// 알림창
+			public String alert(RedirectAttributes ra) {
+		        ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
+			}
+		}
+		return "redirect:/commu/alert";
 	}
 	
 }

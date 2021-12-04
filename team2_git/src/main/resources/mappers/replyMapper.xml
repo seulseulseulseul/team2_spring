@@ -17,7 +17,7 @@
 		select * from reply where c_num=#{c_num} order by r_num desc limit #{startRow}, #{pageSize}
 	</select>
 	
-	<select id="r_numCheck" resultType="com.itwillbs.domain.ReplyDTO">
+	<select id="numCheck" resultType="com.itwillbs.domain.ReplyDTO">
 		select * from reply where r_num=#{r_num} and u_id=#{u_id}
 	</select>
 	
@@ -33,7 +33,7 @@
 		delete from reply where c_num=#{c_num}
 	</delete>
 	
-	<select id="getReplyCount" resultType="java.lang.Integer">
+	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from reply where c_num=#{c_num}
 	</select>
   

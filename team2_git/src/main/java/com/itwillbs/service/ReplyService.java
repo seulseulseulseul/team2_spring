@@ -25,5 +25,7 @@ public interface ReplyService {
 	public Integer getBoardCount(int c_num);
 	
 	public ReplyDTO numCheck(ReplyDTO replyDTO);
+	
+	public Integer getLastPage(int c_num);
 
 }

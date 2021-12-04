@@ -51,7 +51,7 @@ public class PageDTO {
 	public void setCount(int count) {
 		this.count = count;
 		
-	//페이지 설정 메서드 호출	
+		//페이지 설정 메서드 호출	
 		init();
 		
 	}
@@ -61,7 +61,7 @@ public class PageDTO {
 		endPage=startPage+pageBlock-1;
 		pageCount=count/pageSize+(count%pageSize==0?0:1);
 		 if(endPage >  pageCount){
-		 // 	끝나는페이지번호 =  전체글페이지수
+		 // 끝나는페이지번호 = 전체글페이지수
 		 	endPage=pageCount;
 		 }
 	}
