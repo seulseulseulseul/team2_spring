@@ -52,14 +52,15 @@
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">글수정</h3>
-                <form action="insertPro.jsp" class="bg-light p-4">
+                <form action="${pageContext.request.contextPath}/notice/updatePro" class="bg-light p-4" method="post">
                   <div class="form-group">
+				   <input type="hidden" name="b_num" value="${noticeDTO.b_num}">
                     <label for="subject">제목 *</label>
-                    <input type="text" class="form-control bg-white" id="name">
+                    <input type="text" class="form-control bg-white" name="b_title" value="${noticeDTO.b_title }">
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="로그인한 이름" readonly class="form-control" id="email">
+                    <input type="text" value="${noticeDTO.u_id }" readonly class="form-control" name="u_id">
                   </div>
                   <div class="form-group">
                     <label for="file">파일</label>
@@ -70,7 +71,8 @@
                     <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="수정" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" value="수정" class="btn py-3 px-4 btn-primary"
+					onclick="alert('수정이 완료되었습니다')">
                     <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
                   </div>
 
@@ -83,7 +85,7 @@
               <div class="categories">
                 <ul>
                 <li><a href="${pageContext.request.contextPath}/notice/update" class="btn py-3 px-4 btn-primary">글수정 </a></li>
-                <li><a href="#" class="btn py-3 px-4 btn-primary">글삭제 </a></li>
+                <li><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}" class="btn py-3 px-4 btn-primary">글삭제 </a></li>
                 <li><a href="${pageContext.request.contextPath}/notice/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>

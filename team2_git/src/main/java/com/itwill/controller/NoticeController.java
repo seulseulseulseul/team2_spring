@@ -72,23 +72,15 @@ public class NoticeController {
 		model.addAttribute("noticeDTO", noticeDTO);
 		return "notice/updateForm";
 	}
-	@RequestMapping(value = "/notice/updatePro", method = RequestMethod.POST)
-	public String updatePro(NoticeDTO noticeDTO) {
-		
-		//아이디 비밀번호 => 일치여부 확인 => 디비작업 메서드 호출
-		//리턴할형 MemberDTO  userCheck(memberDTO) 메서드
-		NoticeDTO noticeDTO2 = noticeService.userCheck(noticeDTO);
-		//아이디 비밀번호 일치
-		if(noticeDTO2!=null) {
-			//아이디 비밀번호 일치
-			//수정작업
-			noticeService.updateNotice(noticeDTO);
-			return "redirect:/notice/list";
-		}else {
-			//아이디 비밀번호 틀림
-//			/WEB-INF/views/member/msg.jsp => 이동
-			return "notice/update";
-		}
+	
+	@RequestMapping(value = "/notice/content", method = RequestMethod.GET)
+	public String content(HttpServletRequest request,Model model){
+		int b_num = Integer.parseInt(request.getParameter("b_num"));
+		NoticeDTO noticeDTO = noticeService.getNotice(b_num);
+		model.addAttribute("noticeDTO",noticeDTO);
+		return "notice/content";
+	}
+
 
 	
 	

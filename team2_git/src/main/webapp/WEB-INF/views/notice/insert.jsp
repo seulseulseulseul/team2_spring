@@ -34,7 +34,7 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -52,7 +52,7 @@
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">글쓰기</h3>
-                <form action="insertPro.jsp" class="bg-light p-4" method="post">
+                <form action="${pageContext.request.contextPath}/notice/insertPro" class="bg-light p-4" method="post">
                   <div class="form-group">
                     <label for="subject">제목 *</label>
                     <input type="text" class="form-control bg-white" name="b_title">
@@ -60,10 +60,6 @@
                   <div class="form-group">
                     <label for="name">작성자 *</label>
                     <input type="text" value="1234" readonly class="form-control" name="u_num">
-                  </div>
-                  <div class="form-group">
-                    <label for="secret">비밀글 *</label>
-	                <input type="checkbox" name="secret" id="secret" value="1">
                   </div>
                   <div class="form-group">
                     <label for="content">내용</label>

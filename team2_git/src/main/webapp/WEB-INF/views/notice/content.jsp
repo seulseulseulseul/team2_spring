@@ -1,5 +1,5 @@
-<%@page import="notice.NoticeDTO"%>
-<%@page import="notice.NoticeDAO"%>
+<%@page import="com.itwill.domain.NoticeDTO"%>
+<%@page import="com.itwill.dao.NoticeDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -50,74 +50,32 @@
       </div>
     </section>
 	<%
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
-	NoticeDAO noticeDAO = new NoticeDAO();
-	int b_num = Integer.parseInt(request.getParameter("b_num")) ;
-	NoticeDTO noticeDTO = noticeDAO.getNotice(b_num);
+// 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
+// 	NoticeDAO noticeDAO = new NoticeDAO();
+// 	int b_num = Integer.parseInt(request.getParameter("b_num")) ;
+// 	NoticeDTO noticeDTO = noticeDAO.getNotice(b_num);
 	%>
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate justify-content-center">
-          <div><%= dateFormat.format(noticeDTO.getDate())%></div>
-		  <div><%= noticeDTO.getU_num()%></div>
-            <h2 class="mb-3"><%=noticeDTO.getB_title() %></h2>
-            <p><%=noticeDTO.getB_content()%>
+          <div>${noticeDTO.b_date}</div>
+		  <div>${noticeDTO.u_id}</div>
+            <h2 class="mb-3">${noticeDTO.b_title}</h2>
+            <p>${noticeDTO.b_content}
             </p>
           	<div class="form-group">
-         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='update.jsp'">
-         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='list.jsp'">
-         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="location.href='delete.jsp?b_num=<%=b_num%>'">
+         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/update">
+         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/list">
+         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
          	 </div>
         
 <!--     답변 목록 -->
-	 <div class="pt-5 mt-5">
-              <h3 class="mb-5">답변</h3>
-              <ul class="comment-list">
-              <%
-				//메서드 호출
-				List<NoticeDTO> replyList = noticeDAO.getReplyList(b_num);
-				for(int i=0;i<replyList.size();i++){
-					noticeDTO = (NoticeDTO)replyList.get(i);
-              %>
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../images/person_1.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h5><%=noticeDTO.getB_title() %></h5>
-                    <div class="meta"><%=dateFormat.format(noticeDTO.getDate())%></div>
-                    <p><%=noticeDTO.getB_content() %></p>
-                    <p><a href="deleteReply.jsp?b_num=<%=b_num%>&b_reply=<%=noticeDTO.getB_reply()%>" class="reply">삭제</a></p>
-                  </div>
-                </li>
-			<%} %>
-              </ul>
-      </div>
+	
 <!-- 	 답변 등록 -->
-	 <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">답변 등록</h3>
-                <form action="insertReply.jsp" class="bg-light p-4">
-                <input type="hidden" name="b_num" value=<%=b_num%>>
-                  <div class="form-group">
-                    <label for="subject">제목 *</label>
-                    <input type="text" class="form-control bg-white" name="b_title">
-                  </div>
-                  <div class="form-group">
-                    <label for="content">내용</label>
-                    <textarea name="b_content" id="b_content" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="작성" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('답변이 등록되었습니다.')">
-                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
-                  </div>
+	
 
-                </form>
-        </div>
-        </div>
-        </div>
-      </div>
+   
     </section> <!-- .section -->
     <jsp:include page="../inc/bottom.jsp"></jsp:include>
     
