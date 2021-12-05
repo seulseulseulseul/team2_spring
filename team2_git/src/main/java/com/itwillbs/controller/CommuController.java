@@ -41,7 +41,7 @@ public class CommuController {
 		if(session.getAttribute("u_id")==null){ // 비로그인
 			return "redirect:/remember/login";
 			
-		} else { // 로그인
+		} else { // 로그인z
 			String nic = session.getAttribute("nic")
 			model.addAttribute("nic",nic);
 			return "commu/insert";
