@@ -201,7 +201,7 @@ public class CommuController {
 				commuDTO.setFile(fileName);
 			}
 			
-			commuService.insertBoard(commuDTO);
+			commuService.updateBoard(commuDTO);
 			// 알림창
 			public String alert(RedirectAttributes ra) {
 		        ra.addFlashAttribute("msg", "커뮤니티글이 수정되었습니다.");
