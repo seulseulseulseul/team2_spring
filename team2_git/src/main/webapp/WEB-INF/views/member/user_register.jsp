@@ -105,7 +105,7 @@
 									<button type="submit" class="btn btn-primary btn-block"  onclick="return user_CheckForm();">회원가입</button>
 								</div>
 								<div class="form-group text-center">
-									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/user_login.jsp">로그인</a>
+									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/user_login">로그인</a>
 								</div>
 							</form>
               </div>
