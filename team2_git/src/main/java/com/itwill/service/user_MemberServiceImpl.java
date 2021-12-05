@@ -24,8 +24,8 @@ public class user_MemberServiceImpl implements user_MemberService {
 	
 	//리턴값 없음 insertMember(MemberDTO memberDTO) 메서드 정의
 	@Override
-	public void user_insertMember(user_MemberDTO user_memberDTO) {
-		System.out.println("user_MemberServiceImpl user_insertMember()");
+	public void user_register(user_MemberDTO user_memberDTO) {
+		System.out.println("user_MemberServiceImpl user_register()");
 		//처리단계에서 날짜생성해서 저장
 //		user_memberDTO.setDate(new Timestamp(System.currentTimeMillis()));
 		
@@ -45,7 +45,9 @@ public class user_MemberServiceImpl implements user_MemberService {
 		//스프링 객체생성 방법 => 의존관계 주입(DI Dependency Injection)
 		//멤버변수 정의 <= 외부에 있는 xml에서 MemberServiceImpl 객체생성한 것을 전달해오면 받음
 		//받아오는 방법 1. 생성자  2. set 메서드
-		user_memberDAO.user_insertMember(user_memberDTO);
+		
+		user_memberDAO.user_register(user_memberDTO);
+		
 	}
 
 	@Override
@@ -60,11 +62,18 @@ public class user_MemberServiceImpl implements user_MemberService {
 		return user_memberDAO.user_getMember(u_id);
 	}
 
-//	@Override
-//	public MemberDTO updateMember(MemberDTO memberDTO) {
-//		System.out.println("MemberServiceImpl updateMember()");
-//		return memberDAO.updateMember(memberDTO);
-//	}
+	@Override
+	public void user_updateMember(user_MemberDTO user_memberDTO) {
+		System.out.println("MemberServiceImpl updateMember()");
+		user_memberDAO.user_updateMember(user_memberDTO);
+	}
+	
+	@Override
+	public int user_IdCheck(user_MemberDTO user_memberDTO){
+		int result = user_memberDAO.user_IdCheck(user_memberDTO);
+		return result;
+	}
+	
 //
 //	@Override
 //	public void deleteMember(MemberDTO memberDTO) {

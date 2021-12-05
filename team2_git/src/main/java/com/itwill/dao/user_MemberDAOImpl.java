@@ -15,13 +15,13 @@ public class user_MemberDAOImpl implements user_MemberDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String namespace="com.itwill.mapper.user_MemberMapper";
+	private static final String namespace="com.itwill.mapper.user_memberMapper";
 	
 //	String insertsql = "insert into member(id,pass,name,date) values(?,?,?,?)";
 	@Override
-	public void user_insertMember(user_MemberDTO user_memberDTO) {
-		System.out.println("user_MemberDAOImpl user_insertMember()");
-		sqlSession.insert(namespace+".user_insertMember", user_memberDTO);
+	public void user_register(user_MemberDTO user_memberDTO) {
+		System.out.println("user_MemberDAOImpl user_register()");
+		sqlSession.insert(namespace+".user_register", user_memberDTO);
 	}
 	
 //	String userChecksql = "select * from member where id=? and pass=?";
@@ -36,11 +36,19 @@ public class user_MemberDAOImpl implements user_MemberDAO {
 	public user_MemberDTO user_getMember(String u_id) {
 		return sqlSession.selectOne(namespace+".user_getMember",u_id);
 	}
-//	@Override
-//	public MemberDTO updateMember(MemberDTO memberDTO) {
-//		System.out.println("MemberDAOImpl updateMember()");
-//		return sqlSession.selectOne(namespace+".updateMember",memberDTO);
-//	}
+
+	@Override
+	public void user_updateMember(user_MemberDTO user_memberDTO) {
+		sqlSession.update(namespace+".user_updateMember", user_memberDTO);
+	}
+
+	@Override
+	public int user_IdCheck(user_MemberDTO user_memberDTO) {
+		int result = sqlSession.selectOne(namespace+".user_IdCheck",user_memberDTO);
+		return result;
+	}
+	
+	
 //	@Override
 //	public void deleteMember(MemberDTO memberDTO) {
 //		System.out.println("MemberDAOImpl deleteMember()");

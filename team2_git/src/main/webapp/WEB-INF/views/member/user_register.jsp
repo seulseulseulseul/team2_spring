@@ -32,22 +32,23 @@
     
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
  	<script type="text/javascript">
-	$(document).ready(function(){
-		$('#dup').click(function(){
-// 			alert("메시지");
-			$.ajax('${pageContext.request.contextPath}/member/user_CheckId',{
-				data:{id:$('#u_id').val()},
-				success:function(rdata){
-					if(rdata=='iddup'){
-						rdata="아이디 중복";
-					}else{
-						rdata="아이디 사용가능";
-					}
-					$("#dupdiv").html(rdata);
+ 	
+ 	function u_CheckId() {
+		$.ajax({
+			url:"${pageContext.request.contextPath}/member/user_IdCheck",
+			type:"post",
+			dataType:"json",
+			data:{"u_id":$("#u_id").val()},
+			success:function(data){
+				if(data==1){
+					alert("중복된 아이디입니다.");
+				}else if(data ==0){
+					$("#user_IdCheck").attr("value","Y");
+					alert("사용가능한 아이디입니다.");
 				}
-			});
-		});
-	});
+			}
+		})}
+ 	
  </script>
 
   </head>
@@ -75,18 +76,15 @@
                 <h3 class="mb-5">유저 회원가입</h3>
                 <form action="${pageContext.request.contextPath}/member/user_registerPro" id="join" method="post">
 								<div class="form-group">
-								<div id="dupdiv">
-									<label>아이디</label>
-									<input type="button" value="아이디 중복 확인" onclick="${pageContext.request.contextPath}/member/CheckId()" id="dup" 
-									class="btn py-3 px-4 btn-primary"><br>
-									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디 확인 필수" >
-								</div>
+									<label>ID</label>
+									<button type="button" value="N" id="user_IdCheck" onclick="u_CheckId();" class="btn btn-primary">아이디 중복확인</button><br>
+									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디확인 필수" >
+								</div>					
 								</div>
 								<div class="form-group">
 									<label class="fw">비밀번호</label>
 									<input type="password" name="u_pass" id="u_pass" class="form-control">
 								</div>
-								
 								<div class="form-group">
 									<label>이름</label>
 									<input type="text" name="u_name" id="u_name" class="form-control">
@@ -104,8 +102,7 @@
 									<input type="text" name="u_phone" id="u_phone" class="form-control">
 								</div>
 								<div class="form-group text-right">
-									<button type="submit" class="btn btn-primary btn-block">회원가입</button>
-									<input type="reset" class="btn btn-primary btn-block" value="재입력"/>
+									<button type="submit" class="btn btn-primary btn-block"  onclick="return user_CheckForm();">회원가입</button>
 								</div>
 								<div class="form-group text-center">
 									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/user_login.jsp">로그인</a>
@@ -157,7 +154,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/user_checkForm.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/user_CheckForm.js"></script>
    
   </body>
 </html>
