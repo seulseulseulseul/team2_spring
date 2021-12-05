@@ -36,12 +36,14 @@ public class CommuController {
 	private ReplyService replyService;
 	
 	@RequestMapping(value = "/commu/insert", method = RequestMethod.GET)
-	public String insert(HttpSession session){
+	public String insert(HttpSession session,Model model){
 		// 로그인 여부 확인
 		if(session.getAttribute("u_id")==null){ // 비로그인
 			return "redirect:/remember/login";
 			
 		} else { // 로그인
+			String nic = session.getAttribute("nic")
+			model.addAttribute("nic",nic);
 			return "commu/insert";
 		}
 		
