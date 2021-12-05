@@ -53,13 +53,17 @@ public class user_MemberController {
 	
 	@RequestMapping(value = "/member/user_loginPro", method = RequestMethod.POST)
 	public String user_loginPro(user_MemberDTO user_memberDTO,HttpSession session) {
+		
+		System.out.println("user_MemberController user_loginPro ");
+		System.out.println(user_memberDTO.getU_id());
+		System.out.println(user_memberDTO.getU_pass());
 
 		user_MemberDTO user_memberDTO2=user_memberService.user_userCheck(user_memberDTO);
 		
 		if(user_memberDTO2!=null) {
 	
 			session.setAttribute("u_id", user_memberDTO.getU_id());
-			return "redirect:/member/main";
+			return "redirect:/index";
 			
 		}else {
 			return "index";
@@ -94,7 +98,7 @@ public class user_MemberController {
 		return "member/info";
 	}
 	
-	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/user_update", method = RequestMethod.GET)
 	public String user_update(HttpSession session,Model model) {
 	
 		String u_id=(String)session.getAttribute("u_id");
@@ -103,7 +107,7 @@ public class user_MemberController {
 		
 		model.addAttribute("user_memberDTO", user_memberDTO);
 
-		return "member/updateForm";
+		return "member/user_update";
 	}
 	
 	@RequestMapping(value = "/member/updatePro", method = RequestMethod.POST)
@@ -116,11 +120,11 @@ public class user_MemberController {
 		if(user_memberDTO2!=null) {
 
 			user_memberService.user_updateMember(user_memberDTO);
-			return "redirect:/member/main";
+			return "redirect:/index";
 					
 		}else {
 
-			return "member/msg";
+			return "index";
 		}
 		
 	}

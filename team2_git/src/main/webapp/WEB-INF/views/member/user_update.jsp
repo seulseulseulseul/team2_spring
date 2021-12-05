@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>member/trainer_register.jsp</title>
+    <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -29,40 +29,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-     
-     
-     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript">
-
-    function t_CheckId() {
-    		$.ajax({
-    			url:"${pageContext.request.contextPath}/member/trainer_IdCheck",
-    			type:"post",
-    			dataType:"json",
-    			data:{"t_id":$("#t_id").val()},
-    			success:function(data){
-    				if(data==1){
-    					alert("중복된 아이디입니다.");
-    				}else if(data ==0){
-    					$("#trainer_IdCheck").attr("value","Y");
-    					alert("사용가능한 아이디입니다.");
-    				}
-    			}
-    		})}
-    	
- </script>
 
   </head>
   <body>
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">트레이너 회원가입</h1>
+            <h1 class="mb-3 bread">유저 회원가입</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
           </div>
         </div>
@@ -74,51 +52,52 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">트레이너 회원가입</h3>
-                <form action="${pageContext.request.contextPath}/member/trainer_registerPro" id="join" method="post" >
+                <h3 class="mb-5">유저 회원가입</h3>
+<!--                 <form action="user_registerPro.jsp" id="join" method="post" onsubmit="return user_CheckForm();"> -->
+                                <form action="${pageContext.request.contextPath}/user_updatePro" id="join" method="post">
 								<div class="form-group">
-									<label>ID</label>
-									<button type="button" value="N" id="trainer_IdCheck" onclick="t_CheckId();" class="btn btn-primary">아이디 중복확인</button><br>
-									<input type="text" name="t_id" id="t_id" class="form-control" placeholder="아이디확인 필수" >
-								</div>								
+								<div id="dupdiv">
+									<label>사용자ID</label>
+<!-- 									    <input type="button" value="아이디 중복 확인" onclick="CheckId()" class="dup" ><br> -->
+<!-- 									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디확인 필수" > -->
+									
+										    <input type="button" value="${sessionScope.u_id }" onclick="CheckId()" class="dup" ><br>
+									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디확인 필수" >
+									
+								</div>
+								</div>
 								<div class="form-group">
 									<label class="fw">비밀번호</label>
-									<input type="password" name="t_pass" id="t_pass" class="form-control">
+<!-- 									<input type="password" name="u_pass" id="u_pass" class="form-control"> -->
+											<input type="password" name="u_pass" id="u_pass" class="form-control" value="${user_memberDTO.u_pass }">
 								</div>
+								
 								<div class="form-group">
 									<label>이름</label>
-									<input type="text" name="t_name" id="t_name" class="form-control">
+<!-- 									<input type="text" name="u_name" id="u_name" class="form-control"> -->
+											<input type="text" name="u_name" id="u_name" class="form-control" value="${user_user_memberDTO.u_name }">
 								</div>
 								<div class="form-group">
-									<label>트레이너 닉네임</label>
-									<input type="text" name="t_nic" id="t_nic" class="form-control">
+									<label>닉네임</label>
+<!-- 									<input type="text" name="u_nic" id="u_nic" class="form-control"> -->
+										<input type="text" name="u_nic" id="u_nic" class="form-control" value="${user_memberDTO.u_nic }">
 								</div>
 								<div class="form-group">
-								<label>우편번호</label>
-								<button type="button" onclick="searchPostCode();" class="btn btn-primary">우편번호 검색</button><br>
-								<input type="text" name="t_postcode" id="t_postcode" class="form-control" readonly placeholder="주소를 입력해주세요">
-								</div>
-								<div class="form-group">
-								<label>헬스장위치(주소)</label>
-									<input type="text" name="t_address" id="t_address" class="form-control" readonly placeholder="주소를 입력해주세요">
-								</div>
-								<div class="form-group">
-								<label>헬스장 상세주소</label>
-									<input type="text" name="t_detailAddress" id="t_detailAddress" class="form-control" placeholder="주소를 입력해주세요"><br>
+									<label>E-mail</label>
+<!-- 									<input type="email" name="u_email" id="u_email" class="form-control"> -->
+											<input type="email" name="u_email" id="u_email" class="form-control" value="${user_memberDTO.u_email }">
 								</div>
 								<div class="form-group">
 									<label>전화번호</label>
-									<input type="text" name="t_phone" id="t_phone" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>Email</label>
-									<input type="email" name="t_email" id="t_email" class="form-control">
+<!-- 									<input type="text" name="u_phone" id="u_phone" class="form-control"> -->
+											<input type="text" name="u_phone" id="u_phone" class="form-control" value="${user_memberDTO.u_phone }">
 								</div>
 								<div class="form-group text-right">
-									<button type="submit" class="btn btn-primary btn-block"  onclick="return trainer_CheckForm();">회원가입</button>
+									<button type="submit" class="btn btn-primary btn-block">회원가입</button>
+									<input type="reset" class="btn btn-primary btn-block" value="재입력"/>
 								</div>
 								<div class="form-group text-center">
-									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/start_login.jsp">로그인</a>
+									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/login">로그인</a>
 								</div>
 							</form>
               </div>
@@ -142,16 +121,13 @@
     </section> <!-- .section -->
 
       <jsp:include page="../inc/bottom.jsp"></jsp:include>
-    
-    
   
+
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/addressapi.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/trainer_CheckForm.js"></script>
+
   <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
@@ -169,6 +145,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
- 
+    
   </body>
 </html>

@@ -20,6 +20,7 @@
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/blog" class="nav-link">로그인</a></li>
 			          <li class="nav-item active"><a href="${pageContext.request.contextPath}/blog" class="nav-link">트레이너회원가입</a></li>
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
+			          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/user_update" class="nav-link">유저 회원정보수정</a></li>
 			        </ul>
 			      </div>
   				</div>

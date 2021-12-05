@@ -14,23 +14,24 @@
 		select * from user where u_id=#{u_id} and u_pass=#{u_pass}
 	</select>
 	
-	<select id="user_getmember" resultType="com.itwill.domain.user_MemberDTO">
+	<select id="user_getMember" resultType="com.itwill.domain.user_MemberDTO">
 		select * from user where u_id=#{u_id}
 	</select>
   
- 	<update id="user_updatemember">
-		update user set name=#{u_name} where u_id=#{u_id}
+ 	<update id="user_updateMember">
+		update user set u_name=#{u_name} where u_id=#{u_id}
 	</update>
 	
 	<select id="user_IdCheck" resultType="int">
 		select count(*) from user where u_id=#{u_id}
 	</select>
 	
+<!-- 	<select id="user_getMemberList" resultType="com.itwill.domain.MemberDTO"> -->
+<!-- 		select * from user -->
+<!-- 	</select> -->
+	
 <!-- 	<delete id="deleteMember"> -->
 <!-- 		delete from member where id=#{id} -->
 <!-- 	</delete> -->
 	
-<!-- 	<select id="getMemberList" resultType="com.itwill.domain.MemberDTO"> -->
-<!-- 		select * from member -->
-<!-- 	</select> -->
 </mapper>
