@@ -68,7 +68,11 @@ public class TrainerController {
 			req.setAttribute("NAME",map.get("T_NAME"));
 			req.setAttribute("TID", map.get("T_ID"));
 			req.setAttribute("URL", map.get("VIDEO"));
-			
+			req.setAttribute("INTRO",map.get("T_INTRO"));
+			req.setAttribute("EMAIL", map.get("T_EMAIL"));
+			req.setAttribute("PROGRAM",map.get("T_PROGRAM"));
+			req.setAttribute("SNS",map.get("T_SNS"));
+			req.setAttribute("EXP", map.get("T_EXP"));
 			
 			//t_pass 불러오기
 			
