@@ -78,7 +78,7 @@
 								<div class="form-group">
 									<label>ID</label>
 									<button type="button" value="N" id="user_IdCheck" onclick="u_CheckId();" class="btn btn-primary">아이디 중복확인</button><br>
-									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디확인 필수" >
+									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디 확인 필수" >
 								</div>					
 								</div>
 								<div class="form-group">

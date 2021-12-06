@@ -35,69 +35,59 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">유저 회원가입</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
+<%--     <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5"> --%>
+<!--       <div class="overlay"></div> -->
+<!--       <div class="container"> -->
+<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
+<!--           <div class="col-md-9 ftco-animate text-center"> -->
+<!--             <h1 class="mb-3 bread">유저 회원가입</h1> -->
+<!--             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </section> -->
 
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">유저 회원가입</h3>
+                <h3 class="mb-5">회원 정보수정</h3>
 <!--                 <form action="user_registerPro.jsp" id="join" method="post" onsubmit="return user_CheckForm();"> -->
-                                <form action="${pageContext.request.contextPath}/user_updatePro" id="join" method="post">
+                                <form action="${pageContext.request.contextPath}/member/user_updatePro" id="join" method="post">
 								<div class="form-group">
 								<div id="dupdiv">
 									<label>사용자ID</label>
-<!-- 									    <input type="button" value="아이디 중복 확인" onclick="CheckId()" class="dup" ><br> -->
-<!-- 									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디확인 필수" > -->
-									
-										    <input type="button" value="${sessionScope.u_id }" onclick="CheckId()" class="dup" ><br>
-									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디확인 필수" >
-									
+										<input type="text" name="u_id" id="u_id" class="form-control" value="${sessionScope.u_id }" readonly>
 								</div>
 								</div>
 								<div class="form-group">
 									<label class="fw">비밀번호</label>
-<!-- 									<input type="password" name="u_pass" id="u_pass" class="form-control"> -->
-											<input type="password" name="u_pass" id="u_pass" class="form-control" value="${user_memberDTO.u_pass }">
+										<input type="password" name="u_pass" id="u_pass" class="form-control" placeholder="비밀번호를 입력하세요." >
 								</div>
 								
 								<div class="form-group">
 									<label>이름</label>
-<!-- 									<input type="text" name="u_name" id="u_name" class="form-control"> -->
-											<input type="text" name="u_name" id="u_name" class="form-control" value="${user_user_memberDTO.u_name }">
+										<input type="text" name="u_name" id="u_name" class="form-control" value="${user_memberDTO.u_name }">
 								</div>
 								<div class="form-group">
 									<label>닉네임</label>
-<!-- 									<input type="text" name="u_nic" id="u_nic" class="form-control"> -->
 										<input type="text" name="u_nic" id="u_nic" class="form-control" value="${user_memberDTO.u_nic }">
 								</div>
 								<div class="form-group">
 									<label>E-mail</label>
-<!-- 									<input type="email" name="u_email" id="u_email" class="form-control"> -->
-											<input type="email" name="u_email" id="u_email" class="form-control" value="${user_memberDTO.u_email }">
+										<input type="email" name="u_email" id="u_email" class="form-control" value="${user_memberDTO.u_email }">
 								</div>
 								<div class="form-group">
 									<label>전화번호</label>
-<!-- 									<input type="text" name="u_phone" id="u_phone" class="form-control"> -->
-											<input type="text" name="u_phone" id="u_phone" class="form-control" value="${user_memberDTO.u_phone }">
+										<input type="text" name="u_phone" id="u_phone" class="form-control" value="${user_memberDTO.u_phone }">
 								</div>
 								<div class="form-group text-right">
-									<button type="submit" class="btn btn-primary btn-block">회원가입</button>
+									<button type="submit" class="btn btn-primary btn-block" onclick="return user_CheckForm();">회원정보수정</button>
 									<input type="reset" class="btn btn-primary btn-block" value="재입력"/>
 								</div>
 								<div class="form-group text-center">
-									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/login">로그인</a>
+									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/user_login">로그인</a>
 								</div>
 							</form>
               </div>
@@ -145,6 +135,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/user_CheckForm.js"></script>
     
   </body>
 </html>

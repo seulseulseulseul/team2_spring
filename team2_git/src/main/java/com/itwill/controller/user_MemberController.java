@@ -110,14 +110,14 @@ public class user_MemberController {
 		return "member/user_update";
 	}
 	
-	@RequestMapping(value = "/member/updatePro", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/user_updatePro", method = RequestMethod.POST)
 	public String user_updatePro(user_MemberDTO user_memberDTO) {
 
 		System.out.println(" MemberController  updatePro ");
 	
-		user_MemberDTO user_memberDTO2=user_memberService.user_userCheck(user_memberDTO);
+//		user_MemberDTO user_memberDTO2=user_memberService.user_userCheck(user_memberDTO);
 				
-		if(user_memberDTO2!=null) {
+		if(user_memberDTO!=null) {
 
 			user_memberService.user_updateMember(user_memberDTO);
 			return "redirect:/index";
@@ -135,4 +135,17 @@ public class user_MemberController {
 		int result = user_memberService.user_IdCheck(user_memberDTO);
 		return result;
 	}
+	
+	@RequestMapping(value = "/member/start_login", method = RequestMethod.GET)
+	public String start_login() {
+		
+		return "member/start_login";
+	}
+	
+	@RequestMapping(value = "/member/start_register", method = RequestMethod.GET)
+	public String start_register() {
+		
+		return "member/start_register";
+	}
+	
 }
