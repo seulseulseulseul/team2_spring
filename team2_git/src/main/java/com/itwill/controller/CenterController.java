@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwill.domain.CenterDTO;
 import com.itwill.domain.PageDTO;
+import com.itwill.domain.user_MemberDTO;
 import com.itwill.service.CenterService;
 
 @Controller
@@ -19,8 +21,11 @@ public class CenterController {
 	@Inject
 	private CenterService centerService;
 	
+	
 	@RequestMapping(value = "/center/insert", method = RequestMethod.GET)
-	public String insert(){
+	public String insert(HttpSession session,Model model){
+		String u_id=(String)session.getAttribute("u_id");
+		model.addAttribute("u_id", u_id);
 		return "center/insert";
 	}
 	

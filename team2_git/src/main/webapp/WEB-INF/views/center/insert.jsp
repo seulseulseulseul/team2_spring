@@ -59,7 +59,7 @@
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="1234" readonly class="form-control" name="u_id">
+                    <input type="text" value="${u_id}" readonly class="form-control" name="u_id">
                   </div>
                   <div class="form-group">
                     <label for="secret">비밀글 *</label>
