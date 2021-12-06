@@ -6,7 +6,8 @@
 <mapper namespace="com.itwill.mapper.trainer_memberMapper">
 
 	<insert id = "trainer_register">
-		insert into trainer(t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_phone,t_email) values(#{t_id},#{t_pass},#{t_name},#{t_nic},#{t_postcode},#{t_address},#{t_detailAddress},#{t_phone},#{t_email})
+		insert into trainer(t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_phone,t_email) 
+		values(#{t_id},#{t_pass},#{t_name},#{t_nic},#{t_postcode},#{t_address},#{t_detailAddress},#{t_phone},#{t_email})
 	</insert>
 	
 	<select id="trainer_userCheck" resultType="com.itwill.domain.Trainer_MemberDTO">
@@ -20,4 +21,8 @@
  	<update id="trainer_updatemember">
 		update trainer set name=#{t_name} where t_id=#{t_id}
 	</update>
+	
+	<select id="trainer_IdCheck" resultType="int">
+		select count(*) from trainer where t_id=#{t_id}
+	</select>
 </mapper>
