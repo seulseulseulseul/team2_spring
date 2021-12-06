@@ -15,12 +15,14 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardDTO;
 import com.itwillbs.domain.CommuDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ReplyDTO;
 import com.itwillbs.service.CommuService;
+import com.itwillbs.service.ReplyService;
 
 @Controller
 public class CommuController {
@@ -42,14 +44,14 @@ public class CommuController {
 			return "redirect:/remember/login";
 			
 		} else { // 로그인z
-			String nic = session.getAttribute("nic")
+			String nic = session.getAttribute("nic").toString();
 			model.addAttribute("nic",nic);
 			return "commu/insert";
 		}
 		
 	}
 	@RequestMapping(value = "/commu/insertPro", method = RequestMethod.POST)
-	public String insertPro(HttpSession session, HttpServletRequest request, MultipartFile file) throws Exception {
+	public String insertPro(RedirectAttributes ra, HttpSession session, HttpServletRequest request, MultipartFile file) throws Exception {
 		// 세션에서 정보 가져오기
 		String u_id=session.getAttribute("u_id").toString();
 		String nic=session.getAttribute("nic").toString();
@@ -81,9 +83,7 @@ public class CommuController {
 		commuService.insertBoard(commuDTO);
 		
 		// 알림창
-		public String alert(RedirectAttributes ra) {
-	        ra.addFlashAttribute("msg", "커뮤니티글이 작성되었습니다.");
-		}
+		ra.addFlashAttribute("msg", "커뮤니티글이 작성되었습니다.");
 		
 		return "redirect:/commu/alert";
 	}
@@ -149,7 +149,7 @@ public class CommuController {
 		return "commu/content";
 	}
 	@RequestMapping(value = "/commu/update", method = RequestMethod.GET)
-	public String update(HttpSession session, HttpServletRequest request, Model model){
+	public String update(RedirectAttributes ra, HttpSession session, HttpServletRequest request, Model model){
 		// CommuDTO 객체 생성
 		CommuDTO commuDTO = new CommuDTO();
 		// 본인확인에 필요한 정보 session에서 가져오기
@@ -158,23 +158,22 @@ public class CommuController {
 		commuDTO.setC_num(Integer.parseInt(request.getParameter("c_num")));
 		
 		// 본인확인
-		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
-			// commuDTO 전달 후 리턴값 저장
-			commuDTO = commuService.getBoard(commuDTO);
-			
+		commuDTO = commuService.numCheck(commuDTO);
+		if(commuDTO!=null) { // 본인일 경우
+			// commuDTO 전달
 			model.addAttribute("commuDTO", commuDTO);
 			
 			return "commu/updatePro";	
+			
 		} else { // 본인이 아닐 경우
 			// 알람창
-			public String alert(RedirectAttributes ra) {
-		        ra.addFlashAttribute("msg", "자신의 글만 수정할 수 있습니다.");
-		        return "redirect:/commu/alert";
-			}
+			ra.addFlashAttribute("msg", "자신의 글만 수정할 수 있습니다.");
+			
+			return "redirect:/commu/alert";
 		}
 	}
 	@RequestMapping(value = "/commu/updatePro", method = RequestMethod.POST)
-	public String updatePro(HttpSession session, HttpServletRequest request, MultipartFile file) throws Exception {
+	public String updatePro(RedirectAttributes ra, HttpSession session, HttpServletRequest request, MultipartFile file) throws Exception {
 		// CommuDTO 객체 생성
 		CommuDTO commuDTO = new CommuDTO();
 		// 본인확인에 필요한 정보 session에서 가져오기
@@ -203,21 +202,18 @@ public class CommuController {
 			
 			commuService.updateBoard(commuDTO);
 			// 알림창
-			public String alert(RedirectAttributes ra) {
-		        ra.addFlashAttribute("msg", "커뮤니티글이 수정되었습니다.");
-			}
+			ra.addFlashAttribute("msg", "커뮤니티글이 수정되었습니다.");
 			
 		} else { // 본인이 아닐 경우
 			// 알림창
-			public String alert(RedirectAttributes ra) {
-		        ra.addFlashAttribute("msg", "자신의 글만 수정할 수 있습니다.");
-			}
+		    ra.addFlashAttribute("msg", "자신의 글만 수정할 수 있습니다.");
+		    
 		}
 		
 		return "redirect:/commu/alert";
 	}
 	@RequestMapping(value = "/commu/delete", method = RequestMethod.GET)
-	public String delete(HttpSession session, HttpServletRequest request, RedirectAttributes ra){
+	public String delete(RedirectAttributes ra, HttpSession session, HttpServletRequest request){
 		// CommuDTO 객체 생성
 		CommuDTO commuDTO = new CommuDTO();
 		// 본인확인에 필요한 정보 session에서 가져오기
@@ -229,20 +225,20 @@ public class CommuController {
 		// 본인확인
 		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
 			// 커뮤니티글 삭제
-			commuService.deleteBoard(commuDTO);
+			commuService.deleteBoard(c_num);
 			
 	        return "/commu/deletePro";
 			
 		} else { // 본인이 아닐 경우
 			// 알림창
-			public String alert(RedirectAttributes ra) {
-		        ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
-		        return "redirect:/commu/alert";
+			ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
+		    
+			return "redirect:/commu/alert";
 			}
-		}
 	}
+	
 	@RequestMapping(value = "/commu/deletePro", method = RequestMethod.GET)
-	public void deletePro(HttpSession session, HttpServletRequest request){
+	public String deletePro(RedirectAttributes ra, HttpSession session, HttpServletRequest request){
 		// CommuDTO 객체 생성
 		CommuDTO commuDTO = new CommuDTO();
 		// 본인확인에 필요한 정보 session에서 가져오기
@@ -254,19 +250,18 @@ public class CommuController {
 		// 본인확인
 		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
 			// 커뮤니티글 삭제
-			commuService.deleteBoard(commuDTO);
+			commuService.deleteBoard(c_num);
 			// 커뮤니티글에 속한 댓글 모두 삭제
 			replyService.deleteBoardAll(c_num);
 			// 알림창
-			public String alert(RedirectAttributes ra) {
-		        ra.addFlashAttribute("msg", "커뮤니티글이 삭제되었습니다.");
-			}
+			ra.addFlashAttribute("msg", "커뮤니티글이 삭제되었습니다.");
+		        
 		} else { // 본인이 아닐 경우
 			// 알림창
-			public String alert(RedirectAttributes ra) {
-		        ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
-			}
+			ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
+			
 		}
+		
 		return "redirect:/commu/alert";
 	}
 	

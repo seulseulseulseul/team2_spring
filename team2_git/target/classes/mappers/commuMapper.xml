@@ -10,7 +10,7 @@
 	</select>
 
 	<insert id = "insertBoard">
-		insert into commu(c_num,u_id,subject,content,readcount,date,file) values(#{c_num},#{u_id},#{subject},#{content},#{readcount},#{date},#{file})
+		insert into commu(c_num,u_id,nic,subject,content,readcount,date,file) values(#{c_num},#{u_id},#{nic},#{subject},#{content},#{readcount},#{date},#{file})
 	</insert>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.CommuDTO">
@@ -21,7 +21,7 @@
 		select * from commu where c_num=#{c_num}
 	</select>
 	
-	<select id="c_numCheck" resultType="com.itwillbs.domain.CommuDTO">
+	<select id="numCheck" resultType="com.itwillbs.domain.CommuDTO">
 		select * from commu where c_num=#{c_num} and u_id=#{u_id}
 	</select>
 	

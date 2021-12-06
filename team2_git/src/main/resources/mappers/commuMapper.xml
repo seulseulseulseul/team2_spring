@@ -21,7 +21,7 @@
 		select * from commu where c_num=#{c_num}
 	</select>
 	
-	<select id="c_numCheck" resultType="com.itwillbs.domain.CommuDTO">
+	<select id="numCheck" resultType="com.itwillbs.domain.CommuDTO">
 		select * from commu where c_num=#{c_num} and u_id=#{u_id}
 	</select>
 	

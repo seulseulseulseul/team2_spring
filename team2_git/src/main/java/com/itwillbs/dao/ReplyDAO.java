@@ -24,4 +24,6 @@ public interface ReplyDAO {
 	public void deleteBoardAll(int c_num);
 	
 	public Integer getBoardCount(int c_num);
+	
+	public void orderBoard(ReplyDTO replyDTO);
 }

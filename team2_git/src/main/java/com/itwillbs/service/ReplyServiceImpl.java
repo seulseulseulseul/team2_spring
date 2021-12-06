@@ -1,5 +1,16 @@
 package com.itwillbs.service;
 
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+import com.itwillbs.dao.ReplyDAO;
+import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.ReplyDTO;
+
 @Service
 public class ReplyServiceImpl implements ReplyService{
 	
@@ -9,8 +20,7 @@ public class ReplyServiceImpl implements ReplyService{
 	// 댓글 작성
 	@Override
 	public void insertBoard(ReplyDTO replyDTO) {
-		// 조회수 0, 작성시간 입력
-		replyDTO.setReadcount(0);
+		// 작성시간 입력
 		replyDTO.setDate(new Timestamp(System.currentTimeMillis()));
 		// 댓글 번호 설정
 		if(replyDAO.getMaxNum()==null) {
@@ -21,7 +31,7 @@ public class ReplyServiceImpl implements ReplyService{
 			replyDTO.setR_num(replyDAO.getMaxNum()+1);
 		}
 		
-		replyDTO.insertBoard(replyDTO);
+		replyDAO.insertBoard(replyDTO);
 	}
 	// 댓글 목록 불러오기
 	@Override
@@ -65,7 +75,7 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 	// 댓글목록의 마지막 페이지
 	@Override
-	public Integer getLastPage(int c_num) {
+	public Integer getLastPage(int c_num, int pageSize) {
 		// 커뮤니티글의 댓글 개수
 		int boardCount = replyDAO.getBoardCount(c_num);
 		

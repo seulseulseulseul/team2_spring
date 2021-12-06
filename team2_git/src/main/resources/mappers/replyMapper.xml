@@ -14,7 +14,7 @@
 	</insert>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.ReplyDTO">
-		select * from reply where c_num=#{c_num} order by r_num desc limit #{startRow}, #{pageSize}
+		select * from reply where c_num=#{c_num} order by r_num asc limit #{startRow}, #{pageSize}
 	</select>
 	
 	<select id="numCheck" resultType="com.itwillbs.domain.ReplyDTO">
@@ -36,5 +36,9 @@
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from reply where c_num=#{c_num}
 	</select>
+	
+	<update id="orderBoard">
+		update reply set order=order+1, where order &gt;= #{order}
+	</update>
   
 </mapper>

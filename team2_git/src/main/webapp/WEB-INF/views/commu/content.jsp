@@ -71,15 +71,15 @@
               <h3 class="mb-3">댓글</h3>
               <ul class="comment-list">
         	<c:forEach var="replyDTO" items="${replyList}">
-                <li class="comment">
+                <li class="comment" style="margin-left:${20*replyList.depth}">
                   <div class="vcard bio">
                     <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
-                    <h5>${replyDTO.subject}</h5>
                     <div class="meta">${replyDTO.date}</div>
                     <p>${replyDTO.content}</p>
-                    <p><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/reply/delete?r_num=${replyDTO.r_num}" class="reply">삭제</a></p>
+                    <p><a href="${pageContext.request.contextPath}/reply/delete?r_num=${replyDTO.r_num}" class="reply">삭제</a>
+                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/reply/delete?r_num=${replyDTO.r_num}" class="reply">삭제</a></p>
                   </div>
                 </li>
 			 </c:forEach>
@@ -90,16 +90,14 @@
                 <h3 class="mb-3">댓글 등록</h3>
                 <form action="${pageContext.request.contextPath}/reply/insert" class="bg-light p-4" method="post">
                 <input type="hidden" name="c_num" value="${commuDTO.c_num}">
-                  <div class="form-group">
-                    <label for="subject">제목 *</label>
-                    <input type="text" class="form-control bg-white" name="subject">
-                  </div>
+                <input type="hidden" name="parent" value="0">
+                <input type="hidden" name="depth" value="0">
                   <div class="form-group">
                     <label for="content">내용</label>
                     <textarea name="content" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="작성" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" onclick="return " value="작성" class="btn py-3 px-4 btn-primary">
                     <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
                   </div>
 

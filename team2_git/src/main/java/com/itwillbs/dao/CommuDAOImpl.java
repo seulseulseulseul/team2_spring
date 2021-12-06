@@ -39,7 +39,7 @@ public class CommuDAOImpl implements CommuDAO {
 	}
 	@Override
 	public CommuDTO numCheck(CommuDTO commuDTO) {
-		return sqlSession.selectOne(namespace + ".c_numCheck", commuDTO);
+		return sqlSession.selectOne(namespace + ".numCheck", commuDTO);
 	}
 	@Override
 	public void updateBoard(CommuDTO commuDTO) {

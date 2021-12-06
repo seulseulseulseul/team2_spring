@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.ReplyDTO;
-import com.itwillbs.domain.CommuDTO;
 import com.itwillbs.domain.PageDTO;
 
 @Repository
@@ -35,7 +34,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sqlSession.selectList(namespace + ".getBoardList", pageDTO);
 	}
 	@Override
-	public CommuDTO numCheck(ReplyDTO replyDTO) {
+	public ReplyDTO numCheck(ReplyDTO replyDTO) {
 		return sqlSession.selectOne(namespace + ".numCheck", replyDTO);
 	}
 	@Override
@@ -51,8 +50,12 @@ public class ReplyDAOImpl implements ReplyDAO {
 		sqlSession.delete(namespace + ".deleteBoard", c_num);
 	}
 	@Override
-	public Integer getBoardCount() {
+	public Integer getBoardCount(int c_num) {
 		return sqlSession.selectOne(namespace + ".getBoardCount");
+	}
+	@Override
+	public void orderBoard(ReplyDTO replyDTO) {
+		sqlSession.update(namespace + ".orderBoard", replyDTO);
 	}
 
 }
