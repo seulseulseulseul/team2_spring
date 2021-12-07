@@ -30,7 +30,7 @@
 	</select>
 	
 	<update id="updateBoard">
-		update reply set content=#{content}, where r_num=#{r_num}
+		update reply set content=#{content} where r_num=#{r_num}
 	</update>
 	
 	<delete id="deleteBoard">
@@ -48,5 +48,9 @@
 	<update id="reOrder">
 		update reply set order=order+1 where order &gt; #{order}
 	</update>
+	
+	<select id="getBoardCount" resultType="java.lang.Integer">
+		select if(count(*) >=1, 1, 0) from reply where c_num=#{c_num}
+	</select>
   
 </mapper>

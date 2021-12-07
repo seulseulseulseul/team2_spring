@@ -46,17 +46,8 @@ public class ReplyController {
 		// replyDTO 전달하여 댓글 작성
 		replyService.insertBoard(replyDTO);
 		
-		// 한화면에 보여줄 댓글개수 10개 설정
-		int pageSize=10;
-		// 댓글 마지막 페이지번호 불러오기 
-		String pageNum= replyService.getLastPage(c_num, pageSize).toString();
-		
-		PageDTO pageDTO=new PageDTO();
-		pageDTO.setPageSize(pageSize);
-		pageDTO.setPageNum(pageNum);
-		
-		// 댓글 목록 불러오기
-		List<ReplyDTO> replyList=replyService.getBoardList(c_num, pageDTO);
+		// 댓글목록의 마지막 페이지 불러오기 
+		List<ReplyDTO> replyList = replyService.getLastPage(c_num);
 		
 		ResponseEntity<List<ReplyDTO>> entity=new ResponseEntity<List<ReplyDTO>>(replyList, HttpStatus.OK);
 		
@@ -98,17 +89,8 @@ public class ReplyController {
 		// replyDTO2 전달하여 댓글 작성
 		replyService.insertBoard(replyDTO2);
 		
-		// 한화면에 보여줄 댓글개수 10개 설정
-		int pageSize=10;
-		// 댓글 마지막 페이지번호 불러오기 
-		String pageNum= replyService.getLastPage(c_num, pageSize).toString();
-		
-		PageDTO pageDTO=new PageDTO();
-		pageDTO.setPageSize(pageSize);
-		pageDTO.setPageNum(pageNum);
-		
-		// 댓글 목록 불러오기
-		List<ReplyDTO> replyList=replyService.getBoardList(c_num, pageDTO);
+		// 댓글목록의 마지막 페이지 불러오기 
+		List<ReplyDTO> replyList = replyService.getLastPage(c_num);
 		
 		ResponseEntity<List<ReplyDTO>> entity=new ResponseEntity<List<ReplyDTO>>(replyList, HttpStatus.OK);
 		
@@ -147,22 +129,38 @@ public class ReplyController {
 	
 	// 댓글 삭제
 	@RequestMapping(value = "/reply/delete", method = RequestMethod.GET)
-	public String delete(HttpSession session, HttpServletRequest request){
+	public String delete(RedirectAttributes ra, HttpSession session, HttpServletRequest request){
+		// request에서 글번호 가져오기
+		int r_num = Integer.parseInt(request.getParameter("r_num"));
+		
 		// CommuDTO 객체 생성
 		ReplyDTO replyDTO = new ReplyDTO();
 		// 본인확인에 필요한 아이디 session에서 가져오기
 		replyDTO.setU_id(session.getAttribute("u_id").toString());
 		// 본인확인에 필요한 댓글번호 request에서 가져오기
-		int r_num = Integer.parseInt(request.getParameter("r_num"));
 		replyDTO.setR_num(r_num);
 		
 		// 본인확인
 		if(replyService.numCheck(replyDTO)!=null) { // 본인일 경우
+			// 대댓글 유무 조회
+			if(replyService.isNoReply(r_num) == 1) { // 대댓글이 있는 경우
+				// 알림창
+				ra.addFlashAttribute("msg", "댓글이 달려있어 삭제할 수 없습니다.");
+				
+				return "redirect:/commu/alert";
+			}
+			
 			replyService.deleteBoard(r_num);
-			return "commu/delete";
+			// 알림창
+			ra.addFlashAttribute("msg", "댓글이 삭제되었습니다.");
+			
+			return "redirect:/commu/alert";
 			
 		} else { // 본인이 아닐 경우
-			return "redirect:/commu/list";
+			// 알림창
+			ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
+			
+			return "redirect:/commu/alert";
 			
 		}
 	}
@@ -170,19 +168,20 @@ public class ReplyController {
 	
 	// 댓글 수정
 	@RequestMapping(value = "/reply/update", method = RequestMethod.GET)
-	public String update(HttpSession session, HttpServletRequest request, Model model){
+	public String update(RedirectAttributes ra, HttpSession session, HttpServletRequest request, Model model){
 		// CommuDTO 객체 생성
 		ReplyDTO replyDTO = new ReplyDTO();
 		// 본인확인에 필요한 정보 session에서 가져오기
 		replyDTO.setU_id(session.getAttribute("u_id").toString());
 		// 본인확인에 필요한 글번호 request에서 가져오기
-		replyDTO.setC_num(Integer.parseInt(request.getAttribute("c_num").toString()));
+		replyDTO.setC_num(Integer.parseInt(request.getParameter("c_num")));
 		
-		String result="";
 		// 본인확인
 		if(replyService.numCheck(replyDTO)!=null) {
+			// 알림창
+			ra.addFlashAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
 			
-			return "redirect:/member/login";
+			return "redirect:/commu/alert";
 		}
 		// request에서 댓글 정보 가져오기
 		replyDTO.setContent(request.getParameter("content"));

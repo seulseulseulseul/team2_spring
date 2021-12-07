@@ -65,5 +65,9 @@ public class ReplyDAOImpl implements ReplyDAO {
 	public void reOrder(int order) {
 		sqlSession.update(namespace + ".reOorder", order);
 	}
+	@Override
+	public Integer isNoReply(int r_num) {
+		return sqlSession.selectOne(namespace + ".isNoReply", r_num);
+	}
 
 }

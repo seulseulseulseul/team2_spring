@@ -32,6 +32,8 @@ public interface ReplyService {
 	
 	public ReplyDTO numCheck(ReplyDTO replyDTO);
 	
-	public Integer getLastPage(int c_num, int pageSize);
+	public List<ReplyDTO> getLastPage(int c_num);
+	
+	public Integer isNoReply(int r_num);
 
 }

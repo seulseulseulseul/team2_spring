@@ -30,4 +30,6 @@ public interface ReplyDAO {
 	public Integer getBoardCount(int c_num);
 	
 	public void reOrder(int order);
+	
+	public Integer isNoReply(int r_num);
 }
