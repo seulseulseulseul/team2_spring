@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwill.domain.Trainer_MemberDTO;
-import com.itwill.domain.user_MemberDTO;
 import com.itwill.service.Trainer_MemberService;
 
 @Controller
@@ -32,7 +31,7 @@ public class Trainer_MemberController {
 		int result = trainer_memberService.trainer_IdCheck(trainer_memberDTO);
 		try {
 			if(result==1) {
-				return "member/register";
+				return "member/trainer_register";
 			}else if(result ==0) {
 				trainer_memberService.trainer_register(trainer_memberDTO);
 			}

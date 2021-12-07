@@ -1,3 +1,4 @@
+
 function trainer_CheckForm(){
 	//ID를 입력할 수 있는 <input>태그 선택해서 가져와서 t_id변수에 저장
 	var t_id = $("input[id='t_id']");
@@ -16,12 +17,17 @@ function trainer_CheckForm(){
 	
 	//밑에서 바로 $로 가져왔음
 	
-	  
 	//아이디를 입력하지 않았을 경우
 		if(t_id.val() == ""){
 			alert("아이디를 입력하세요.");
 			return false;
 		}
+		
+		if($("#trainer_IdCheck").val() == "N"){
+			alert("중복체크하세요.");
+			return false;
+		}
+		
 	//비밀번호를 입력하지 않았다면
 		if(t_pass.val() == ""){
 			alert("비밀번호를 입력하세요.");

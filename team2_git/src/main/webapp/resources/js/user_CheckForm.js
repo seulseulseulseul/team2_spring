@@ -20,6 +20,13 @@ function user_CheckForm(){
 			alert("아이디를 입력하세요.");
 			return false;
 		}
+		
+		if($("#trainer_IdCheck").val() == "N"){
+			alert("중복체크하세요.");
+			return false;
+		}
+		
+		
 	//비밀번호를 입력하지 않았다면
 		if(u_pass.val() == ""){
 			alert("비밀번호를 입력하세요.");
