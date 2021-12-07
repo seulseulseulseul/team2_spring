@@ -189,7 +189,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           <div class="col-md-10 heading-section ftco-animate text-center">
             <h3 class="subheading">Review</h3>
             <h2 class="mb-1">리뷰</h2>
-            <input type="button" value="리뷰 등록" class="btn py-3 px-4 btn-primary"  onclick="reviewInsert();">
+            <input type="button" value="리뷰 등록" class="btn py-3 px-4 btn-primary"  onclick="showExample('${u_id}','${t_id}')">
           </div>
         </div>
  
@@ -472,49 +472,8 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
 
 <!-- 	리뷰창 SweetAlert -->
 	<script  src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-// 	Swal.fire({
-// 		  title: '리뷰 등록',
-// 		  html: `<input type="hidden" id="u_id" value="{sessionScope.u_id}" class="swal2-input">
-// 			  <input type="hidden" id="t_id" value="{t_id}" class="swal2-input">
-// 		  <input type="별점, 텍스트" id="password" class="swal2-input" placeholder="Password">
-// 		  <div class="rating">
-//           <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-//           <input type="checkbox" name="re_point" id="rating1" value="1" class="rate_radio" title="1점">
-//           <label for="rating1"></label>
-//           <input type="checkbox" name="re_point" id="rating2" value="2" class="rate_radio" title="2점">
-//           <label for="rating2"></label>
-//           <input type="checkbox" name="re_point" id="rating3" value="3" class="rate_radio" title="3점" >
-//           <label for="rating3"></label>
-//           <input type="checkbox" name="re_point" id="rating4" value="4" class="rate_radio" title="4점">
-//           <label for="rating4"></label>
-//           <input type="checkbox" name="re_point" id="rating5" value="5" class="rate_radio" title="5점">
-//           <label for="rating5"></label>
-//       	  </div>
-//   		<div class="review_contents">
-//      	 <div class="warning_msg">리뷰를 작성해주세요.</div>
-//       <textarea rows="10" id="re_coment" class="review_textarea"></textarea>
-// 		  </div>   `,
-// 		  confirmButtonText: 'Sign in',
-// 		  focusConfirm: false,
-// 		  preConfirm: () => {
-// 		    const u_id = Swal.getPopup().querySelector('#u_id').value
-// 		    const t_id = Swal.getPopup().querySelector('#t_id').value
-// 		    const re_point = Swal.getPopup().querySelector('#re_point').value
-// 		    const re_coment = Swal.getPopup().querySelector('#re_coment').value
-// 		    if (!login || !password) {
-// 		      Swal.showValidationMessage(`Please enter login and password`)
-// 		    }
-// 		    return { login: login, password: password }
-// 		  }
-// 		}).then((result) => {
-// 		  Swal.fire(`
-// 		    Login: ${result.value.login}
-// 		    Password: ${result.value.password}
-// 		  `.trim())
-// 		})
-// 	}
 	</script>
-	
+	 <script src="${pageContext.request.contextPath}/resources/js/test.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/review.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
