@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -64,7 +65,7 @@
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
-		                  <div><a href="#">${centerDTO.b_date}</a></div>
+		                  <div><a href="#"><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy.MM.dd"/></a></div>
 		                  <div><a href="#">${centerDTO.u_id}</a></div>
 		                  
 		                	<c:choose>

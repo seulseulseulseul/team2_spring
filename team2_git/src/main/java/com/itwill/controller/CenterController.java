@@ -39,7 +39,7 @@ public class CenterController {
 	@RequestMapping(value = "/center/list", method = RequestMethod.GET)
 	public String list(HttpServletRequest request,Model model){
 		//한 화면에 보여줄 글 개수 10개 설정
-		 int pageSize = 10;
+		 int pageSize = 5;
 		 
 		//페이지 번호 가져오기
 		 String pageNum = request.getParameter("pageNum");

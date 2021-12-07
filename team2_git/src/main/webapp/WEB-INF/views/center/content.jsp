@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,7 +57,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate justify-content-center">
-          <div>${centerDTO.b_date}</div>
+          <div><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy년 MM월 dd일"/></div>
 		  <div>${centerDTO.u_id}</div>
             <h2 class="mb-3">${centerDTO.b_title}</h2>
             <p>${centerDTO.b_content}

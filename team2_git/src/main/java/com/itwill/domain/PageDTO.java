@@ -59,7 +59,7 @@ public class PageDTO {
 	}
 	public void init() {
 		//한페이지에 보여줄 페이지 개수 설정
-		pageBlock=10;
+		pageBlock=3;
 		//시작하는 페이지 번호
 		startPage = (currentPage-1)/pageBlock*pageBlock+1;
 		//끝나는 페이지 번호
