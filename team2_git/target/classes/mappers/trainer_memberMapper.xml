@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwill.mapper.trainer_memberMapper">
+
+	<insert id = "trainer_register">
+		insert into trainer(t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_phone,t_email) 
+		values(#{t_id},#{t_pass},#{t_name},#{t_nic},#{t_postcode},#{t_address},#{t_detailAddress},#{t_phone},#{t_email})
+	</insert>
+	
+	<select id="trainer_userCheck" resultType="com.itwill.domain.Trainer_MemberDTO">
+		select * from trainer where t_id=#{t_id} and t_pass=#{t_pass}
+	</select>
+	
+	<select id="trainer_getMember" resultType="com.itwill.domain.Trainer_MemberDTO">
+		select * from trainer where t_id=#{t_id}
+	</select>
+  
+ 	<update id="trainer_updateMember">
+		update trainer 
+		set   t_pass=#{t_pass}, t_name=#{t_name}, t_nic=#{t_nic}, t_postcode=#{t_postcode},
+			  t_address=#{t_address}, t_detailAddress=#{t_detailAddress}, t_phone=#{t_phone}, t_email=#{t_email}
+		where t_id=#{t_id}
+	</update>
+	
+	<select id="trainer_IdCheck" resultType="int">
+		select count(*) from trainer where t_id=#{t_id}
+	</select>
+</mapper>

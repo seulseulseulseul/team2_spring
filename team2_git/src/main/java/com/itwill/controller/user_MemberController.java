@@ -63,10 +63,11 @@ public class user_MemberController {
 		if(user_memberDTO2!=null) {
 	
 			session.setAttribute("u_id", user_memberDTO.getU_id());
+			session.setAttribute("id", "1");
 			return "redirect:/index";
 			
 		}else {
-			return "index";
+			return "member/msg";
 		}
 		
 	}
@@ -82,30 +83,20 @@ public class user_MemberController {
 		
 		session.invalidate();
 		
-		return "redirect:/member/main";
-	}
-	
-	
-	@RequestMapping(value = "/member/info", method = RequestMethod.GET)
-	public String user_info(HttpSession session,Model model) {
-
-		String u_id=(String)session.getAttribute("u_id");
-
-		user_MemberDTO user_memberDTO=user_memberService.user_getMember(u_id);
-
-		model.addAttribute("user_memberDTO", user_memberDTO);
-		
-		return "member/info";
+		return "redirect:/member/start_login";
 	}
 	
 	@RequestMapping(value = "/member/user_update", method = RequestMethod.GET)
 	public String user_update(HttpSession session,Model model) {
 	
 		String u_id=(String)session.getAttribute("u_id");
+		String id = (String)session.getAttribute("id");
 	
 		user_MemberDTO user_memberDTO=user_memberService.user_getMember(u_id);
 		
 		model.addAttribute("user_memberDTO", user_memberDTO);
+		model.addAttribute("u_id", u_id);
+		model.addAttribute("id", id);
 
 		return "member/user_update";
 	}
@@ -124,7 +115,7 @@ public class user_MemberController {
 					
 		}else {
 
-			return "index";
+			return "member/msg";
 		}
 		
 	}

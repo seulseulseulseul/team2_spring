@@ -43,7 +43,7 @@
 						<div class="box-body">
 							<h4>트레이너정보 수정</h4>
 <%-- 							<form action="${pageContext.request.contextPath}/member/updatePro" method="post"> --%>
-							<form action="${pageContext.request.contextPath}/trainer_updatePro" id="join" method="post">
+							<form action="${pageContext.request.contextPath}/member/trainer_updatePro" id="join" method="post">
 								<div class="form-group">
 									<label>사용자ID</label>
 <%-- 									아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly><br> --%>
@@ -52,49 +52,49 @@
 								<div class="form-group">
 									<label>이름</label>
 <!-- 									<input type="text" name="name" id="t_name" class="form-control"> -->
-									<input class="form-control" type="text" name="t_name" id="t_name" value="${memberDTO.t_name }">
+									<input class="form-control" type="text" name="t_name" id="t_name" value="${trainer_memberDTO.t_name }">
 								</div>
 								<div class="form-group">
 									<label class="fw">비밀번호</label>
 <!-- 									<input type="password" name="password" id="t_pass" class="form-control"> -->
-									<input class="form-control" type="password" name="t_pass" id="t_pass" value="${memberDTO.t_pass }">
+									<input class="form-control" type="password" name="t_pass" id="t_pass" value="${trainer_memberDTO.t_pass }">
 								</div>
 								<div class="form-group">
 									<label>트레이너 닉네임</label>
 <!-- 									<input type="text" name="nic" id="t_nic" class="form-control"> -->
-									<input class="form-control" type="text" name="t_nic" id="t_nic" value="${memberDTO.t_nic }">
+									<input class="form-control" type="text" name="t_nic" id="t_nic" value="${trainer_memberDTO.t_nic }">
 								</div>
 								<div class="form-group">
 								<label>우편번호</label>
-								<button type="button" onclick="openZipSearch()" class="btn btn-primary">우편번호 검색</button><br>
+								<button type="button" onclick="searchPostCode()" class="btn btn-primary">우편번호 검색</button><br>
 <!-- 								<input type="text" name="postcode" id="t_postcode" class="form-control"> -->
-								<input class="form-control" type="text" name="t_postcode" id="t_postcode" value="${memberDTO.t_postcode }">
+								<input class="form-control" type="text" name="t_postcode" id="t_postcode" value="${trainer_memberDTO.t_postcode }">
 							
 								</div>
 								<div class="form-group">
 								<label>헬스장위치(주소)</label>
-									<input type="text" name="t_address" id="t_address" class="form-control" value="${memberDTO.t_address }" readonly>
+									<input type="text" name="t_address" id="t_address" class="form-control" value="${trainer_memberDTO.t_address }" readonly>
 								</div>
 								<div class="form-group">
 								<label>헬스장 상세주소</label>
 <!-- 									<input type="text" name="detailAddress" id="t_detailAddress" class="form-control"><br> -->
-								<input class="form-control" type="text" name="t_detailAddress" id="t_detailAddress" value="${memberDTO.t_detailAddress }">
+								<input class="form-control" type="text" name="t_detailAddress" id="t_detailAddress" value="${trainer_memberDTO.t_detailAddress }">
 							
 								</div>
 								<div class="form-group">
 									<label>전화번호</label>
 <!-- 									<input type="text" name="phone" id="t_phone" class="form-control"> -->
-									<input type="text" name="t_phone" id="t_phone" class="form-control" value="${memberDTO.t_phone }">
+									<input type="text" name="t_phone" id="t_phone" class="form-control" value="${trainer_memberDTO.t_phone }">
 								
 								</div>
 								<div class="form-group">
 									<label>Email</label>
 <!-- 									<input type="email" name="email" id="t_email" class="form-control"> -->
-									<input class="form-control" type="email" name="t_email" id="t_email" value="${memberDTO.t_email }">
+									<input class="form-control" type="email" name="t_email" id="t_email" value="${trainer_memberDTO.t_email }">
 								</div>
 									
 								<div class="form-group text-right">
-									<button class="btn btn-primary btn-block" type="submit">정보 수정</button>
+									<button class="btn btn-primary btn-block" type="submit" onclick="return trainer_CheckForm();">정보 수정</button>
 <!-- 									<input type="submit" value="수정" class="submit"> -->
 								</div>
 							</form>
@@ -118,6 +118,9 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/addressapi.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/trainer_CheckForm.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
@@ -135,6 +138,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-    
+ 
   </body>
 </html>
