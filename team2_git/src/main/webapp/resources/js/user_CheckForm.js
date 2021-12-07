@@ -21,7 +21,7 @@ function user_CheckForm(){
 			return false;
 		}
 		
-		if($("#trainer_IdCheck").val() == "N"){
+		if($("#user_IdCheck").val() == "N"){
 			alert("중복체크하세요.");
 			return false;
 		}
