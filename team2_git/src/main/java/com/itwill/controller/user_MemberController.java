@@ -63,6 +63,7 @@ public class user_MemberController {
 		if(user_memberDTO2!=null) {
 	
 			session.setAttribute("u_id", user_memberDTO.getU_id());
+			session.setAttribute("nic", user_memberDTO.getU_nic());
 			return "redirect:/index";
 			
 		}else {
