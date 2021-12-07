@@ -4,6 +4,7 @@
 <html lang="en">
   <head>
     <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
+<!--     testtest -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -31,70 +32,84 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
   </head>
   <body>
-  <jsp:include page="../inc/top.jsp"></jsp:include>
+  		<jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">문의사항</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">글쓰기</h3>
-                <form action="${pageContext.request.contextPath}/center/insertPro" class="bg-light p-4" method="post">
-                  <div class="form-group">
-                    <label for="subject">제목 *</label>
-                    <input type="text" class="form-control bg-white" name="b_title">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">작성자 *</label>
-                    <input type="text" value="${sessionScope.u_id}" readonly class="form-control" name="u_id">
-                  </div>
-                  <div class="form-group">
-                    <label for="secret">비밀글 *</label>
-	                <input type="checkbox" name="secret" id="secret" value="1">
-                  </div>
-                  <div class="form-group">
-                    <label for="content">내용</label>
-                    <textarea name="b_content" id="b_content" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="작성" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('문의가 접수되었습니다')">
-                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
-                  </div>
+	<section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
+							<h4>트레이너정보 수정</h4>
+<%-- 							<form action="${pageContext.request.contextPath}/member/updatePro" method="post"> --%>
+							<form action="${pageContext.request.contextPath}/trainer_updatePro" id="join" method="post">
+								<div class="form-group">
+									<label>사용자ID</label>
+<%-- 									아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly><br> --%>
+									<input class="form-control" type="text" name="t_id" id="t_id" value="${sessionScope.t_id }" readonly>
+								</div>
+								<div class="form-group">
+									<label>이름</label>
+<!-- 									<input type="text" name="name" id="t_name" class="form-control"> -->
+									<input class="form-control" type="text" name="t_name" id="t_name" value="${memberDTO.t_name }">
+								</div>
+								<div class="form-group">
+									<label class="fw">비밀번호</label>
+<!-- 									<input type="password" name="password" id="t_pass" class="form-control"> -->
+									<input class="form-control" type="password" name="t_pass" id="t_pass" value="${memberDTO.t_pass }">
+								</div>
+								<div class="form-group">
+									<label>트레이너 닉네임</label>
+<!-- 									<input type="text" name="nic" id="t_nic" class="form-control"> -->
+									<input class="form-control" type="text" name="t_nic" id="t_nic" value="${memberDTO.t_nic }">
+								</div>
+								<div class="form-group">
+								<label>우편번호</label>
+								<button type="button" onclick="openZipSearch()" class="btn btn-primary">우편번호 검색</button><br>
+<!-- 								<input type="text" name="postcode" id="t_postcode" class="form-control"> -->
+								<input class="form-control" type="text" name="t_postcode" id="t_postcode" value="${memberDTO.t_postcode }">
+							
+								</div>
+								<div class="form-group">
+								<label>헬스장위치(주소)</label>
+									<input type="text" name="t_address" id="t_address" class="form-control" value="${memberDTO.t_address }" readonly>
+								</div>
+								<div class="form-group">
+								<label>헬스장 상세주소</label>
+<!-- 									<input type="text" name="detailAddress" id="t_detailAddress" class="form-control"><br> -->
+								<input class="form-control" type="text" name="t_detailAddress" id="t_detailAddress" value="${memberDTO.t_detailAddress }">
+							
+								</div>
+								<div class="form-group">
+									<label>전화번호</label>
+<!-- 									<input type="text" name="phone" id="t_phone" class="form-control"> -->
+									<input type="text" name="t_phone" id="t_phone" class="form-control" value="${memberDTO.t_phone }">
+								
+								</div>
+								<div class="form-group">
+									<label>Email</label>
+<!-- 									<input type="email" name="email" id="t_email" class="form-control"> -->
+									<input class="form-control" type="email" name="t_email" id="t_email" value="${memberDTO.t_email }">
+								</div>
+									
+								<div class="form-group text-right">
+									<button class="btn btn-primary btn-block" type="submit">정보 수정</button>
+<!-- 									<input type="submit" value="수정" class="submit"> -->
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-                </form>
-              </div>
-            </div>
-			<!-- .col-md-8 -->
-          <div class="col-lg-4 sidebar ftco-animate">
-            <div class="sidebar-box ftco-animate">
-              <div class="categories">
-                <ul>
-                <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
-                </ul>
-              </div>
-            </div>
 
 
-        </div>
-      </div>
-      </div>
-    </section> <!-- .section -->
 
-      <jsp:include page="../inc/bottom.jsp"></jsp:include>
+		
+
+     <jsp:include page="../inc/bottom.jsp"></jsp:include>
     
     
   

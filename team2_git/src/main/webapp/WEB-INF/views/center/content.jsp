@@ -62,9 +62,12 @@
             <p>${centerDTO.b_content}
             </p>
           	<div class="form-group">
-         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}'">
          	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/list'">
-         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
+<!-- 				글쓴 사람 본인만 수정,삭제 가능하도록 -->
+				<c:if test="${ sessionScope.u_id==centerDTO.u_id }">
+         	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}'">
+         	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
+				</c:if>
          	 </div>
 
 	 <div class="pt-5 mt-5">
