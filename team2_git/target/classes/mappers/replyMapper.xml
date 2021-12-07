@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.itwillbs.mapper.ReplyMapper">
+<mapper namespace="com.itwill.mapper.ReplyMapper">
 
 	<select id = "getMaxNum" resultType="java.lang.Integer">
 		select max(r_num) from reply
@@ -17,15 +17,15 @@
 		insert into reply(r_num,c_num,parent,order,depth,u_id,nic,content,date) values(#{r_num},#{c_num},#{parent},#{order},#{depth},#{u_id},#{nic},#{content},#{date})
 	</insert>
 	
-	<select id = "getBoard" resultType="com.itwillbs.domain.ReplyDTO">
+	<select id = "getBoard" resultType="com.itwill.domain.ReplyDTO">
 		select * from reply where r_num=#{r_num}
 	</select>
 	
-	<select id="getBoardList" resultType="com.itwillbs.domain.ReplyDTO">
+	<select id="getBoardList" resultType="com.itwill.domain.ReplyDTO">
 		select * from reply where c_num=#{c_num} order by r_num asc limit #{startRow}, #{pageSize}
 	</select>
 	
-	<select id="numCheck" resultType="com.itwillbs.domain.ReplyDTO">
+	<select id="numCheck" resultType="com.itwill.domain.ReplyDTO">
 		select * from reply where r_num=#{r_num} and u_id=#{u_id}
 	</select>
 	
@@ -49,7 +49,7 @@
 		update reply set order=order+1 where order &gt; #{order}
 	</update>
 	
-	<select id="getBoardCount" resultType="java.lang.Integer">
+	<select id="isNoReply" resultType="java.lang.Integer">
 		select if(count(*) >=1, 1, 0) from reply where c_num=#{c_num}
 	</select>
   

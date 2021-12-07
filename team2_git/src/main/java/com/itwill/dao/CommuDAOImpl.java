@@ -19,7 +19,7 @@ public class CommuDAOImpl implements CommuDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String namespace="com.itwillbs.mapper.CommuMapper";
+	private static final String namespace="com.itwill.mapper.CommuMapper";
 	
 	@Override
 	public Integer getMaxNum() {

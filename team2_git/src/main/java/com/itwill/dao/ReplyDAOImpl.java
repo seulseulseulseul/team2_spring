@@ -19,7 +19,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String namespace="com.itwillbs.mapper.ReplyMapper";
+	private static final String namespace="com.itwill.mapper.ReplyMapper";
 	
 	@Override
 	public Integer getMaxNum() {

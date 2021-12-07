@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwill.dao.CommuDAO;
-import com.itwill.dao.MemberDAO;
 import com.itwill.domain.CommuDTO;
 import com.itwill.domain.PageDTO;
 
