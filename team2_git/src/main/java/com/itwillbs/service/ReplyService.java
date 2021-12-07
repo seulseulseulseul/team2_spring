@@ -12,7 +12,13 @@ public interface ReplyService {
 	
 	public void insertBoard(ReplyDTO replyDTO);
 	
+	public void insertBoard2(ReplyDTO replyDTO);
+	
 	public List<ReplyDTO> getBoardList(int c_num, PageDTO pageDTO);
+	
+	public ReplyDTO getBoard(int r_num);
+	
+	public void reOrder(int order);
 	
 	// public ReplyDTO getBoard(ReplyDTO replyDTO);
 	

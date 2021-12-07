@@ -7,7 +7,7 @@ public class ReplyDTO {
 	private int c_num; // 게시글번호
 	private int parent; // 부모댓글
 	private int order; // 순서
-	private int depth; // 계층
+	private int depth; // 깊이
 	private String u_id; // 아이디
 	private String nic; // 닉네임
 	private String content; // 글내용

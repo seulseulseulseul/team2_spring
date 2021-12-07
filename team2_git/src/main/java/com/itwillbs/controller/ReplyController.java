@@ -25,7 +25,7 @@ public class ReplyController {
 	@Inject
 	private ReplyService replyService;
 	
-	// 댓글작성
+	// 커뮤니티글에 댓글작성
 	@RequestMapping(value = "/reply/insert", method = RequestMethod.POST)
 	public ResponseEntity<List<ReplyDTO>> insert(HttpSession session, HttpServletRequest request) {
 		// 로그인 여부 확인
@@ -38,15 +38,65 @@ public class ReplyController {
 		// 세션에서 id, 닉네임 받아오기
 		replyDTO.setU_id(session.getAttribute("u_id").toString());
 		replyDTO.setNic(session.getAttribute("nic").toString());
-		// request에서 댓글 정보 가져오기
+		// 댓글 정보 replyDTO에 저장
 		int c_num = Integer.parseInt(request.getParameter("c_num"));
 		replyDTO.setC_num(c_num);
-		replyDTO.setParent(Integer.parseInt(request.getParameter("parent")));
-		replyDTO.setDepth(Integer.parseInt(request.getParameter("depth")));
 		replyDTO.setContent(request.getParameter("content"));
 		
 		// replyDTO 전달하여 댓글 작성
 		replyService.insertBoard(replyDTO);
+		
+		// 한화면에 보여줄 댓글개수 10개 설정
+		int pageSize=10;
+		// 댓글 마지막 페이지번호 불러오기 
+		String pageNum= replyService.getLastPage(c_num, pageSize).toString();
+		
+		PageDTO pageDTO=new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		
+		// 댓글 목록 불러오기
+		List<ReplyDTO> replyList=replyService.getBoardList(c_num, pageDTO);
+		
+		ResponseEntity<List<ReplyDTO>> entity=new ResponseEntity<List<ReplyDTO>>(replyList, HttpStatus.OK);
+		
+		// replyList => 자동으로 JSON으로 변경하는 프로그램 설치 => pom.xml jackson-databind
+		
+		//데이터 담아서 ajax 호출한 곳으로 리턴
+		return entity;
+	}
+	// 댓글에 댓글작성(대댓글)
+	@RequestMapping(value = "/reply/insert2", method = RequestMethod.POST)
+	public ResponseEntity<List<ReplyDTO>> insert2(HttpSession session, HttpServletRequest request) {
+		// 로그인 여부 확인
+		if(session.getAttribute("u_id")==null){ // 비로그인
+			return null;
+		}
+		
+		// ReplyDTO 객체 생성
+		ReplyDTO replyDTO = new ReplyDTO();
+		ReplyDTO replyDTO2 = new ReplyDTO();
+		// 부모댓글 정보 가져오기
+		int r_num = Integer.parseInt(request.getParameter("r_num"));
+		replyDTO = replyService.getBoard(r_num);
+		int c_num = replyDTO.getC_num();
+		int order = replyDTO.getOrder();
+		int depth = replyDTO.getDepth();
+		
+		// 대댓글 정보 replyDTO2에 저장
+		replyDTO2.setU_id(session.getAttribute("u_id").toString()); // 작성자 아이디
+		replyDTO2.setNic(session.getAttribute("nic").toString()); // 작성자 닉네임
+		replyDTO2.setC_num(c_num); // 커뮤니티글 번호
+		replyDTO2.setParent(r_num); // 부모댓글 번호
+		replyDTO2.setOrder(order +1); // 부모댓글 순서 +1
+		replyDTO2.setDepth(depth +1); // 부모댓글 깊이 +1
+		replyDTO.setContent(request.getParameter("content")); // 글내용
+		
+		// 댓글 순서 재정렬
+		replyService.reOrder(order); // 부모댓글보다 order가 큰 댓글들 order +1
+		
+		// replyDTO2 전달하여 댓글 작성
+		replyService.insertBoard(replyDTO2);
 		
 		// 한화면에 보여줄 댓글개수 10개 설정
 		int pageSize=10;
@@ -116,6 +166,7 @@ public class ReplyController {
 			
 		}
 	}
+	// 댓글삭제 시 댓글에 달린 댓글 삭제
 	
 	// 댓글 수정
 	@RequestMapping(value = "/reply/update", method = RequestMethod.GET)

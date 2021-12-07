@@ -26,8 +26,16 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 	@Override
+	public Integer getMaxOrder() {
+		return sqlSession.selectOne(namespace+".getMaxOrder");
+	}
+	@Override
 	public void insertBoard(ReplyDTO replyDTO) {
 		sqlSession.insert(namespace + ".insertBoard", replyDTO);
+	}
+	@Override
+	public ReplyDTO getBoard(int r_num) {
+		return sqlSession.selectOne(namespace+".getBoard", r_num);
 	}
 	@Override
 	public List<ReplyDTO> getBoardList(PageDTO pageDTO) {
@@ -54,8 +62,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sqlSession.selectOne(namespace + ".getBoardCount");
 	}
 	@Override
-	public void orderBoard(ReplyDTO replyDTO) {
-		sqlSession.update(namespace + ".orderBoard", replyDTO);
+	public void reOrder(int order) {
+		sqlSession.update(namespace + ".reOorder", order);
 	}
 
 }

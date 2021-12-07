@@ -11,7 +11,11 @@ public interface ReplyDAO {
 	
 	public Integer getMaxNum();
 	
+	public Integer getMaxOrder();
+	
 	public void insertBoard(ReplyDTO replyDTO);
+	
+	public ReplyDTO getBoard(int r_num);
 	
 	public List<ReplyDTO> getBoardList(PageDTO pageDTO);
 
@@ -25,5 +29,5 @@ public interface ReplyDAO {
 	
 	public Integer getBoardCount(int c_num);
 	
-	public void orderBoard(ReplyDTO replyDTO);
+	public void reOrder(int order);
 }

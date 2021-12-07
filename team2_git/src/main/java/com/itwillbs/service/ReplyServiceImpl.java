@@ -17,7 +17,7 @@ public class ReplyServiceImpl implements ReplyService{
 	@Inject
 	private ReplyDAO replyDAO;
 	
-	// 댓글 작성
+	// 커뮤니티글에 댓글 작성
 	@Override
 	public void insertBoard(ReplyDTO replyDTO) {
 		// 작성시간 입력
@@ -30,8 +30,32 @@ public class ReplyServiceImpl implements ReplyService{
 			// 글이 있으면 max(r_num)+1
 			replyDTO.setR_num(replyDAO.getMaxNum()+1);
 		}
+		// 댓글 순서 설정
+		replyDTO.setOrder(replyDAO.getMaxOrder()+1); // 댓글 순서
+		replyDTO.setParent(0); // 부모댓글 없음
+		replyDTO.setDepth(0); // 깊이 없음
 		
 		replyDAO.insertBoard(replyDTO);
+	}
+	// 댓글에 댓글 작성
+	@Override
+	public void insertBoard2(ReplyDTO replyDTO2) {
+		// 작성시간 입력
+		replyDTO2.setDate(new Timestamp(System.currentTimeMillis()));
+		// 댓글 번호 설정
+		replyDTO2.setR_num(replyDAO.getMaxNum()+1);
+		
+		replyDAO.insertBoard(replyDTO2);
+	}
+	// 댓글 정보 불러오기
+	@Override
+	public ReplyDTO getBoard(int r_num) {
+		return replyDAO.getBoard(r_num);
+	}
+	// 댓글 순서 재정렬
+	@Override
+	public void reOrder(int order) {
+		replyDAO.reOrder(order);		
 	}
 	// 댓글 목록 불러오기
 	@Override

@@ -8,10 +8,18 @@
 	<select id = "getMaxNum" resultType="java.lang.Integer">
 		select max(r_num) from reply
 	</select>
+	
+	<select id = "getMaxOrder" resultType="java.lang.Integer">
+		select max(order) from reply
+	</select>
 
 	<insert id = "insertBoard">
-		insert into reply(r_num,c_num,depth,u_id,nic,content,date) values(#{r_num},#{c_num},#{depth},#{u_id},#{nic},#{content},#{date})
+		insert into reply(r_num,c_num,parent,order,depth,u_id,nic,content,date) values(#{r_num},#{c_num},#{parent},#{order},#{depth},#{u_id},#{nic},#{content},#{date})
 	</insert>
+	
+	<select id = "getBoard" resultType="com.itwillbs.domain.ReplyDTO">
+		select * from reply where r_num=#{r_num}
+	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.ReplyDTO">
 		select * from reply where c_num=#{c_num} order by r_num asc limit #{startRow}, #{pageSize}
@@ -37,8 +45,8 @@
 		select count(*) from reply where c_num=#{c_num}
 	</select>
 	
-	<update id="orderBoard">
-		update reply set order=order+1, where order &gt;= #{order}
+	<update id="reOrder">
+		update reply set order=order+1 where order &gt; #{order}
 	</update>
   
 </mapper>
