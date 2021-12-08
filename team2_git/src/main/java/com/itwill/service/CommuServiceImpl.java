@@ -52,8 +52,8 @@ public class CommuServiceImpl implements CommuService{
 	}
 	// 커뮤니티글 불러오기
 	@Override
-	public CommuDTO getBoard(CommuDTO commuDTO) {
-		return commuDAO.getBoard(commuDTO);
+	public CommuDTO getBoard(int c_num) {
+		return commuDAO.getBoard(c_num);
 	}
 	// 커뮤니티글 수정
 	@Override

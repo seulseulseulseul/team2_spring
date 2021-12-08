@@ -64,7 +64,7 @@
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
-		                  <div><a href="#">${commuDTO.b_date}</a></div>
+		                  <div><a href="#">${commuDTO.date}</a></div>
 		                  <div><a href="#">${commuDTO.u_id}</a></div>
 		                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>답변대기</a></div>
 		                </div>
@@ -111,8 +111,7 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <li><a href="${pageContext.request.contextPath}/center/insert" class="btn py-3 px-4 btn-primary">글쓰기 </a></li>
-                <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
+                <li><a href="${pageContext.request.contextPath}/commu/insert" class="btn py-3 px-4 btn-primary">글쓰기 </a></li>
                 </ul>
               </div>
             </div>

@@ -9,7 +9,7 @@
     <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+	
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
@@ -57,14 +57,14 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate justify-content-center">
           <div>${commuDTO.date}</div>
-		  <div>${commuDTO.u_id}</div>
+		  <div>${commuDTO.nic}</div>
             <h2 class="mb-3">${commuDTO.subject}</h2>
-            <p>${commuDTO.content}
-            </p>
+            <p>${commuDTO.content}</p>
           	<div class="form-group">
-         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}'">
-         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/list'">
-         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
+          		<c:if test="${commuDTO.u_id eq sessionScope.u_id }">
+         	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/commu/update?c_num=${commuDTO.c_num}'">
+         	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/commu/delete?c_num=${commuDTO.c_num}'">
+         	 	</c:if>
          	 </div>
 
 	 <div class="pt-5 mt-5">
@@ -76,10 +76,12 @@
                     <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
-                    <div class="meta">${replyDTO.date}</div>
+                    <div class="meta">${replyDTO.nic} | ${replyDTO.date}</div>
                     <p>${replyDTO.content}</p>
-                    <p><a href="${pageContext.request.contextPath}/reply/delete?r_num=${replyDTO.r_num}" class="reply">삭제</a>
-                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/reply/delete?r_num=${replyDTO.r_num}" class="reply">삭제</a></p>
+                    <c:if test="${replyDTO.u_id eq sessionScope.u_id }">
+	                    <p><a href="${pageContext.request.contextPath}/reply/update?r_num=${replyDTO.r_num}" class="reply">수정</a>
+	                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/reply/delete?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">삭제</a></p>
+                  	</c:if>
                   </div>
                 </li>
 			 </c:forEach>
@@ -90,11 +92,9 @@
                 <h3 class="mb-3">댓글 등록</h3>
                 <form action="${pageContext.request.contextPath}/reply/insert" class="bg-light p-4" method="post">
                 <input type="hidden" name="c_num" value="${commuDTO.c_num}">
-                <input type="hidden" name="parent" value="0">
-                <input type="hidden" name="depth" value="0">
                   <div class="form-group">
                     <label for="content">내용</label>
-                    <textarea name="content" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="content" cols="30" rows="3" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                     <input type="submit" onclick="return " value="작성" class="btn py-3 px-4 btn-primary">
@@ -102,8 +102,18 @@
                   </div>
 
                 </form>
+        	</div>
         </div>
-        </div>
+        <!-- .col-md-8 -->
+		<div class="col-lg-4 sidebar ftco-animate">
+		  <div class="sidebar-box ftco-animate">
+		    <div class="categories">
+		      <ul>
+		        <li><a href="${pageContext.request.contextPath}/commu/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</div>
         </div>
       </div>
     </section> <!-- .section -->

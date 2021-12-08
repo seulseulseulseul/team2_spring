@@ -38,20 +38,19 @@ public class ReplyServiceImpl implements ReplyService{
 			// 글이 있으면 max(r_order)+1
 			replyDTO.setR_order(replyDAO.getMaxOrder()+1); // 댓글 순서
 		}
-		replyDTO.setParent(0); // 부모댓글 없음
-		replyDTO.setDepth(0); // 깊이 없음
 		
 		replyDAO.insertBoard(replyDTO);
 	}
 	// 댓글에 댓글 작성
 	@Override
-	public void insertBoard2(ReplyDTO replyDTO2) {
+	public void insertBoard2(ReplyDTO replyDTO) {
 		// 작성시간 입력
-		replyDTO2.setDate(new Timestamp(System.currentTimeMillis()));
+		replyDTO.setDate(new Timestamp(System.currentTimeMillis()));
 		// 댓글 번호 설정
-		replyDTO2.setR_num(replyDAO.getMaxNum()+1);
+		replyDTO.setR_num(replyDAO.getMaxNum()+1);
+		// 댓글 
 		
-		replyDAO.insertBoard(replyDTO2);
+		replyDAO.insertBoard(replyDTO);
 	}
 	// 댓글 정보 불러오기
 	@Override

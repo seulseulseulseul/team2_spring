@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-    var msg = "${msg}";
-    alert('msg');
-    location.href = "${pageContext.request.contextPath}/commu/list";
+    alert('${msg}');
+    location.href='<c:out value="${pageContext.request.contextPath}"/>${url}';
 </script>

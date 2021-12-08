@@ -54,21 +54,25 @@
                 <h3 class="mb-5">글 수정</h3>
                 <form action="${pageContext.request.contextPath}/commu/updatePro" class="bg-light p-4" method="post" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="hidden" name="b_num" value="${centerDTO.b_num}">
+                    <input type="hidden" name="c_num" value="${commuDTO.c_num}">
                     <label for="subject">제목 *</label>
                     <input type="text" class="form-control bg-white" name="subject" value="${commuDTO.subject }">
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="${commuDTO.nic }" readonly class="form-control" name="nic">
+                    <input type="text" value="${commuDTO.nic }" readonly class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="content">내용</label>
                     <textarea name="content" cols="30" rows="10" class="form-control">${commuDTO.content}</textarea>
                   </div>
                   <div class="form-group">
+                    <label for="content">첨부파일</label>
+                    <input type="file" name="file" class="form-control">
+                  </div>
+                  <div class="form-group">
                     <input type="submit" value="수정" class="btn py-3 px-4 btn-primary">
-                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
+                    <input type="button" value="취소" class="btn py-3 px-4 btn-primary" onclick="history.back()">
                   </div>
 
                 </form>

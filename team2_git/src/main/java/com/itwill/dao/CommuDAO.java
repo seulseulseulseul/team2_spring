@@ -15,7 +15,7 @@ public interface CommuDAO {
 	
 	public List<CommuDTO> getBoardList(PageDTO pageDTO);
 	
-	public CommuDTO getBoard(CommuDTO commuDTO);
+	public CommuDTO getBoard(int c_num);
 
 	public CommuDTO numCheck(CommuDTO commuDTO);
 	
