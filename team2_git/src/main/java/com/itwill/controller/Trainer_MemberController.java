@@ -1,15 +1,20 @@
 package com.itwill.controller;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import com.itwill.domain.Trainer_MemberDTO;
 import com.itwill.service.Trainer_MemberService;
 
@@ -22,7 +27,7 @@ public class Trainer_MemberController {
 	@RequestMapping(value = "/member/trainer_register", method = RequestMethod.GET)
 	public String trainer_register() {
 		
-		return "member/trainer_register"; // ÀÌµ¿ÇÒ ÆäÀÌÁö
+		return "member/trainer_register"; // ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@RequestMapping(value = "/member/trainer_registerPro", method = RequestMethod.POST)
@@ -72,7 +77,7 @@ public class Trainer_MemberController {
 	
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		//·Î±×¾Æ¿ô Ã³¸®
+		//ï¿½Î±×¾Æ¿ï¿½ Ã³ï¿½ï¿½
 		session.invalidate();
 		
 		return "redirect:/member/main";
@@ -122,7 +127,7 @@ public class Trainer_MemberController {
 		
 	}
 	
-	//¾ÆÀÌµð Áßº¹ Ã¼Å©
+	//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ Ã¼Å©
 	@ResponseBody
 	@RequestMapping(value="/member/trainer_IdCheck", method = RequestMethod.POST)
 	public int trainer_IdCheck(Trainer_MemberDTO trainer_memberDTO) {
@@ -130,5 +135,6 @@ public class Trainer_MemberController {
 		return result;
 	}
 	
-
 }
+	
+	

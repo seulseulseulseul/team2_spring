@@ -1,737 +1,313 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+<head>
+<title>INDEX</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/animate.css">
 
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
-    
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/aos.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
 
-    
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-  </head>
-  <body>
-  		<jsp:include page="inc/top.jsp"></jsp:include>
-    <!-- END nav -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/flaticon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icomoon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1250efa15a77b9db6cfd3fe6ffebabae"></script>
 
-    <section class="home-slider js-fullheight owl-carousel">
-      <div class="slider-item js-fullheight" style="background-image:url(${pageContext.request.contextPath}/resources/images/bg_1.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-10 text ftco-animate text-center">
-            <h1 class="mb-4">Discover Your Inner Sanctuary</h1>
-            <h3 class="subheading">Everyday We Bring Hope and Smile to the Patient We Serve</h3>
-            <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3">View our works</a></p>
-          </div>
-        </div>
-        </div>
-      </div>
+<script type="text/javascript">
 
-      <div class="slider-item js-fullheight" style="background-image:url(${pageContext.request.contextPath}/resources/images/bg_2.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-10 text ftco-animate text-center">
-            <h1 class="mb-4">Lighting Your Heart &amp; Mind</h1>
-            <h3 class="subheading">Your Health is Our Top Priority with Comprehensive, Affordable medical.</h3>
-            <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3">View our works</a></p>
-          </div>
-        </div>
-        </div>
-      </div>
-    </section>
+//function searchPlaces() {
+//	  $.ajax({
+//        url:'https://dapi.kakao.com/v2/local/search/address.json?query='+encodeURIComponent('전북 삼성동 100'),
+//        type:'GET',
+//        headers: {'Authorization' : '1250efa15a77b9db6cfd3fe6ffebabae'},
+//success:function(data){
+//    console.log(data);
+//},
+//error : function(e){
+//    console.log(e);
+//}
+//});
+//}
+</script>
+</head>
+<body>
+	<jsp:include page="inc/top.jsp"></jsp:include>
+	<!-- END nav -->
 
-    <section class="ftco-section bg-light">
+
+		<section class="ftco-section">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-3 d-flex align-items-stretch">
-						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-6.jpg);"></div>
-							<div class="text mt-4">
-								<h3 class="mb-4">Power Yoga</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 d-flex align-items-stretch">
-						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-1.jpg);"></div>
-							<div class="text mt-4">
-								<h3 class="mb-4">Community Class</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 d-flex align-items-stretch">
-						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-7.jpg);"></div>
-							<div class="text mt-4">
-								<h3 class="mb-4">Foundation Yoga</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 d-flex align-items-stretch">
-						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-2.jpg);"></div>
-							<div class="text mt-4">
-								<h3 class="mb-4">Prenatal Yoga</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
+
+<!-- <div id="map" style="width:100%;height:350px;"></div> -->
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1250efa15a77b9db6cfd3fe6ffebabae&libraries=services,clusterer"></script>
+
+<div id="mapwrap" style="overflow:hidden;"><div id="map" style="position:relative; width: 100%; height: 350px;"></div>
+	
+	<script>
+	var inputData = ['부산역'] // *********여기 우리 데이터 불러오는 방법...
+	var mapContainer = document.getElementById('map'),
+	mapOption = {
+	center: new kakao.maps.LatLng(35.114566906806054, 129.03923989719564),
+	level: 3
+	};
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+	var count = 0;
+	var ps = new kakao.maps.services.Places();
+	var bounds = new kakao.maps.LatLngBounds();
+	var mapTypeControl = new kakao.maps.MapTypeControl();
+	map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+	
+	 var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+     imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+     imgOptions =  {
+         spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+         spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+         offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+     },
+     markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+         marker = new kakao.maps.Marker({
+         position: position, // 마커의 위치
+         image: markerImage 
+     });
+	function kewwordSearch(keword) {
+	ps.kewwordSearch(keword, placesSearchCB);
+	count = count + 1;
+	}
+	function placesSearchCB(data, status, pagination) {
+	if (status === kakao.maps.services.Status.OK) {
+	displayMarker(data[0]);
+	bounds.extend(new kakao.maps.LatLng(data[0].y, data[0].x));
+	if (count < inputData.length) {
+	kewwordSearch(inputData[count])
+	} else if (count == inputData.length) {
+	setBounds();
+	applyStyle();
+	}
+	}
+	}
+	function displayMarker(place) {
+	var marker = new kakao.maps.Marker({
+	map: map,
+	position: new kakao.maps.LatLng(place.y, place.x),
+	image: markerImage
+	});
+	kakao.maps.event.addListener(marker, 'click', function () {
+	var position = this.getPosition();
+	var url = 'https://map.kakao.com/link/map/' + place.id;
+	window.open(url, '_blank');
+	});
+	var content =
+	'<div class="customoverlay" style="position: relative;bottom: 76px;border-radius: 6px;border: 1px solid #ccc;border-bottom: 2px solid #ddd;float: left;">' +
+	' <a href="https://map.kakao.com/link/map/' + place.id + '"' +
+	' target="_blank" style="display: block;text-decoration: none;color: #666666;text-align: center;border-radius: 6px;font-size: 14px;font-weight: bold;overflow: hidden;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;">' +
+	' <span class="title" style="display: block;text-align: center;background: #fff;margin-right: 35px;padding: 8px 10px;font-size: 13px;font-weight: bold;">' +
+	count + '. ' + place.place_name + '</span>' +
+	' </a>' +
+	'</div>';
+	var customOverlay = new kakao.maps.CustomOverlay({
+	map: map,
+	position: new kakao.maps.LatLng(place.y, place.x),
+	content: content,
+	yAnchor: 0.11
+	});
+	}
+	function setBounds() {
+	map.setBounds(bounds, 90, 30, 10, 30);
+	}
+	</script>
+
+
+<script>
+// var MARKER_WIDTH = 33, // 기본, 클릭 마커의 너비
+//     MARKER_HEIGHT = 36, // 기본, 클릭 마커의 높이
+//     OFFSET_X = 12, // 기본, 클릭 마커의 기준 X좌표
+//     OFFSET_Y = MARKER_HEIGHT, // 기본, 클릭 마커의 기준 Y좌표
+//     OVER_MARKER_WIDTH = 40, // 오버 마커의 너비
+//     OVER_MARKER_HEIGHT = 42, // 오버 마커의 높이
+//     OVER_OFFSET_X = 13, // 오버 마커의 기준 X좌표
+//     OVER_OFFSET_Y = OVER_MARKER_HEIGHT, // 오버 마커의 기준 Y좌표
+//     SPRITE_MARKER_URL = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markers_sprites2.png', // 스프라이트 마커 이미지 URL
+//     SPRITE_WIDTH = 126, // 스프라이트 이미지 너비
+//     SPRITE_HEIGHT = 146, // 스프라이트 이미지 높이
+//     SPRITE_GAP = 10; // 스프라이트 이미지에서 마커간 간격
+
+// var markerSize = new kakao.maps.Size(MARKER_WIDTH, MARKER_HEIGHT), // 기본, 클릭 마커의 크기
+//     markerOffset = new kakao.maps.Point(OFFSET_X, OFFSET_Y), // 기본, 클릭 마커의 기준좌표
+//     overMarkerSize = new kakao.maps.Size(OVER_MARKER_WIDTH, OVER_MARKER_HEIGHT), // 오버 마커의 크기
+//     overMarkerOffset = new kakao.maps.Point(OVER_OFFSET_X, OVER_OFFSET_Y), // 오버 마커의 기준 좌표
+//     spriteImageSize = new kakao.maps.Size(SPRITE_WIDTH, SPRITE_HEIGHT); // 스프라이트 이미지의 크기
+
+// var positions = [  // 마커의 위치
+//         new kakao.maps.LatLng(33.44975, 126.56967),
+//         new kakao.maps.LatLng(33.450579, 126.56956),
+//         new kakao.maps.LatLng(33.4506468, 126.5707)
+//     ],
+//     selectedMarker = null; // 클릭한 마커를 담을 변수
+
+// var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+//     mapOption = { 
+//         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+//         level: 3 // 지도의 확대 레벨
+//     };
+
+// var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// // 지도 위에 마커를 표시합니다
+// for (var i = 0, len = positions.length; i < len; i++) {
+//     var gapX = (MARKER_WIDTH + SPRITE_GAP), // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
+//         originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
+//         overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 오버 마커로 사용할 Y좌표 값
+//         normalOrigin = new kakao.maps.Point(0, originY), // 스프라이트 이미지에서 기본 마커로 사용할 영역의 좌상단 좌표
+//         clickOrigin = new kakao.maps.Point(gapX, originY), // 스프라이트 이미지에서 마우스오버 마커로 사용할 영역의 좌상단 좌표
+//         overOrigin = new kakao.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
+        
+//     // 마커를 생성하고 지도위에 표시합니다
+//     addMarker(positions[i], normalOrigin, overOrigin, clickOrigin);
+// }
+
+// // 마커를 생성하고 지도 위에 표시하고, 마커에 mouseover, mouseout, click 이벤트를 등록하는 함수입니다
+// function addMarker(position, normalOrigin, overOrigin, clickOrigin) {
+
+//     // 기본 마커이미지, 오버 마커이미지, 클릭 마커이미지를 생성합니다
+//     var normalImage = createMarkerImage(markerSize, markerOffset, normalOrigin),
+//         overImage = createMarkerImage(overMarkerSize, overMarkerOffset, overOrigin),
+//         clickImage = createMarkerImage(markerSize, markerOffset, clickOrigin);
+    
+//     // 마커를 생성하고 이미지는 기본 마커 이미지를 사용합니다
+//     var marker = new kakao.maps.Marker({
+//         map: map,
+//         position: position,
+//         image: normalImage
+//     });
+
+//     // 마커 객체에 마커아이디와 마커의 기본 이미지를 추가합니다
+//     marker.normalImage = normalImage;
+
+//     // 마커에 mouseover 이벤트를 등록합니다
+//     kakao.maps.event.addListener(marker, 'mouseover', function() {
+
+//         // 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면
+//         // 마커의 이미지를 오버 이미지로 변경합니다
+//         if (!selectedMarker || selectedMarker !== marker) {
+//             marker.setImage(overImage);
+//         }
+//     });
+
+//     // 마커에 mouseout 이벤트를 등록합니다
+//     kakao.maps.event.addListener(marker, 'mouseout', function() {
+
+//         // 클릭된 마커가 없고, mouseout된 마커가 클릭된 마커가 아니면
+//         // 마커의 이미지를 기본 이미지로 변경합니다
+//         if (!selectedMarker || selectedMarker !== marker) {
+//             marker.setImage(normalImage);
+//         }
+//     });
+
+//     // 마커에 click 이벤트를 등록합니다
+//     kakao.maps.event.addListener(marker, 'click', function() {
+
+//         // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
+//         // 마커의 이미지를 클릭 이미지로 변경합니다
+//         if (!selectedMarker || selectedMarker !== marker) {
+
+//             // 클릭된 마커 객체가 null이 아니면
+//             // 클릭된 마커의 이미지를 기본 이미지로 변경하고
+//             !!selectedMarker && selectedMarker.setImage(selectedMarker.normalImage);
+
+//             // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
+//             marker.setImage(clickImage);
+//         }
+
+//         // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
+//         selectedMarker = marker;
+//     });
+// }
+
+// // MakrerImage 객체를 생성하여 반환하는 함수입니다
+// function createMarkerImage(markerSize, offset, spriteOrigin) {
+//     var markerImage = new kakao.maps.MarkerImage(
+//         SPRITE_MARKER_URL, // 스프라이트 마커 이미지 URL
+//         markerSize, // 마커의 크기
+//         {
+//             offset: offset, // 마커 이미지에서의 기준 좌표
+//             spriteOrigin: spriteOrigin, // 스트라이프 이미지 중 사용할 영역의 좌상단 좌표
+//             spriteSize: spriteImageSize // 스프라이트 이미지의 크기
+//         }
+//     );
+    
+//     return markerImage;
+// }
+</script>
+			
+			
 			</div>
 		</section>
 
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-12 heading-section ftco-animate text-center">
-            <h2 class="mb-1">Experience of Yoga</h2>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-4">
-    				<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center order-md-last">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-md-right pl-4 pl-md-0 pr-md-4">
-								<h3>Balance Body &amp; Mind</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-						<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center order-md-last">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-md-right pl-4 pl-md-0 pr-md-4">
-								<h3>Healthy Daily Life</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-						<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center order-md-last">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-md-right pl-4 pl-md-0 pr-md-4">
-								<h3>Improves your flexibility</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-						<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center order-md-last">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-md-right pl-4 pl-md-0 pr-md-4">
-								<h3>Protects your spine</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-    			</div>
-
-    			<div class="col-md-4 d-flex">
-    				<div class="img img-services w-100" style="background-image: url(${pageContext.request.contextPath}/resources/images/services.jpg);"></div>
-    			</div>
-
-    			<div class="col-md-4">
-    				<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center\">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-left pl-4">
-								<h3>Betters your bone health</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-						<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center\">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-left pl-4">
-								<h3>Increases your blood flow</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-						<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center\">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-left pl-4">
-								<h3>Keep a practice journal</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-						<div class="services-2 ftco-animate d-flex w-100">
-							<div class="icon d-flex justify-content-center align-items-center\">
-								<span class="flaticon-meditation"></span>
-							</div>
-							<div class="text text-left pl-4">
-								<h3>Builds muscle strength</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-12 heading-section ftco-animate text-center">
-            <h2 class="mb-1">Our Classes</h2>
-          </div>
-        </div>
-        <div class="row">
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-1.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Private &amp; Group Lessons</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-2.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga for Pregnant</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-3.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga for Beginners</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-4.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga Barre</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-5.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga Core</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-6.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga Restore</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        </div>
-    	</div>
-    </section>
-
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-12 heading-section ftco-animate text-center">
-            <h2 class="mb-1">Class Time Table</h2>
-          </div>
-        </div>
-    		<div class="row">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table table-bordered text-center">
-                <thead>
-                  <tr class="bg-primary text-white">
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-1.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-2.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-3.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                  </tr>
-                  <tr>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-4.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-5.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-6.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-7.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-1.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-2.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-3.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                  </tr>
-                  <tr>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-4.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-5.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-6.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-7.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-1.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-2.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-3.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-4.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-5.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
-                    </td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th><a href="#"><i class="ion-ios-arrow-round-back"></i> September</a></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th><a href="#">November <i class="ion-ios-arrow-round-forward"></i></a></th>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-          </div>
-        </div>
-    	</div>
-    </section>
-		
-
-    <section class="ftco-section testimony-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-10 heading-section ftco-animate text-center">
-            <h3 class="subheading">Testimony</h3>
-            <h2 class="mb-1">Successful Stories</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate">
-          <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel">
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                  	<div class="line">
-	                    <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	                    <span class="quote d-flex align-items-center justify-content-center">
-	                      <i class="icon-quote-left"></i>
-	                    </span>
-	                  </div>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_1.jpg)">
-		                  </div>
-		                  <div class="ml-4">
-		                  	<p class="name">Gabby Smith</p>
-		                    <span class="position">Customer</span>
-		                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-	                    <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	                    <span class="quote d-flex align-items-center justify-content-center">
-	                      <i class="icon-quote-left"></i>
-	                    </span>
-	                  </div>
-
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_2.jpg)">
-		                  </div>
-		                  <div class="ml-4">
-		                  	<p class="name">Floyd Weather</p>
-		                    <span class="position">Customer</span>
-		                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-	                    <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	                    <span class="quote d-flex align-items-center justify-content-center">
-	                      <i class="icon-quote-left"></i>
-	                    </span>
-	                  </div>
-
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_3.jpg)">
-		                  </div>
-		                  <div class="ml-4">
-		                  	<p class="name">James Dee</p>
-		                    <span class="position">Customer</span>
-		                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-	                    <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	                    <span class="quote d-flex align-items-center justify-content-center">
-	                      <i class="icon-quote-left"></i>
-	                    </span>
-	                  </div>
-
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_4.jpg)">
-		                  </div>
-		                  <div class="ml-4">
-		                  	<p class="name">Lance Roger</p>
-		                    <span class="position">Customer</span>
-		                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-	                    <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	                    <span class="quote d-flex align-items-center justify-content-center">
-	                      <i class="icon-quote-left"></i>
-	                    </span>
-	                  </div>
-
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_2.jpg)">
-		                  </div>
-		                  <div class="ml-4">
-		                  	<p class="name">Kenny Bufer</p>
-		                    <span class="position">Customer</span>
-		                  </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-counter img" id="section-counter" style="background-image: url(${pageContext.request.contextPath}/resources/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-        	<div class="col-md-10">
-        		<div class="row">
-		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		              	<strong class="number" data-number="2560">0</strong>
-		              	<span>Happy Customers</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		              	<strong class="number" data-number="60">0</strong>
-		              	<span>Yoga Classes</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		              	<strong class="number" data-number="50">0</strong>
-		              	<span>Years of Experience</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		              	<strong class="number" data-number="100">0</strong>
-		              	<span>Yoga Conducted</span>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-1">Recent Posts</h2>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('${pageContext.request.contextPath}/resources/images/image_1.jpg');">
-              </a>
-              <div class="text w-100 mt-3">
-              	<div class="meta">
-                  <div><a href="#">July. 14, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Is wellness the new luxury</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('${pageContext.request.contextPath}/resources/images/image_2.jpg');">
-              </a>
-              <div class="text w-100 mt-3">
-              	<div class="meta">
-                  <div><a href="#">July. 14, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Is wellness the new luxury</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('${pageContext.request.contextPath}/resources/images/image_3.jpg');">
-              </a>
-              <div class="text w-100 mt-3">
-              	<div class="meta">
-                  <div><a href="#">July. 14, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Is wellness the new luxury</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-		<section class="ftco-gallery ftco-section">
-    	<div class="container-fluid px-md-5">
-    		<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-1">See the latest photos</h2>
-          </div>
-        </div>
-    		<div class="row">
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-1.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-2.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-3.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-4.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-5.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-5.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-6.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-6.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-7.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-7.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-					<div class="col-md-3 ftco-animate">
-						<a href="${pageContext.request.contextPath}/resources/images/gallery-8.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-8.jpg);">
-							<div class="icon mb-4 d-flex align-items-center justify-content-center">
-    						<span class="icon-instagram"></span>
-    					</div>
-						</a>
-					</div>
-        </div>
-    	</div>
-    </section>
-
-		
-
-     <jsp:include page="inc/bottom.jsp"></jsp:include>
-    
-    
-  
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+		<!-- loader -->
+		<div id="ftco-loader" class="show fullscreen">
+			<svg class="circular" width="48px" height="48px">
+				<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+					stroke-width="4" stroke="#eeeeee" />
+				<circle class="path" cx="24" cy="24" r="22" fill="none"
+					stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+		</div>
 
 
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-    
-  </body>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
+		<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+		<%--   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script> --%>
+		<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+</body>
 </html>

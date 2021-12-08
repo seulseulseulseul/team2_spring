@@ -25,4 +25,6 @@
 	<select id="trainer_IdCheck" resultType="int">
 		select count(*) from trainer where t_id=#{t_id}
 	</select>
+	
+	
 </mapper>

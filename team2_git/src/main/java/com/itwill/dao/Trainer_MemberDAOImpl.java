@@ -15,10 +15,10 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-//	// sql±¸¹®À» ¸¸µé¾î¼­ ½ÇÇà => SimpleJdbcTemplate 
+//	// sqlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ => SimpleJdbcTemplate 
 //	private SimpleJdbcTemplate template;
 //	
-//	//set¸Þ¼­µå
+//	//setï¿½Þ¼ï¿½ï¿½ï¿½
 //	@Inject
 //	public void setDataSource(DataSource dataSource) {
 //		template=new SimpleJdbcTemplate(dataSource);
@@ -26,17 +26,17 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	
 	private static final String namespace="com.itwill.mapper.trainer_memberMapper";
 
-	// ¸®ÅÏ°ª¾øÀ½ insertMember(MemberDTO memberDTO) ¸Þ¼­µå Á¤ÀÇ
+	// ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ insertMember(MemberDTO memberDTO) ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //	String insertsql="insert into member(id,pass,name,date) values(?,?,?,?)";
 	@Override
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("Trainer_MemberDAOImpl trainer_register()");
-		// µðºñÀÛ¾÷ => JDBC ÇÁ·Î±×·¥ ¼³Ä¡  Spring JDBC ¼³Ä¡ => ÀÚµ¿À¸·Î ÇÁ·Î±×·¥ ¼³Ä¡
-		//  ¸ÞÀÌºì   ÇÁ·Î±×·¥À» ÀÚµ¿À¸·Î ¼³Ä¡ pom.xml ¸ÞÀÌºìÀÌ Á¦°øÇÑ ÄÚµå¸¦ ÀûÀ¸¸é ÀÚµ¿À¸·Î ´Ù¿î ¹Þ¾ÆÁü
-		//  ¸ÞÀÌºì(¸ðµçÇÁ·Î±×·¥ Á¦°ø) »çÀÌÆ® => pom.xml ÄÚµå¸¦ ÀûÀ¸¸é => »çÀÌÆ®¿¡¼­ ÀÚµ¿À¸·Î ÄÄÇ»ÅÍ·Î ´Ù¿î¹Þ¾ÆÁü
+		// ï¿½ï¿½ï¿½ï¿½Û¾ï¿½ => JDBC ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½Ä¡  Spring JDBC ï¿½ï¿½Ä¡ => ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½Ä¡
+		//  ï¿½ï¿½ï¿½Ìºï¿½   ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ pom.xml ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµå¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ ï¿½Þ¾ï¿½ï¿½ï¿½
+		//  ï¿½ï¿½ï¿½Ìºï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½Æ® => pom.xml ï¿½Úµå¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ => ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç»ï¿½Í·ï¿½ ï¿½Ù¿ï¿½Þ¾ï¿½ï¿½ï¿½
 		// https://mvnrepository.com/
 		
-		// ¹®ÀÚ¿­À» sql¸¸µé¸é¼­ ½ÇÇà
+		// ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ sqlï¿½ï¿½ï¿½ï¿½é¼­ ï¿½ï¿½ï¿½ï¿½
 //		template.update(insertsql, memberDTO.getId(),memberDTO.getPass(),memberDTO.getName(),memberDTO.getDate());
 		// insert()  update()  delete()  selectOne()  selectList()
 		sqlSession.insert(namespace+".trainer_register", trainer_memberDTO);
@@ -47,7 +47,7 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	@Override
 	public Trainer_MemberDTO trainer_userCheck(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("MemberDAOImpl trainer_userCheck()");
-		// µðºñ¿¡¼­ °¡Á®¿Â ³»¿ëÀ» MemberDTO ¸ÅÇÎÇØ¼­ ÀúÀå
+		// ï¿½ï¿½ñ¿¡¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MemberDTO ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 //		RowMapper<MemberDTO> mapper=new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class);
 //		
 //		return template.queryForObject(userChecksql, mapper, memberDTO.getId(),memberDTO.getPass());
@@ -57,7 +57,7 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 //	String getMembersql="select * from member where id=?";
 	@Override
 	public Trainer_MemberDTO trainer_getMember(String t_id) {
-		// µðºñ¿¡¼­ °¡Á®¿Â ³»¿ëÀ» MemberDTO ¸ÅÇÎÇØ¼­ ÀúÀå
+		// ï¿½ï¿½ñ¿¡¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MemberDTO ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 //		RowMapper<MemberDTO> mapper=new BeanPropertyRowMapper<MemberDTO>(MemberDTO.class);
 //		return template.queryForObject(getMembersql, mapper, id);
 		return sqlSession.selectOne(namespace+".trainer_getMember", t_id);
@@ -68,7 +68,7 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 		sqlSession.update(namespace+".trainer_updateMember", trainer_memberDTO);
 	}
 
-	//¾ÆÀÌµð Áßº¹Ã¼Å©
+	//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å©
 	@Override
 	public int trainer_IdCheck(Trainer_MemberDTO trainer_memberDTO) {
 		int result = sqlSession.selectOne(namespace+".trainer_IdCheck",trainer_memberDTO);
@@ -77,4 +77,6 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	
 	
 	
-}//Å¬·¡½º
+	
+	
+}//Å¬ï¿½ï¿½ï¿½ï¿½
