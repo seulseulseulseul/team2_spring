@@ -6,7 +6,7 @@
 <mapper namespace="com.itwill.mapper.NoticeMapper">
 
 	<insert id = "insertNotice">
-	insert into center(b_num,t_num,u_num,admin_id,b_title,b_content,b_date)
+	insert into notice(b_num,t_num,u_num,admin_id,b_title,b_content,b_date)
 	 values(#{b_num},#{t_num},#{u_num},#{admin_id},#{b_title},#{b_content},#{b_date})
 	</insert>
 	

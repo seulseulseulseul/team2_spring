@@ -21,6 +21,7 @@ public interface NoticeDAO {
 	
 	public void updateNotice(NoticeDTO noticeDTO);
 	
+	
 
 	
 	

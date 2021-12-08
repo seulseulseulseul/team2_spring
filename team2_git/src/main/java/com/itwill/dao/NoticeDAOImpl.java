@@ -43,13 +43,13 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 	@Override
 	public void deleteNotice(int b_num) {
-		sqlSession.selectOne(namespace+".deleteNotice",b_num);
+		sqlSession.delete(namespace+".delete",b_num);
 		
 	}
 
 	@Override
 	public void updateNotice(NoticeDTO noticeDTO) {
-		sqlSession.selectOne(namespace+".updateNotice",noticeDTO);
+		sqlSession.update(namespace+".updateNotice",noticeDTO);
 
 	}
 

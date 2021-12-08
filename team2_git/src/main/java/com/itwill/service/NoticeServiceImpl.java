@@ -40,6 +40,16 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<NoticeDTO> getNoticeList(PageDTO pageDTO) {
+		//pageSize, pageNum 담아옴
+		//currentPage startRow endRow
+		int currentPage = Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow = startRow+pageDTO.getPageSize()-1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow-1); //디비 startRow-1
+		pageDTO.setEndRow(endRow);
+		
 		return noticeDAO.getNoticeList(pageDTO);
 	}
 

@@ -22,7 +22,9 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping(value = "/notice/insert", method = RequestMethod.GET)
-	public String insert(){
+	public String insert(HttpSession session, Model model){
+		String u_id=(String)session.getAttribute("u_id");
+		model.addAttribute("u_id", u_id);
 		return "notice/insert";
 	}
 	
@@ -62,15 +64,20 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/notice/update", method = RequestMethod.GET)
-	public String update(HttpSession session,Model model) {
-		//세션값 가져오기
-		Integer b_num = (Integer)session.getAttribute("b_num");
-		//디비에 데이터 가져오기
-		//리턴할형 MemberDTO getMember(String id)
+	public String update(HttpServletRequest request,Model model) {
+		//원래 게시글 정보 받아오기
+		int b_num = Integer.parseInt(request.getParameter("b_num"));
 		NoticeDTO noticeDTO = noticeService.getNotice(b_num);
-		//memberDTO 담아서 이동
-		model.addAttribute("noticeDTO", noticeDTO);
-		return "notice/updateForm";
+		//데이터 담기
+		model.addAttribute("noticeDTO",noticeDTO);
+		return "notice/update";
+	}
+	
+	@RequestMapping(value = "/notice/updatePro", method = RequestMethod.POST)
+	public String updatePro(NoticeDTO noticeDTO) {
+		//수정하기
+		noticeService.updateNotice(noticeDTO);
+		return "redirect:/notice/content?b_num="+noticeDTO.getB_num();
 	}
 	
 	@RequestMapping(value = "/notice/content", method = RequestMethod.GET)
@@ -80,6 +87,13 @@ public class NoticeController {
 		model.addAttribute("noticeDTO",noticeDTO);
 		return "notice/content";
 	}
+	
+	@RequestMapping(value = "/notice/delete", method = RequestMethod.GET)
+	public String delete(int b_num) {
+		noticeService.deleteNotice(b_num);
+		return "redirect:/notice/list";
+	}
+	
 
 
 	
