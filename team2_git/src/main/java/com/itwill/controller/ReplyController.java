@@ -71,7 +71,7 @@ public class ReplyController {
 		int r_num = Integer.parseInt(request.getParameter("r_num"));
 		replyDTO = replyService.getBoard(r_num);
 		int c_num = replyDTO.getC_num();
-		int order = replyDTO.getOrder();
+		int r_order = replyDTO.getR_order();
 		int depth = replyDTO.getDepth();
 		
 		// 대댓글 정보 replyDTO2에 저장
@@ -79,12 +79,12 @@ public class ReplyController {
 		replyDTO2.setNic(session.getAttribute("nic").toString()); // 작성자 닉네임
 		replyDTO2.setC_num(c_num); // 커뮤니티글 번호
 		replyDTO2.setParent(r_num); // 부모댓글 번호
-		replyDTO2.setOrder(order +1); // 부모댓글 순서 +1
+		replyDTO2.setR_order(r_order +1); // 부모댓글 순서 +1
 		replyDTO2.setDepth(depth +1); // 부모댓글 깊이 +1
 		replyDTO.setContent(request.getParameter("content")); // 글내용
 		
 		// 댓글 순서 재정렬
-		replyService.reOrder(order); // 부모댓글보다 order가 큰 댓글들 order +1
+		replyService.reOrder(r_order); // 부모댓글보다 r_order가 큰 댓글들 r_order +1
 		
 		// replyDTO2 전달하여 댓글 작성
 		replyService.insertBoard(replyDTO2);
@@ -116,8 +116,9 @@ public class ReplyController {
 		PageDTO pageDTO=new PageDTO();
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
+		pageDTO.setC_num(c_num);
 		
-		List<ReplyDTO> replyList = replyService.getBoardList(c_num, pageDTO);
+		List<ReplyDTO> replyList = replyService.getBoardList(pageDTO);
 	
 		ResponseEntity<List<ReplyDTO>> entity=new ResponseEntity<List<ReplyDTO>>(replyList, HttpStatus.OK);
 		

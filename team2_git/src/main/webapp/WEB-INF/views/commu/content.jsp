@@ -71,7 +71,7 @@
               <h3 class="mb-3">댓글</h3>
               <ul class="comment-list">
         	<c:forEach var="replyDTO" items="${replyList}">
-                <li class="comment" style="margin-left:${20*replyList.depth}">
+                <li class="comment" style="margin-left:${20*replyDTO.depth}">
                   <div class="vcard bio">
                     <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
                   </div>

@@ -52,7 +52,7 @@
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">글 수정</h3>
-                <form action="${pageContext.request.contextPath}/commu/updatePro" class="bg-light p-4" method="post">
+                <form action="${pageContext.request.contextPath}/commu/updatePro" class="bg-light p-4" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <input type="hidden" name="b_num" value="${centerDTO.b_num}">
                     <label for="subject">제목 *</label>

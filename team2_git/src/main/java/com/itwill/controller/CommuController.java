@@ -27,8 +27,8 @@ import com.itwill.service.ReplyService;
 public class CommuController {
 	
 	//업로드 될 폴더 경로 
-	@Resource(name="uploadPath")
-	private String uploadPath;
+	@Resource(name="commuUploadPath")
+	private String commuUploadPath;
 	
 	@Inject
 	private CommuService commuService;
@@ -40,9 +40,9 @@ public class CommuController {
 	public String insert(HttpSession session,Model model){
 		// 로그인 여부 확인
 		if(session.getAttribute("u_id")==null){ // 비로그인
-			return "redirect:/remember/login";
+			return "redirect:/index";
 			
-		} else { // 로그인z
+		} else { // 로그인
 			String nic = session.getAttribute("nic").toString();
 			model.addAttribute("nic",nic);
 			return "commu/insert";
@@ -56,7 +56,7 @@ public class CommuController {
 		String nic=session.getAttribute("nic").toString();
 		
 		// 로그인 여부 확인
-		if(session.getAttribute("u_id")==null){
+		if(u_id==null){
 			return "redirect:/member/login";
 		}
 		
@@ -66,23 +66,24 @@ public class CommuController {
 		commuDTO.setNic(nic);
 		commuDTO.setSubject(request.getParameter("subject"));
 		commuDTO.setContent(request.getParameter("content"));
+		
 		//파일 업로드
-		if(request.getParameter("file") != null) {
+		if(!file.getOriginalFilename().equals("")) {
 			// 파일 이름 랜덤문자_파일이름 변경
 			UUID uid=UUID.randomUUID();
 			String fileName=uid.toString()+"_"+file.getOriginalFilename();
 			// 업로드 파일을 복사해서 => upload 복사해서 넣기
-			File targetFile=new File(uploadPath,fileName);
+			File targetFile=new File(commuUploadPath,fileName);
 			FileCopyUtils.copy(file.getBytes(), targetFile);
 			//BoardDTO 복사된 파일 이름 저장
 			commuDTO.setFile(fileName);
-			
-		}
+		} 
 		
 		commuService.insertBoard(commuDTO);
 		
 		// 알림창
-		ra.addFlashAttribute("msg", "커뮤니티글이 작성되었습니다.");
+		String msg = "커뮤니티글이 작성되었습니다.";
+		ra.addFlashAttribute("msg", msg);
 		
 		return "redirect:/commu/alert";
 	}
@@ -138,9 +139,10 @@ public class CommuController {
 		PageDTO pageDTO=new PageDTO();
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
+		pageDTO.setC_num(c_num);
 		
 		// 댓글목록 불러오기
-		List<ReplyDTO> replyList = replyService.getBoardList(c_num, pageDTO);
+		List<ReplyDTO> replyList = replyService.getBoardList(pageDTO);
 		
 		model.addAttribute("commuDTO", commuDTO);
 		model.addAttribute("replyList", replyList);
@@ -193,7 +195,7 @@ public class CommuController {
 				UUID uid=UUID.randomUUID();
 				String fileName=uid.toString()+"_"+file.getOriginalFilename();
 				// 업로드 파일을 복사해서 => upload 복사해서 넣기
-				File targetFile=new File(uploadPath,fileName);
+				File targetFile=new File(commuUploadPath,fileName);
 				FileCopyUtils.copy(file.getBytes(), targetFile);
 				//BoardDTO 복사된 파일 이름 저장
 				commuDTO.setFile(fileName);
@@ -263,5 +265,4 @@ public class CommuController {
 		
 		return "redirect:/commu/alert";
 	}
-	
 }

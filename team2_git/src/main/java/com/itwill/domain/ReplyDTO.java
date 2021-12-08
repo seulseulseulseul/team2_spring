@@ -6,7 +6,7 @@ public class ReplyDTO {
 	private int r_num; // 댓글번호
 	private int c_num; // 게시글번호
 	private int parent; // 부모댓글
-	private int order; // 순서
+	private int r_order; // 순서
 	private int depth; // 깊이
 	private String u_id; // 아이디
 	private String nic; // 닉네임
@@ -19,11 +19,11 @@ public class ReplyDTO {
 	public void setParent(int parent) {
 		this.parent = parent;
 	}
-	public int getOrder() {
-		return order;
+	public int getR_order() {
+		return r_order;
 	}
-	public void setOrder(int order) {
-		this.order = order;
+	public void setR_order(int r_order) {
+		this.r_order = r_order;
 	}
 	public int getR_num() {
 		return r_num;

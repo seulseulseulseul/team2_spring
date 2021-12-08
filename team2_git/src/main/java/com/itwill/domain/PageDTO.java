@@ -6,15 +6,20 @@ public class PageDTO {
 	private int currentPage;
 	private int startRow;
 	private int endRow;
-	
 	private int count;
-	
 	private int pageBlock;
 	private int startPage;
 	private int endPage;
+	private int c_num;
 	private int pageCount;
 	
 	
+	public int getC_num() {
+		return c_num;
+	}
+	public void setC_num(int c_num) {
+		this.c_num = c_num;
+	}
 	public int getPageSize() {
 		return pageSize;
 	}

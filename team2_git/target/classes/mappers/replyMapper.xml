@@ -10,11 +10,11 @@
 	</select>
 	
 	<select id = "getMaxOrder" resultType="java.lang.Integer">
-		select max(order) from reply
+		select max(r_order) from reply
 	</select>
 
 	<insert id = "insertBoard">
-		insert into reply(r_num,c_num,parent,order,depth,u_id,nic,content,date) values(#{r_num},#{c_num},#{parent},#{order},#{depth},#{u_id},#{nic},#{content},#{date})
+		insert into reply(r_num,c_num,parent,r_order,depth,u_id,nic,content,date) values(#{r_num},#{c_num},#{parent},#{r_order},#{depth},#{u_id},#{nic},#{content},#{date})
 	</insert>
 	
 	<select id = "getBoard" resultType="com.itwill.domain.ReplyDTO">
@@ -46,7 +46,7 @@
 	</select>
 	
 	<update id="reOrder">
-		update reply set order=order+1 where order &gt; #{order}
+		update reply set r_order=r_order+1 where r_order &gt; #{r_order}
 	</update>
 	
 	<select id="isNoReply" resultType="java.lang.Integer">

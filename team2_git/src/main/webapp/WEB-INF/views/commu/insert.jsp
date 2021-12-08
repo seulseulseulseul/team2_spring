@@ -52,7 +52,7 @@
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">글쓰기</h3>
-                <form action="${pageContext.request.contextPath}/commu/insertPro" class="bg-light p-4" method="post">
+                <form action="${pageContext.request.contextPath}/commu/insertPro" class="bg-light p-4" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="name">작성자 *</label>
                     <input type="text" value="${nic}" readonly class="form-control" name="nic">

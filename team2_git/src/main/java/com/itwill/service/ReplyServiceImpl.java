@@ -31,7 +31,13 @@ public class ReplyServiceImpl implements ReplyService{
 			replyDTO.setR_num(replyDAO.getMaxNum()+1);
 		}
 		// 댓글 순서 설정
-		replyDTO.setOrder(replyDAO.getMaxOrder()+1); // 댓글 순서
+		if(replyDAO.getMaxOrder()==null) {
+			// 글이 없는경우 1로 설정
+			replyDTO.setR_num(1);
+		} else {
+			// 글이 있으면 max(r_order)+1
+			replyDTO.setR_order(replyDAO.getMaxOrder()+1); // 댓글 순서
+		}
 		replyDTO.setParent(0); // 부모댓글 없음
 		replyDTO.setDepth(0); // 깊이 없음
 		
@@ -54,12 +60,12 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 	// 댓글 순서 재정렬
 	@Override
-	public void reOrder(int order) {
-		replyDAO.reOrder(order);		
+	public void reOrder(int r_order) {
+		replyDAO.reOrder(r_order);		
 	}
 	// 댓글 목록 불러오기
 	@Override
-	public List<ReplyDTO> getBoardList(int c_num, PageDTO pageDTO) {
+	public List<ReplyDTO> getBoardList(PageDTO pageDTO) {
 		// pageSize, pageNum 담아옴
 		// currentPage startRow endRow
 		int currentPage=Integer.parseInt(pageDTO.getPageNum());
