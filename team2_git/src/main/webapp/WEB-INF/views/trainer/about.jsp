@@ -189,7 +189,28 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           <div class="col-md-10 heading-section ftco-animate text-center">
             <h3 class="subheading">Review</h3>
             <h2 class="mb-1">리뷰</h2>
-            <input type="button" value="리뷰 등록" class="btn py-3 px-4 btn-primary"  onclick="showExample('${u_id}','${t_id}')">
+            <input type="button" value="리뷰 등록" class="btn py-3 px-4 btn-primary"  id="insertReview">
+            <script type="text/javascript">
+            $(function(){
+            	$('#insertReview').click(function(){
+            	$('#review_modal').modal('show');
+            	var idx = $(this).index('#insertReview');
+//             	=>btn_update를 누르면 위치를 읽어 모달을 뜨게 함. 
+
+//             	var nu = $('.input_fd_num').eq(idx).val();
+//             	var na = $('.input_fd_name').eq(idx).val();
+//             	var pr = $('.input_fd_price').eq(idx).val();
+//             	var dt = $('.input_fd_date').eq(idx).val();
+
+//             	$('input[name="fd_num"]').val(nu);
+//             	$('input[name="fd_name"]').val(na);
+//             	$('input[name="fd_price"]').val(pr);
+//             	$('input[name="fd_date"]').val(dt);
+
+            	});
+            </script>
+            <jsp:include page="insertReview.jsp"></jsp:include>
+            
           </div>
         </div>
  
