@@ -113,4 +113,9 @@ public class CenterController {
 		centerService.updateCenter(centerDTO);
 		return "redirect:/center/content?b_num="+centerDTO.getB_num();
 	}
+	@RequestMapping(value = "/main2", method = RequestMethod.GET)
+	public String main(){
+
+		return "main2";
+	}
 }

@@ -3,6 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+<!-- 	카페24 업로드용 -->
+<!-- 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver"></property> -->
+<!-- 			<property name="url" value="jdbc:mysql://localhost/itwillbs5"></property> -->
+<!-- 			<property name="username" value="itwillbs5"></property> -->
+<!-- 			<property name="password" value="itwillbs8030909"></property> -->
+<!-- 		</bean> -->
+	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		<!--  디비연결 1,2 단계  객체생성-->
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

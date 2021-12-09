@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,9 +26,30 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     
-<!--     리뷰 css -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/review/review.css">
+    <!--        리뷰 목록 불러오기 -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/review/review-css.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+    /*팔로우 버튼 클릭*/
+    $(document).ready(function(){
+
     
+    		  $("#confirm").click(function(){
+    		      modalClose(); //모달 닫기 함수 호출
+    		      //컨펌 이벤트 처리
+    		  });
+    		  $("#modal-open").click(function(){        
+    		      $("#popup").css('display','flex').hide().fadeIn();
+    		      //팝업을 flex속성으로 바꿔준 후 hide()로 숨기고 다시 fadeIn()으로 효과
+    		  });
+    		  $("#close").click(function(){
+    		      modalClose(); //모달 닫기 함수 호출
+    		  });
+    		  function modalClose(){
+    		      $("#popup").fadeOut(); //페이드아웃 효과
+    		  }     
+        });
+	</script>
   </head>
   <body>
    <jsp:include page="../inc/top.jsp"></jsp:include>
@@ -189,79 +213,67 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           <div class="col-md-10 heading-section ftco-animate text-center">
             <h3 class="subheading">Review</h3>
             <h2 class="mb-1">리뷰</h2>
-            <input type="button" value="리뷰 등록" class="btn py-3 px-4 btn-primary"  id="insertReview">
-            <script type="text/javascript">
-            $(function(){
-            	$('#insertReview').click(function(){
-            	$('#review_modal').modal('show');
-            	var idx = $(this).index('#insertReview');
-//             	=>btn_update를 누르면 위치를 읽어 모달을 뜨게 함. 
-
-//             	var nu = $('.input_fd_num').eq(idx).val();
-//             	var na = $('.input_fd_name').eq(idx).val();
-//             	var pr = $('.input_fd_price').eq(idx).val();
-//             	var dt = $('.input_fd_date').eq(idx).val();
-
-//             	$('input[name="fd_num"]').val(nu);
-//             	$('input[name="fd_name"]').val(na);
-//             	$('input[name="fd_price"]').val(pr);
-//             	$('input[name="fd_date"]').val(dt);
-
-            	});
-            </script>
-            <jsp:include page="insertReview.jsp"></jsp:include>
-            
+            <input type="button" value="리뷰 등록" class="btn py-3 px-4 btn-primary"  id="modal-open">
+            <div class="container"> 
           </div>
         </div>
- 
-<!--  리뷰등록창 -->
-	<div class="wrap">
-        <h1>후기</h1>
-       <form action="${pageContext.request.contextPath}/trainer/insertReview" class="bg-light p-4" method="post" >
-            <input type="hidden" name="re_point" id="re_point" value="3"/>
-            <input type="hidden" name="u_id" value="${u_id}" class="swal2-input">
-			 <input type="hidden" name="t_id" value="${t_id}" class="swal2-input">
-            <p class="title_star">별점과 이용경험을 남겨주세요.</p>
-     
-            <div class="review_rating rating_point">
-                <div class="warning_msg">별점을 선택해 주세요.</div>
-                <div class="rating">
-                    <div class="ratefill"></div>
-                    <!-- [D] 해당 별점이 선택될 때 그 점수 이하의 input엘리먼트에 checked 클래스 추가 -->
-                    <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
-                    <label for="rating1"></label>
-                    <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
-                    <label for="rating2"></label>
-                    <input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점" >
-                    <label for="rating3"></label>
-                    <input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
-                    <label for="rating4"></label>
-                    <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
-                    <label for="rating5"></label>
-                </div>
-            </div>
-            <div class="review_contents">
-                <div class="warning_msg">5자 이상의 리뷰 내용을 작성해 주세요.</div>
-               <textarea rows="10" name="re_coment" class="review_textarea"></textarea>
-            </div>   
-            <div class="cmd">
-                <input type="submit" id="save" value="등록">
- 		  		<input type="reset" value="취소">
-            </div>
-        </form>
-    </div>
         
-         
-          
-       
+  <div class="popup-wrap" id="popup"> 
+    <div class="popup">	
+      <div class="popup-head">	
+          <span class="head-title">Review</span>
+      </div>
+      <div class="popup-body">	
+        <div class="body-content">
+          <div class="body-titlebox">
+          	별점과 이용경험을 남겨주세요.
+          </div>
+          <div class="body-contentbox">
+            <form action="${pageContext.request.contextPath}/trainer/insertReview" method="post">
+            	<input type="hidden" name="re_point" id="re_point" value="">
+            <input type="hidden" name="u_id" id="u_id" value="${u_id }" >
+			 <input type="hidden" name="t_id" id="t_id" value="${t_id }" >
+			<div class="body-input">
+            <div class="review_rating rating_point">
+                <div class="starRev">
+				  <span class="starR1 on" value="0.5"></span>
+				  <span class="starR2" value="1"></span>
+				  <span class="starR1" value="1.5"></span>
+				  <span class="starR2" value="2"></span>
+				  <span class="starR1" value="2.5"></span>
+				  <span class="starR2" value="3"></span>
+				  <span class="starR1" value="3.5"></span>
+				  <span class="starR2" value="4"></span>
+				  <span class="starR1" value="4.5"></span>
+				  <span class="starR2" value="5"></span>
+				</div>
+            </div>
+               <textarea rows="5" name="re_coment" id="re_coment" class="review_textarea"></textarea>
+            </div>  
+   	 		 <div class="foot">
+                <input type="submit" class="pop-btn confirm" id="confirm" value="등록" onclick="return CheckForm();">
+ 		  		<input type="reset" class="pop-btn close" id="close" value="취소">
+     		 </div>
+      		 </form>
+          </div>
+   	  		</div>
+        </div>
+  	  </div>
+</div>
+</div>
+   
+    
+
         <div class="row ftco-animate">
           <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel">
+            <div class="carousel-testimony owl-carousel" >
+            
+          <c:forEach var="reviewDTO" items="${reviewList }">
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
                   <div class="text">
                      <div class="line">
-                       <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                       <p class="mb-4 pb-1">${reviewDTO.re_coment}</p>
                        <span class="quote d-flex align-items-center justify-content-center">
                          <i class="icon-quote-left"></i>
                        </span>
@@ -270,100 +282,20 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                        <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_1.jpg)">
                         </div>
                         <div class="ml-4">
-                           <p class="name">Gabby Smith</p>
-                          <span class="position">Customer</span>
+                           <p class="name">${reviewDTO.u_id}</p>
+                           <span class="starR1" value="1"></span><span class="starR2" value="1"></span><p class="name">${reviewDTO.re_point}</p><br>
+                          <span class="position"><fmt:formatDate value="${reviewDTO.re_date}" pattern="yy년 MM월 dd일"/></span>
                         </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-                       <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                       <span class="quote d-flex align-items-center justify-content-center">
-                         <i class="icon-quote-left"></i>
-                       </span>
-                     </div>
-
-                    <div class="d-flex align-items-center">
-                       <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_2.jpg)">
-                        </div>
-                        <div class="ml-4">
-                           <p class="name">Floyd Weather</p>
-                          <span class="position">Customer</span>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-                       <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                       <span class="quote d-flex align-items-center justify-content-center">
-                         <i class="icon-quote-left"></i>
-                       </span>
-                     </div>
-
-                    <div class="d-flex align-items-center">
-                       <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_3.jpg)">
-                        </div>
-                        <div class="ml-4">
-                           <p class="name">James Dee</p>
-                          <span class="position">Customer</span>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-                       <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                       <span class="quote d-flex align-items-center justify-content-center">
-                         <i class="icon-quote-left"></i>
-                       </span>
-                     </div>
-
-                    <div class="d-flex align-items-center">
-                       <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_4.jpg)">
-                        </div>
-                        <div class="ml-4">
-                           <p class="name">Lance Roger</p>
-                          <span class="position">Customer</span>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="text">
-                    <div class="line">
-                       <p class="mb-4 pb-1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                       <span class="quote d-flex align-items-center justify-content-center">
-                         <i class="icon-quote-left"></i>
-                       </span>
-                     </div>
-
-                    <div class="d-flex align-items-center">
-                       <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_2.jpg)">
-                        </div>
-                        <div class="ml-4">
-                           <p class="name">Kenny Bufer</p>
-                          <span class="position">Customer</span>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </c:forEach>
+            
             </div>
           </div>
         </div>
+<!--         container -->
       </div>
     </section>
 
@@ -374,6 +306,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
            <div class="col-md-10">
               <div class="row">
                 <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+
                   <div class="block-18 text-center">
                     <div class="text">
                        <strong class="number" data-number="2560">0</strong>
@@ -407,10 +340,11 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                 </div>
               </div>
             </div>
-        </div>
-      </div>
+       	 </div>
+    	 </div>
+  	  </div>
     </section>
-
+	
 
       <section class="ftco-gallery ftco-section">
        <div class="container-fluid px-md-5">
@@ -478,7 +412,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                   </a>
                </div>
         </div>
-       </div>
+       </div> 
     </section>
 
       
@@ -491,11 +425,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-<!-- 	리뷰창 SweetAlert -->
-	<script  src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-	</script>
-	 <script src="${pageContext.request.contextPath}/resources/js/test.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/review.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/css/review/review-js.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>

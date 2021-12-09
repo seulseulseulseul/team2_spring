@@ -84,21 +84,34 @@ public class TrainerController {
 		}
 		
 			
-			//리뷰
+
 			
+		//리뷰
 			//일반 회원 정보 불러오기
 			String u_id=(String)session.getAttribute("u_id");
+			//리뷰 불러오기
+			List<ReviewDTO> reviewList = trainerService.getReviewList(t_id);
+			
 			model.addAttribute("u_id", u_id);
 			model.addAttribute("t_id", t_id);
-
+			model.addAttribute("reviewList", reviewList);
+			
+		
 		return url;
 	}
+	//리뷰작성
 	@RequestMapping(value = "/trainer/insertReview", method = RequestMethod.POST)
 	public String reviewInsert(ReviewDTO reviewDTO){
 		System.out.println("Controller reviewInsert()");
 		trainerService.insertReview(reviewDTO);
 		return "redirect:/trainer/about?t_id="+reviewDTO.getT_id();
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String reviewTest(){
+		return "/trainer/reviewTest";
+	}
+	
 
 	
 //	@RequestMapping(value = "/center/insertPro", method = RequestMethod.POST)

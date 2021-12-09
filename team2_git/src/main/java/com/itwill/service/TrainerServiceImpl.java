@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwill.dao.TrainerDAO;
+import com.itwill.domain.PageDTO;
 import com.itwill.domain.ReviewDTO;
 //import com.itwill.domain.MemberDTO;
 import com.itwill.domain.TrainerDTO;
@@ -45,6 +46,15 @@ public class TrainerServiceImpl implements TrainerService {
 		}
 		trainerDAO.insertReview(reviewDTO);
 	}
+
+
+	@Override
+	public List<ReviewDTO> getReviewList(String t_id) {
+		System.out.println("Service getReviewList");
+		return trainerDAO.getReviewList(t_id);
+	}
+	
+	
 
 //	@Override
 //	public List<MemberDTO> getTrainerInfoList() throws Exception {

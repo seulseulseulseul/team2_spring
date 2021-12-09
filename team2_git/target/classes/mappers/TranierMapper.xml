@@ -54,6 +54,10 @@
 		select max(re_num) from review
 	</select>
 	
+	<select id = "getReviewList" resultType="com.itwill.domain.ReviewDTO">
+		select * from review where t_id=#{t_id} order by re_num desc 
+	</select>
+	
 	<select id= "getCenterCount" resultType="java.lang.Integer">
 	</select>
 

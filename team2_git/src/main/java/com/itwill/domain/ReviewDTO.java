@@ -1,11 +1,12 @@
 package com.itwill.domain;
 
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 
 public class ReviewDTO {
 	private int re_num;
 	private int book_no;
-	private int re_point;
+	private double re_point;
 	private String re_coment;
 	private Timestamp re_date;
 	private String u_id;
@@ -22,10 +23,10 @@ public class ReviewDTO {
 	public void setBook_no(int book_no) {
 		this.book_no = book_no;
 	}
-	public int getRe_point() {
+	public double getRe_point() {
 		return re_point;
 	}
-	public void setRe_point(int re_point) {
+	public void setRe_point(double re_point) {
 		this.re_point = re_point;
 	}
 	public String getRe_coment() {
