@@ -2,27 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    
-<section>
-
-</section>   
+<div class="col-12 w-100 text-rigth">
     
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="index.html">Meditative</a>
-			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-			        <span class="oi oi-menu"></span> Menu
-			      </button>
-  				</div>
-  				
-	
-  				
+  					<a class="navbar-brand w-100" href="index.html">우리 동네 트레이너</a>
 <c:if test="${empty sessionScope.u_id}">
-		<div id="login"><a href="${pageContext.request.contextPath}/member/user_login">로그인</a> | 
-						<a href="${pageContext.request.contextPath}/member/trainer_login">트레이너 로그인</a> | 
-             		    <a href="${pageContext.request.contextPath}/member/user_register">회원가입</a> |
-             		    <a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a> </div>	
+		<div id="login"><a href="${pageContext.request.contextPath}/member/start_login">로그인</a> | 
+<%-- 						<a href="${pageContext.request.contextPath}/member/trainer_login">트레이너 로그인</a> |  --%>
+             		    <a href="${pageContext.request.contextPath}/member/start_register">회원가입</a> |
+<%--              		    <a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a> </div>	 --%>
 </c:if>
 
 <%-- <c:if test="${empty sessionScope.t_id}"> --%>
@@ -59,6 +50,10 @@
 	               <a href="${pageContext.request.contextPath}/member/logout">로그인</a> | 
                    <a href="${pageContext.request.contextPath}/member/trainer_update">트레이너정보수정</a></div>
 </c:if>
+			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+			        <span class="oi oi-menu"></span> Menu
+			      </button>
+  				</div>
   				
   				
   				<div class="col-12 w-100 text-center">
@@ -71,9 +66,12 @@
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/schedule" class="nav-link">커뮤니티</a></li>
 			        </ul>
 			      	<br>
+	
+
+</div>
+</div>							
 			      				      
 			      </div>
   				</div>
   			</div>
-  		</div>
 	  </nav>

@@ -36,47 +36,65 @@
    <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
+<!--     <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5"> -->
+<!--       <div class="overlay"></div> -->
+<!--       <div class="container"> -->
+<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
+<!--           <div class="col-md-9 ftco-animate text-center"> -->
+<!--             <h1 class="mb-3 bread">로그인 선택창</h1> -->
+<%--             <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/member/user_register">일반 회원가입</a></span> <span><a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a></span></p> --%>
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </section> -->
+
+
+		<!--  style="background-image: url('../images/bg_3.jpg');"  -->
+   <section class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">로그인 선택창</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/member/user_register">일반 회원가입</a></span> <span><a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a></span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-          	<div class="row">
+          	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           	<div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <li><a href="${pageContext.request.contextPath}/member/user_login" class="btn py-3 px-4 btn-primary">유저 로그인 </a></li>
+                <li><a href="${pageContext.request.contextPath}/member/user_login" class="btn py-3 px-4 btn-primary">회원 로그인 </a></li>
                 <li><a href="${pageContext.request.contextPath}/member/trainer_login" class="btn py-3 px-4 btn-primary">트레이너 로그인 </a></li>
                 </ul>
+                
+                <br> 
+                <!-- 네이버 로그인 창으로 이동 --> 
+                <div id="naver_id_login" style="text-align:center">
+                <a href="${url}"> 
+                <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+                </div>
+				<br>
               </div>
             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+		</section>
+	
+
+
 <!-- 		              <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_1.jpg');"> -->
 <!-- 		              </a> -->
 	         
 	           
 
-						<div class="row mt-5">
-			        <div class="col">
-			          <div class="block-27">
-			            <ul>
+<!-- 						<div class="row mt-5"> -->
+<!-- 			        <div class="col"> -->
+<!-- 			          <div class="block-27"> -->
+<!-- 			            <ul> -->
 		        
-			          </div>
-			        </div>
-			 	 </div>
-		</div> <!-- .col-md-8 -->
+<!-- 			          </div> -->
+<!-- 			        </div> -->
+<!-- 			 	 </div> -->
+<!-- 		</div> .col-md-8 -->
 		
-         </div>
+<!--          </div> -->
 <!-- 		<div class="col-lg-4 sidebar ftco-animate"> -->
 <!-- 		   <div class="sidebar-box"> -->
 <!--               <form action="#" class="search-form"> -->
@@ -97,9 +115,7 @@
 <!--               </div> -->
 <!--             </div> -->
 <!--          </div> -->
-         </div>
-         </div>
-		</section>
+
 		    <jsp:include page="../inc/bottom.jsp"></jsp:include>
     
 

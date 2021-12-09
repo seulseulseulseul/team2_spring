@@ -51,7 +51,7 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h4>회원 로그인</h4>
+                 <h3 class="mb-5">회원 로그인</h3>
 							<form action="${pageContext.request.contextPath}/member/user_loginPro" method="post">
 								<div class="form-group">
 									<label>ID</label>

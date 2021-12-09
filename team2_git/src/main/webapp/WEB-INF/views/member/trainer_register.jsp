@@ -57,17 +57,17 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">트레이너 회원가입</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
+<%--     <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5"> --%>
+<!--       <div class="overlay"></div> -->
+<!--       <div class="container"> -->
+<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
+<!--           <div class="col-md-9 ftco-animate text-center"> -->
+<!--             <h1 class="mb-3 bread">트레이너 회원가입</h1> -->
+<!--             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </section> -->
 
     <section class="ftco-section">
       <div class="container">
@@ -111,14 +111,14 @@
 									<input type="text" name="t_phone" id="t_phone" class="form-control">
 								</div>
 								<div class="form-group">
-									<label>Email</label>
+									<label>E-mail</label>
 									<input type="email" name="t_email" id="t_email" class="form-control">
 								</div>
 								<div class="form-group text-right">
 									<button type="submit" class="btn btn-primary btn-block"  onclick="return trainer_CheckForm();">회원가입</button>
 								</div>
 								<div class="form-group text-center">
-									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/start_login.jsp">로그인</a>
+									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/start_login">로그인</a>
 								</div>
 							</form>
               </div>

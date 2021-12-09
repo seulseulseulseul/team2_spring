@@ -14,18 +14,16 @@ function user_CheckForm(){
 	
 	//밑에서 바로 $로 가져왔음
 	
+	if($("#user_IdCheck").val()=="N"){
+			alert("중복체크하세요.");
+			return false;
+		}
 	  
 	//아이디를 입력하지 않았을 경우
 		if(u_id.val() == ""){
 			alert("아이디를 입력하세요.");
 			return false;
 		}
-		
-		if($("#user_IdCheck").val() == "N"){
-			alert("중복체크하세요.");
-			return false;
-		}
-		
 		
 	//비밀번호를 입력하지 않았다면
 		if(u_pass.val() == ""){

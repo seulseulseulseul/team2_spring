@@ -39,7 +39,7 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3>트레이너 로그인</h3>
+                 <h3 class="mb-5">트레이너 로그인</h3>
 							<form action="${pageContext.request.contextPath}/member/trainer_loginPro" id="join" method="post">
 								<div class="form-group">
 									<label>ID</label>
@@ -59,7 +59,6 @@
 									<a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a>
 								</div>
 								<div class="title-line">
-									or
 								</div>
               	<a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
 							</form>

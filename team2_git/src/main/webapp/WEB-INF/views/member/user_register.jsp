@@ -56,17 +56,17 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">유저 회원가입</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
+<%--     <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5"> --%>
+<!--       <div class="overlay"></div> -->
+<!--       <div class="container"> -->
+<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
+<!--           <div class="col-md-9 ftco-animate text-center"> -->
+<!--             <h1 class="mb-3 bread">유저 회원가입</h1> -->
+<!--             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </section> -->
 
     <section class="ftco-section">
       <div class="container">
@@ -80,7 +80,6 @@
 									<button type="button" value="N" id="user_IdCheck" onclick="u_CheckId();" class="btn btn-primary">아이디 중복확인</button><br>
 									<input type="text" name="u_id" id="u_id" class="form-control" placeholder="아이디 확인 필수" >
 								</div>					
-								</div>
 								<div class="form-group">
 									<label class="fw">비밀번호</label>
 									<input type="password" name="u_pass" id="u_pass" class="form-control">
@@ -105,7 +104,7 @@
 									<button type="submit" class="btn btn-primary btn-block"  onclick="return user_CheckForm();">회원가입</button>
 								</div>
 								<div class="form-group text-center">
-									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/user_login">로그인</a>
+									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/start_login">로그인</a>
 								</div>
 							</form>
               </div>
@@ -130,9 +129,6 @@
 
       <jsp:include page="../inc/bottom.jsp"></jsp:include>
     
-    
-  
-
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 

@@ -48,24 +48,28 @@
 <!--       </div> -->
 <!--     </section> -->
 
-    <section class="ftco-section">
+     <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-          	<div class="row">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           	<div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <li><a href="${pageContext.request.contextPath}/member/user_register" class="btn py-3 px-4 btn-primary">유저 회원가입 </a></li>
+                <li><a href="${pageContext.request.contextPath}/member/user_register" class="btn py-3 px-4 btn-primary">회원가입 </a></li>
                 <li><a href="${pageContext.request.contextPath}/member/trainer_register" class="btn py-3 px-4 btn-primary">트레이너 회원가입 </a></li>
                 </ul>
               </div>
             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+	   </section>
+            
 <!-- 		              <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_1.jpg');"> -->
 <!-- 		              </a> -->
-	         
 	           
-
 <!-- 						<div class="row mt-5"> -->
 <!-- 			        <div class="col"> -->
 <!-- 			          <div class="block-27"> -->
@@ -76,17 +80,16 @@
 <!-- 			 	 </div> -->
 <!-- 		</div> .col-md-8 -->
 		
-<!--          </div> -->
 <!-- 		<div class="col-lg-4 sidebar ftco-animate"> -->
 <!-- 		   <div class="sidebar-box"> -->
-<!-- <!--               <form action="#" class="search-form"> --> 
-<!-- <!--                 <div class="form-group"> --> 
-<!-- <!--                 	<div class="icon"> --> 
-<!-- <!-- 	                  <span class="icon-search"></span> --> 
-<!-- <!-- 	                </div> --> 
-<!-- <!--                   <input type="text" class="form-control" placeholder="검색기능 구현"> --> 
-<!-- <!--                 </div> --> 
-<!-- <!--               </form> --> 
+<!--                <form action="#" class="search-form">  -->
+<!--                  <div class="form-group">  -->
+<!--                 	<div class="icon">  -->
+<!--  	                  <span class="icon-search"></span>  -->
+<!--  	                </div>  -->
+<!--                    <input type="text" class="form-control" placeholder="검색기능 구현">  -->
+<!--                  </div>  -->
+<!--                </form>  -->
 <!--             </div> -->
 <!--             <div class="sidebar-box ftco-animate"> -->
 <!--               <div class="categories"> -->
@@ -96,14 +99,10 @@
 <!--                 </ul> -->
 <!--               </div> -->
 <!--             </div> -->
-         </div>
-         </div>
-         </div>
-		</section>
+<!-- </div> -->
+
 		    <jsp:include page="../inc/bottom.jsp"></jsp:include>
-    
-    
-    
+
   
 
   <!-- loader -->
