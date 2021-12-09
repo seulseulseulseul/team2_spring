@@ -43,7 +43,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-3 bread">커뮤니티</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
+            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/index">Home</a></span> <span class="mr-2"><a href="${pageContext.request.contextPath}/commu/list">커뮤니티</a></span> <span>${commuDTO.c_num}번 글 </span></p>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
           	<div class="form-group">
           		<c:if test="${commuDTO.u_id eq sessionScope.u_id }">
          	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/commu/update?c_num=${commuDTO.c_num}'">
-         	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/commu/delete?c_num=${commuDTO.c_num}'">
+         	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/commu/deletePro?c_num=${commuDTO.c_num}'">
          	 	</c:if>
          	 </div>
 
@@ -71,7 +71,7 @@
               <h3 class="mb-3">댓글</h3>
               <ul class="comment-list">
         	<c:forEach var="replyDTO" items="${replyList}">
-                <li class="comment" style="margin-left:${20*replyDTO.depth}">
+                <li class="comment" style="margin-left:${replyDTO.depth*60}px">
                   <div class="vcard bio">
                     <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
                   </div>
@@ -79,25 +79,43 @@
                     <div class="meta">${replyDTO.nic} | ${replyDTO.date}</div>
                     <p>${replyDTO.content}</p>
                     <c:if test="${replyDTO.u_id eq sessionScope.u_id }">
-	                    <p><a href="${pageContext.request.contextPath}/reply/update?r_num=${replyDTO.r_num}" class="reply">수정</a>
-	                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/reply/delete?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">삭제</a></p>
+	                    <p><a href="${pageContext.request.contextPath}/commu/updateReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">수정</a>
+	                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/commu/deleteReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">삭제</a></p>
                   	</c:if>
                   </div>
                 </li>
 			 </c:forEach>
              </ul>
       </div>
+    	<div class="row mt-5">
+	        <div class="col">
+	          <div class="block-27">
+	            <ul>
+	            <c:if test="${pageDTO.startPage > pageDTO.pageBlock}">
+	              <li><a href="${pageContext.request.contextPath}/commu/content?c_num=${commuDTO.c_num }&pageNum=${pageDTO.startPage-pageDTO.pageBlock}">&lt;</a></li>
+				</c:if>
+	            <!-- var: 변수명. begin: 시작. end: 끝. step:증가  -->
+				<c:forEach var="i" begin="${pageDTO.startPage}" end="${pageDTO.endPage}" step="1">
+				  <li class="active"><a href="${pageContext.request.contextPath}/commu/content?c_num=${commuDTO.c_num }&pageNum=${i }">${i }</a></li>
+				</c:forEach>
+				<c:if test="${pageDTO.endPage < pageDTO.pageCount}">
+				  <li><a href="${pageContext.request.contextPath}/commu/content?c_num=${commuDTO.c_num }&pageNum=${pageDTO.startPage+pageDTO.pageBlock}">&gt;</a></li>
+				</c:if>
+	            </ul>
+	          </div>
+	        </div>
+	 	 </div>
 
 	 <div class="comment-form-wrap pt-5">
                 <h3 class="mb-3">댓글 등록</h3>
-                <form action="${pageContext.request.contextPath}/reply/insert" class="bg-light p-4" method="post">
+                <form action="${pageContext.request.contextPath}/commu/insertReply" class="bg-light p-4" method="post">
                 <input type="hidden" name="c_num" value="${commuDTO.c_num}">
                   <div class="form-group">
                     <label for="content">내용</label>
                     <textarea name="content" cols="30" rows="3" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" onclick="return " value="작성" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" value="작성" class="btn py-3 px-4 btn-primary">
                     <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
                   </div>
 

@@ -82,9 +82,7 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li>
-                <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li>
-                <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li>
+                <li><a href="${pageContext.request.contextPath}/commu/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>
             </div>

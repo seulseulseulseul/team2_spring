@@ -31,12 +31,12 @@ public class ReplyServiceImpl implements ReplyService{
 			replyDTO.setR_num(replyDAO.getMaxNum()+1);
 		}
 		// 댓글 순서 설정
-		if(replyDAO.getMaxOrder()==null) {
+		if(replyDAO.getMaxOrder(replyDTO)==null) {
 			// 글이 없는경우 1로 설정
-			replyDTO.setR_num(1);
+			replyDTO.setR_order(1);
 		} else {
 			// 글이 있으면 max(r_order)+1
-			replyDTO.setR_order(replyDAO.getMaxOrder()+1); // 댓글 순서
+			replyDTO.setR_order(replyDAO.getMaxOrder(replyDTO)+1); // 댓글 순서
 		}
 		
 		replyDAO.insertBoard(replyDTO);
@@ -104,25 +104,25 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 	// 댓글목록의 마지막 페이지 불러오기
 	@Override
-	public List<ReplyDTO> getLastPage(int c_num) {
-		// 한화면에 보여줄 댓글개수 10개 설정
+	public Integer getLastPage(int c_num) {
+		// 한화면에 보여지는 댓글개수 = 10개
 		int pageSize=10;
 		// 커뮤니티글의 댓글 개수
 		int boardCount = replyDAO.getBoardCount(c_num);
 		// 마지막 페이지
 		int currentPage = ((boardCount-1)/pageSize) + (boardCount%pageSize==0?0:1);
-		// 마지막 페이지 첫 줄
-		int startRow=((currentPage-1)*pageSize)+1;
+//		// 마지막 페이지 첫 줄
+//		int startRow=((currentPage-1)*pageSize)+1;
+//		
+//		// pageDTO 생성
+//		PageDTO pageDTO=new PageDTO();
+//		pageDTO.setPageSize(pageSize);
+//		pageDTO.setCurrentPage(currentPage);
+//		
+//		// 댓글 목록 불러오기
+//		List<ReplyDTO> replyList=replyDAO.getBoardList(pageDTO);
 		
-		// pageDTO 생성
-		PageDTO pageDTO=new PageDTO();
-		pageDTO.setPageSize(pageSize);
-		pageDTO.setCurrentPage(currentPage);
-		
-		// 댓글 목록 불러오기
-		List<ReplyDTO> replyList=replyDAO.getBoardList(pageDTO);
-		
-		return replyList;
+		return currentPage;
 	}
 	@Override
 	public Integer isNoReply(int r_num) {

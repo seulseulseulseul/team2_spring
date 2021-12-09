@@ -26,8 +26,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 	@Override
-	public Integer getMaxOrder() {
-		return sqlSession.selectOne(namespace+".getMaxOrder");
+	public Integer getMaxOrder(ReplyDTO replyDTO) {
+		return sqlSession.selectOne(namespace+".getMaxOrder", replyDTO);
 	}
 	@Override
 	public void insertBoard(ReplyDTO replyDTO) {
@@ -55,7 +55,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 	@Override
 	public void deleteBoardAll(int c_num) {
-		sqlSession.delete(namespace + ".deleteBoard", c_num);
+		sqlSession.delete(namespace + ".deleteBoardAll", c_num);
 	}
 	@Override
 	public Integer getBoardCount(int c_num) {

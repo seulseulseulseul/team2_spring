@@ -11,7 +11,7 @@ public interface ReplyDAO {
 	
 	public Integer getMaxNum();
 	
-	public Integer getMaxOrder();
+	public Integer getMaxOrder(ReplyDTO replyDTO);
 	
 	public void insertBoard(ReplyDTO replyDTO);
 	

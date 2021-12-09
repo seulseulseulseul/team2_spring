@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -142,6 +144,10 @@ public class CommuController {
 		// 댓글목록 불러오기
 		List<ReplyDTO> replyList = replyService.getBoardList(pageDTO);
 		
+		// 커뮤니티글 전체 댓글 개수
+		int count = replyService.getBoardCount(c_num);
+		pageDTO.setCount(count);
+		
 		model.addAttribute("commuDTO", commuDTO);
 		model.addAttribute("replyList", replyList);
 		
@@ -259,6 +265,7 @@ public class CommuController {
 			// 알림창
 			model.addAttribute("msg", "커뮤니티글이 삭제되었습니다.");
 			model.addAttribute("url","/commu/list");
+			
 		} else { // 본인이 아닐 경우
 			// 알림창
 			model.addAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
@@ -266,5 +273,163 @@ public class CommuController {
 		}
 		
 		return "commu/alert";
+	}
+//	댓글기능
+	// 커뮤니티글에 댓글작성
+	@RequestMapping(value = "/commu/insertReply", method = RequestMethod.POST)
+	public String insert(Model model, HttpSession session, HttpServletRequest request) {
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		// 로그인 여부 확인
+		if(session.getAttribute("u_id")==null){ // 비로그인
+			// 알람창
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("url","/commu/content?c_num="+c_num);
+			return "commu/alert";
+		}
+		
+		// ReplyDTO 객체 생성
+		ReplyDTO replyDTO = new ReplyDTO();
+		// 세션에서 id, 닉네임 받아오기
+		replyDTO.setU_id(session.getAttribute("u_id").toString());
+		replyDTO.setNic(session.getAttribute("nic").toString());
+		// 댓글 정보 replyDTO에 저장
+		replyDTO.setC_num(c_num);
+		replyDTO.setContent(request.getParameter("content"));
+		replyDTO.setParent(0); // 부모댓글 없음
+		replyDTO.setDepth(0); // 깊이 없음
+		
+		// replyDTO 전달하여 댓글 작성
+		replyService.insertBoard(replyDTO);
+		
+		// 댓글목록의 마지막 페이지 불러오기 
+		int currentPage = replyService.getLastPage(c_num);
+		
+		return "redirect:/commu/content?c_num="+c_num+"&pageNum="+currentPage;
+	}
+	// 댓글에 댓글작성(대댓글)
+	@RequestMapping(value = "/commu/insertReply2", method = RequestMethod.POST)
+	public String insert2(Model model, HttpSession session, HttpServletRequest request) {
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		// 로그인 여부 확인
+		if(session.getAttribute("u_id")==null){ // 비로그인
+			// 알람창
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("url","/commu/content?c_num="+c_num);
+			return "commu/alert";
+		}
+		
+		// ReplyDTO 객체 생성
+		ReplyDTO replyDTO = new ReplyDTO();
+		ReplyDTO replyDTO2 = new ReplyDTO();
+		// 부모댓글 정보 가져오기
+		int r_num = Integer.parseInt(request.getParameter("r_num"));
+		replyDTO = replyService.getBoard(r_num);
+		int r_order = replyDTO.getR_order();
+		int depth = replyDTO.getDepth();
+		
+		// 대댓글 정보 replyDTO2에 저장
+		replyDTO2.setU_id(session.getAttribute("u_id").toString()); // 작성자 아이디
+		replyDTO2.setNic(session.getAttribute("nic").toString()); // 작성자 닉네임
+		replyDTO2.setC_num(c_num); // 커뮤니티글 번호
+		replyDTO2.setParent(r_num); // 부모댓글 번호
+		replyDTO2.setR_order(r_order +1); // 부모댓글 순서 +1
+		replyDTO2.setDepth(depth +1); // 부모댓글 깊이 +1
+		replyDTO.setContent(request.getParameter("content")); // 글내용
+		
+		// 댓글 순서 재정렬
+		replyService.reOrder(r_order); // 부모댓글보다 r_order가 큰 댓글들 r_order +1
+		
+		// replyDTO2 전달하여 댓글 작성
+		replyService.insertBoard(replyDTO2);
+		
+		// 댓글목록의 마지막 페이지 불러오기 
+		int currentPage = replyService.getLastPage(c_num);
+		
+		return "redirect:/commu/content?c_num="+c_num+"&pageNum="+currentPage;
+	}
+	// 댓글 삭제
+	@RequestMapping(value = "/commu/deleteReply", method = RequestMethod.GET)
+	public String delete(Model model, HttpSession session, HttpServletRequest request) {
+		// 로그인 여부
+		if(session.getAttribute("u_id")==null) { // 비로그인
+			// 알림창
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("url","/index");
+			
+			return "commu/alert";
+		} 
+		// request에서 글번호, 댓글번호 가져오기
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		int r_num = Integer.parseInt(request.getParameter("r_num"));
+		
+		// CommuDTO 객체 생성
+		ReplyDTO replyDTO = new ReplyDTO();
+		// 본인확인에 필요한 아이디 session에서 가져오기
+		Object u_id = session.getAttribute("u_id");
+		replyDTO.setU_id(u_id.toString());
+		// 본인확인에 필요한 댓글번호 request에서 가져오기
+		replyDTO.setR_num(r_num);
+		
+		// 본인확인
+		if(replyService.numCheck(replyDTO)!=null) { // 본인일 경우
+			// 대댓글 유무 조회
+			if(replyService.isNoReply(r_num) == 1) { // 대댓글이 있는 경우
+				// 알림창
+				model.addAttribute("msg", "댓글이 달려있어 삭제할 수 없습니다.");
+				model.addAttribute("url","/commu/content?c_num="+c_num);
+				return "commu/alert";
+			}
+			
+			replyService.deleteBoard(r_num);
+			
+			return "redirect:/commu/content?c_num="+c_num;
+			
+		} else { // 본인이 아닐 경우
+			// 알람창
+			model.addAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
+			model.addAttribute("url","/commu/content?c_num="+c_num);
+			
+			return "commu/alert";
+		}
+	}
+	
+	// 댓글 수정
+	@RequestMapping(value = "/commu/updateReply", method = RequestMethod.GET)
+	public String update(HttpSession session, HttpServletRequest request, Model model){
+		// request에서 글번호, 댓글번호 가져오기
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		// 로그인 여부
+		if(session.getAttribute("u_id")==null) { // 비로그인
+			// 알림창
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("url","/commu/content?c_num="+c_num);
+			
+			return "commu/alert";
+		}
+		// CommuDTO 객체 생성
+		ReplyDTO replyDTO = new ReplyDTO();
+		// 본인확인에 필요한 정보 session에서 가져오기
+		replyDTO.setU_id(session.getAttribute("u_id").toString());
+		// 본인확인에 필요한 글번호 request에서 가져오기
+		replyDTO.setC_num(Integer.parseInt(request.getParameter("r_num")));
+		
+		// 본인확인
+		if(replyService.numCheck(replyDTO)!=null) {
+			// 헤더에서 이전 페이지를 읽는다
+			String referer = request.getHeader("Referer");
+			// 알림창
+			model.addAttribute("msg", "자신의 글만 수정할 수 있습니다.");
+			model.addAttribute("url", referer);
+			return "commu/alert";
+		}
+		// request에서 댓글 정보 가져오기
+		replyDTO.setContent(request.getParameter("content"));
+		// replyDTO 전달
+		replyService.updateBoard(replyDTO);
+		
+		// 헤더에서 이전 페이지를 읽는다
+		String referer = request.getHeader("Referer");
+		// 이전 페이지로 리다이렉트
+		return "redirect:"+ referer; 
 	}
 }

@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id = "getMaxOrder" resultType="java.lang.Integer">
-		select max(r_order) from reply
+		select max(r_order) from reply where c_num=${c_num}
 	</select>
 
 	<insert id = "insertBoard">
