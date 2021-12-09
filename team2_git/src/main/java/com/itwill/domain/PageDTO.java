@@ -12,8 +12,15 @@ public class PageDTO {
 	private int endPage;
 	private int c_num;
 	private int pageCount;
+	private String search;
 	
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public int getC_num() {
 		return c_num;
 	}
@@ -61,7 +68,7 @@ public class PageDTO {
 		
 	}
 	public void init() {
-		pageBlock=10;
+		pageBlock=5;
 		startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		endPage=startPage+pageBlock-1;
 		pageCount=count/pageSize+(count%pageSize==0?0:1);

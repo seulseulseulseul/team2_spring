@@ -14,6 +14,8 @@ public interface CommuService {
 	
 	public List<CommuDTO> getBoardList(PageDTO pageDTO);
 	
+	public List<CommuDTO> getSearchList(PageDTO pageDTO);
+	
 	public CommuDTO getBoard(int c_num);
 	
 	public void updateBoard(CommuDTO commuDTO);
@@ -23,6 +25,8 @@ public interface CommuService {
 	public void updateReadcount(int c_num);
 	
 	public Integer getBoardCount();
+	
+	public Integer getSearchCount(String search);
 	
 	public CommuDTO numCheck(CommuDTO commuDTO);
 

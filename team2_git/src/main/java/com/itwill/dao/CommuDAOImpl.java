@@ -34,6 +34,10 @@ public class CommuDAOImpl implements CommuDAO {
 		return sqlSession.selectList(namespace + ".getBoardList", pageDTO);
 	}
 	@Override
+	public List<CommuDTO> getSearchList(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace + ".getSearchList", pageDTO);
+	}
+	@Override
 	public CommuDTO getBoard(int c_num) {
 		return sqlSession.selectOne(namespace + ".getBoard", c_num);
 	}
@@ -56,6 +60,10 @@ public class CommuDAOImpl implements CommuDAO {
 	@Override
 	public Integer getBoardCount() {
 		return sqlSession.selectOne(namespace + ".getBoardCount");
+	}
+	@Override
+	public Integer getSearchCount(String search) {
+		return sqlSession.selectOne(namespace + ".getSearchCount", search);
 	}
 
 }

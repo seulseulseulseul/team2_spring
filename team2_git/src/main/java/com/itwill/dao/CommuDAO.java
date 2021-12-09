@@ -15,6 +15,8 @@ public interface CommuDAO {
 	
 	public List<CommuDTO> getBoardList(PageDTO pageDTO);
 	
+	public List<CommuDTO> getSearchList(PageDTO pageDTO);
+	
 	public CommuDTO getBoard(int c_num);
 
 	public CommuDTO numCheck(CommuDTO commuDTO);
@@ -26,4 +28,6 @@ public interface CommuDAO {
 	public void updateReadcount(int c_num);
 	
 	public Integer getBoardCount();
+	
+	public Integer getSearchCount(String search);
 }

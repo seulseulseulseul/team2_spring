@@ -81,14 +81,14 @@
 			          <div class="block-27">
 			            <ul>
 			            <c:if test="${pageDTO.startPage > pageDTO.pageBlock}">
-			             <li><a href="${pageContext.request.contextPath}/commu/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">&lt;</a></li>
+			             <li><a href="${pageContext.request.contextPath}/commu/searchList?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">&lt;</a></li>
 						</c:if>
 			            <!-- var: 변수명. begin: 시작. end: 끝. step:증가  -->
 						<c:forEach var="i" begin="${pageDTO.startPage}" end="${pageDTO.endPage}" step="1">
-						 <li class="active"><a href="${pageContext.request.contextPath}/commu/list?pageNum=${i }">${i }</a></li>
+						 <li class="active"><a href="${pageContext.request.contextPath}/commu/searchList?pageNum=${i }">${i }</a></li>
 						</c:forEach>
 						<c:if test="${pageDTO.endPage < pageDTO.pageCount}">
-						 <li><a href="${pageContext.request.contextPath}/commu/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">&gt;</a></li>
+						 <li><a href="${pageContext.request.contextPath}/commu/searchList?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">&gt;</a></li>
 						</c:if>
 			            </ul>
 			          </div>
@@ -104,7 +104,7 @@
                 	<div class="icon">
 	                  <span class="icon-search" onclick="location.href='${pageContext.request.contextPath}/commu/searchList'"></span>
 	                </div>
-                  <input type="text" name="search" class="form-control" placeholder="제목으로 검색">
+                  <input type="text" name="search" class="form-control" placeholder="제목으로 검색" value="${pageDTO.search }">
                 </div>
               </form>
             </div>

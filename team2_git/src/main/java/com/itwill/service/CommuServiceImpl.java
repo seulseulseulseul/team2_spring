@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwill.dao.CommuDAO;
+import com.itwill.dao.ReplyDAO;
 import com.itwill.domain.CommuDTO;
 import com.itwill.domain.PageDTO;
 
@@ -17,6 +18,8 @@ public class CommuServiceImpl implements CommuService{
 	
 	@Inject
 	private CommuDAO commuDAO;
+	@Inject
+	private ReplyDAO replyDAO;
 	
 	// 커뮤니티글 작성
 	@Override
@@ -48,7 +51,27 @@ public class CommuServiceImpl implements CommuService{
 		pageDTO.setStartRow(startRow-1); // 디비 startRow-1
 		pageDTO.setEndRow(endRow);
 		
+//		// 커뮤니티글 댓글 개수 조회
+//		List<ReplyDTO> = commuDAO.getBoardList(pageDTO);
+//		
+//		replyDAO.getBoardCount(c_num);
+		
 		return commuDAO.getBoardList(pageDTO);
+	}
+	// 커뮤니티글 검색 결과 불러오기
+	@Override
+	public List<CommuDTO> getSearchList(PageDTO pageDTO) {
+		// pageSize, pageNum 담아옴
+		// currentPage startRow endRow
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow=(currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow-1); // 디비 startRow-1
+		pageDTO.setEndRow(endRow);
+		
+		return commuDAO.getSearchList(pageDTO);
 	}
 	// 커뮤니티글 불러오기
 	@Override
@@ -75,6 +98,11 @@ public class CommuServiceImpl implements CommuService{
 	@Override
 	public Integer getBoardCount() {
 		return commuDAO.getBoardCount();
+	}
+	// 커뮤니티글 검색 결과 개수 조회
+	@Override
+	public Integer getSearchCount(String search) {
+		return commuDAO.getSearchCount(search);
 	}
 	// 본인 확인
 	@Override

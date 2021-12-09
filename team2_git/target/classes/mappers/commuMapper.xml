@@ -17,6 +17,10 @@
 		select * from commu order by c_num desc limit #{startRow}, #{pageSize}
 	</select>
 	
+	<select id="getSearchList" resultType="com.itwill.domain.CommuDTO">
+		select * from commu where subject like CONCAT('%',#{search},'%') order by c_num desc limit #{startRow}, #{pageSize}
+	</select>
+	
 	<select id="getBoard" resultType="com.itwill.domain.CommuDTO">
 		select * from commu where c_num=#{c_num}
 	</select>
@@ -39,6 +43,10 @@
 	
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from commu
+	</select>
+	
+	<select id="getSearchCount" resultType="java.lang.Integer">
+		select count(*) from commu where subject like CONCAT('%',#{search},'%')
 	</select>
   
 </mapper>

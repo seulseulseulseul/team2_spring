@@ -93,7 +93,7 @@ public class CommuController {
 		return "redirect:/commu/list";
 	}
 	@RequestMapping(value = "/commu/list", method = RequestMethod.GET)
-	public String list(PageDTO pageDTO, HttpServletRequest request, Model model){
+	public String list(HttpServletRequest request, Model model){
 		// 한화면에 보여줄 글개수  10개 설정
 		int pageSize=10;
 		 
@@ -104,6 +104,7 @@ public class CommuController {
 			pageNum="1";
 		}
 		
+		PageDTO pageDTO = new PageDTO();
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		
@@ -118,6 +119,37 @@ public class CommuController {
 		model.addAttribute("pageDTO",pageDTO);
 		
 		return "commu/list";
+	}
+	@RequestMapping(value = "/commu/searchList", method = RequestMethod.GET)
+	public String list2(HttpServletRequest request, Model model){
+		// 검색어 가져오기
+		String search = request.getParameter("search");
+		
+		// 한화면에 보여줄 글개수  10개 설정
+		int pageSize=10;		 
+		// 페이지 번호 가져오기 
+		String pageNum=request.getParameter("pageNum");
+		// 페이지번호가 없으면 -> 1
+		if(pageNum==null){
+			pageNum="1";
+		}
+		
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setSearch(search);
+		
+		List<CommuDTO> commuList=commuService.getSearchList(pageDTO);
+		 
+		// 검색 결과 커뮤니티글 개수
+		int count = commuService.getSearchCount(search);
+		pageDTO.setCount(count);
+		 
+		// 데이터 담기
+		model.addAttribute("commuList",commuList);
+		model.addAttribute("pageDTO",pageDTO);
+		
+		return "commu/searchList";
 	}
 	@RequestMapping(value = "/commu/content", method = RequestMethod.GET)
 	public String content(CommuDTO commuDTO, PageDTO pageDTO, HttpServletRequest request, Model model){
@@ -217,36 +249,6 @@ public class CommuController {
 		
 		return "commu/alert";
 	}
-//	@RequestMapping(value = "/commu/delete", method = RequestMethod.GET)
-//	public String delete(RedirectAttributes ra, HttpSession session, HttpServletRequest request, Model model){
-//		// CommuDTO 객체 생성
-//		CommuDTO commuDTO = new CommuDTO();
-//		// 본인확인에 필요한 정보 session에서 가져오기
-//		commuDTO.setU_id(session.getAttribute("u_id").toString());
-//		// 본인확인에 필요한 글번호 request에서 가져오기
-//		int c_num = Integer.parseInt(request.getParameter("c_num"));
-//		commuDTO.setC_num(c_num);
-//		
-//		// 본인확인
-//		if(commuService.numCheck(commuDTO)!=null) { // 본인일 경우
-//			// 커뮤니티글 삭제
-//			commuService.deleteBoard(c_num);
-//			// 커뮤니티글에 속한 댓글 모두 삭제
-//			replyService.deleteBoardAll(c_num);
-//			// 알림창
-//			model.addAttribute("msg", "커뮤니티글이 삭제되었습니다.");
-//			model.addAttribute("url","/commu/list");
-//			
-//	        return "commu/alert";
-//			
-//		} else { // 본인이 아닐 경우
-//			// 알림창
-//			model.addAttribute("msg", "자신의 글만 삭제할 수 있습니다.");
-//			model.addAttribute("url","/commu/content?c_num="+c_num);
-//			
-//			return "commu/alert";
-//		}
-//	}
 	
 	@RequestMapping(value = "/commu/deletePro", method = RequestMethod.GET)
 	public String deletePro(CommuDTO commuDTO, RedirectAttributes ra, HttpSession session, HttpServletRequest request, Model model){
