@@ -24,6 +24,7 @@ import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 import com.itwill.domain.user_MemberDTO;
 import com.itwill.service.Trainer_MemberService;
+import com.itwill.service.user_MemberService;
 	
 @Controller
 public class Trainer_MemberController {
@@ -34,6 +35,9 @@ public class Trainer_MemberController {
 
 	@Inject
 	private Trainer_MemberService trainer_memberService;
+	
+	@Inject
+	private user_MemberService user_memberService;
 
 	@RequestMapping(value = "/member/trainer_register", method = RequestMethod.GET)
 	public String trainer_register() {
@@ -78,6 +82,7 @@ public class Trainer_MemberController {
 	
 			session.setAttribute("t_id", trainer_memberDTO.getT_id());
 			session.setAttribute("id", "2");
+			session.setAttribute("nic", trainer_memberDTO.getT_nic());
 			return "redirect:/index";
 			
 		}else {
@@ -135,7 +140,17 @@ public class Trainer_MemberController {
 	}
 	
 	@RequestMapping(value = "/member/trainer_insertPro", method = RequestMethod.POST)
-	public String insertPro(HttpServletRequest request, MultipartFile profile_photo) throws Exception{
+	public String insertPro(HttpSession session,Model model,HttpServletRequest request, MultipartFile profile_photo) throws Exception{
+		
+		//트레이너 기존정보 불러오기
+		String t_id=(String)request.getParameter("t_id");
+		
+		Trainer_MemberDTO trainer_memberDTO2;
+		
+		trainer_memberDTO2 = trainer_memberService.trainer_getMember(t_id);
+
+		model.addAttribute("trainer_memberDTO", trainer_memberDTO2);
+		
 		
 		System.out.println(" Trainer_MemberController  finsertPro ");
 		
@@ -171,6 +186,8 @@ public class Trainer_MemberController {
 		
 		trainer_memberDTO = trainer_memberService.trainer_getMember(t_id);
 
+		model.addAttribute("trainer_memberDTO", trainer_memberDTO);
+	
 			
 		//리뷰
 			//일반 회원 정보 불러오기
@@ -178,8 +195,9 @@ public class Trainer_MemberController {
 			//리뷰 불러오기
 			model.addAttribute("u_id", u_id);
 			model.addAttribute("t_id", t_id);
-			model.addAttribute("trainer_memberDTO", trainer_memberDTO);
 			
+			List<ReviewDTO> reviewList = trainer_memberService.getReviewList(t_id);
+			model.addAttribute("reviewList", reviewList);
 		
 		return "trainer/about";
 	}
@@ -187,10 +205,16 @@ public class Trainer_MemberController {
 	@RequestMapping(value = "/trainer/insertReview", method = RequestMethod.POST)
 	public String reviewInsert(ReviewDTO reviewDTO){
 		System.out.println("Controller reviewInsert()");
+		String u_nic = user_memberService.user_getMember(reviewDTO.getU_id()).getU_nic();
+		reviewDTO.setU_nic(u_nic);
 		trainer_memberService.insertReview(reviewDTO);
 		return "redirect:/trainer/about?t_id="+reviewDTO.getT_id();
 	}
-	
-	}
+//	@RequestMapping(value = "/trainer/deleteReview", method = RequestMethod.GET)
+//	public String delete(int re_num){
+//		trainer_memberService.deleteReview(re_num);
+//		return "redirect:/about?t_id=";
+//	}
+}
 	
 

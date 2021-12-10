@@ -81,15 +81,20 @@
                   </div>
                   <div class="comment-body">
                     <h5>${centerDTO2.b_title}</h5>
-                    <div class="meta">${centerDTO2.b_date}</div>
+                    <div class="meta"><fmt:formatDate value="${centerDTO2.b_date}" pattern="yyyy년 MM월 dd일 hh시 mm분"/></div>
                     <p>${centerDTO2.b_content}</p>
+<!--                     관리자만 답글 삭제 -->
+                    <c:if test="${ sessionScope.u_id=='admin' }">
                     <p><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/center/deleteReply?b_num=${centerDTO2.b_num}&b_reply=${centerDTO2.b_reply}" class="reply">삭제</a></p>
+                  	</c:if>
                   </div>
                 </li>
 			 </c:forEach>
              </ul>
       </div>
-
+      
+<!--       관리자만 답글 달기 -->
+	<c:if test="${ sessionScope.u_id=='admin' }">	
 	 <div class="comment-form-wrap pt-5">
                 <h3 class="mb-3">답변 등록</h3>
                 <form action="${pageContext.request.contextPath}/center/insertReply" class="bg-light p-4" method="post">
@@ -111,6 +116,8 @@
 
                 </form>
         </div>
+      </c:if>
+      
         </div>
         </div>
       </div>

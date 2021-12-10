@@ -64,6 +64,7 @@ public class user_MemberController {
 	
 			session.setAttribute("u_id", user_memberDTO.getU_id());
 			session.setAttribute("id", "1");
+			session.setAttribute("nic", user_memberDTO.getU_nic());
 			return "redirect:/index";
 			
 		}else {
@@ -127,11 +128,11 @@ public class user_MemberController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/member/start_login", method = RequestMethod.GET)
-	public String start_login() {
-		
-		return "member/start_login";
-	}
+//	@RequestMapping(value = "/member/start_login", method = RequestMethod.GET)
+//	public String start_login() {
+//		
+//		return "member/start_login";
+//	}
 	
 	@RequestMapping(value = "/member/start_register", method = RequestMethod.GET)
 	public String start_register() {

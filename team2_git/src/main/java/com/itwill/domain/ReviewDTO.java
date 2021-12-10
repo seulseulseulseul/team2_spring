@@ -11,6 +11,13 @@ public class ReviewDTO {
 	private Timestamp re_date;
 	private String u_id;
 	private String t_id;
+	private String u_nic;
+	public String getU_nic() {
+		return u_nic;
+	}
+	public void setU_nic(String u_nic) {
+		this.u_nic = u_nic;
+	}
 	public int getRe_num() {
 		return re_num;
 	}

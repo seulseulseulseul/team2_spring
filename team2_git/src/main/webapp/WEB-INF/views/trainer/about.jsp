@@ -282,9 +282,12 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                        <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_1.jpg)">
                         </div>
                         <div class="ml-4">
-                           <p class="name">${reviewDTO.u_id}</p>
+                           <p class="name">${reviewDTO.u_nic}</p>
                            <span class="starR1" value="1"></span><span class="starR2" value="1"></span><p class="name">${reviewDTO.re_point}</p><br>
                           <span class="position"><fmt:formatDate value="${reviewDTO.re_date}" pattern="yy년 MM월 dd일"/></span>
+<%--                           <c:if test="${u_id==${reviewDTO.u_id} }"> --%>
+<%-- 		                    <p><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/trainer/deleteReview?re_num=${reviewDTO.re_num}" class="reply">삭제</a></p> --%>
+<%-- 		                  </c:if> --%>
                         </div>
                     </div>
                   </div>

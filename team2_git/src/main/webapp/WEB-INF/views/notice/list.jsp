@@ -41,13 +41,13 @@
 
 
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-notice justify-content-notice">
-          <div class="col-md-9 ftco-animate text-notice">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-3 bread">공지사항</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>공지사항</span></p>
+            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/index">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span></p>
           </div>
         </div>
       </div>
@@ -69,10 +69,10 @@
 		               
 		               		<c:choose>
 		               		<c:when test="${noticeDTO.b_date != null }">
-		                	<div><a href="#" class="meta-chat"><span class="icon-chat"></span>이벤트 진행중</a></div>
+		                	<div><a href="${pageContext.request.contextPath}/notice/content?b_num=${noticeDTO.b_num}" class="meta-chat"><span class="icon-chat"></span>이벤트 진행중</a></div>
 		               		</c:when>
 		               		<c:otherwise>
-		               			<div><a href="#" class="meta-chat"><span class="icon-chat"></span>이벤트 종료</a></div>
+		               			<div><a href="${pageContext.request.contextPath}/notice/content?b_num=${noticeDTO.b_num}" class="meta-chat"><span class="icon-chat"></span>이벤트 종료</a></div>
 		               		</c:otherwise>
 		               		</c:choose>
 		                </div>

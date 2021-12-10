@@ -90,14 +90,10 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/notice/delete", method = RequestMethod.GET)
-	public String delete(int b_num) {
-		noticeService.deleteNotice(b_num);
+	public String delete(int re_num) {
+		noticeService.deleteNotice(re_num);
 		return "redirect:/notice/list";
 	}
-	
-
-
-	
 	
 
 }
