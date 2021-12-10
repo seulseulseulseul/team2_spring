@@ -29,4 +29,4 @@ function CheckForm(){
 			alert("이용경험을 남겨주세요.");
 			return false;
 	}
-}
+};

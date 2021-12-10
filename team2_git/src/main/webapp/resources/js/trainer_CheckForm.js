@@ -16,12 +16,17 @@ function trainer_CheckForm(){
 	
 	//밑에서 바로 $로 가져왔음
 	
-	  
 	//아이디를 입력하지 않았을 경우
 		if(t_id.val() == ""){
 			alert("아이디를 입력하세요.");
 			return false;
 		}
+		
+		if($("#trainer_IdCheck").val()=="N"){
+			alert("중복체크하세요.");
+			return false;
+		}
+		
 	//비밀번호를 입력하지 않았다면
 		if(t_pass.val() == ""){
 			alert("비밀번호를 입력하세요.");
@@ -87,8 +92,4 @@ function trainer_CheckForm(){
 
 }
 
-//아이디 체크 메소드 만들기
-function trainer_CheckId() {
-	//새로운 창을 띄워주자
-	window.open("trainer_CheckId2.jsp", "아이디 중복 확인", "width=500, height=300");
-}
+	

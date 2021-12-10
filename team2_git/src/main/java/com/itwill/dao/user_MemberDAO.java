@@ -12,9 +12,9 @@ public interface user_MemberDAO {
 	//리턴할 형 MemberDTO userCheck(memberDTO) 메서드
 	public user_MemberDTO user_userCheck(user_MemberDTO user_memberDTO);
 	
+	//리턴할 형 MemberDTO getMember(String id) 메서드
 	public user_MemberDTO user_getMember(String u_id);
 	
-	//리턴할 형 MemberDTO getMember(String id) 메서드
 	public void user_updateMember(user_MemberDTO user_memberDTO);
 	
 	public int user_IdCheck(user_MemberDTO user_memberDTO);

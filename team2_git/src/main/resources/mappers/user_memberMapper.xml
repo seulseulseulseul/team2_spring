@@ -19,7 +19,9 @@
 	</select>
   
  	<update id="user_updateMember">
-		update user set u_name=#{u_name} where u_id=#{u_id}
+		update user 
+		set u_pass=#{u_pass},u_name=#{u_name},u_nic=#{u_nic},u_email=#{u_email},u_phone=#{u_phone} 
+		where u_id=#{u_id}
 	</update>
 	
 	<select id="user_IdCheck" resultType="int">

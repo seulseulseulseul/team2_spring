@@ -34,24 +34,24 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">회원 로그인</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
+<!--     <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_3.jpg');" data-stellar-background-ratio="0.5"> -->
+<!--       <div class="overlay"></div> -->
+<!--       <div class="container"> -->
+<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
+<!--           <div class="col-md-9 ftco-animate text-center"> -->
+<!--             <h1 class="mb-3 bread">회원 로그인</h1> -->
+<!--             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </section> -->
 
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h4>유저 로그인</h4>
+                 <h3 class="mb-5">회원 로그인</h3>
 							<form action="${pageContext.request.contextPath}/member/user_loginPro" method="post">
 								<div class="form-group">
 									<label>ID</label>
@@ -63,7 +63,7 @@
 									<input type="password" name="u_pass" id="u_pass" class="form-control">
 								</div>
 								<div class="form-group text-right">
-									<<input type="submit" value="로그인" class="btn btn-primary btn-block">
+									<input type="submit" value="로그인" class="btn btn-primary btn-block">
 								</div>
 								<div class="form-group text-center">
 									<span class="text-muted">아이디가 없으신가요?</span><br> 
@@ -71,7 +71,6 @@
 									<a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a>
 								</div>
 								<div class="title-line">
-									or
 								</div>
               	<a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
 							</form>
