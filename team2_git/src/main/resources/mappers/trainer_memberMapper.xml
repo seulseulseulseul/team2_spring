@@ -14,7 +14,7 @@
 		select * from trainer where t_id=#{t_id} and t_pass=#{t_pass}
 	</select>
 	
-	<select id="trainer_getmember" resultType="com.itwill.domain.Trainer_MemberDTO">
+	<select id="trainer_getMember" resultType="com.itwill.domain.Trainer_MemberDTO">
 		select * from trainer where t_id=#{t_id}
 	</select>
   
@@ -25,6 +25,22 @@
 	<select id="trainer_IdCheck" resultType="int">
 		select count(*) from trainer where t_id=#{t_id}
 	</select>
+	<!-- <insert id = "getTrainer"> -->
+
+
+	<!-- </insert> -->
+	<select id="trainer_getinfo" parameterType="java.lang.String" resultType="com.itwill.domain.Trainer_MemberDTO">
+		SELECT 
+		t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_phone,t_email,t_cash,t_introduce,t_exp,t_sns,t_program,t_profile_photo,t_video
+	<!--,T_POSTECODE 얘 없음 나중에 확인해봐 ㅇㅋ-->
 	
+	FROM trainer WHERE 1=1 
+	<!-- <isNotEmpty prepend="AND" property="TID"> -->
+	
+	AND t_id = #{t_id} 
+	<!-- </isNotEmpty> -->
+
+
+</select>
 	
 </mapper>

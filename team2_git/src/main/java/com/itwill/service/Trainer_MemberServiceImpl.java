@@ -17,11 +17,10 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 	@Inject
 	private Trainer_MemberDAO trainer_memberDAO;
 	
-
 	@Override
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("MemberServiceImpl trainer_register()");
-		
+	
 		trainer_memberDAO.trainer_register(trainer_memberDTO);
 		
 	}
@@ -40,7 +39,7 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 
 	@Override
 	public void trainer_updateMember(Trainer_MemberDTO trainer_memberDTO) {
-		
+		System.out.println("MemberServiceImpl updateMember()");
 		trainer_memberDAO.trainer_updateMember(trainer_memberDTO);
 	}
 
@@ -49,8 +48,22 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 		int result = trainer_memberDAO.trainer_IdCheck(trainer_memberDTO);
 		return result;
 	}
-	
 
+	@Override
+	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO) {
+
+		System.out.println("service insertT");
+		trainer_memberDAO.insertTrainer(trainer_memberDTO);
+			
+		
+	}
+
+	@Override
+	   public List<Trainer_MemberDTO> trainer_getinfo(String t_id)  {
+	      System.out.println("TrainerService getInfo()");
+	      return trainer_memberDAO.trainer_getinfo(t_id);
+	
+	}
 }
 
 
