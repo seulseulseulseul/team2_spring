@@ -9,6 +9,7 @@ public class Trainer_MemberDTO {
 	private String t_postcode;
 	private String t_address;
 	private String t_detailAddress;
+	private String t_extraAddress;
 	private String t_phone;
 	private String t_email;
 	private int t_cash;
@@ -18,8 +19,14 @@ public class Trainer_MemberDTO {
 	private String t_program;
 	private String profile_photo;
 	private String video;
-
 	
+	
+	public String getT_extraAddress() {
+		return t_extraAddress;
+	}
+	public void setT_extraAddress(String t_extraAddress) {
+		this.t_extraAddress = t_extraAddress;
+	}
 	public String getT_id() {
 		return t_id;
 	}

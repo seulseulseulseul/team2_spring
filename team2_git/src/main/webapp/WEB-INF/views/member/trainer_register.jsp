@@ -107,6 +107,8 @@
 								<label>헬스장 상세주소</label>
 									<input type="text" name="t_detailAddress" id="t_detailAddress" class="form-control" placeholder="주소를 입력해주세요"><br>
 								</div>
+								<input type="hidden" name="t_extraAddress" id="t_extraAddress" >
+								<input type="hidden" name="t_jibunAddress" id="t_jibunAddress" >
 								<div class="form-group">
 									<label>전화번호</label>
 									<input type="text" name="t_phone" id="t_phone" class="form-control">

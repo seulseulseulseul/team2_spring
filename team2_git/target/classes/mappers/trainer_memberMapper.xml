@@ -6,8 +6,8 @@
 <mapper namespace="com.itwill.mapper.trainer_memberMapper">
 
 	<insert id = "trainer_register">
-		insert into trainer(t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_phone,t_email) 
-		values(#{t_id},#{t_pass},#{t_name},#{t_nic},#{t_postcode},#{t_address},#{t_detailAddress},#{t_phone},#{t_email})
+		insert into trainer(t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_extraAddress,t_phone,t_email) 
+		values(#{t_id},#{t_pass},#{t_name},#{t_nic},#{t_postcode},#{t_address},#{t_detailAddress},#{t_extraAddress},#{t_phone},#{t_email})
 	</insert>
 	
 	<select id="trainer_userCheck" resultType="com.itwill.domain.Trainer_MemberDTO">
