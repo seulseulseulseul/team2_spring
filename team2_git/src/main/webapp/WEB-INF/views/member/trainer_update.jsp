@@ -57,7 +57,7 @@
 								<div class="form-group">
 									<label class="fw">비밀번호</label>
 <!-- 									<input type="password" name="password" id="t_pass" class="form-control"> -->
-									<input class="form-control" type="password" name="t_pass" id="t_pass" value="${trainer_memberDTO.t_pass }">
+									<input class="form-control" type="password" name="t_pass" id="t_pass" placeholder="비밀번호를 입력하세요.">
 								</div>
 								<div class="form-group">
 									<label>트레이너 닉네임</label>

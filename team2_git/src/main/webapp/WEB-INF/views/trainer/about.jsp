@@ -192,12 +192,12 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
        <div class="container">
           <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-12 heading-section ftco-animate text-center">
-    <h2 class="mb-1">트레이너  소개 동영상<br></h2> 
+    <h2 class="mb-1">트레이너 소개 동영상<br></h2> 
 <%--     <%= memberDTO.getT_nic()%> --%>
-      <p align = "middle">
-		
-		<iframe width="80%" height="500"  title="YouTube video player"
-			src="${trainer_memberDTO.video}?autoplay=1&amp;mute=1">
+  <p align = "middle">
+      
+      <iframe width="80%" height="500"  title="YouTube video player"
+         src="${trainer_memberDTO.video}?autoplay=1&amp;mute=1">
        clipboard-write; encrypted-media; gyroscope; 
        picture-in-picture" allowfullscreen></iframe>
        
