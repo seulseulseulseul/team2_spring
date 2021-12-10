@@ -1,21 +1,31 @@
 package com.itwill.controller;
 
 
+import java.io.File;
+import java.util.UUID;
+
+import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.itwill.domain.CenterDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 import com.itwill.service.Trainer_MemberService;
 
 @Controller
 public class Trainer_MemberController {
+	
+	//업로드 될 폴더 경로 
+		@Resource(name="trainer_UploadPath")
+		private String trainer_UploadPath;
 
 	@Inject
 	private Trainer_MemberService trainer_memberService;
@@ -113,17 +123,40 @@ public class Trainer_MemberController {
 	}
 	
 	@RequestMapping(value = "/member/trainer_insert", method = RequestMethod.GET)
-	public String insert(){
-		return "trainer/insert";
+	public String insert(HttpSession session,Model model){
+		String u_id=(String)session.getAttribute("u_id");
+		model.addAttribute("u_id", u_id);
+		return "member/insert";
 	}
 	
 	@RequestMapping(value = "/member/trainer_insertPro", method = RequestMethod.POST)
-	public String insertPro(Trainer_MemberDTO trainer_memberDTO){
-		System.out.println("Trainer_MemberController insertPro()");
+	public String insertPro(HttpServletRequest request, MultipartFile profile_photo) throws Exception{
+		
+		System.out.println(" Trainer_MemberController  finsertPro ");
+		
+		Trainer_MemberDTO trainer_memberDTO =new Trainer_MemberDTO(); 
+		trainer_memberDTO.setT_id(request.getParameter("t_id"));
+		trainer_memberDTO.setT_intro(request.getParameter("t_intro"));
+		trainer_memberDTO.setT_exp(request.getParameter("t_exp"));
+		trainer_memberDTO.setT_sns(request.getParameter("t_sns"));
+		trainer_memberDTO.setT_program(request.getParameter("t_program"));
+		trainer_memberDTO.setVideo(request.getParameter("video"));
+		//파일 업로드
+		// 파일이름  랜덤문자_파일이름 변경
+		UUID uid=UUID.randomUUID();
+		String fileName=uid.toString()+"_"+profile_photo.getOriginalFilename();
+		System.out.println(fileName);
+		// 업로드 파일을 복사해서 => upload 폴더에 넣기
+		File targetFile=new File(trainer_UploadPath,fileName);
+		FileCopyUtils.copy(profile_photo.getBytes(), targetFile);
+		// BoardDTO 복사된 파일 이름 저장
+		trainer_memberDTO.setProfile_photo(fileName);
+		
 		trainer_memberService.insertTrainer(trainer_memberDTO);
-		return "redirect:null"; // insert 후 갈 주소 입력 !
+		
+		return "index";
+	}
 		
 	}
 	
 
-}

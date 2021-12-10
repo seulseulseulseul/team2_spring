@@ -69,7 +69,8 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 
 	@Override
 	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO) {
-		sqlSession.insert(namespace+".insertTrainer", trainer_memberDTO);
+		System.out.println("DAO insertT");
+		sqlSession.update(namespace+".insertTrainer", trainer_memberDTO);
 
 	}
 	

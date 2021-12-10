@@ -29,10 +29,12 @@
 		select count(*) from trainer where t_id=#{t_id}
 	</select>
 	
-	<insert id = "insertTrainer">
-	insert into trainer(t_id,t_name,t_nic,t_postcode,t_phone,t_email,t_sns)
-	 values(#{t_id},#{t_name},#{t_nic},#{t_postcode},#{t_phone},#{t_email},#{t_sns})
-	</insert>
+	<update id = "insertTrainer">
+		update trainer
+		set t_intro=#{t_intro},profile_photo=#{profile_photo},
+			t_exp=#{t_exp},t_sns=#{t_sns}, t_program=#{t_program}, video=#{video}
+		where t_id=#{t_id}
+	</update>
 	
 	
 </mapper>

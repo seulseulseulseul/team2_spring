@@ -81,7 +81,7 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 	@Override
 	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO) {
 
-		
+		System.out.println("service insertT");
 		trainer_memberDAO.insertTrainer(trainer_memberDTO);
 			
 		

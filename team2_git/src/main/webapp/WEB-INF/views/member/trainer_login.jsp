@@ -34,58 +34,50 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">공지사항</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">글쓰기</h3>
-                <form action="${pageContext.request.contextPath}/member/trainer_insertPro" class="bg-light p-4" method="post">
-                  <div class="form-group">
-                    <label for="subject">제목 *</label>
-                    <input type="text" class="form-control bg-white" name="b_title">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">작성자 *</label>
-                    <input type="text" value="${sessionScope.u_id }" readonly class="form-control" name="u_id">
-                  </div>
-                  <div class="form-group">
-                    <label for="content">내용</label>
-                    <textarea name="b_content" id="b_content" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="작성" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('문의가 접수되었습니다')">
-                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
-                  </div>
-
-                </form>
+                 <h3 class="mb-5">트레이너 로그인</h3>
+							<form action="${pageContext.request.contextPath}/member/trainer_loginPro" id="join" method="post">
+								<div class="form-group">
+									<label>ID</label>
+									<input type="text" name="t_id" id="t_id" class="form-control">
+								</div>
+								<div class="form-group">
+									<label class="fw">Password
+									</label>
+									<input type="password" name="t_pass" id="t_pass" class="form-control">
+								</div>
+								<div  class="form-group text-right">
+									<button type="submit" class="btn btn-primary btn-block">Login</button>
+								</div>
+								<div class="form-group text-center">
+									<span class="text-muted">아이디가 없으신가요?</span><br> 
+									<a href="${pageContext.request.contextPath}/member/user_register">회원가입</a><br>
+									<a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a>
+								</div>
+								<div class="title-line">
+								</div>
+              	<a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
+							</form>
               </div>
             </div>
 			<!-- .col-md-8 -->
-          <div class="col-lg-4 sidebar ftco-animate">
-            <div class="sidebar-box ftco-animate">
-              <div class="categories">
-                <ul>
-                <li><a href="${pageContext.request.contextPath }/notice/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
-                </ul>
-              </div>
-            </div>
+<!--           <div class="col-lg-4 sidebar ftco-animate"> -->
+<!--             <div class="sidebar-box ftco-animate"> -->
+<!--               <div class="categories"> -->
+<!--                 <ul> -->
+<!--                 <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li> -->
+<!--                 <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li> -->
+<!--                 <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li> -->
+<!--                 </ul> -->
+<!--               </div> -->
+<!--             </div> -->
 
 
-        </div>
+<!--         </div> -->
       </div>
       </div>
     </section> <!-- .section -->
