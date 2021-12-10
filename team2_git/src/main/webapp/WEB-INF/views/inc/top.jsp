@@ -8,7 +8,8 @@
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="index.html">우리 동네 트레이너</a>
+  					<a class="navbar-brand w-100" href="index.html">우리 동네 트레이너</a>		
+  					
 <c:if test="${empty sessionScope.u_id}">
 		<div id="login"><a href="${pageContext.request.contextPath}/member/start_login">로그인</a> | 
 <%-- 						<a href="${pageContext.request.contextPath}/member/trainer_login">트레이너 로그인</a> |  --%>
@@ -36,8 +37,17 @@
 		<div id="login"><a href="${pageContext.request.contextPath}/member/trainer_login">트레이너 로그인</a> | 
              		   <a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a></div>	
 </c:if>
-
 </c:if>
+
+<!-- 네이버 로그인 시 세션값 가져오기 -->
+<c:if test="${sessionScope.id=='3' }">
+		<c:if test="${empty sessionScope.sessionId}">
+		<div id="login"><a href="${pageContext.request.contextPath}/member/start_login">트레이너 로그인</a> | 
+             		   <a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a></div>	
+</c:if>
+</c:if>
+
+
 
 <c:if test="${! empty sessionScope.u_id}">
 	<div id="login">${sessionScope.u_id }님 | 
@@ -47,9 +57,15 @@
 
 <c:if test="${! empty sessionScope.t_id}">
 	<div id="login">${sessionScope.t_id }님 | 
-	               <a href="${pageContext.request.contextPath}/member/logout">로그인</a> | 
+	               <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> | 
                    <a href="${pageContext.request.contextPath}/member/trainer_update">트레이너정보수정</a></div>
 </c:if>
+
+<c:if test="${! empty sessionScope.sessionId}">
+	<div id="login">${sessionScope.sessionId}님 | 
+	               <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> | 
+</c:if>
+
 			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="oi oi-menu"></span> Menu
 			      </button>

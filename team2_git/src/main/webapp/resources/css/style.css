@@ -9361,8 +9361,8 @@ textarea.form-control {
   background-position: center center;
   position: relative;
   display: block;
-  width: 20%;
-  height: 400px; }
+  width: 100%;
+  height: 300px; }
 
 .blog-entry {
   overflow: hidden; }
@@ -9395,13 +9395,12 @@ textarea.form-control {
       .blog-entry .meta > div a:hover {
         color: #666666; }
   .blog-entry.blog-entry-2 .block-20 {
-    width: 80%; }
+    width: 45%; }
     @media (max-width: 767.98px) {
       .blog-entry.blog-entry-2 .block-20 {
         width: 100%; } }
   .blog-entry.blog-entry-2 .text {
-    width: calc(100% - 40%
-    ); }
+    width: calc(100% - 45%); }
     @media (max-width: 767.98px) {
       .blog-entry.blog-entry-2 .text {
         width: 100%; } }
@@ -9434,7 +9433,7 @@ textarea.form-control {
 
 .block-27 ul {
   padding: 0;
-  margin: 0 0px 0 400px;}
+  margin: 0; }
   .block-27 ul li {
     display: inline-block;
     margin-bottom: 4px;

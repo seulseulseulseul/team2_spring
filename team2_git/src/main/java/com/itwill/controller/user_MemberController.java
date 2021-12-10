@@ -127,11 +127,11 @@ public class user_MemberController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/member/start_login", method = RequestMethod.GET)
-	public String start_login() {
-		
-		return "member/start_login";
-	}
+//	@RequestMapping(value = "/member/start_login", method = RequestMethod.GET)
+//	public String start_login() {
+//		
+//		return "member/start_login";
+//	}
 	
 	@RequestMapping(value = "/member/start_register", method = RequestMethod.GET)
 	public String start_register() {
