@@ -85,7 +85,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           <div class="col-md-12 heading-section ftco-animate text-center">
                 
          <!--  왼쪽 메뉴 -->
-            <h2 class="mb-1">${NAME}
+            <h2 class="mb-1">${trainer_memberDTO.t_name}
 <%--              <%= memberDTO.getT_nic()%> --%>
             </h2>
           </div>
@@ -98,7 +98,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                      </div>
                      <div class="text text-md-right pl-4 pl-md-0 pr-md-4">
                         <h3>소개</h3>
-                        <p>${INTRO}</p>
+                        <p>${trainer_memberDTO.t_intro}</p>
 <%--                         <p><%= memberDTO.getT_intro()%></p> --%>
 
                         
@@ -110,7 +110,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                      </div>
                      <div class="text text-md-right pl-4 pl-md-0 pr-md-4">
                         <h3>이메일</h3>
-                       <p>${EMAIL}</p>
+                       <p>${trainer_memberDTO.t_email}</p>
                      </div>
                   </div>
                   <div class="services-2 ftco-animate d-flex w-100">
@@ -119,7 +119,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                      </div>
                      <div class="text text-md-right pl-4 pl-md-0 pr-md-4">
                         <h3>SNS</h3>
-                        <p><a href="${SNS}"
+                        <p><a href="${trainer_memberDTO.t_sns}"
                         
                          class="btn btn-white px-4 py-3"> 인스타그램 <span class="icon-instagram"></span></a></p>
                      </div>
@@ -152,7 +152,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                      <div class="text text-left pl-4">
                         <h3>프로그램 소개</h3>
 <%--                         <p><%= memberDTO.getT_program()%></p>d --%>
-								<p>${PROGRAM}</p>
+								<p>${trainer_memberDTO.t_program}</p>
                      </div>
                   </div>
                   <div class="services-2 ftco-animate d-flex w-100">
@@ -162,7 +162,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                      <div class="text text-left pl-4">
                         <h3>경력</h3>
 <%--                         <p><%= memberDTO.getT_exp()%></p> --%>
-							<p>${EXP}</p>
+							<p>${trainer_memberDTO.t_exp}</p>
 							
                      </div>
                   </div>
@@ -197,7 +197,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
       <p align = "middle">
 		
 		<iframe width="80%" height="500"  title="YouTube video player"
-			src="${URL}?autoplay=1&amp;mute=1">
+			src="${trainer_memberDTO.video}?autoplay=1&amp;mute=1">
        clipboard-write; encrypted-media; gyroscope; 
        picture-in-picture" allowfullscreen></iframe>
        

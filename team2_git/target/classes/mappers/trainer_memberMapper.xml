@@ -36,5 +36,20 @@
 		where t_id=#{t_id}
 	</update>
 	
+	<insert id = "insertReview">
+	insert into review(re_num,t_id,u_id,re_point,re_coment,re_date)
+	 values(#{re_num},#{t_id},#{u_id},#{re_point},#{re_coment},#{re_date})
+	</insert>
+	
+	<select id = "getMaxNum" resultType="java.lang.Integer">
+		select max(re_num) from review
+	</select>
+	
+	<select id = "getReviewList" resultType="com.itwill.domain.ReviewDTO">
+		select * from review where t_id=#{t_id} order by re_num desc 
+	</select>
+	
+	<select id= "getCenterCount" resultType="java.lang.Integer">
+	</select>
 	
 </mapper>

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 
 
@@ -23,14 +24,6 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	@Override
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("Trainer_MemberDAOImpl trainer_register()");
-		// ����۾� => JDBC ���α׷� ��ġ  Spring JDBC ��ġ => �ڵ����� ���α׷� ��ġ
-		//  ���̺�   ���α׷��� �ڵ����� ��ġ pom.xml ���̺��� ������ �ڵ带 ������ �ڵ����� �ٿ� �޾���
-		//  ���̺�(������α׷� ����) ����Ʈ => pom.xml �ڵ带 ������ => ����Ʈ���� �ڵ����� ��ǻ�ͷ� �ٿ�޾���
-		// https://mvnrepository.com/
-		
-		// ���ڿ��� sql����鼭 ����
-//		template.update(insertsql, memberDTO.getId(),memberDTO.getPass(),memberDTO.getName(),memberDTO.getDate());
-		// insert()  update()  delete()  selectOne()  selectList()
 		sqlSession.insert(namespace+".trainer_register", trainer_memberDTO);
 		
 	}
@@ -74,6 +67,22 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 
 	}
 	
+	@Override
+	public void insertReview(ReviewDTO reviewDTO) {
+		System.out.println("DAO insertReview");
+		sqlSession.insert(namespace+".insertReview",reviewDTO);
+	}
+
+	@Override
+	public Integer getMaxNum() {
+		return sqlSession.selectOne(namespace+".getMaxNum");
+	}
+
+
+	@Override
+	public List<ReviewDTO> getReviewList(String t_id) {
+		return sqlSession.selectList(namespace+".getReviewList",t_id);
+	}
 	
 	
 }//Ŭ����

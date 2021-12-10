@@ -8,7 +8,7 @@
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="index.html">우리 동네 트레이너</a>
+  					<a class="navbar-brand w-100" href="${pageContext.request.contextPath}/index">우리 동네 트레이너</a>
 <c:if test="${empty sessionScope.u_id}">
 		<div id="login"><a href="${pageContext.request.contextPath}/member/start_login">로그인</a> | 
 <%-- 						<a href="${pageContext.request.contextPath}/member/trainer_login">트레이너 로그인</a> |  --%>
@@ -32,7 +32,7 @@
 
 <!-- 트레이너 로그인 시 세션값 가져오기 -->
 <c:if test="${sessionScope.id=='2' }">
-		<c:if test="${empty sessionScope.u_id}">
+		<c:if test="${empty sessionScope.t_id}">
 		<div id="login"><a href="${pageContext.request.contextPath}/member/trainer_login">트레이너 로그인</a> | 
              		   <a href="${pageContext.request.contextPath}/member/trainer_register">트레이너 회원가입</a></div>	
 </c:if>

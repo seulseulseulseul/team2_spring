@@ -44,7 +44,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">문의내역</h1>
+            <h1 class="mb-3 bread">공지사항</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
           </div>
         </div>
@@ -61,12 +61,12 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate justify-content-center">
           <div>${noticeDTO.b_date}</div>
-		  <div>${noticeDTO.u_id}</div>
+		  <div>조회수 : ${noticeDTO.b_count}</div>
             <h2 class="mb-3">${noticeDTO.b_title}</h2>
             <p>${noticeDTO.b_content}
             </p>
           	<div class="form-group">
-				<c:if test="${ sessionScope.u_id==noticeDTO.u_id }">	         	 	
+				<c:if test="${ sessionScope.u_id=='admin' }">	         	 	
 				<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/notice/update?b_num=${noticeDTO.b_num}'">
          	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href = '${pageContext.request.contextPath}/notice/delete?b_num=${noticeDTO.b_num}'">
          	 	</c:if>

@@ -2,11 +2,14 @@ package com.itwill.controller;
 
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -17,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
+import com.itwill.domain.user_MemberDTO;
 import com.itwill.service.Trainer_MemberService;
-
+	
 @Controller
 public class Trainer_MemberController {
 	
@@ -33,7 +38,7 @@ public class Trainer_MemberController {
 	@RequestMapping(value = "/member/trainer_register", method = RequestMethod.GET)
 	public String trainer_register() {
 		
-		return "member/trainer_register"; // �̵��� ������
+		return "member/trainer_register";
 	}
 
 	@RequestMapping(value = "/member/trainer_registerPro", method = RequestMethod.POST)
@@ -52,6 +57,7 @@ public class Trainer_MemberController {
 		
 		return "redirect:/member/trainer_login";
 	}
+
 	
 	@RequestMapping(value = "/member/trainer_login", method = RequestMethod.GET)
 	public String trainer_login() {
@@ -70,7 +76,7 @@ public class Trainer_MemberController {
 		
 		if(trainer_memberDTO2!=null) {
 	
-			session.setAttribute("u_id", trainer_memberDTO.getT_id());
+			session.setAttribute("t_id", trainer_memberDTO.getT_id());
 			session.setAttribute("id", "2");
 			return "redirect:/index";
 			
@@ -114,7 +120,6 @@ public class Trainer_MemberController {
 		
 	}
 	
-	//���̵� �ߺ� üũ
 	@ResponseBody
 	@RequestMapping(value="/member/trainer_IdCheck", method = RequestMethod.POST)
 	public int trainer_IdCheck(Trainer_MemberDTO trainer_memberDTO) {
@@ -124,8 +129,8 @@ public class Trainer_MemberController {
 	
 	@RequestMapping(value = "/member/trainer_insert", method = RequestMethod.GET)
 	public String insert(HttpSession session,Model model){
-		String u_id=(String)session.getAttribute("u_id");
-		model.addAttribute("u_id", u_id);
+		String t_id=(String)session.getAttribute("t_id");
+		model.addAttribute("t_id", t_id);
 		return "member/insert";
 	}
 	
@@ -156,7 +161,36 @@ public class Trainer_MemberController {
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/trainer/about", method = RequestMethod.GET)
+	public String getTrainerInfo(HttpSession session,HttpServletRequest request, Model model){
 		
+		String t_id=(String)request.getParameter("t_id");
+		
+		Trainer_MemberDTO trainer_memberDTO;
+		
+		trainer_memberDTO = trainer_memberService.trainer_getMember(t_id);
+
+			
+		//리뷰
+			//일반 회원 정보 불러오기
+			String u_id=(String)session.getAttribute("u_id");
+			//리뷰 불러오기
+			model.addAttribute("u_id", u_id);
+			model.addAttribute("t_id", t_id);
+			model.addAttribute("trainer_memberDTO", trainer_memberDTO);
+			
+		
+		return "trainer/about";
+	}
+	//리뷰작성
+	@RequestMapping(value = "/trainer/insertReview", method = RequestMethod.POST)
+	public String reviewInsert(ReviewDTO reviewDTO){
+		System.out.println("Controller reviewInsert()");
+		trainer_memberService.insertReview(reviewDTO);
+		return "redirect:/trainer/about?t_id="+reviewDTO.getT_id();
+	}
+	
 	}
 	
 

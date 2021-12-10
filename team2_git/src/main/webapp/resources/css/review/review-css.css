@@ -112,6 +112,7 @@
   overflow:hidden;          
   background-color:#264db5; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+  z-index: 9999;
 }
 /* --------------------------- */
 .popup-wrap{

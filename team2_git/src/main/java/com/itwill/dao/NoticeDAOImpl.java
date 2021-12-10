@@ -58,4 +58,9 @@ public class NoticeDAOImpl implements NoticeDAO {
 		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 
+	@Override
+	public void updateReadcount(int b_num) {
+		sqlSession.update(namespace+".updateReadcount",b_num);
+	}
+
 }

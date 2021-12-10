@@ -71,5 +71,11 @@ public class NoticeServiceImpl implements NoticeService {
 		
 	}
 
+
+	@Override
+	public void updateReadcount(int b_num) {
+		noticeDAO.updateReadcount(b_num);
+	}
+
 	
 }

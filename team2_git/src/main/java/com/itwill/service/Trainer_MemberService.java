@@ -2,6 +2,7 @@ package com.itwill.service;
 
 import java.util.List;
 
+import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 
 public interface Trainer_MemberService{
@@ -23,4 +24,8 @@ public interface Trainer_MemberService{
 	// memberService.insert
 	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO);
 
+	
+	public void insertReview(ReviewDTO reviewDTO);
+	
+	public List<ReviewDTO> getReviewList(String t_id);
 }

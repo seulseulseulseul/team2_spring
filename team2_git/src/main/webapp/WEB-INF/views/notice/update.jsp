@@ -61,10 +61,6 @@
                     <input type="text" class="form-control bg-white" name="b_title" value="${noticeDTO.b_title }">
                   </div>
                   <div class="form-group">
-                    <label for="name">작성자 *</label>
-                    <input type="text" value="${noticeDTO.u_id }" readonly class="form-control" name="u_id">
-                  </div>
-                  <div class="form-group">
                     <label for="content">내용</label>
                     <textarea name="b_content" id="b_content" cols="30" rows="10" class="form-control">${noticeDTO.b_content}</textarea>
                   </div>

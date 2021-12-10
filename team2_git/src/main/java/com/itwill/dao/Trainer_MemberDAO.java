@@ -2,6 +2,7 @@ package com.itwill.dao;
 
 import java.util.List;
 
+import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 
 public interface Trainer_MemberDAO {
@@ -22,6 +23,8 @@ public interface Trainer_MemberDAO {
 	// insert
 	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO);
 
-	
+	public void insertReview(ReviewDTO reviewDTO);
+	public Integer getMaxNum();
+	public List<ReviewDTO> getReviewList(String t_id);
 }
  	

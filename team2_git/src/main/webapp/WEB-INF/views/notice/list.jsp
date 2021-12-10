@@ -39,6 +39,8 @@
    <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
+
+
     <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -63,8 +65,7 @@
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
-		                  <div><a href="#"><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy.MM.dd"/></a></div>
-		                  <div><a href="#">${noticeDTO.u_id }</a></div>
+		                  <div><a href="#"><fmt:formatDate value="${noticeDTO.b_date}" pattern="yyyy.MM.dd"/></a></div>
 		               
 		               		<c:choose>
 		               		<c:when test="${noticeDTO.b_date != null }">

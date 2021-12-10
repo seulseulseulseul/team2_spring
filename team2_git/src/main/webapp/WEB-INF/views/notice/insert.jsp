@@ -51,15 +51,11 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">글쓰기</h3>
-                <form action="${pageContext.request.contextPath}/member/trainer_insertPro" class="bg-light p-4" method="post">
+                <h3 class="mb-5">공지사항 쓰기</h3>
+                <form action="${pageContext.request.contextPath}/notice/insertPro" class="bg-light p-4" method="post">
                   <div class="form-group">
                     <label for="subject">제목 *</label>
                     <input type="text" class="form-control bg-white" name="b_title">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">작성자 *</label>
-                    <input type="text" value="${sessionScope.u_id }" readonly class="form-control" name="u_id">
                   </div>
                   <div class="form-group">
                     <label for="content">내용</label>
@@ -67,7 +63,7 @@
                   </div>
                   <div class="form-group">
                     <input type="submit" value="작성" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('문의가 접수되었습니다')">
+                    onclick="alert('공지가 등록되었습니다')">
                     <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
                   </div>
 

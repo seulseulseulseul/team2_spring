@@ -66,7 +66,7 @@
 								</div>
 								<div class="form-group">
 								<label>우편번호</label>
-								<button type="button" onclick="searchPostCode()" class="btn btn-primary">우편번호 검색</button><br>
+								<button type="button" onclick="searchPostCode();" class="btn btn-primary">우편번호 검색</button><br>
 <!-- 								<input type="text" name="postcode" id="t_postcode" class="form-control"> -->
 								<input class="form-control" type="text" name="t_postcode" id="t_postcode" value="${trainer_memberDTO.t_postcode }">
 							

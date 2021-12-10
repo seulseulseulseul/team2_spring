@@ -18,4 +18,6 @@ public interface NoticeService {
 	public void deleteNotice(int b_num);
 	
 	public void updateNotice(NoticeDTO noticeDTO);
+	
+	public void updateReadcount(int b_num);
 }
