@@ -22,7 +22,7 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwill.domain.ReplyDTO">
-		select * from reply where c_num=#{c_num} order by r_num asc limit #{startRow}, #{pageSize}
+		select * from reply where c_num=#{c_num} order by r_order asc limit #{startRow}, #{pageSize}
 	</select>
 	
 	<select id="numCheck" resultType="com.itwill.domain.ReplyDTO">
@@ -45,12 +45,16 @@
 		select count(*) from reply where c_num=#{c_num}
 	</select>
 	
+	<select id="getReplyTurn" resultType="java.lang.Integer">
+		select count(*) from reply where c_num=#{c_num} and r_order &lt; #{r_order}
+	</select>
+	
 	<update id="reOrder">
 		update reply set r_order=r_order+1 where r_order &gt; #{r_order}
 	</update>
 	
 	<select id="isNoReply" resultType="java.lang.Integer">
-		select if(count(*) >=1, 1, 0) from reply where c_num=#{c_num}
+		select if(count(*) &gt;=1, 1, 0) from reply where parent=#{r_num}
 	</select>
   
 </mapper>

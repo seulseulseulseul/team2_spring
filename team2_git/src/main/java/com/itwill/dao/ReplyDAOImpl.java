@@ -62,6 +62,10 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sqlSession.selectOne(namespace + ".getBoardCount", c_num);
 	}
 	@Override
+	public Integer getReplyTurn(ReplyDTO replyDTO) {
+		return sqlSession.selectOne(namespace + ".getReplyTurn", replyDTO);
+	}
+	@Override
 	public void reOrder(int r_order) {
 		sqlSession.update(namespace + ".reOrder", r_order);
 	}

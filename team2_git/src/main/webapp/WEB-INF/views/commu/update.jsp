@@ -56,11 +56,11 @@
                   <div class="form-group">
                     <input type="hidden" name="c_num" value="${commuDTO.c_num}">
                     <label for="subject">제목 *</label>
-                    <input type="text" class="form-control bg-white" name="subject" value="${commuDTO.subject }">
+                    <input type="text" class="form-control bg-white" name="subject" value="${commuDTO.subject}">
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="${commuDTO.nic }" readonly class="form-control">
+                    <input type="text" value="${commuDTO.nic}" class="form-control" readonly>
                   </div>
                   <div class="form-group">
                     <label for="content">내용</label>

@@ -48,16 +48,15 @@
         </div>
       </div>
     </section>
-	<%
-// 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
-	//dateFormat.format(commuDTO.getDate())
-	%>
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate justify-content-center">
-          <div>${commuDTO.date}</div>
-		  <div>${commuDTO.nic}</div>
+          <div>${commuDTO.nic} | ${commuDTO.date}</div>
+          <c:if test="${!empty commuDTO.file}">
+          	<div><a href="${pageContext.request.contextPath}/resources/commuUpload/${commuDTO.file}" download>${commuDTO.file}</a></div>
+          </c:if>
+		  <div>조회 ${commuDTO.readcount}</div>
             <h2 class="mb-3">${commuDTO.subject}</h2>
             <p>${commuDTO.content}</p>
           	<div class="form-group">
@@ -81,6 +80,24 @@
                     <c:if test="${replyDTO.u_id eq sessionScope.u_id }">
 	                    <p><a href="${pageContext.request.contextPath}/commu/updateReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">수정</a>
 	                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/commu/deleteReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">삭제</a></p>
+	                        <div class="dropdown">
+							  <button class="reply" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">댓글 작성</button>
+							  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							    <h3 class="mb-3">댓글 등록</h3>
+					              <form action="${pageContext.request.contextPath}/commu/insertReply2" class="bg-light p-4" method="post">
+					                <input type="hidden" name="c_num" value="${commuDTO.c_num}">
+					                <input type="hidden" name="r_num" value="${replyDTO.r_num}">
+					                  <div class="form-group">
+					                    <label for="content">내용</label>
+					                    <textarea name="content" cols="30" rows="3" class="form-control"></textarea>
+					                  </div>
+					                  <div class="form-group">
+					                    <input type="submit" value="작성" class="btn py-3 px-4 btn-primary">
+					                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
+					                  </div>
+					                </form>	
+							 	  </div>
+								</div>
                   	</c:if>
                   </div>
                 </li>

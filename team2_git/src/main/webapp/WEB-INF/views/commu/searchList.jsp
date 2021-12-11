@@ -66,7 +66,7 @@
 		              	<div class="meta">
 		                  <div><a href="#">${commuDTO.date}</a></div>
 		                  <div><a href="#">${commuDTO.u_id}</a></div>
-		                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>답변대기</a></div>
+		                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>${commuDTO.replycount}</a></div>
 		                </div>
 		                
 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/commu/content?c_num=${commuDTO.c_num}">${commuDTO.subject}</a></h3>
@@ -101,9 +101,9 @@
 		   <div class="sidebar-box">
               <form action="${pageContext.request.contextPath}/commu/searchList" class="search-form">
                 <div class="form-group">
-                	<div class="icon">
+                	<div class="icon"><button type="submit" style="background-color:transparent;border:0;outline:0">
 	                  <span class="icon-search" onclick="location.href='${pageContext.request.contextPath}/commu/searchList'"></span>
-	                </div>
+	                </button></div>
                   <input type="text" name="search" class="form-control" placeholder="제목으로 검색" value="${pageDTO.search }">
                 </div>
               </form>

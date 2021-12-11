@@ -71,7 +71,7 @@
                   </div>
                   <div class="form-group">
                     <input type="submit" value="작성" class="btn py-3 px-4 btn-primary">
-                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
+                    <input type="button" value="취소" class="btn py-3 px-4 btn-primary" onclick="history.back()">
                   </div>
 
                 </form>

@@ -1,6 +1,7 @@
 package com.itwill.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,12 +32,14 @@ public class CommuServiceImpl implements CommuService{
 		if(commuDAO.getMaxNum()==null) {
 			//글이 없는경우 1로 설정
 			commuDTO.setC_num(1);
+			
 		} else {
 			// 글이 있으면 max(c_num)+1
 			commuDTO.setC_num(commuDAO.getMaxNum()+1);
+			
 		}
-		
 		commuDAO.insertBoard(commuDTO);
+		
 	}
 	// 커뮤니티글 목록 불러오기
 	@Override
@@ -51,12 +54,17 @@ public class CommuServiceImpl implements CommuService{
 		pageDTO.setStartRow(startRow-1); // 디비 startRow-1
 		pageDTO.setEndRow(endRow);
 		
-//		// 커뮤니티글 댓글 개수 조회
-//		List<ReplyDTO> = commuDAO.getBoardList(pageDTO);
-//		
-//		replyDAO.getBoardCount(c_num);
+		List<CommuDTO> commuList = commuDAO.getBoardList(pageDTO);
+		List<CommuDTO> commuList2 = new ArrayList<CommuDTO>();
 		
-		return commuDAO.getBoardList(pageDTO);
+		for(CommuDTO commuDTO : commuList) {
+			int c_num = commuDTO.getC_num();
+			commuDTO.setReplycount(replyDAO.getBoardCount(c_num));
+			commuList2.add(commuDTO);
+			
+		}
+		return commuList2;
+		
 	}
 	// 커뮤니티글 검색 결과 불러오기
 	@Override
@@ -71,22 +79,35 @@ public class CommuServiceImpl implements CommuService{
 		pageDTO.setStartRow(startRow-1); // 디비 startRow-1
 		pageDTO.setEndRow(endRow);
 		
-		return commuDAO.getSearchList(pageDTO);
+		List<CommuDTO> commuList = commuDAO.getSearchList(pageDTO);
+		List<CommuDTO> commuList2 = new ArrayList<CommuDTO>();
+		
+		for(CommuDTO commuDTO : commuList) {
+			int c_num = commuDTO.getC_num();
+			commuDTO.setReplycount(replyDAO.getBoardCount(c_num));
+			commuList2.add(commuDTO);
+			
+		}
+		return commuList2;
+		
 	}
 	// 커뮤니티글 불러오기
 	@Override
 	public CommuDTO getBoard(int c_num) {
 		return commuDAO.getBoard(c_num);
+		
 	}
 	// 커뮤니티글 수정
 	@Override
 	public void updateBoard(CommuDTO commuDTO) {
 		commuDAO.updateBoard(commuDTO);
+		
 	}
 	// 커뮤니티글 삭제
 	@Override
 	public void deleteBoard(int c_num) {
 		commuDAO.deleteBoard(c_num);
+		
 	}
 	// 조회수 +1
 	@Override
@@ -98,16 +119,18 @@ public class CommuServiceImpl implements CommuService{
 	@Override
 	public Integer getBoardCount() {
 		return commuDAO.getBoardCount();
+		
 	}
 	// 커뮤니티글 검색 결과 개수 조회
 	@Override
 	public Integer getSearchCount(String search) {
 		return commuDAO.getSearchCount(search);
+		
 	}
 	// 본인 확인
 	@Override
 	public CommuDTO numCheck(CommuDTO commuDTO) {
 		return commuDAO.numCheck(commuDTO);
+		
 	}
-	
 }

@@ -10,9 +10,9 @@ import com.itwill.domain.ReplyDTO;
 @Service
 public interface ReplyService {
 	
-	public void insertBoard(ReplyDTO replyDTO);
+	public ReplyDTO insertBoard(ReplyDTO replyDTO);
 	
-	public void insertBoard2(ReplyDTO replyDTO);
+	public ReplyDTO insertBoard2(ReplyDTO replyDTO);
 	
 	public List<ReplyDTO> getBoardList(PageDTO pageDTO);
 	
@@ -32,7 +32,7 @@ public interface ReplyService {
 	
 	public ReplyDTO numCheck(ReplyDTO replyDTO);
 	
-	public Integer getLastPage(int c_num);
+	public Integer getReplyPage(ReplyDTO replyDTO);
 	
 	public Integer isNoReply(int r_num);
 

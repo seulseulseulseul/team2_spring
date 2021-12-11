@@ -64,9 +64,9 @@
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
-		                  <div><a href="#">${commuDTO.date}</a></div>
-		                  <div><a href="#">${commuDTO.u_id}</a></div>
-		                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>답변대기</a></div>
+		                  <div>${commuDTO.nic}</div>
+		                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>${commuDTO.replycount}</a></div>
+		                  <div>${commuDTO.date}</div>
 		                </div>
 		                
 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/commu/content?c_num=${commuDTO.c_num}">${commuDTO.subject}</a></h3>

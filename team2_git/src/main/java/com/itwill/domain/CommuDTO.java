@@ -11,7 +11,14 @@ public class CommuDTO {
 	private Timestamp date; // 작성일
 	private String file; // 첨부파일
 	private int readcount; // 조회수
+	private int replycount; // 댓글수
 	
+	public int getReplycount() {
+		return replycount;
+	}
+	public void setReplycount(int replycount) {
+		this.replycount = replycount;
+	}
 	public int getC_num() {
 		return c_num;
 	}
