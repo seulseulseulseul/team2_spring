@@ -81,7 +81,7 @@
 	                    <p><a href="${pageContext.request.contextPath}/commu/updateReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">수정</a>
 	                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/commu/deleteReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">삭제</a></p>
                   	</c:if>
-                    <c:if test="${!(sessionScope eq null) }">
+                    <c:if test="${sessionScope.id ne null }">
                       <div class="dropdown">
 						<button class="reply" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">댓글 작성</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
