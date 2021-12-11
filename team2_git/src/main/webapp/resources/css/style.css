@@ -10,7 +10,12 @@
 /*     font-weight: normal; */
 /*     font-style: normal; */
 /*     } */
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap') {font-family: 'Jua', serif;};
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap') ;
+body
+{font-family: 'Jua', serif;}	
+p
+{font-family: 'Jua',  sans-serif;}
 /*   @font-face{font-family: 'Jua'; */
 /* 	src:  url(../fonts/naver/BMJUA_ttf.ttf')format('truetype'); */
 /*     font-weight: normal; */

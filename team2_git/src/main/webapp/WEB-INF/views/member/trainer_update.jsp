@@ -36,12 +36,12 @@
     <!-- END nav -->
 
 
-	<section class="login first grey">
-			<div class="container">
-				<div class="box-wrapper">				
-					<div class="box box-border">
-						<div class="box-body">
-							<h4>트레이너정보 수정</h4>
+	<section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">마이 페이지</h3>
 <%-- 							<form action="${pageContext.request.contextPath}/member/updatePro" method="post"> --%>
 							<form action="${pageContext.request.contextPath}/member/trainer_updatePro" id="join" method="post">
 								<div class="form-group">
@@ -100,14 +100,24 @@
 							</form>
 						</div>
 					</div>
+					
+		<div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box ftco-animate">
+              <div class="categories">
+                <ul>
+                <li><a href="${pageContext.request.contextPath }/member/trainer_update" class="btn py-3 px-4 btn-primary">트레이너정보수정</a></li>
+                <li><a href="${pageContext.request.contextPath}/member/trainer_insert?t_id=${sessionScope.t_id}" class="btn py-3 px-4 btn-primary">추가정보수정</a></li>
+                <li><a href="${pageContext.request.contextPath}/trainer/about?t_id=${sessionScope.t_id}" class="btn py-3 px-4 btn-primary">프로필</a></li>
+                <li><a href="${pageContext.request.contextPath }/notice/list" class="btn py-3 px-4 btn-primary">마이 크레딧</a></li>
+                </ul>
+              </div>
+            </div>
+					
+					
 				</div>
 			</div>
 		</section>
 
-
-
-
-		
 
      <jsp:include page="../inc/bottom.jsp"></jsp:include>
     

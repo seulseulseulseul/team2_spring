@@ -47,17 +47,24 @@
 
 
 <c:if test="${! empty sessionScope.u_id}">
+<c:choose>
+<c:when test="${sessionScope.u_id=='admin'}">
+	<div id="login">${sessionScope.u_id}님 | 
+	               <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> | 
+                   <a href="${pageContext.request.contextPath}/member/list">관리자페이지</a></div>
+</c:when>
+<c:otherwise>
 	<div id="login">${sessionScope.u_id }님 | 
 	               <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> | 
-                   <a href="${pageContext.request.contextPath}/member/user_update">회원정보&nbsp;수정</a></div>
+                   <a href="${pageContext.request.contextPath}/member/user_update">마이페이지</a></div>
+</c:otherwise>
+</c:choose>
 </c:if>
 
 <c:if test="${! empty sessionScope.t_id}">
 	<div id="login">${sessionScope.t_id }님 | 
 	               <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> | 
-                   <a href="${pageContext.request.contextPath}/member/trainer_update">트레이너정보&nbsp;수정</a> | 
-                   <a href="${pageContext.request.contextPath}/member/trainer_insert?t_id=${sessionScope.t_id}">추가정보</a> | 
-                   <a href="${pageContext.request.contextPath}/trainer/about?t_id=${sessionScope.t_id}">프로필</a>
+                   <a href="${pageContext.request.contextPath}/member/trainer_update">마이페이지</a>
                    </div>
 </c:if>
 

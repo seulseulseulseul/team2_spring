@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">회원정보 수정</h3>
+                <h3 class="mb-5">마이 페이지</h3>
 <!--                 <form action="user_registerPro.jsp" id="join" method="post" onsubmit="return user_CheckForm();"> -->
                                 <form action="${pageContext.request.contextPath}/member/user_updatePro" id="join" method="post">
 								<div class="form-group">
@@ -98,7 +98,7 @@
               <div class="categories">
                 <ul>
                 <li><a href="${pageContext.request.contextPath }/member/user_update" class="btn py-3 px-4 btn-primary">회원정보수정</a></li>
-                <li><a href="${pageContext.request.contextPath }/notice/list" class="btn py-3 px-4 btn-primary">마이 크레딧</a></li>
+                <li><a href="${pageContext.request.contextPath }/member/user_credit" class="btn py-3 px-4 btn-primary">마이 크레딧</a></li>
                 </ul>
               </div>
             </div>

@@ -139,5 +139,17 @@ public class user_MemberController {
 		
 		return "member/start_register";
 	}
+
+	@RequestMapping(value = "/member/user_credit", method = RequestMethod.GET)
+	public String user_credit() {
+		
+		return "member/user_credit";
+	}
+	@RequestMapping(value = "/member/list", method = RequestMethod.GET)
+	public String member_list() {
+		
+		return "member/list";
+	}
+	
 	
 }

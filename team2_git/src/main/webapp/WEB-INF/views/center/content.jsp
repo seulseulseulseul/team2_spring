@@ -53,10 +53,12 @@
 // 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
 	//dateFormat.format(centerDTO.getDate())
 	%>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate justify-content-center">
+   <section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
+						
           <div><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy년 MM월 dd일"/></div>
 		  <div>${centerDTO.u_id}</div>
             <h2 class="mb-3">${centerDTO.b_title}</h2>
@@ -117,7 +119,7 @@
                 </form>
         </div>
       </c:if>
-      
+      </div>
         </div>
         </div>
       </div>

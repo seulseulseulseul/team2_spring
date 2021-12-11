@@ -66,15 +66,16 @@
             <p>${noticeDTO.b_content}
             </p>
           	<div class="form-group">
+          	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/notice/list'">
 				<c:if test="${ sessionScope.u_id=='admin' }">	         	 	
 				<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/notice/update?b_num=${noticeDTO.b_num}'">
          	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href = '${pageContext.request.contextPath}/notice/delete?b_num=${noticeDTO.b_num}'">
          	 	</c:if>
          	 </div>
-        
-<!--     답변 목록 -->
-	
-<!-- 	 답변 등록 -->
+        </div>
+        </div>
+        </div>
+
 	
 
    

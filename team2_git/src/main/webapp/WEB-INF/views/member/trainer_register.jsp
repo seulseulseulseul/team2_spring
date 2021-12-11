@@ -70,11 +70,11 @@
 <!--       </div> -->
 <!--     </section> -->
 
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-              <div class="comment-form-wrap pt-5">
+     <section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
                 <h3 class="mb-5">트레이너 회원가입</h3>
                 <form action="${pageContext.request.contextPath}/member/trainer_registerPro" id="join" method="post" >
 								<div class="form-group">
@@ -124,25 +124,11 @@
 									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/start_login">로그인</a>
 								</div>
 							</form>
-              </div>
-            </div>
-			<!-- .col-md-8 -->
-<!--           <div class="col-lg-4 sidebar ftco-animate"> -->
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <div class="categories"> -->
-<!--                 <ul> -->
-<!--                 <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li> -->
-<!--                 <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li> -->
-<!--                 <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </div> -->
-
-
-<!--         </div> -->
-      </div>
-      </div>
-    </section> <!-- .section -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
       <jsp:include page="../inc/bottom.jsp"></jsp:include>
     

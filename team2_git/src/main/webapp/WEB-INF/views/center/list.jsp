@@ -79,12 +79,31 @@
 		                  
 		                </div>
 
+
+						
 		                <c:choose>
 		                <c:when test="${centerDTO.secret==0}">
 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">${centerDTO.b_title}</a></h3>
 		                </c:when> 
 		                <c:otherwise>
+<!-- 비밀글일 때 본인이 쓴것만 링크 연결 -->
+						<c:choose>
+		                <c:when test="${ sessionScope.u_id==centerDTO.u_id }">
  		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글 입니다.</a></h3>
+		               	</c:when>
+
+		               	
+		               	<c:when test="${ sessionScope.t_id==centerDTO.t_id }">
+		               	<h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글 입니다.</a></h3>
+		               	</c:when>
+						
+						<c:otherwise>
+		               	<h3 class="heading mt-2">비밀글 입니다.</h3>
+		               	</c:otherwise>
+						</c:choose>
+
+
+		               	
 		               </c:otherwise> 
  		                </c:choose>
 		                <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
@@ -116,16 +135,7 @@
 		
          </div>
 		<div class="col-lg-4 sidebar ftco-animate">
-		   <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                	<div class="icon">
-	                  <span class="icon-search"></span>
-	                </div>
-                  <input type="text" class="form-control" placeholder="검색기능 구현">
-                </div>
-              </form>
-            </div>
+
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>

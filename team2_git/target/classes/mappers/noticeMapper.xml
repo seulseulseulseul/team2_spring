@@ -6,8 +6,8 @@
 <mapper namespace="com.itwill.mapper.NoticeMapper">
 
 	<insert id = "insertNotice">
-	insert into notice(b_num,admin_id,b_title,b_content,b_date,b_count)
-	 values(#{b_num},#{admin_id},#{b_title},#{b_content},#{b_date},#{b_count})
+	insert into notice(b_num,b_title,b_content,b_date,b_count)
+	 values(#{b_num},#{b_title},#{b_content},#{b_date},#{b_count})
 	</insert>
 	
 	<select id = "getMaxNum" resultType="java.lang.Integer">

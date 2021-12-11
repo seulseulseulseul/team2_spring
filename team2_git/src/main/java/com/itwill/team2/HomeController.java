@@ -35,7 +35,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "redirect:/index";
 	}
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String home2() {

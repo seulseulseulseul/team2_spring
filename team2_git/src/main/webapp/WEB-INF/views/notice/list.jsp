@@ -109,20 +109,13 @@
 		
          </div>
 		<div class="col-lg-4 sidebar ftco-animate">
-		   <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                	<div class="icon">
-	                  <span class="icon-search"></span>
-	                </div>
-                  <input type="text" class="form-control" placeholder="검색기능 구현">
-                </div>
-              </form>
-            </div>
+
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
+                <c:if test="${ sessionScope.u_id=='admin' }">	
                 <li><a href="${pageContext.request.contextPath }/notice/insert" class="btn py-3 px-4 btn-primary">글쓰기 </a></li>
+                </c:if>
                 <li><a href="${pageContext.request.contextPath }/notice/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>
