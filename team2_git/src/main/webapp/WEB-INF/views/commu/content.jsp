@@ -60,7 +60,7 @@
             <h2 class="mb-3">${commuDTO.subject}</h2>
             <p>${commuDTO.content}</p>
           	<div class="form-group">
-          		<c:if test="${commuDTO.u_id eq sessionScope.u_id }">
+          		<c:if test="${(commuDTO.u_id eq sessionScope.u_id) or (commuDTO.u_id eq sessionScope.t_id) }">
          	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/commu/update?c_num=${commuDTO.c_num}'">
          	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/commu/deletePro?c_num=${commuDTO.c_num}'">
          	 	</c:if>
@@ -77,28 +77,30 @@
                   <div class="comment-body">
                     <div class="meta">${replyDTO.nic} | ${replyDTO.date}</div>
                     <p>${replyDTO.content}</p>
-                    <c:if test="${replyDTO.u_id eq sessionScope.u_id }">
+                    <c:if test="${(replyDTO.u_id eq sessionScope.u_id) or (replyDTO.u_id eq sessionScope.t_id) }">
 	                    <p><a href="${pageContext.request.contextPath}/commu/updateReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">수정</a>
 	                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/commu/deleteReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">삭제</a></p>
-	                        <div class="dropdown">
-							  <button class="reply" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">댓글 작성</button>
-							  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <h3 class="mb-3">댓글 등록</h3>
-					              <form action="${pageContext.request.contextPath}/commu/insertReply2" class="bg-light p-4" method="post">
-					                <input type="hidden" name="c_num" value="${commuDTO.c_num}">
-					                <input type="hidden" name="r_num" value="${replyDTO.r_num}">
-					                  <div class="form-group">
-					                    <label for="content">내용</label>
-					                    <textarea name="content" cols="30" rows="3" class="form-control"></textarea>
-					                  </div>
-					                  <div class="form-group">
-					                    <input type="submit" value="작성" class="btn py-3 px-4 btn-primary">
-					                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
-					                  </div>
-					                </form>	
-							 	  </div>
-								</div>
                   	</c:if>
+                    <c:if test="${!(sessionScope eq null) }">
+                      <div class="dropdown">
+						<button class="reply" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">댓글 작성</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						  <h3 class="mb-3">댓글 등록</h3>
+			              <form action="${pageContext.request.contextPath}/commu/insertReply2" class="bg-light p-4" method="post">
+				        	<input type="hidden" name="c_num" value="${commuDTO.c_num}">
+				            <input type="hidden" name="r_num" value="${replyDTO.r_num}">
+			       			<div class="form-group">
+							  <label for="content">내용</label>
+			                  <textarea name="content" cols="30" rows="3" class="form-control"></textarea>
+							</div>
+			                <div class="form-group">
+			                  <input type="submit" value="작성" class="btn py-3 px-4 btn-primary">
+			                  <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
+			                </div>
+			              </form>	
+						</div>
+					  </div>
+					</c:if>
                   </div>
                 </li>
 			 </c:forEach>

@@ -267,7 +267,7 @@ public class CommuController {
 			
 		}
 		// 로그인 여부
-		if(session.getAttribute("u_id")==null) { // 비로그인
+		if(session.getAttribute("id")==null) { // 비로그인
 			// 알림창
 			model.addAttribute("msg", "로그인이 필요합니다.");
 			model.addAttribute("url", "/commu/content?c_num="+c_num);
@@ -334,7 +334,7 @@ public class CommuController {
 			
 		}
 		// 로그인 여부
-		if(session.getAttribute("u_id")==null) { // 비로그인
+		if(session.getAttribute("id")==null) { // 비로그인
 			// 알림창
 			model.addAttribute("msg", "로그인이 필요합니다.");
 			model.addAttribute("url", "/commu/content?c_num="+c_num);
@@ -386,7 +386,7 @@ public class CommuController {
 			
 		}
 		// 로그인 여부 확인
-		if(session.getAttribute("u_id")==null){ // 비로그인
+		if(session.getAttribute("id")==null){ // 비로그인
 			// 알람창
 			model.addAttribute("msg", "로그인이 필요합니다.");
 			model.addAttribute("url", "/commu/content?c_num="+c_num);
@@ -436,7 +436,7 @@ public class CommuController {
 			
 		}
 		// 로그인 여부 확인
-		if(session.getAttribute("u_id")==null){ // 비로그인
+		if(session.getAttribute("id")==null){ // 비로그인
 			// 알람창
 			model.addAttribute("msg", "로그인이 필요합니다.");
 			model.addAttribute("url", "/commu/content?c_num="+c_num);
@@ -495,7 +495,7 @@ public class CommuController {
 			System.out.println(r_num);
 		}
 		// 로그인 여부
-		if(session.getAttribute("u_id")==null) { // 비로그인
+		if(session.getAttribute("id")==null) { // 비로그인
 			// 알림창
 			model.addAttribute("msg", "로그인이 필요합니다.");
 			model.addAttribute("url", "/commu/content?c_num="+c_num);
@@ -557,7 +557,7 @@ public class CommuController {
 			
 		}
 		// 로그인 여부
-		if(session.getAttribute("u_id")==null) { // 비로그인
+		if(session.getAttribute("id")==null) { // 비로그인
 			// 알림창
 			model.addAttribute("msg", "로그인이 필요합니다.");
 			model.addAttribute("url", "/commu/content?c_num="+c_num);
