@@ -129,7 +129,9 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
+                <c:if test="${! empty sessionScope.id}">
                 <li><a href="${pageContext.request.contextPath}/center/insert" class="btn py-3 px-4 btn-primary">글쓰기 </a></li>
+                </c:if>
                 <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>

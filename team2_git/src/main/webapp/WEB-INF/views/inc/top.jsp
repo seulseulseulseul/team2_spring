@@ -55,8 +55,10 @@
 <c:if test="${! empty sessionScope.t_id}">
 	<div id="login">${sessionScope.t_id }님 | 
 	               <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> | 
-                   <a href="${pageContext.request.contextPath}/member/trainer_update">트레이너정보&nbsp;수정</a></div> | 
-                   <a href="${pageContext.request.contextPath}/member/trainer_insertPro">트레이너&nbsp;추가정보&nbsp;수정</a></div>
+                   <a href="${pageContext.request.contextPath}/member/trainer_update">트레이너정보&nbsp;수정</a> | 
+                   <a href="${pageContext.request.contextPath}/member/trainer_insert?t_id=${sessionScope.t_id}">추가정보</a> | 
+                   <a href="${pageContext.request.contextPath}/trainer/about?t_id=${sessionScope.t_id}">프로필</a>
+                   </div>
 </c:if>
 
 

@@ -136,22 +136,18 @@ public class Trainer_MemberController {
 	public String insert(HttpSession session,Model model){
 		String t_id=(String)session.getAttribute("t_id");
 		model.addAttribute("t_id", t_id);
+		//트레이너 기존정보 불러오기
+		Trainer_MemberDTO trainer_memberDTO;
+		
+		trainer_memberDTO = trainer_memberService.trainer_getMember(t_id);
+
+		model.addAttribute("trainer_memberDTO", trainer_memberDTO);
 		return "member/insert";
 	}
 	
 	@RequestMapping(value = "/member/trainer_insertPro", method = RequestMethod.POST)
-	public String insertPro(HttpSession session,Model model,HttpServletRequest request, MultipartFile profile_photo) throws Exception{
-		
-		//트레이너 기존정보 불러오기
-		String t_id=(String)request.getParameter("t_id");
-		
-		Trainer_MemberDTO trainer_memberDTO2;
-		
-		trainer_memberDTO2 = trainer_memberService.trainer_getMember(t_id);
-
-		model.addAttribute("trainer_memberDTO", trainer_memberDTO2);
-		
-		
+	public String insertPro(Model model,HttpServletRequest request, MultipartFile profile_photo) throws Exception{
+			
 		System.out.println(" Trainer_MemberController  finsertPro ");
 		
 		Trainer_MemberDTO trainer_memberDTO =new Trainer_MemberDTO(); 
@@ -162,6 +158,10 @@ public class Trainer_MemberController {
 		trainer_memberDTO.setT_program(request.getParameter("t_program"));
 		trainer_memberDTO.setVideo(request.getParameter("video"));
 		//파일 업로드
+		if(profile_photo==null){
+			//기존파일이름 가져오기
+			trainer_memberDTO.setProfile_photo(request.getParameter("oldfile"));
+		}else{
 		// 파일이름  랜덤문자_파일이름 변경
 		UUID uid=UUID.randomUUID();
 		String fileName=uid.toString()+"_"+profile_photo.getOriginalFilename();
@@ -171,14 +171,14 @@ public class Trainer_MemberController {
 		FileCopyUtils.copy(profile_photo.getBytes(), targetFile);
 		// BoardDTO 복사된 파일 이름 저장
 		trainer_memberDTO.setProfile_photo(fileName);
-		
+		}
 		trainer_memberService.insertTrainer(trainer_memberDTO);
 		
 		return "index";
 	}
 	
 	@RequestMapping(value = "/trainer/about", method = RequestMethod.GET)
-	public String getTrainerInfo(HttpSession session,HttpServletRequest request, Model model){
+	public String getTrainerInfo(HttpServletRequest request, Model model){
 		
 		String t_id=(String)request.getParameter("t_id");
 		
@@ -189,11 +189,8 @@ public class Trainer_MemberController {
 		model.addAttribute("trainer_memberDTO", trainer_memberDTO);
 	
 			
-		//리뷰
-			//일반 회원 정보 불러오기
-			String u_id=(String)session.getAttribute("u_id");
-			//리뷰 불러오기
-			model.addAttribute("u_id", u_id);
+			//리뷰
+			//t_id저장
 			model.addAttribute("t_id", t_id);
 			
 			List<ReviewDTO> reviewList = trainer_memberService.getReviewList(t_id);

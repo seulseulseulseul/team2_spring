@@ -23,9 +23,7 @@ public class CenterController {
 	
 	
 	@RequestMapping(value = "/center/insert", method = RequestMethod.GET)
-	public String insert(HttpSession session,Model model){
-		String u_id=(String)session.getAttribute("u_id");
-		model.addAttribute("u_id", u_id);
+	public String insert(){
 		return "center/insert";
 	}
 	
@@ -65,6 +63,7 @@ public class CenterController {
 //			 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 //			 dateFormat.format(centerDTO.getB_date());
 		}
+		 
 		 
 		 //데이터담기
 		 model.addAttribute("centerList",centerList);

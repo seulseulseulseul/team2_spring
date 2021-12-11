@@ -37,7 +37,7 @@
 	
 	<!-- 	upload 폴더 만들고 업로드 경로 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\Users\ITWILL\Documents\kjs\workspace_git\team2_git\src\main\webapp\resources\trainer_UploadPath"></beans:constructor-arg>
+		<beans:constructor-arg value="D:\KJS\workspace_git\team2_git\src\main\webapp\resources\trainer_UploadPath"></beans:constructor-arg>
 	</beans:bean>
 	
 </beans:beans>

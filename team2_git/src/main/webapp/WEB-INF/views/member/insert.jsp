@@ -56,34 +56,35 @@
                 <form action="${pageContext.request.contextPath}/member/trainer_insertPro" class="bg-light p-4" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="t_intro">자기소개 *</label>
-                    <textarea name="t_intro" cols="30" rows="5" class="form-control"></textarea>
+                    <textarea name="t_intro" cols="30" rows="5" class="form-control">${trainer_memberDTO.t_intro}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="t_num">트레이너 *</label>
 <!-- 	로그인한 아이디 우선 kim 으로 설정, 트레이너 회원가입 db받고 로그인한 값으로 불러오기 -->
-                    <input type="text" value="${u_id }" class="form-control" name="t_id">
+                    <input type="text" value="${t_id }" class="form-control" name="t_id">
                   </div>
                 
                   <div class="form-group">
                     <label for="profile_photo">프로필 사진</label>
                     <input type="file" class="form-control" name="profile_photo" accept=".jpg,.jpeg,.png,.gif">
+                  	<input type="hidden" name="oldfile" value="${trainer_memberDTO.profile_photo}">
                   </div>
                   <div class="form-group">
                     <label for="exp">경력 *</label>
-	                 <textarea name="t_exp" cols="30" rows="5" class="form-control"></textarea>
+	                 <textarea name="t_exp" cols="30" rows="5" class="form-control">${trainer_memberDTO.t_exp}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="SNS">SNS</label>
-                    <input type="text" class="form-control" name="t_sns">
+                    <input type="text" class="form-control" name="t_sns" value="${trainer_memberDTO.t_sns}">
                   </div>
                   <div class="form-group">
                     <label for="program">프로그램</label>
-                    <textarea name="t_program" cols="30" rows="5" class="form-control"></textarea>
+                    <textarea name="t_program" cols="30" rows="5" class="form-control">${trainer_memberDTO.t_program}</textarea>
                   </div>
                   <div class="form-group">
 <!--                   유튜브 동영상url 읽어들여서 아이프레임으로 작업하기 -->
                     <label for="video">동영상URL</label>
-                    <input type="text" class="form-control" name="video">
+                    <input type="text" class="form-control" name="video" value="${trainer_memberDTO.video}">
                   </div>
                   <div class="form-group">
                     <input type="submit" value="등록" class="btn py-3 px-4 btn-primary"

@@ -137,9 +137,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
 
             <!-- 트레이너 상세정보 이미지 -->
              <div class="col-md-4 d-flex">
-             <img src="trainerimage\">
-<%--              <%= memberDTO.getPhoto_name()%> --%>
-<%--                 <div class="img img-services w-100" style="background-image: <%= memberDTO.getProfile_photo()%>"></div> --%>
+			<div class="img img-services w-100" style="background-image: url(${pageContext.request.contextPath}/resources/trainer_UploadPath/${trainer_memberDTO.profile_photo});"></div>
              </div>
    
             
@@ -213,57 +211,17 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           <div class="col-md-10 heading-section ftco-animate text-center">
             <h3 class="subheading">Review</h3>
             <h2 class="mb-1">리뷰</h2>
+<!--             리뷰등록 버튼은 일반회원에게만 보이기 -->
+            <c:if test="${sessionScope.id=='1'}">
             <input type="button" value="리뷰 등록" class="btn py-3 px-4 btn-primary"  id="modal-open">
+            </c:if>
             <div class="container"> 
           </div>
         </div>
+	</div>
         
-  <div class="popup-wrap" id="popup"> 
-    <div class="popup">	
-      <div class="popup-head">	
-          <span class="head-title">Review</span>
-      </div>
-      <div class="popup-body">	
-        <div class="body-content">
-          <div class="body-titlebox">
-          	별점과 이용경험을 남겨주세요.
-          </div>
-          <div class="body-contentbox">
-            <form action="${pageContext.request.contextPath}/trainer/insertReview" method="post">
-            	<input type="hidden" name="re_point" id="re_point" value="">
-            <input type="hidden" name="u_id" id="u_id" value="${u_id }" >
-			 <input type="hidden" name="t_id" id="t_id" value="${t_id }" >
-			<div class="body-input">
-            <div class="review_rating rating_point">
-                <div class="starRev">
-				  <span class="starR1 on" value="0.5"></span>
-				  <span class="starR2" value="1"></span>
-				  <span class="starR1" value="1.5"></span>
-				  <span class="starR2" value="2"></span>
-				  <span class="starR1" value="2.5"></span>
-				  <span class="starR2" value="3"></span>
-				  <span class="starR1" value="3.5"></span>
-				  <span class="starR2" value="4"></span>
-				  <span class="starR1" value="4.5"></span>
-				  <span class="starR2" value="5"></span>
-				</div>
-            </div>
-               <textarea rows="5" name="re_coment" id="re_coment" class="review_textarea"></textarea>
-            </div>  
-   	 		 <div class="foot">
-                <input type="submit" class="pop-btn confirm" id="confirm" value="등록" onclick="return CheckForm();">
- 		  		<input type="reset" class="pop-btn close" id="close" value="취소">
-     		 </div>
-      		 </form>
-          </div>
-   	  		</div>
-        </div>
-  	  </div>
-</div>
-</div>
    
     
-
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel" >
@@ -283,11 +241,8 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                         </div>
                         <div class="ml-4">
                            <p class="name">${reviewDTO.u_nic}</p>
-                           <span class="starR1" value="1"></span><span class="starR2" value="1"></span><p class="name">${reviewDTO.re_point}</p><br>
+                           <p class="name"><span class="starR1"></span><span class="starR2"></span>${reviewDTO.re_point}</p><br>
                           <span class="position"><fmt:formatDate value="${reviewDTO.re_date}" pattern="yy년 MM월 dd일"/></span>
-<%--                           <c:if test="${u_id==${reviewDTO.u_id} }"> --%>
-<%-- 		                    <p><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/trainer/deleteReview?re_num=${reviewDTO.re_num}" class="reply">삭제</a></p> --%>
-<%-- 		                  </c:if> --%>
                         </div>
                     </div>
                   </div>
@@ -417,6 +372,49 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
         </div>
        </div> 
     </section>
+
+  <div class="popup-wrap" id="popup"> 
+    <div class="popup">	
+      <div class="popup-head">	
+          <span class="head-title">Review</span>
+      </div>
+      <div class="popup-body">	
+        <div class="body-content">
+          <div class="body-titlebox">
+          	별점과 이용경험을 남겨주세요.
+          </div>
+          <div class="body-contentbox">
+            <form action="${pageContext.request.contextPath}/trainer/insertReview" method="post">
+            	<input type="hidden" name="re_point" id="re_point" value="">
+            <input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id }" >
+			 <input type="hidden" name="t_id" id="t_id" value="${t_id }" >
+			<div class="body-input">
+            <div class="review_rating rating_point">
+                <div class="starRev">
+				  <span class="starR1 on" value="0.5"></span>
+				  <span class="starR2" value="1"></span>
+				  <span class="starR1" value="1.5"></span>
+				  <span class="starR2" value="2"></span>
+				  <span class="starR1" value="2.5"></span>
+				  <span class="starR2" value="3"></span>
+				  <span class="starR1" value="3.5"></span>
+				  <span class="starR2" value="4"></span>
+				  <span class="starR1" value="4.5"></span>
+				  <span class="starR2" value="5"></span>
+				</div>
+            </div>
+               <textarea rows="5" name="re_coment" id="re_coment" class="review_textarea"></textarea>
+            </div>  
+   	 		 <div class="foot">
+                <input type="submit" class="pop-btn confirm" id="confirm" value="등록" onclick="return CheckForm();">
+ 		  		<input type="reset" class="pop-btn close" id="close" value="취소">
+     		 </div>
+      		 </form>
+          </div>
+   	  		</div>
+        </div>
+  	  </div>
+</div>
 
       
 
