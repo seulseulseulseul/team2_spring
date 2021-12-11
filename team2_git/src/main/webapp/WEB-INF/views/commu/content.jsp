@@ -72,7 +72,7 @@
         	<c:forEach var="replyDTO" items="${replyList}">
                 <li class="comment" style="margin-left:${replyDTO.depth*60}px">
                   <div class="vcard bio">
-                    <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
+                     <img src="${pageContext.request.contextPath}/resources/images/person_${(replyDTO.r_num mod 5)+1}.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <div class="meta">${replyDTO.nic} | ${replyDTO.date}</div>
