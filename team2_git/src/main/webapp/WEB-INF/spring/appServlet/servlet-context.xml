@@ -40,4 +40,7 @@
 		<beans:constructor-arg value="D:\KJS\workspace_git\team2_git\src\main\webapp\resources\trainer_UploadPath"></beans:constructor-arg>
 	</beans:bean>
 	
+	<beans:bean id="commuUploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D:\KJS\workspace_git\team2_git\src\main\webapp\resources\commuUpload"></beans:constructor-arg>
+	</beans:bean>
 </beans:beans>

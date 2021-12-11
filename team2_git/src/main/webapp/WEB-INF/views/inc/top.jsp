@@ -83,7 +83,7 @@
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/index" class="nav-link">Home</a></li>
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/center/list" class="nav-link">고객센터</a></li>
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/notice/list" class="nav-link">공지사항</a></li>
-			          <li class="nav-item"><a href="${pageContext.request.contextPath}/schedule" class="nav-link">커뮤니티</a></li>
+			          <li class="nav-item"><a href="${pageContext.request.contextPath}/commu/list" class="nav-link">커뮤니티</a></li>
 			        </ul>
 			      	<br>
 	

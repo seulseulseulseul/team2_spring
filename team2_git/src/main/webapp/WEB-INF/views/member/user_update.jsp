@@ -92,19 +92,11 @@
 							</form>
               </div>
             </div>
-			<!-- .col-md-8 -->
-          <div class="col-lg-4 sidebar ftco-animate">
-            <div class="sidebar-box ftco-animate">
-              <div class="categories">
-                <ul>
-                <li><a href="${pageContext.request.contextPath }/member/user_update" class="btn py-3 px-4 btn-primary">회원정보수정</a></li>
-                <li><a href="${pageContext.request.contextPath }/notice/list" class="btn py-3 px-4 btn-primary">마이 크레딧</a></li>
-                </ul>
-              </div>
-            </div>
-
-
-        </div>
+			
+<!-- 		유저 왼쪽 메뉴 -->
+         <jsp:include page="../inc/user_side.jsp"></jsp:include>
+             
+             
       </div>
       </div>
     </section> <!-- .section -->

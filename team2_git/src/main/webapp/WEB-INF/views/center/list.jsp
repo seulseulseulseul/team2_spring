@@ -66,8 +66,14 @@
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
 		                  <div><a href="#"><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy.MM.dd"/></a></div>
-		                  <div><a href="#">${centerDTO.u_id}</a></div>
-		                  
+		                  <c:choose>
+		                  <c:when test="${!empty centerDTO.u_id}">
+		                  <div><a href="#">회원 ${centerDTO.u_id}</a></div>
+		                  </c:when>
+		                  <c:otherwise>
+		                  <div><a href="#">트레이너 ${centerDTO.t_id}</a></div>
+		                  </c:otherwise>
+		                  </c:choose>
 		                	<c:choose>
 		                	<c:when test="${centerDTO.isReply==0}">
 		                	<div><a href="#" class="meta-chat"><span class="icon-chat"></span>답변대기</a></div>
@@ -84,29 +90,25 @@
 		                <c:choose>
 		                <c:when test="${centerDTO.secret==0}">
 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">${centerDTO.b_title}</a></h3>
+		                 <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
 		                </c:when> 
 		                <c:otherwise>
-<!-- 비밀글일 때 본인이 쓴것만 링크 연결 -->
+				<!-- 비밀글일 때 본인이 쓴것만 링크 연결 -->
 						<c:choose>
-		                <c:when test="${ sessionScope.u_id==centerDTO.u_id }">
- 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글 입니다.</a></h3>
-		               	</c:when>
-
-		               	
-		               	<c:when test="${ sessionScope.t_id==centerDTO.t_id }">
-		               	<h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글 입니다.</a></h3>
+		                <c:when test="${ sessionScope.u_id==centerDTO.u_id ||sessionScope.t_id==centerDTO.t_id|| sessionScope.u_id=='admin' }">
+ 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글입니다.</a></h3>
+ 		                <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
 		               	</c:when>
 						
 						<c:otherwise>
-		               	<h3 class="heading mt-2">비밀글 입니다.</h3>
+		               	<h3 class="heading mt-2">비밀글은 작성자만 열람 가능합니다.</h3>
+		               	<p><a href="#" class="btn btn-outline-primary">비밀글</a></p>
 		               	</c:otherwise>
 						</c:choose>
-
-
-		               	
+						   	
 		               </c:otherwise> 
  		                </c:choose>
-		                <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
+		               
 		              </div>
 		            </div>
 		          </div>

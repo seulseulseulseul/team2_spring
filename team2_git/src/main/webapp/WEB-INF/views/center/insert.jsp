@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +60,14 @@
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
+                    <c:choose>
+                    <c:when test="${sessionScope.id=='1'}">
                     <input type="text" value="${sessionScope.u_id}" readonly class="form-control" name="u_id">
+                    </c:when>
+                    <c:otherwise>
+                    <input type="text" value="${sessionScope.t_id}" readonly class="form-control" name="t_id">
+                    </c:otherwise>
+                    </c:choose>
                   </div>
                   <div class="form-group">
                     <label for="secret">비밀글 *</label>
@@ -71,7 +79,7 @@
                   </div>
                   <div class="form-group">
                     <input type="submit" value="작성" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('문의가 접수되었습니다')">
+                    onclick="alert('문의가 접수되었습니다.');">
                     <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
                   </div>
 

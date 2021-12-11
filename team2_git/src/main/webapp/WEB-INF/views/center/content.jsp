@@ -58,7 +58,7 @@
 				<div class="box-wrapper">				
 					<div class="box box-border">
 						<div class="box-body">
-						
+						<h3 class="mb-5">&nbsp;</h3>
           <div><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy년 MM월 dd일"/></div>
 		  <div>${centerDTO.u_id}</div>
             <h2 class="mb-3">${centerDTO.b_title}</h2>
@@ -67,10 +67,12 @@
           	<div class="form-group">
          	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/list'">
 <!-- 				글쓴 사람 본인만 수정,삭제 가능하도록 -->
-				<c:if test="${ sessionScope.u_id==centerDTO.u_id }">
+
+				<c:if test="${ (replyDTO.u_id eq sessionScope.u_id) or (replyDTO.u_id eq sessionScope.t_id)}">
          	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}'">
          	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
 				</c:if>
+
          	 </div>
 
 	 <div class="pt-5 mt-5">
@@ -79,7 +81,7 @@
         	<c:forEach var="centerDTO2" items="${replyList}">
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
+                    <img src="${pageContext.request.contextPath}/resources/images/admin.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h5>${centerDTO2.b_title}</h5>
@@ -119,6 +121,7 @@
                 </form>
         </div>
       </c:if>
+      <h3 class="mb-5">&nbsp;</h3>
       </div>
         </div>
         </div>

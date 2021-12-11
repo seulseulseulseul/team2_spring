@@ -60,11 +60,18 @@
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="${centerDTO.u_id }" readonly class="form-control" name="u_id">
+                  <c:choose>
+                    <c:when test="!empty ${centerDTO.u_id}">
+                    <input type="text" value="${centerDTO.u_id}" readonly class="form-control" name="u_id">
+                    </c:when>
+                    <c:otherwise>
+                    <input type="text" value="${centerDTO.t_id}" readonly class="form-control" name="t_id">
+                    </c:otherwise>
+                    </c:choose>
                   </div>
                   <div class="form-group">
                     <label for="secret">비밀글 *</label>
-	                <input type="checkbox" name="secret" id="secret" value="1" 
+	                <input type="checkbox" name="secret" id="secret" value="1"
 	                <c:if test="${centerDTO.secret == 1}">
                     checked="checked"
 					</c:if>
@@ -76,8 +83,9 @@
                   </div>
                   <div class="form-group">
                     <input type="submit" value="수정" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('수정이 완료되었습니다')">
-                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
+                    onclick="alert('수정이 완료되었습니다.')">
+                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary"
+                    onclick="history.back();">
                   </div>
 
                 </form>

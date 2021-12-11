@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwill.domain.CenterDTO;
 import com.itwill.domain.PageDTO;
@@ -76,6 +77,7 @@ public class CenterController {
 		int b_num = Integer.parseInt(request.getParameter("b_num"));
 		CenterDTO centerDTO = centerService.getCenter(b_num);
 		List<CenterDTO> replyList = centerService.getReplyList(b_num);
+		
 		model.addAttribute("replyList",replyList);
 		model.addAttribute("centerDTO",centerDTO);
 		return "center/content";

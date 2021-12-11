@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .starR1{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background: url('ico_review.png') no-repeat -52px 0;
     background-size: auto 100%;
     width: 15px;
     height: 30px;
@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 .starR2{
-    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background: url('ico_review.png') no-repeat right 0;
     background-size: auto 100%;
     width: 15px;
     height: 30px;
@@ -37,7 +37,7 @@
  	font-size: 1rem;
     font-weight: 400;
     color: #495057;
- 	background-color: #cccccc;
+ 	background-color: #dadada;
 }
 .body-input{
 	width:100%;
@@ -60,12 +60,12 @@
   color:#ffffff;                  
   cursor:pointer;
   margin-right: 20px;     
-  background-color: #264db5;
+  background-color: #ffb5b5;
   font-size:15px;     
   border-radius:10px;     
 }
 /* .pop-btn.confirm{        */
-/*   border-right:1px solid #264db5;  */
+/*   border-right:1px solid #dadada;  */
 /* } */
 
 /* ------------------- */
@@ -104,13 +104,16 @@
   color:#ffffff; 
   font-size:20px;
 }
+.head-title{
+	color: white;
+}
 /* -------------------- */
 .popup{
   width:100%;               
   max-width:400px;          
   border-radius:10px;       
   overflow:hidden;          
-  background-color:#264db5; 
+  background-color:#ffb5b5; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
 }
 /* --------------------------- */

@@ -56,10 +56,12 @@
 // 	int b_num = Integer.parseInt(request.getParameter("b_num")) ;
 // 	NoticeDTO noticeDTO = noticeDAO.getNotice(b_num);
 	%>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate justify-content-center">
+   <section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
+						<h3 class="mb-5">&nbsp;</h3>
           <div>${noticeDTO.b_date}</div>
 		  <div>조회수 : ${noticeDTO.b_count}</div>
             <h2 class="mb-3">${noticeDTO.b_title}</h2>
@@ -72,10 +74,11 @@
          	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href = '${pageContext.request.contextPath}/notice/delete?b_num=${noticeDTO.b_num}'">
          	 	</c:if>
          	 </div>
+         	 	<h3 class="mb-5">&nbsp;</h3>
         </div>
         </div>
         </div>
-
+</div>
 	
 
    

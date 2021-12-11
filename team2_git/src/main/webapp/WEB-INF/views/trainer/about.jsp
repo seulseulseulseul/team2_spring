@@ -30,10 +30,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/review/review-css.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
-    /*팔로우 버튼 클릭*/
+    /*리뷰등록 버튼 클릭*/
     $(document).ready(function(){
-
-    
     		  $("#confirm").click(function(){
     		      modalClose(); //모달 닫기 함수 호출
     		      //컨펌 이벤트 처리
@@ -85,6 +83,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           <div class="col-md-12 heading-section ftco-animate text-center">
                 
          <!--  왼쪽 메뉴 -->
+         <h3 class="subheading">introduce</h3>
             <h2 class="mb-1">${trainer_memberDTO.t_name}
 <%--              <%= memberDTO.getT_nic()%> --%>
             </h2>
@@ -190,7 +189,8 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
        <div class="container">
           <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-12 heading-section ftco-animate text-center">
-    <h2 class="mb-1">트레이너 소개 동영상<br></h2> 
+           <h3 class="subheading">about trainer</h3>
+            <h2 class="mb-1">VIDEO </h2>
 <%--     <%= memberDTO.getT_nic()%> --%>
   <p align = "middle">
       
@@ -220,8 +220,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
         </div>
 	</div>
         
-   
-    
+<!-- 		리뷰리스트 -->
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel" >
@@ -237,7 +236,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                        </span>
                      </div>
                     <div class="d-flex align-items-center">
-                       <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_1.jpg)">
+                       <div class="user-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/person_${(reviewDTO.re_num mod 5)+1}.png)">
                         </div>
                         <div class="ml-4">
                            <p class="name">${reviewDTO.u_nic}</p>
@@ -257,58 +256,59 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
       </div>
     </section>
 
-    <section class="ftco-counter img" id="section-counter" style="background-image: url(${pageContext.request.contextPath}/resources/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-         <div class="overlay"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-           <div class="col-md-10">
-              <div class="row">
-                <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+<%--     <section class="ftco-counter img" id="section-counter" style="background-image: url(${pageContext.request.contextPath}/resources/images/bg_3.jpg);" data-stellar-background-ratio="0.5"> --%>
+<!--          <div class="overlay"></div> -->
+<!--       <div class="container"> -->
+<!--         <div class="row justify-content-center"> -->
+<!--            <div class="col-md-10"> -->
+<!--               <div class="row"> -->
+<!--                 <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate"> -->
 
-                  <div class="block-18 text-center">
-                    <div class="text">
-                       <strong class="number" data-number="2560">0</strong>
-                       <span>Happy Customers</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                  <div class="block-18 text-center">
-                    <div class="text">
-                       <strong class="number" data-number="60">0</strong>
-                       <span>Yoga Classes</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                  <div class="block-18 text-center">
-                    <div class="text">
-                       <strong class="number" data-number="50">0</strong>
-                       <span>Years of Experience</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                  <div class="block-18 text-center">
-                    <div class="text">
-                       <strong class="number" data-number="100">0</strong>
-                       <span>Yoga Conducted</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-       	 </div>
-    	 </div>
-  	  </div>
-    </section>
+<!--                   <div class="block-18 text-center"> -->
+<!--                     <div class="text"> -->
+<!--                        <strong class="number" data-number="2560">0</strong> -->
+<!--                        <span>Happy Customers</span> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--                 <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate"> -->
+<!--                   <div class="block-18 text-center"> -->
+<!--                     <div class="text"> -->
+<!--                        <strong class="number" data-number="60">0</strong> -->
+<!--                        <span>Yoga Classes</span> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--                 <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate"> -->
+<!--                   <div class="block-18 text-center"> -->
+<!--                     <div class="text"> -->
+<!--                        <strong class="number" data-number="50">0</strong> -->
+<!--                        <span>Years of Experience</span> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--                 <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate"> -->
+<!--                   <div class="block-18 text-center"> -->
+<!--                     <div class="text"> -->
+<!--                        <strong class="number" data-number="100">0</strong> -->
+<!--                        <span>Yoga Conducted</span> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--        	 </div> -->
+<!--     	 </div> -->
+<!--   	  </div> -->
+<!--     </section> -->
 	
 
       <section class="ftco-gallery ftco-section">
        <div class="container-fluid px-md-5">
           <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-1">Our Gallery</h2>
+          <h3 class="subheading">program</h3>
+            <h2 class="mb-1">Gallery</h2>
           </div>
         </div>
           <div class="row">

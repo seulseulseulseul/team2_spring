@@ -82,7 +82,7 @@ public class Trainer_MemberController {
 	
 			session.setAttribute("t_id", trainer_memberDTO.getT_id());
 			session.setAttribute("id", "2");
-			session.setAttribute("nic", trainer_memberDTO.getT_nic());
+			session.setAttribute("nic", trainer_memberDTO2.getT_nic());
 			return "redirect:/index";
 			
 		}else {
@@ -212,6 +212,14 @@ public class Trainer_MemberController {
 //		trainer_memberService.deleteReview(re_num);
 //		return "redirect:/about?t_id=";
 //	}
+	//마이크레딧 페이지
+	@RequestMapping(value = "/member/trainer_credit", method = RequestMethod.GET)
+	public String user_credit(HttpSession session,Model model) {
+		String t_id=(String)session.getAttribute("t_id");
+		Trainer_MemberDTO trainer_memberDTO=trainer_memberService.trainer_getMember(t_id);
+		model.addAttribute("trainer_memberDTO", trainer_memberDTO);
+		return "member/trainer_credit";
+	}
 }
 	
 

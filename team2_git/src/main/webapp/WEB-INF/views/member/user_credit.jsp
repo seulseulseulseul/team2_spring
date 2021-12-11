@@ -52,59 +52,24 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">마이 페이지</h3>
-<!--                 <form action="user_registerPro.jsp" id="join" method="post" onsubmit="return user_CheckForm();"> -->
-                                <form action="${pageContext.request.contextPath}/member/user_updatePro" id="join" method="post">
+                <h3 class="mb-5">My Credit</h3>
+                                
+
 								<div class="form-group">
-								<div id="dupdiv">
-									<label>사용자ID</label>
-										<input type="text" name="u_id" id="u_id" class="form-control" value="${sessionScope.u_id }" readonly>
-								</div>
-								</div>
-								<div class="form-group">
-									<label class="fw">비밀번호</label>
-										<input type="password" name="u_pass" id="u_pass" class="form-control" placeholder="비밀번호를 입력하세요." >
-								</div>
+									<h4>보유한 크레딧</h4>
+									<label>예약 1회마다 크레딧이 1개 차감됩니다.</label>
+									<h4><img src="${pageContext.request.contextPath}/resources/images/credit.png"  width= "90px" height= "90px">&nbsp;&nbsp;X&nbsp;&nbsp;${user_memberDTO.u_cash }</h4>
 								
-								<div class="form-group">
-									<label>이름</label>
-										<input type="text" name="u_name" id="u_name" class="form-control" value="${user_memberDTO.u_name }">
+									<button class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/user_update'" >충전하러 가기</button>
+								
 								</div>
-								<div class="form-group">
-									<label>닉네임</label>
-										<input type="text" name="u_nic" id="u_nic" class="form-control" value="${user_memberDTO.u_nic }">
-								</div>
-								<div class="form-group">
-									<label>E-mail</label>
-										<input type="email" name="u_email" id="u_email" class="form-control" value="${user_memberDTO.u_email }">
-								</div>
-								<div class="form-group">
-									<label>전화번호</label>
-										<input type="text" name="u_phone" id="u_phone" class="form-control" value="${user_memberDTO.u_phone }">
-								</div>
-								<div class="form-group text-right">
-									<button type="submit" class="btn btn-primary btn-block" onclick="return user_CheckForm();">회원정보수정</button>
-									<input type="reset" class="btn btn-primary btn-block" value="재입력"/>
-								</div>
-								<div class="form-group text-center">
-									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/user_login">로그인</a>
-								</div>
-							</form>
+						
               </div>
             </div>
 			<!-- .col-md-8 -->
-          <div class="col-lg-4 sidebar ftco-animate">
-            <div class="sidebar-box ftco-animate">
-              <div class="categories">
-                <ul>
-                <li><a href="${pageContext.request.contextPath }/member/user_update" class="btn py-3 px-4 btn-primary">회원정보수정</a></li>
-                <li><a href="${pageContext.request.contextPath }/member/user_credit" class="btn py-3 px-4 btn-primary">마이 크레딧</a></li>
-                </ul>
-              </div>
-            </div>
-
-
-        </div>
+<!-- 			유저왼쪽메뉴 -->
+ 		<jsp:include page="../inc/user_side.jsp"></jsp:include>
+ 
       </div>
       </div>
     </section> <!-- .section -->

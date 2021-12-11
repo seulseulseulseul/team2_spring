@@ -64,7 +64,7 @@ public class user_MemberController {
 	
 			session.setAttribute("u_id", user_memberDTO.getU_id());
 			session.setAttribute("id", "1");
-			session.setAttribute("nic", user_memberDTO.getU_nic());
+			session.setAttribute("nic", user_memberDTO2.getU_nic());
 			return "redirect:/index";
 			
 		}else {
@@ -139,15 +139,16 @@ public class user_MemberController {
 		
 		return "member/start_register";
 	}
-
+	//마이크레딧 페이지
 	@RequestMapping(value = "/member/user_credit", method = RequestMethod.GET)
-	public String user_credit() {
-		
+	public String user_credit(HttpSession session,Model model) {
+		String u_id=(String)session.getAttribute("u_id");
+		user_MemberDTO user_memberDTO=user_memberService.user_getMember(u_id);
+		model.addAttribute("user_memberDTO", user_memberDTO);
 		return "member/user_credit";
 	}
 	@RequestMapping(value = "/member/list", method = RequestMethod.GET)
 	public String member_list() {
-		
 		return "member/list";
 	}
 	
