@@ -182,15 +182,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
 							
                      </div>
                   </div>
-                  <div class="services-2 ftco-animate d-flex w-100">
-                     <div class="icon d-flex justify-content-center align-items-center\">
-                        <span class="flaticon-stone"></span>
-                     </div>
-                     <div class="text text-left pl-4">
-                        <h3>예약하기</h3>
-                        <p><a href="#" class="btn btn-white px-4 py-3"> 예약하기<span class="ion-ios-arrow-round-forward"></span></a></p>
-                     </div>
-                  </div>
+                 
 <!--                   <div class="services-2 ftco-animate d-flex w-100"> -->
 <!--                      <div class="icon d-flex justify-content-center align-items-center\"> -->
 <!--                         <span class="flaticon-stone"></span> -->
@@ -450,18 +442,18 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           	예약 일자를 확인해주세요.
           </div>
           <div class="body-contentbox">
-            <form action="${pageContext.request.contextPath}/trainer/insertReview" method="post">
+            <form action="${pageContext.request.contextPath}/trainer/insertReservation" method="post">
             	<input type="hidden" name="re_point" id="re_point" value="">
+            <input type="hidden" id="u_cash" value="${u_cash }" >
             <input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id }" >
 			 <input type="hidden" name="t_id" id="t_id" value="${t_id }" >
 			<div class="body-input">
-			<input type="datetime-local" name="book_date" min="" max="">
+			<input type="datetime-local" name="book_date" id="book_date" min="" max="">
 			<br>
-               <textarea rows="5" name="re_coment" id="re_coment" class="review_textarea">요청사항을 입력해주세요.</textarea>
+               <textarea rows="5" name="coment" id="coment" class="review_textarea">요청사항을 입력해주세요.</textarea>
             </div>  
    	 		 <div class="foot">
-                <input type="submit" class="pop-btn confirm" id="confirm2" value="예약" onclick="if(confirm('1크레딧이 차감됩니다. 예약하시겠습니까?'))(
-                	location.href='${pageContext.request.contextPath}/center/list');">
+                <input type="submit" class="pop-btn confirm" id="confirm2" value="예약" onclick="return CheckForm2();">
  		  		<input type="reset" class="pop-btn close" id="close2" value="취소">
      		 </div>
       		 </form>

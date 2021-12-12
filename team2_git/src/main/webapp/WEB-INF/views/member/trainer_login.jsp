@@ -44,7 +44,8 @@
         </div>
       </div>
     </section>
-   
+    <h3 class="mb-5"></h3>
+    
 	<section class="login first grey">
 			<div class="container">
 				<div class="box-wrapper">				
@@ -71,7 +72,7 @@
 								</div>
 								<div class="title-line">
 								</div>
-              	<a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
+              	 <h3 class="mb-5"></h3>
 							</form>
 						</div>
 					</div>

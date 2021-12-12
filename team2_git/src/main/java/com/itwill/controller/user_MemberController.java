@@ -270,5 +270,10 @@ public class user_MemberController {
 			}
 			
 		}
+		@RequestMapping(value = "/member/CashWithdrawal", method = RequestMethod.GET)
+		   public String CashWithdrawal() {
+		      
+		      return "member/CashWithdrawal";
+		}
 	
 }

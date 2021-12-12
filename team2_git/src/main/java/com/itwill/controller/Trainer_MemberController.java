@@ -178,7 +178,7 @@ public class Trainer_MemberController {
 	}
 	
 	@RequestMapping(value = "/trainer/about", method = RequestMethod.GET)
-	public String getTrainerInfo(HttpServletRequest request, Model model){
+	public String getTrainerInfo(HttpSession session,HttpServletRequest request, Model model){
 		
 		String t_id=(String)request.getParameter("t_id");
 		
@@ -196,6 +196,15 @@ public class Trainer_MemberController {
 			List<ReviewDTO> reviewList = trainer_memberService.getReviewList(t_id);
 			model.addAttribute("reviewList", reviewList);
 		
+			//예약
+			String u_id=(String)session.getAttribute("u_id");
+			int u_cash = 0;
+			try {
+				u_cash = user_memberService.user_getMember(u_id).getU_cash();
+				model.addAttribute("u_cash", u_cash);
+			}catch (Exception e) {
+				
+			}
 		return "trainer/about";
 	}
 	//리뷰작성
@@ -205,6 +214,16 @@ public class Trainer_MemberController {
 		String u_nic = user_memberService.user_getMember(reviewDTO.getU_id()).getU_nic();
 		reviewDTO.setU_nic(u_nic);
 		trainer_memberService.insertReview(reviewDTO);
+		return "redirect:/trainer/about?t_id="+reviewDTO.getT_id();
+	}
+	//예약하기
+	@RequestMapping(value = "/trainer/insertReservation", method = RequestMethod.POST)
+	public String reservationInsert(ReviewDTO reviewDTO){
+		System.out.println("Controller reviewInsert()");
+		String u_nic = user_memberService.user_getMember(reviewDTO.getU_id()).getU_nic();
+		reviewDTO.setU_nic(u_nic);
+		trainer_memberService.insertReview(reviewDTO);
+		//예약내역보기
 		return "redirect:/trainer/about?t_id="+reviewDTO.getT_id();
 	}
 //	@RequestMapping(value = "/trainer/deleteReview", method = RequestMethod.GET)

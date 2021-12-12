@@ -60,7 +60,7 @@
 									<label>예약 1회마다 크레딧이 1개 추가됩니다.</label>
 									<h4><img src="${pageContext.request.contextPath}/resources/images/credit.png"  width= "90px" height= "90px">&nbsp;&nbsp;X&nbsp;&nbsp;${trainer_memberDTO.t_cash }</h4>
 								
-									<button class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/trainer_update'" >크레딧 환급하러 가기</button>
+									<button class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/CashWithdrawal'" >크레딧 환급하러 가기</button>
 								
 								</div>
 						
