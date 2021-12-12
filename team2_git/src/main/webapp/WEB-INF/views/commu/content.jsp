@@ -42,8 +42,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">커뮤니티</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/index">Home</a></span> <span class="mr-2"><a href="${pageContext.request.contextPath}/commu/list">커뮤니티</a></span> <span>${commuDTO.c_num}번 글 </span></p>
+           <h1 class="mb-3 bread">커뮤니티</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/commu/list">커뮤니티</a></span> <span>${commuDTO.c_num}번 글 </span></p>
           </div>
         </div>
       </div>

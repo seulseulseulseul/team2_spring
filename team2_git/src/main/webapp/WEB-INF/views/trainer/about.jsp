@@ -48,6 +48,25 @@
     		  }     
         });
 	</script>
+	<script type="text/javascript">
+    /*예약하기 버튼 클릭*/
+    $(document).ready(function(){
+    		  $("#confirm2").click(function(){
+    		      modalClose(); //모달 닫기 함수 호출
+    		      //컨펌 이벤트 처리
+    		  });
+    		  $("#modal-open2").click(function(){        
+    		      $("#popup2").css('display','flex').hide().fadeIn();
+    		      //팝업을 flex속성으로 바꿔준 후 hide()로 숨기고 다시 fadeIn()으로 효과
+    		  });
+    		  $("#close2").click(function(){
+    		      modalClose(); //모달 닫기 함수 호출
+    		  });
+    		  function modalClose(){
+    		      $("#popup2").fadeOut(); //페이드아웃 효과
+    		  }     
+        });
+	</script>
   </head>
   <body>
    <jsp:include page="../inc/top.jsp"></jsp:include>
@@ -169,7 +188,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                      </div>
                      <div class="text text-left pl-4">
                         <h3>예약하기</h3>
-                        <p><a href="https://naver.com" class="btn btn-white px-4 py-3"> 예약하기<span class="ion-ios-arrow-round-forward"></span></a></p>
+                        <p><a href="#" class="btn btn-white px-4 py-3"> 예약하기<span class="ion-ios-arrow-round-forward"></span></a></p>
                      </div>
                   </div>
 <!--                   <div class="services-2 ftco-animate d-flex w-100"> -->
@@ -185,6 +204,10 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
           </div>
        </div>
     </section>
+    
+    <input type="button" value="예약하기" class="btn py-3 px-4 btn-primary"  id="modal-open2">
+    
+    
     <section class="ftco-section">
        <div class="container">
           <div class="row justify-content-center mb-5 pb-3">
@@ -408,6 +431,38 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
    	 		 <div class="foot">
                 <input type="submit" class="pop-btn confirm" id="confirm" value="등록" onclick="return CheckForm();">
  		  		<input type="reset" class="pop-btn close" id="close" value="취소">
+     		 </div>
+      		 </form>
+          </div>
+   	  		</div>
+        </div>
+  	  </div>
+</div>
+
+  <div class="popup-wrap" id="popup2"> 
+    <div class="popup">	
+      <div class="popup-head">	
+          <span class="head-title">Reservation</span>
+      </div>
+      <div class="popup-body">	
+        <div class="body-content">
+          <div class="body-titlebox">
+          	예약 일자를 확인해주세요.
+          </div>
+          <div class="body-contentbox">
+            <form action="${pageContext.request.contextPath}/trainer/insertReview" method="post">
+            	<input type="hidden" name="re_point" id="re_point" value="">
+            <input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id }" >
+			 <input type="hidden" name="t_id" id="t_id" value="${t_id }" >
+			<div class="body-input">
+			<input type="date" name="date">
+			<input type="time" name="time">
+			<br>
+               <textarea rows="5" name="re_coment" id="re_coment" class="review_textarea">요청사항을 입력해주세요.</textarea>
+            </div>  
+   	 		 <div class="foot">
+                <input type="submit" class="pop-btn confirm" id="confirm2" value="예약" onclick="return CheckForm2();">
+ 		  		<input type="reset" class="pop-btn close" id="close2" value="취소">
      		 </div>
       		 </form>
           </div>

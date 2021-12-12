@@ -8621,9 +8621,9 @@ h1, h2, h3, h4, h5,
       .hero-wrap .overlay {
         width: 100%; } }
   .hero-wrap.hero-wrap-2 {
-    height: 400px; }
+    height: 300px; }
     .hero-wrap.hero-wrap-2 .slider-text {
-      height: 400px !important; }
+      height: 300px !important; }
   .hero-wrap .slider-text {
     color: rgba(0, 0, 0, 0.4); }
     .hero-wrap .slider-text .icon {

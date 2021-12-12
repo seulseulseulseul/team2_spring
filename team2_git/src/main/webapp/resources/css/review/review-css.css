@@ -31,13 +31,14 @@
 .review_textarea{
 	clear: left;
 	margin: auto;
- 	width:95%;
+ 	width:99%;
  	border: 1px solid #ced4da;
  	border-radius: 0.25rem;
  	font-size: 1rem;
     font-weight: 400;
     color: #495057;
  	background-color: #dadada;
+ 	margin-top: 10px;
 }
 .body-input{
 	width:100%;
@@ -128,4 +129,13 @@
   bottom:0;               
   display:none; 
   padding:15px; 
+}
+
+#modal-open2{
+	width: 200px;
+	font-size: 20px;
+	position: fixed;
+	z-index: 999;
+	right: 50px;
+	bottom: 50px;
 }

@@ -39,8 +39,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">공지사항</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
+                  <h1 class="mb-3 bread">공지사항</h1>
+            <p class="breadcrumbs"><span>이벤트와 공지사항입니다.</span></p>
           </div>
         </div>
       </div>

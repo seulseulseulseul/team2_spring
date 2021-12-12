@@ -43,8 +43,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">문의내역</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
+                        <h1 class="mb-3 bread">고객센터</h1>
+            <p class="breadcrumbs"> <span>문의사항을 남겨주세요. 관리자가 확인 후 답변드립니다.</span></p>
           </div>
         </div>
       </div>
