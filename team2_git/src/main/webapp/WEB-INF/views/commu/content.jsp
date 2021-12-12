@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,7 +53,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate justify-content-center">
-          <div>${commuDTO.nic} | ${commuDTO.date}</div>
+          <div>${commuDTO.nic} | <fmt:formatDate value="${commuDTO.date}" pattern="yyyy년 MM월 dd일 hh시 mm분"/></div>
           <c:if test="${!empty commuDTO.file}">
           	<div><a href="${pageContext.request.contextPath}/resources/commuUpload/${commuDTO.file}" download>${commuDTO.file}</a></div>
           </c:if>
@@ -75,7 +76,7 @@
                    <img src="${pageContext.request.contextPath}/resources/images/person_${(replyDTO.r_num mod 5)+1}.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
-                    <div class="meta">${replyDTO.nic} | ${replyDTO.date}</div>
+                    <div class="meta">${replyDTO.nic} | <fmt:formatDate value="${replyDTO.date}" pattern="yyyy년 MM월 dd일 hh시 mm분"/></div>
                     <p>${replyDTO.content}</p>
                     <c:if test="${(replyDTO.u_id eq sessionScope.u_id) or (replyDTO.u_id eq sessionScope.t_id) }">
 	                    <p><a href="${pageContext.request.contextPath}/commu/updateReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">수정</a>

@@ -43,8 +43,10 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">고객센터</h1>
-            <p class="breadcrumbs"> <span>문의사항을 남겨주세요. 관리자가 확인 후 답변드립니다.</span></p>
+            <h1 class="mb-3 bread">관리자 페이지</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath }/member/user_list">회원리스트</a></span> 
+            <span class="mr-2"><a href="${pageContext.request.contextPath}/member/trainer_list">트레이너리스트</a></span>
+            <span class="mr-2"><a href="${pageContext.request.contextPath}/center/center_list">문의사항미답변</a></span></p>
           </div>
         </div>
       </div>
@@ -55,10 +57,6 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
           	<div class="row">
-<!-- 		              <a href="blog-single.html" class="block-20" style="background-image: url('${pageContext.request.contextPath}/resources/images/image_1.jpg');"> -->
-<!-- 		              </a> -->
-
-<%-- 				<%SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd"); %> --%>
 
 	          	<c:forEach var="centerDTO" items="${centerList }">
 	          	<div class="col-md-12 d-flex ftco-animate">
@@ -74,46 +72,20 @@
 		                  <div><a href="#">트레이너&nbsp;${centerDTO.t_id}</a></div>
 		                  </c:otherwise>
 		                  </c:choose>
-		                	<c:choose>
-		                	<c:when test="${centerDTO.isReply==0}">
+		               
 		                	<div><a href="#" class="meta-chat"><span class="icon-chat"></span>답변대기</a></div>
-							</c:when>
-							<c:otherwise>
-		                 	 <div><a href="#" class="meta-chat"><span class="icon-chat"></span>답변완료</a></div>
-		                 	</c:otherwise>
-		                  </c:choose>
 		                  
 		                </div>
 
 
 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">${centerDTO.b_title}</a></h3>
-		                 <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
+		                 <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">답변 작성하러 가기</a></p>
 		                
 		               
 		              </div>
 		            </div>
 		          </div>
 		            </c:forEach>
-
-
-						<div class="row mt-5">
-			        <div class="col">
-			          <div class="block-27">
-			            <ul>
-			            <c:if test="${pageDTO.startPage > pageDTO.pageBlock}">
-			             <li><a href="${pageContext.request.contextPath}/center/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">&lt;</a></li>
-						</c:if>
-			            <!-- var: 변수명. begin: 시작. end: 끝. step:증가  -->
-						<c:forEach var="i" begin="${pageDTO.startPage}" end="${pageDTO.endPage}" step="1">
-						<li class="active"><a href="${pageContext.request.contextPath}/center/list?pageNum=${i }">${i }</a></li>
-						</c:forEach>
-						<c:if test="${pageDTO.endPage < pageDTO.pageCount}">
-						<li><a href="${pageContext.request.contextPath}/center/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">&gt;</a></li>
-						</c:if>
-			            </ul>
-			          </div>
-			        </div>
-			 	 </div>
 		</div> <!-- .col-md-8 -->
 		
          </div>
@@ -122,9 +94,7 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <c:if test="${! empty sessionScope.id}">
-                <li><a href="${pageContext.request.contextPath}/center/insert" class="btn py-3 px-4 btn-primary">글쓰기 </a></li>
-                </c:if>
+
                 <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>

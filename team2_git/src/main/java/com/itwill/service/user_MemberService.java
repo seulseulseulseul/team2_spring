@@ -25,5 +25,5 @@ public interface user_MemberService {
 public List<user_MemberDTO> user_list();
 	
 	public void user_updateList(user_MemberDTO user_memberDTO);
-
+	
 }

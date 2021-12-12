@@ -83,7 +83,7 @@ public class user_MemberController {
 	}
 	
 	@RequestMapping(value = "/member/main", method = RequestMethod.GET)
-	public String main() {
+	public String user_main() {
 		
 		return "member/main";
 	}
@@ -233,12 +233,7 @@ public class user_MemberController {
 			
 			return "member/CashDeposit3";
 		}
-		@RequestMapping(value = "/member/list", method = RequestMethod.GET)
-		public String list(){
-			
-			return "member/list";
-		}
-		
+
 		@RequestMapping(value = "/member/user_list", method = RequestMethod.GET)
 		public String user_list(Model model) {
 			// ��� ������ ��������

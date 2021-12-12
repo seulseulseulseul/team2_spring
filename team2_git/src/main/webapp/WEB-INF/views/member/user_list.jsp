@@ -41,20 +41,21 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">리스트 선택하기</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath }/member/user_list">회원리스트보기</a></span> 
-            <span class="mr-2"><a href="${pageContext.request.contextPath}/member/trainer_list">트레이너리스트보기</a></span></p>
+            <h1 class="mb-3 bread">관리자 페이지</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath }/member/user_list">회원리스트</a></span> 
+            <span class="mr-2"><a href="${pageContext.request.contextPath}/member/trainer_list">트레이너리스트</a></span>
+            <span class="mr-2"><a href="${pageContext.request.contextPath}/center/center_list">문의사항미답변</a></span></p>
           </div>
         </div>
       </div>
     </section>
-
+<h3 class="mb-5"></h3>
    <section class="login first grey">
 			<div class="container">
 				<div class="box-wrapper">				
 					<div class="box box-border">
 						<div class="box-body">
-                <h3 class="mb-5">유저리스트보기</h3>
+                <h3 class="mb-5">회원 리스트</h3>
                 
                 <div class="table-responsive">
                 <table class="table table-bordered text-center" >

@@ -2,6 +2,7 @@ package com.itwill.controller;
 
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 import com.itwill.domain.user_MemberDTO;
@@ -218,13 +220,10 @@ public class Trainer_MemberController {
 	}
 	//예약하기
 	@RequestMapping(value = "/trainer/insertReservation", method = RequestMethod.POST)
-	public String reservationInsert(ReviewDTO reviewDTO){
-		System.out.println("Controller reviewInsert()");
-		String u_nic = user_memberService.user_getMember(reviewDTO.getU_id()).getU_nic();
-		reviewDTO.setU_nic(u_nic);
-		trainer_memberService.insertReview(reviewDTO);
+	public String insertReservation(ReservationDTO reservationDTO){
+		trainer_memberService.insertReservation(reservationDTO);
 		//예약내역보기
-		return "redirect:/trainer/about?t_id="+reviewDTO.getT_id();
+		return "redirect:/trainer/about?t_id="+reservationDTO.getT_id();
 	}
 //	@RequestMapping(value = "/trainer/deleteReview", method = RequestMethod.GET)
 //	public String delete(int re_num){

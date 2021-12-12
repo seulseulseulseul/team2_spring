@@ -2,6 +2,7 @@ package com.itwill.dao;
 
 import java.util.List;
 
+import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 
@@ -29,5 +30,7 @@ public interface Trainer_MemberDAO {
 	public List<Trainer_MemberDTO> trainer_list();
 	
 	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO);
+	
+	public void insertReservation(ReservationDTO reservationDTO);
 }
  	

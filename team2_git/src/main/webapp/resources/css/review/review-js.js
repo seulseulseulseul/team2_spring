@@ -17,7 +17,7 @@ function CheckForm(){
 			return false;
 	}
 	if (u_id.val() == "") {
-			alert("로그인 하세요.");
+			alert("일반회원으로 로그인해주세요.");
 			return false;
 	}
 	 //이름을 입력하지 않았을 경우
@@ -37,8 +37,9 @@ function CheckForm2(){
 	var t_id = $("#t_id");
 	var coment = $("#coment");
 	var book_date = $("#book_date");
+	var book_time = $("#book_time");
 	if (u_id.val() == "") {
-		alert("로그인 하세요.");
+		alert("일반회원으로 로그인해주세요.");
 		return false;
 	}else if(u_cash.val()>0){
 			if(confirm('1크레딧이 차감됩니다. 예약하시겠습니까?')){
@@ -54,6 +55,10 @@ function CheckForm2(){
 				}
 				if (book_date.val() == "") {
 						alert("예약일자를 확인해주세요.");
+						return false;
+				}
+				if (book_time.val() == "") {
+						alert("예약시간을 확인해주세요.");
 						return false;
 				}
 			}

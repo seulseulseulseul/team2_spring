@@ -38,7 +38,7 @@
 	
 	<insert id = "insertReview">
 	insert into review(re_num,t_id,u_id,u_nic,re_point,re_coment,re_date)
-	 values(#{re_num},#{t_id},#{u_id},#{u_nic},#{re_point},#{re_coment},#{re_date})
+		 values(#{re_num},#{t_id},#{u_id},#{u_nic},#{re_point},#{re_coment},#{re_date})
 	</insert>
 	
 	<select id = "getMaxNum" resultType="java.lang.Integer">
@@ -61,5 +61,19 @@
 		set   t_cash=#{t_cash}
 		where t_id=#{t_id}
 	</update>
+	
+	<insert id="insertReservation">
+		insert into reservation(t_id,u_id,coment,book_date,book_time)
+		 values(#{t_id},#{u_id},#{coment},#{book_date},#{book_time})
+	</insert>
+	
+<!-- 	예약현황 불러오기 -->
+	<select id="trainer_getReservation" resultType="com.itwill.domain.ReservationDTO">
+		select * from reservation where t_id=#{t_id}
+	</select>
+	
+	<select id="user_getReservation" resultType="com.itwill.domain.ReservationDTO">
+		select * from reservation where u_id=#{u_id}
+	</select>
 	
 </mapper>

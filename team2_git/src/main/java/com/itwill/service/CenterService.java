@@ -26,4 +26,6 @@ public interface CenterService {
 	public void deleteReply(CenterDTO centerDTO);
 	
 	public void updateCenter(CenterDTO centerDTO);
+	
+	public List<CenterDTO> getCenterList2();
 }

@@ -79,4 +79,9 @@ public class CenterDAOImpl implements CenterDAO{
 	public void updateCenter(CenterDTO centerDTO) {
 		sqlSession.update(namespace+".updateCenter",centerDTO);
 	}
+
+	@Override
+	public List<CenterDTO> getCenterList2() {
+		return sqlSession.selectList(namespace+".getCenterList2");
+	}
 }

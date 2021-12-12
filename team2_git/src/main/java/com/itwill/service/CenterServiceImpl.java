@@ -89,4 +89,9 @@ public class CenterServiceImpl implements CenterService{
 		centerDAO.updateCenter(centerDTO);
 	}
 
+	@Override
+	public List<CenterDTO> getCenterList2() {
+		return centerDAO.getCenterList2();
+	}
+
 }

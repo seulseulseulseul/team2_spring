@@ -198,8 +198,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
     </section>
     
     <input type="button" value="예약하기" class="btn py-3 px-4 btn-primary"  id="modal-open2">
-    
-    
+       
     <section class="ftco-section">
        <div class="container">
           <div class="row justify-content-center mb-5 pb-3">
@@ -448,7 +447,8 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
             <input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id }" >
 			 <input type="hidden" name="t_id" id="t_id" value="${t_id }" >
 			<div class="body-input">
-			<input type="datetime-local" name="book_date" id="book_date" min="" max="">
+			<input type="date" name="book_date" id="book_date" min="" max="">
+			<input type="time" name="book_time" id="book_time" min="" max="">
 			<br>
                <textarea rows="5" name="coment" id="coment" class="review_textarea">요청사항을 입력해주세요.</textarea>
             </div>  

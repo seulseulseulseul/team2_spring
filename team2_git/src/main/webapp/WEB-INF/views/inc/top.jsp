@@ -51,7 +51,7 @@
 <c:when test="${sessionScope.u_id=='admin'}">
 	<div id="login">${sessionScope.u_id}님 | 
 	               <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a> | 
-                   <a href="${pageContext.request.contextPath}/member/list">관리자페이지</a></div>
+                   <a href="${pageContext.request.contextPath}/member/user_list">관리자페이지</a></div>
 </c:when>
 <c:otherwise>
 	<div id="login">${sessionScope.u_id }님 | 

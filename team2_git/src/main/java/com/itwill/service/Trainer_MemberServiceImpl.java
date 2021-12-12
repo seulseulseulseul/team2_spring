@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwill.dao.Trainer_MemberDAO;
 import com.itwill.dao.Trainer_MemberDAOImpl;
+import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 
@@ -95,5 +96,11 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("MemberServiceImpl updateMember()");
 		trainer_memberDAO.trainer_updateList(trainer_memberDTO);
+	}
+
+	@Override
+	public void insertReservation(ReservationDTO reservationDTO) {
+		System.out.println("MemberServiceImpl insertReservation()");
+		trainer_memberDAO.insertReservation(reservationDTO);
 	}
 }

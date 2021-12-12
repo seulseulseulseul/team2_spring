@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,7 +67,7 @@
 		              	<div class="meta">
 		                  <div>${commuDTO.nic}</div>
 		                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>${commuDTO.replycount}</a></div>
-		                  <div>${commuDTO.date}</div>
+		                  <div><fmt:formatDate value="${commuDTO.date}" pattern="yyyy년 MM월 dd일"/></div>
 		                </div>
 		                
 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/commu/content?c_num=${commuDTO.c_num}">${commuDTO.subject}</a></h3>

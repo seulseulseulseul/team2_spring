@@ -54,4 +54,8 @@
 	<update id="updateCenter">
 		update center set b_title=#{b_title},b_content=#{b_content},secret=#{secret} where b_num=#{b_num} and b_reply=0
 	</update>
+	
+	<select id = "getCenterList2" resultType="com.itwill.domain.CenterDTO">
+		select * from center where b_reply = 0 order by b_num
+	</select>
 </mapper>
