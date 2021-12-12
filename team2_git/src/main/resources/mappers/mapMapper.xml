@@ -5,8 +5,9 @@
   
 <mapper namespace="com.itwill.mapper.MapMapper">
 
-	<select id = "getAddress" resultType="com.itwill.domain.TrainerDTO">
-		select * from trainer where t_extraAddress like concat('%',#{t_extraAddress},'%')
+	<select id="getAddress" resultType="com.itwill.domain.TrainerDTO">
+		select t_id,t_name,t_address,t_phone,t_sns
+		from trainer where t_extraAddress like CONCAT('%',#{t_extraAddress},'%')
 	</select>
   
 </mapper>

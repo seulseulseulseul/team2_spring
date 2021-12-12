@@ -17,6 +17,7 @@ public class MapServiceImpl implements MapService {
 	
 	@Override
 	public List<TrainerDTO> getAddress(String t_extraAddress) {
+		
 		return mapDAO.getAddress(t_extraAddress);
 		
 	}

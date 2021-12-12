@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwill.domain.TrainerDTO;
 
+
 @Service
 public interface MapService {
 	

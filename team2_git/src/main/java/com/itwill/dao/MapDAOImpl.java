@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.itwill.domain.TrainerDTO;
 
+
 @Repository
 public class MapDAOImpl implements MapDAO {
 	
@@ -21,7 +22,9 @@ public class MapDAOImpl implements MapDAO {
 	@Override
 	public List<TrainerDTO> getAddress(String t_extraAddress) {
 		
-		return sqlSession.selectList(namespace+".getAddress", t_extraAddress);
+		List<TrainerDTO> trainerList = sqlSession.selectList(namespace+".getAddress", t_extraAddress);
+		
+		return trainerList;
 	}
 
 

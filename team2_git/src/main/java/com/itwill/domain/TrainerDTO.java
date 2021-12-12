@@ -21,13 +21,6 @@ public class TrainerDTO {
 	private String t_postecode;
 	private String t_extraAddress;
 	
-	
-	public String getT_extraAddress() {
-		return t_extraAddress;
-	}
-	public void setT_extraAddress(String t_extraAddress) {
-		this.t_extraAddress = t_extraAddress;
-	}
 	public int getT_num() {
 		return t_num;
 	}
@@ -130,8 +123,11 @@ public class TrainerDTO {
 	public void setT_postecode(String t_postecode) {
 		this.t_postecode = t_postecode;
 	}
-	
-	
-
+	public String getT_extraAddress() {
+		return t_extraAddress;
+	}
+	public void setT_extraAddress(String t_extraAddress) {
+		this.t_extraAddress = t_extraAddress;
+	}
 	
 }
