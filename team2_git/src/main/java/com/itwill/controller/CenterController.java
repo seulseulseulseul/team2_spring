@@ -119,4 +119,42 @@ public class CenterController {
 
 		return "main2";
 	}
+	@RequestMapping(value = "/center/center_list", method = RequestMethod.GET)
+	public String list2(HttpServletRequest request,Model model){
+		//한 화면에 보여줄 글 개수 10개 설정
+		 int pageSize = 5;
+		 
+		//페이지 번호 가져오기
+		 String pageNum = request.getParameter("pageNum");
+		//페이지 번호가 없으면 -> 1
+		 if(pageNum==null){
+		 	pageNum="1";
+		 }
+		 
+		 PageDTO pageDTO = new PageDTO();
+		 pageDTO.setPageSize(pageSize);
+		 pageDTO.setPageNum(pageNum);
+		 
+		 List<CenterDTO> centerList = centerService.getCenterList(pageDTO);
+		
+		 int count = centerService.getCenterCount();
+		 pageDTO.setCount(count);
+		 
+//		 //답변여부 확인 및 날짜형식 포맷
+//		 int b_reply = centerService.isReply(b_num);
+		 List<CenterDTO> centerList2 = null;
+		 
+		 for (CenterDTO centerDTO : centerList) {
+			 int isReply = centerService.isReply(centerDTO.getB_num());
+			 centerDTO.setIsReply(isReply);
+			 if(isReply>0) {
+				 centerList.remove(centerDTO);
+			 }
+		}
+		 model.addAttribute("centerList",centerList);
+		 
+		 //데이터담기
+		 model.addAttribute("pageDTO",pageDTO);
+		return "center/center_list";
+	}
 }

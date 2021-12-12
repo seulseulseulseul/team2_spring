@@ -28,4 +28,8 @@ public interface Trainer_MemberService{
 	public void insertReview(ReviewDTO reviewDTO);
 	
 	public List<ReviewDTO> getReviewList(String t_id);
+	
+	public List<Trainer_MemberDTO> trainer_list();
+
+	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO);
 }

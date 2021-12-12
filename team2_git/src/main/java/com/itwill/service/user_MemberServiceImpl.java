@@ -87,5 +87,15 @@ public class user_MemberServiceImpl implements user_MemberService {
 //		return memberDAO.getMemberList();
 //	}
 
+	@Override
+	public List<user_MemberDTO> user_list() {
+		System.out.println("MemberServiceImpl user_list()");
+		return user_memberDAO.user_list();
+	}
 
+	@Override
+	public void user_updateList(user_MemberDTO user_memberDTO) {
+		System.out.println("MemberServiceImpl updateMember()");
+		user_memberDAO.user_updateList(user_memberDTO);
+	}
 }

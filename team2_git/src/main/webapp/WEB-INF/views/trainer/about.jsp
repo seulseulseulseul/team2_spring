@@ -86,7 +86,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-3 bread">트레이너 소개</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="views/index.jsp">메인</a></span> <span>트레이너 소개</span></p>
+            <p class="breadcrumbs"> <span>트레이너 ${trainer_memberDTO.t_name}</span></p>
           </div>
         </div>
       </div>
@@ -455,13 +455,13 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
             <input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id }" >
 			 <input type="hidden" name="t_id" id="t_id" value="${t_id }" >
 			<div class="body-input">
-			<input type="date" name="date">
-			<input type="time" name="time">
+			<input type="datetime-local" name="book_date" min="" max="">
 			<br>
                <textarea rows="5" name="re_coment" id="re_coment" class="review_textarea">요청사항을 입력해주세요.</textarea>
             </div>  
    	 		 <div class="foot">
-                <input type="submit" class="pop-btn confirm" id="confirm2" value="예약" onclick="return CheckForm2();">
+                <input type="submit" class="pop-btn confirm" id="confirm2" value="예약" onclick="if(confirm('1크레딧이 차감됩니다. 예약하시겠습니까?'))(
+                	location.href='${pageContext.request.contextPath}/center/list');">
  		  		<input type="reset" class="pop-btn close" id="close2" value="취소">
      		 </div>
       		 </form>

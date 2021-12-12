@@ -13,14 +13,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap') ;
 body
-{font-family: 'Jua', serif;}	
+{font-family: 'Jua', serif;};	
 p
-{font-family: 'Jua',  sans-serif;}
+{font-family: 'Jua',  sans-serif;};
 /*   @font-face{font-family: 'Jua'; */
 /* 	src:  url(../fonts/naver/BMJUA_ttf.ttf')format('truetype'); */
 /*     font-weight: normal; */
 /*     font-style: normal; */
-/*     } */
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -69,7 +68,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: 'Jua';
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;

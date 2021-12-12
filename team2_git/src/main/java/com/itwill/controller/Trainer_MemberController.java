@@ -220,6 +220,38 @@ public class Trainer_MemberController {
 		model.addAttribute("trainer_memberDTO", trainer_memberDTO);
 		return "member/trainer_credit";
 	}
+	@RequestMapping(value = "/member/trainer_list", method = RequestMethod.GET)
+	public String trainer_list(Model model) {
+		// ��� ������ ��������
+		List<Trainer_MemberDTO> trainer_list=trainer_memberService.trainer_list();
+		
+		// ������ ���
+		model.addAttribute("trainer_list",trainer_list);
+		
+//		/WEB-INF/views/member/list.jsp  => �̵�
+		
+		return "member/trainer_list";
+	}
+	@RequestMapping(value = "/member/trainer_updateList", method = RequestMethod.POST)
+	public String trainer_updateList(Trainer_MemberDTO trainer_memberDTO) {
+
+		System.out.println(" MemberController  updatePro ");
+	
+//		Trainer_MemberDTO trainer_memberDTO2=trainer_memberService.trainer_userCheck(trainer_memberDTO);
+				
+//		if(trainer_memberDTO2!=null) {
+			if(trainer_memberDTO!=null) {
+
+			trainer_memberService.trainer_updateList(trainer_memberDTO);
+			return "member/trainer_list";
+					
+		}else {
+
+//			return "member/msg";
+			return "member/trainer_list";
+		}
+		
+	}
 }
 	
 

@@ -35,5 +35,13 @@
 <!-- 	<delete id="deleteMember"> -->
 <!-- 		delete from member where id=#{id} -->
 <!-- 	</delete> -->
+	<select id="user_list" resultType="com.itwill.domain.user_MemberDTO">
+		select * from user
+	</select>
 	
+	<update id="user_updateList">
+		update user 
+		set   u_cash=#{u_cash}
+		where u_id=#{u_id}
+	</update>
 </mapper>

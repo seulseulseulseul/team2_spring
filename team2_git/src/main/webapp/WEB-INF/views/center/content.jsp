@@ -60,7 +60,14 @@
 						<div class="box-body">
 						<h3 class="mb-5">&nbsp;</h3>
           <div><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy년 MM월 dd일"/></div>
-		  <div>${centerDTO.u_id}</div>
+		 <c:choose>
+		 <c:when test="${!empty centerDTO.u_id }">
+		  <div>회원&nbsp;${centerDTO.u_id}</div>
+		  </c:when>
+		  <c:otherwise>
+		  <div>트레이너&nbsp;${centerDTO.t_id}</div>
+		  </c:otherwise>
+		  </c:choose>
             <h2 class="mb-3">${centerDTO.b_title}</h2>
             <p>${centerDTO.b_content}
             </p>

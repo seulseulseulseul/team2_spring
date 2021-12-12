@@ -85,4 +85,15 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 //	      return trainer_memberDAO.trainer_getinfo(t_id);
 //	
 //	}
+	@Override
+	public List<Trainer_MemberDTO> trainer_list() {
+		System.out.println("MemberServiceImpl user_list()");
+		return trainer_memberDAO.trainer_list();
+	}
+	
+	@Override
+	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO) {
+		System.out.println("MemberServiceImpl updateMember()");
+		trainer_memberDAO.trainer_updateList(trainer_memberDTO);
+	}
 }

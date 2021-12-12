@@ -52,4 +52,14 @@
 	<select id= "getCenterCount" resultType="java.lang.Integer">
 	</select>
 	
+		<select id="trainer_list" resultType="com.itwill.domain.Trainer_MemberDTO">
+		select * from trainer
+	</select>
+	
+	<update id="trainer_updateList">
+		update trainer 
+		set   t_cash=#{t_cash}
+		where t_id=#{t_id}
+	</update>
+	
 </mapper>

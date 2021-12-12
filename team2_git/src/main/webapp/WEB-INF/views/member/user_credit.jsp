@@ -35,17 +35,16 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-<%--     <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5"> --%>
-<!--       <div class="overlay"></div> -->
-<!--       <div class="container"> -->
-<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
-<!--           <div class="col-md-9 ftco-animate text-center"> -->
-<!--             <h1 class="mb-3 bread">유저 회원가입</h1> -->
-<!--             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </section> -->
+ <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+                        <h1 class="mb-3 bread">마이 페이지</h1>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="ftco-section">
       <div class="container">
@@ -60,7 +59,7 @@
 									<label>예약 1회마다 크레딧이 1개 차감됩니다.</label>
 									<h4><img src="${pageContext.request.contextPath}/resources/images/credit.png"  width= "90px" height= "90px">&nbsp;&nbsp;X&nbsp;&nbsp;${user_memberDTO.u_cash }</h4>
 								
-									<button class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/user_update'" >충전하러 가기</button>
+									<button class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/member/KakaoPay'" >충전하러 가기</button>
 								
 								</div>
 						

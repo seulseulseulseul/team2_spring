@@ -83,6 +83,15 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	public List<ReviewDTO> getReviewList(String t_id) {
 		return sqlSession.selectList(namespace+".getReviewList",t_id);
 	}
-	
+	@Override
+	public List<Trainer_MemberDTO> trainer_list() {
+		System.out.println("MemberDAOImpl trainer_list()");
+		return sqlSession.selectList(namespace+".trainer_list");
+	}
+
+	@Override
+	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO) {
+		sqlSession.update(namespace+".trainer_updateList", trainer_memberDTO);
+	}
 	
 }//Ŭ����

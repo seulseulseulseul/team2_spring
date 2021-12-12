@@ -59,5 +59,14 @@ public class user_MemberDAOImpl implements user_MemberDAO {
 //		System.out.println("MemberDAOImpl getMemberList()");
 //		return sqlSession.selectList(namespace+".getMemberList");
 //	}
-
+	
+	@Override
+	public List<user_MemberDTO> user_list() {
+		System.out.println("MemberDAOImpl user_list()");
+		return sqlSession.selectList(namespace+".user_list");
+	}
+	@Override
+	public void user_updateList(user_MemberDTO user_memberDTO) {
+		sqlSession.update(namespace+".user_updateList", user_memberDTO);
+	}
 }//클래스

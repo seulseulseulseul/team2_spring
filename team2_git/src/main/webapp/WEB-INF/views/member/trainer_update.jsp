@@ -34,7 +34,16 @@
   <body>
   		<jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
-
+  <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+                        <h1 class="mb-3 bread">마이 페이지</h1>
+          </div>
+        </div>
+      </div>
+    </section>
 
 	<section class="ftco-section">
       <div class="container">

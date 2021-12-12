@@ -1,5 +1,8 @@
+<%@page import="com.itwill.domain.user_MemberDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,68 +36,59 @@
   </head>
   <body>
   <jsp:include page="../inc/top.jsp"></jsp:include>
-    <!-- END nav -->
-
- <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-                        <h1 class="mb-3 bread">마이 페이지</h1>
+            <h1 class="mb-3 bread">리스트 선택하기</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath }/member/user_list">회원리스트보기</a></span> 
+            <span class="mr-2"><a href="${pageContext.request.contextPath}/member/trainer_list">트레이너리스트보기</a></span></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">회원정보 수정</h3>
-<!--                 <form action="user_registerPro.jsp" id="join" method="post" onsubmit="return user_CheckForm();"> -->
-                                <form action="${pageContext.request.contextPath}/member/user_updatePro" id="join" method="post">
-								<div class="form-group">
-								<div id="dupdiv">
-									<label>사용자ID</label>
-										<input type="text" name="u_id" id="u_id" class="form-control" value="${sessionScope.u_id }" readonly>
-								</div>
-								</div>
-								<div class="form-group">
-									<label class="fw">비밀번호</label>
-										<input type="password" name="u_pass" id="u_pass" class="form-control" placeholder="비밀번호를 입력하세요." >
-								</div>
-								
-								<div class="form-group">
-									<label>이름</label>
-										<input type="text" name="u_name" id="u_name" class="form-control" value="${user_memberDTO.u_name }">
-								</div>
-								<div class="form-group">
-									<label>닉네임</label>
-										<input type="text" name="u_nic" id="u_nic" class="form-control" value="${user_memberDTO.u_nic }">
-								</div>
-								<div class="form-group">
-									<label>E-mail</label>
-										<input type="email" name="u_email" id="u_email" class="form-control" value="${user_memberDTO.u_email }">
-								</div>
-								<div class="form-group">
-									<label>전화번호</label>
-										<input type="text" name="u_phone" id="u_phone" class="form-control" value="${user_memberDTO.u_phone }">
-								</div>
-								<div class="form-group text-right">
-									<button type="submit" class="btn btn-primary btn-block" onclick="return user_CheckForm();">회원정보수정</button>
-									<input type="reset" class="btn btn-primary btn-block" value="재입력"/>
-								</div>
-								<div class="form-group text-center">
-									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/user_login">로그인</a>
-								</div>
-							</form>
+   <section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
+                <h3 class="mb-5">유저리스트보기</h3>
+                
+                <div class="table-responsive">
+                <table class="table table-bordered text-center" >
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th>아이디</th>
+                    <th>이름</th>
+                    <th>닉네임</th>
+                    <th>이메일</th>
+                    <th>크레딧</th>
+                  </tr>
+                </thead>
+                <tbody>
+				<c:forEach var="user_memberDTO" items="${user_list}">				
+				<tr>
+				<td>${user_memberDTO.u_id }</td>
+				<td>${user_memberDTO.u_name }</td>
+				<td>${user_memberDTO.u_nic }</td>
+				<td>${user_memberDTO.u_email }</td>
+				<td><form action="${pageContext.request.contextPath}/member/user_updateList" method="post">
+				<input type="hidden" name="u_id" value="${user_memberDTO.u_id }">
+				<input type="number" name="u_cash" min="0" max="200" step="1" value="${user_memberDTO.u_cash }"> &nbsp;				 
+				<input type="submit" value="적용" class="btn py-3 px-4 btn-primary"></form>	
+				</td>
+				</tr>	      
+				 </c:forEach>				 
+				</table>		
               </div>
             </div>
-			
+			</div>
 <!-- 		유저 왼쪽 메뉴 -->
-         <jsp:include page="../inc/user_side.jsp"></jsp:include>
              
+<%--       <jsp:include page="../inc/admin_side.jsp"></jsp:include> --%>
+         
              
       </div>
       </div>

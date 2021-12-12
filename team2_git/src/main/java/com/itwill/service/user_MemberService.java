@@ -22,4 +22,8 @@ public interface user_MemberService {
 //	public void user_deleteMember(user_MemberDTO user_memberDTO);
 //	
 //	public List<user_MemberDTO> user_getMemberList();
+public List<user_MemberDTO> user_list();
+	
+	public void user_updateList(user_MemberDTO user_memberDTO);
+
 }
