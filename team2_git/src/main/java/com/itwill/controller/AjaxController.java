@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.itwill.domain.TrainerDTO;
+import com.itwill.domain.Trainer_MemberDTO;
 import com.itwill.service.MapService;
 
 @RestController
@@ -21,13 +21,13 @@ public class AjaxController {
 	private MapService mapService;
 	
 	@RequestMapping(value = "/getAddress", method = RequestMethod.GET)
-	public ResponseEntity<List<TrainerDTO>> getAddress(HttpServletRequest request){
+	public ResponseEntity<List<Trainer_MemberDTO>> getAddress(HttpServletRequest request){
 		
 		String t_extraAddress = request.getParameter("t_extraAddress");
 		System.out.println(t_extraAddress);
-		List<TrainerDTO> trainerList = mapService.getAddress(t_extraAddress);
+		List<Trainer_MemberDTO> trainerList = mapService.getAddress(t_extraAddress);
 		System.out.println(trainerList.isEmpty());
-		ResponseEntity<List<TrainerDTO>> entity = new ResponseEntity<List<TrainerDTO>>(trainerList, HttpStatus.OK);
+		ResponseEntity<List<Trainer_MemberDTO>> entity = new ResponseEntity<List<Trainer_MemberDTO>>(trainerList, HttpStatus.OK);
 		
 		return entity;
 		

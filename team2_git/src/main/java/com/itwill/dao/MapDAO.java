@@ -2,11 +2,11 @@ package com.itwill.dao;
 
 import java.util.List;
 
-import com.itwill.domain.TrainerDTO;
+import com.itwill.domain.Trainer_MemberDTO;
 
 
 public interface MapDAO {
 	
-	public List<TrainerDTO> getAddress(String t_extraAddress);
+	public List<Trainer_MemberDTO> getAddress(String t_extraAddress);
 
 }

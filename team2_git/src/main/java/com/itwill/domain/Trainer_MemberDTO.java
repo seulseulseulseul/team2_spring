@@ -1,31 +1,31 @@
 package com.itwill.domain;
 
-public class TrainerDTO {
+public class Trainer_MemberDTO {
 	
-	private int t_num;
 	private String t_id;
 	private String t_pass;
 	private String t_name;
 	private String t_nic;
+	private String t_postcode;
 	private String t_address;
-	private String t_intro;
+	private String t_detailAddress;
+	private String t_extraAddress;
 	private String t_phone;
 	private String t_email;
 	private int t_cash;
+	private String t_intro;
 	private String t_exp;
 	private String t_sns;
 	private String t_program;
 	private String profile_photo;
-	private String t_detailAddress;
 	private String video;
-	private String t_postecode;
-	private String t_extraAddress;
 	
-	public int getT_num() {
-		return t_num;
+	
+	public String getT_extraAddress() {
+		return t_extraAddress;
 	}
-	public void setT_num(int t_num) {
-		this.t_num = t_num;
+	public void setT_extraAddress(String t_extraAddress) {
+		this.t_extraAddress = t_extraAddress;
 	}
 	public String getT_id() {
 		return t_id;
@@ -117,17 +117,15 @@ public class TrainerDTO {
 	public void setVideo(String video) {
 		this.video = video;
 	}
-	public String getT_postecode() {
-		return t_postecode;
+	public String getT_postcode() {
+		return t_postcode;
 	}
-	public void setT_postecode(String t_postecode) {
-		this.t_postecode = t_postecode;
+	public void setT_postcode(String t_postcode) {
+		this.t_postcode = t_postcode;
 	}
-	public String getT_extraAddress() {
-		return t_extraAddress;
-	}
-	public void setT_extraAddress(String t_extraAddress) {
-		this.t_extraAddress = t_extraAddress;
-	}
+	
+	
+	
+
 	
 }

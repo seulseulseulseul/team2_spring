@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.itwill.domain.TrainerDTO;
 import com.itwill.service.MapService;
 
 @Controller
@@ -21,24 +20,20 @@ public class MapController {
 	@Inject
 	private MapService mapService;
 	
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String main(){
-		return "main";
-		
-	}
 	@RequestMapping(value = "/dongSearch", method = RequestMethod.GET)
-	public String main(TrainerDTO trainerDTO, HttpServletRequest request, Model model){
+	public String main(HttpServletRequest request){
 		
-		// 위경도가 담긴 데이터를 받아 지도에 표시하는 사이트
-		String dong = request.getParameter("t_dong");
-		
-		List<TrainerDTO> trainerList = mapService.getAddress(dong);
-		model.addAttribute(dong);
-		
-		ResponseEntity<List<TrainerDTO>> entity = new ResponseEntity<List<TrainerDTO>>(trainerList, HttpStatus.OK);
-			
 		return "dongSearch";
 		
 	}
-	
+	@RequestMapping(value = "/map", method = RequestMethod.GET)
+	public String main(HttpServletRequest request, Model model){
+		
+		String t_dong = request.getParameter("t_dong");
+		
+		model.addAttribute(t_dong);
+		
+		return "map";
+		
+	}
 }

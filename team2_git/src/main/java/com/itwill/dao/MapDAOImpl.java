@@ -7,7 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.itwill.domain.TrainerDTO;
+import com.itwill.domain.Trainer_MemberDTO;
+
 
 
 @Repository
@@ -20,11 +21,9 @@ public class MapDAOImpl implements MapDAO {
 	private static final String namespace="com.itwill.mapper.MapMapper";
 	
 	@Override
-	public List<TrainerDTO> getAddress(String t_extraAddress) {
+	public List<Trainer_MemberDTO> getAddress(String t_extraAddress) {
 		
-		List<TrainerDTO> trainerList = sqlSession.selectList(namespace+".getAddress", t_extraAddress);
-		
-		return trainerList;
+		return sqlSession.selectList(namespace+".getAddress", t_extraAddress);
 	}
 
 
