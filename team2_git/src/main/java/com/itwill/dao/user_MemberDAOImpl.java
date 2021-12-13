@@ -79,7 +79,11 @@ public class user_MemberDAOImpl implements user_MemberDAO {
 	@Override
 	public void user_cashUpdate(String u_id) {
 		sqlSession.update(namespace+".user_cashUpdate", u_id);
-
-		
+	}
+	
+	@Override
+	public user_MemberDTO naverUserCheck(String u_id) {
+		System.out.println("user_MemberDAOImpl user_userCheck()");
+		return sqlSession.selectOne(namespace+".naverUserCheck", u_id);
 	}
 }//클래스

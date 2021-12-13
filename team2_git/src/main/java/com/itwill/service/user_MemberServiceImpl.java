@@ -110,4 +110,9 @@ public class user_MemberServiceImpl implements user_MemberService {
 		user_memberDAO.user_cashUpdate(u_id);
 		
 	}
+	@Override
+	public user_MemberDTO naverUserCheck(String u_id) {
+		System.out.println("user_MemberServiceImpl naverUserCheck()");
+		return user_memberDAO.naverUserCheck(u_id);
+	}
 }

@@ -33,82 +33,92 @@
   <body>
   		<jsp:include page="inc/top.jsp"></jsp:include>
     <!-- END nav -->
+    
+    <script type="text/javascript">
 
-    <section class="home-slider js-fullheight owl-carousel">
-      <div class="slider-item js-fullheight" style="background-image:url(${pageContext.request.contextPath}/resources/images/bg_1.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-10 text ftco-animate text-center">
-            <h1 class="mb-4">Discover Your Inner Sanctuary</h1>
-            <h3 class="subheading">Everyday We Bring Hope and Smile to the Patient We Serve</h3>
-            <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3">View our works</a></p>
-          </div>
-        </div>
-        </div>
-      </div>
+	function submitCheck(myForm) {
+		//이름을 2-5자 사이로 한글로 입력했는지 판단하는 정규표현식(규칙)
+		var reg1 = /^[가-힣]{2,5}$/;
+		var value = myForm.t_dong.value;
+		var result = reg1.test(value);
+		console.log(result);
+		if( !result ) {
+			alert("잘못된 동이름입니다.");
+			myForm.t_dong.focus();
+			return false;
+		}
+	}
 
-      <div class="slider-item js-fullheight" style="background-image:url(${pageContext.request.contextPath}/resources/images/bg_2.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-10 text ftco-animate text-center">
-            <h1 class="mb-4">Lighting Your Heart &amp; Mind</h1>
-            <h3 class="subheading">Your Health is Our Top Priority with Comprehensive, Affordable medical.</h3>
-            <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3">View our works</a></p>
-          </div>
-        </div>
-        </div>
-      </div>
-    </section>
+	</script>
+
 
     <section class="ftco-section bg-light">
 			<div class="container">
+				<h1 class="mb-1">득근 보장 트레이너 추천!</h1> <br><br>
 				<div class="row">
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-6.jpg);"></div>
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-4.jpg;"></div>
 							<div class="text mt-4">
-								<h3 class="mb-4">Power Yoga</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<h3 class="mb-4">모니카 트레이너</h3>
+<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
 								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-1.jpg);"></div>
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-3.jpg);"></div>
 							<div class="text mt-4">
-								<h3 class="mb-4">Community Class</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<h3 class="mb-4">허니제이 트레이너</h3>
+<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
 								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-7.jpg);"></div>
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-5.jpg);"></div>
 							<div class="text mt-4">
-								<h3 class="mb-4">Foundation Yoga</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<h3 class="mb-4">노제 트레이너</h3>
+<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
 								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/classes-2.jpg);"></div>
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-7.jpg);"></div>
 							<div class="text mt-4">
-								<h3 class="mb-4">Prenatal Yoga</h3>
-								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<h3 class="mb-4">가비 트레이너</h3>
+<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
 								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+<!-- 		</section> -->
 
+
+			<hr>
+         
+<!--           <section class="ftco-section bg-light"> -->
+<!--           <section class="login first grey"> -->
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body"> <br>
+						 <h1 class="mb-1">우리 동네 트레이너를 검색 해 보세요!</h1> <br><br>
+				          <form action="${pageContext.request.contextPath}/map" method="get" onsubmit="return submitCheck(this);">
+							<input type="text" name="t_dong" id="t_dong" class="form-control" placeholder="&nbsp;동을 입력해주세요. 예) 부전동, 연산동" width="200px" > <br>
+							<input type="submit" value="우리 동네 트레이너 검색" id="btn" class="btn btn-primary">
+					   	 </form>
+					   	 </div>
+			          </div>
+			       </div>
+			     </div>
+    	</section>
 
      <jsp:include page="inc/bottom.jsp"></jsp:include>
     

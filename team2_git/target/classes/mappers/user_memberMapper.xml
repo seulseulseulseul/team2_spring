@@ -55,4 +55,8 @@
 	where u_id=#{u_id}
 	</update>
 	
+	<select id="naverUserCheck" resultType="com.itwill.domain.user_MemberDTO">
+		select * from user where u_id=#{u_id}
+	</select>
+	
 </mapper>

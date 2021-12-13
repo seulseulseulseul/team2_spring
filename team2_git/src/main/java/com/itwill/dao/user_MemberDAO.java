@@ -32,4 +32,6 @@ public interface user_MemberDAO {
 	public List<ReservationDTO> user_reservation(String u_id);
 	
 	public void user_cashUpdate(String u_id);
+	
+	public user_MemberDTO naverUserCheck(String u_id);
 }

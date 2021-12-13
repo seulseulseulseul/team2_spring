@@ -8,113 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.wrap {
-	position: absolute;
-	left: 0;
-	bottom: 40px;
-	width: 288px;
-	height: 132px;
-	margin-left: -144px;
-	text-align: left;
-	overflow: hidden;
-	font-size: 12px;
-	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-	line-height: 1.5;
-}
-
-.wrap * {
-	padding: 0;
-	margin: 0;
-}
-
-.wrap .info {
-	width: 286px;
-	height: 120px;
-	border-radius: 5px;
-	border-bottom: 2px solid #ccc;
-	border-right: 1px solid #ccc;
-	overflow: hidden;
-	background: #fff;
-}
-
-.wrap .info:nth-child(1) {
-	border: 0;
-	box-shadow: 0px 1px 2px #888;
-}
-
-.info .title {
-	padding: 5px 0 0 10px;
-	height: 30px;
-	background: #eee;
-	border-bottom: 1px solid #ddd;
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.info .close {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	color: #888;
-	width: 17px;
-	height: 17px;
-	background:
-		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
-}
-
-.info .close:hover {
-	cursor: pointer;
-}
-
-.info .body {
-	position: relative;
-	overflow: hidden;
-}
-
-.info .desc {
-	position: relative;
-	margin: 13px 0 0 90px;
-	height: 75px;
-}
-
-.desc .ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.desc .jibun {
-	font-size: 11px;
-	color: #888;
-	margin-top: -2px;
-}
-
-.info .img {
-	position: absolute;
-	top: 6px;
-	left: 5px;
-	width: 73px;
-	height: 71px;
-	border: 1px solid #ddd;
-	color: #888;
-	overflow: hidden;
-}
-
-.info:after {
-	content: '';
-	position: absolute;
-	margin-left: -12px;
-	left: 50%;
-	bottom: 0;
-	width: 22px;
-	height: 12px;
-	background:
-		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
-}
-
-.info .link {
-	color: #5085BB;
-}
+.customoverlay {position:relative;bottom:50px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
+.customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+.customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #FFC200;background: #FFC200 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+.customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 13px;font-size:14px;font-weight:bold;}
+.customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 </style>
 </head>
 <body>
@@ -141,7 +39,9 @@ $(document).ready(function(){
 					positions.push({
 							"t_id": item.t_id,
 							"t_name": item.t_name, 
-							"t_address": item.t_address	
+							"t_address": item.t_address,
+// 							"t_rate": item.t_rate,
+// 							"t_rateConunt": item.t_rateConunt
 					});					
 				});
 			
@@ -177,18 +77,33 @@ $(document).ready(function(){
 					            image : markerImage // 마커 이미지 
 					        });
 					     
-					        var iwContent = '<div style="padding:5px;">'+data.t_name+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-					        iwRemoveable = true;
-					        
-				//	         // 인포윈도우로 장소에 대한 설명을 표시합니다
-					        var infowindow = new kakao.maps.InfoWindow({
-							    content : iwContent,
-							    removable : iwRemoveable
+					     	
+					     
+					        var iwContent = '<div class="customoverlay">' +
+					        '  <a href="${pageContext.request.contextPath}/trainer/about?t_id='+ data.t_id + '"target="_blank" >' +
+					        '    <span class="title">'+data.t_name+'</span>' +
+					        '  </a>' +
+					        '</div>';
+// 					        '<div style="padding:5px;"><b>'+data.t_name+'&nbsp;&nbsp;&nbsp;</b>'
+// 					        +'<a href="${pageContext.request.contextPath}/trainer/about?t_id='+ data.t_id + '" target="_blank" class="link">더보기</a><br>'
+// 					        +data.t_address+'</div>', 
+					       	// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+// 					        ,iwRemoveable = true;
+					        var customOverlay = new kakao.maps.CustomOverlay({
+							    map: map,
+							    position: marker.getPosition(),
+							    content: iwContent,
+							    yAnchor: 1 
 							});
+				//	         // 인포윈도우로 장소에 대한 설명을 표시합니다
+// 					        var infowindow = new kakao.maps.InfoWindow({
+// 							    content : iwContent
+// // 							    ,removable : iwRemoveable
+// 							});
 					    	
 						    //마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 // 						    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-//    						kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+//    							kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
    							kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
 
 //    							/marker click event/
@@ -202,7 +117,7 @@ $(document).ready(function(){
 // 					    	    };
 // 					    	}
 
-					    	// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+// // 					    	인포윈도우를 닫는 클로저를 만드는 함수입니다 
 // 					    	function makeOutListener(infowindow) {
 // 					    	    return function() {
 // 					    	        infowindow.close();
@@ -231,11 +146,9 @@ $(document).ready(function(){
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b649801a0c9d18b92d1ff5e831d22ebe&libraries=services"></script>
 
-
-	<p id=trainer></p>
 	<input type="button" value="검색" id="btn">
 	<input type="text" id="placeSearch">
-	<div id="map" style="width: 100%; height: 350px;"></div>
+	<div id="map" style="width:60%;	height:600px; margin: 0px auto; margin-top:50px;"></div>
 
 	<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
