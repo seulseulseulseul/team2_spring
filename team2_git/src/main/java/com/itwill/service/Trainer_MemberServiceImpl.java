@@ -103,4 +103,9 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 		System.out.println("MemberServiceImpl insertReservation()");
 		trainer_memberDAO.insertReservation(reservationDTO);
 	}
+
+	@Override
+	public List<ReservationDTO> trainer_reservation(String t_id) {
+		return trainer_memberDAO.trainer_reservation(t_id);
+	}
 }

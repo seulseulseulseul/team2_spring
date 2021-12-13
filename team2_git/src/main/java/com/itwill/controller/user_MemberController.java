@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.user_MemberDTO;
 import com.itwill.domain.user_MemberDTO;
 import com.itwill.service.user_MemberService;
@@ -270,5 +271,16 @@ public class user_MemberController {
 		      
 		      return "member/CashWithdrawal";
 		}
-	
+		
+//		일반회원 예약현황
+		@RequestMapping(value = "/member/user_reservation", method = RequestMethod.GET)
+		public String user_reservation(HttpSession session,Model model) {
+
+			String u_id=(String)session.getAttribute("u_id");
+			List<ReservationDTO> user_reservation= user_memberService.user_reservation(u_id);
+
+			model.addAttribute("user_reservation",user_reservation);
+				
+			return "member/user_reservation";
+		}
 }

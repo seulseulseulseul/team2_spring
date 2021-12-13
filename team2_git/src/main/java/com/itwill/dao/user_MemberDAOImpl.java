@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import org.springframework.stereotype.Repository;
 
+import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.user_MemberDTO;
 
 @Repository
@@ -68,5 +69,10 @@ public class user_MemberDAOImpl implements user_MemberDAO {
 	@Override
 	public void user_updateList(user_MemberDTO user_memberDTO) {
 		sqlSession.update(namespace+".user_updateList", user_memberDTO);
+	}
+	
+	@Override
+	public List<ReservationDTO> user_reservation(String u_id) {
+		return sqlSession.selectList(namespace+".user_getReservation",u_id);
 	}
 }//클래스

@@ -44,4 +44,8 @@
 		set   u_cash=#{u_cash}
 		where u_id=#{u_id}
 	</update>
+	
+	<select id="user_getReservation" resultType="com.itwill.domain.ReservationDTO">
+		select * from reservation where u_id=#{u_id}
+	</select>
 </mapper>

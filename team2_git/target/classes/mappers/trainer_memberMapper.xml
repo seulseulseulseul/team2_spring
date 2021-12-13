@@ -69,11 +69,9 @@
 	
 <!-- 	예약현황 불러오기 -->
 	<select id="trainer_getReservation" resultType="com.itwill.domain.ReservationDTO">
-		select * from reservation where t_id=#{t_id}
+		select *  from reservation where t_id=#{t_id}
 	</select>
 	
-	<select id="user_getReservation" resultType="com.itwill.domain.ReservationDTO">
-		select * from reservation where u_id=#{u_id}
-	</select>
+
 	
 </mapper>

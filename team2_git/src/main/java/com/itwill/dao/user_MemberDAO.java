@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.itwill.domain.user_MemberDTO;
 
+import com.itwill.domain.ReservationDTO;
+
 public interface user_MemberDAO {
 	//부모의 공통된 틀, 인터페이스
 	//추상메서드 정의
@@ -23,7 +25,9 @@ public interface user_MemberDAO {
 	
 //	public List<user_MemberDTO> user_getMemberList();
 	
-public List<user_MemberDTO> user_list();
+	public List<user_MemberDTO> user_list();
 	
 	public void user_updateList(user_MemberDTO user_memberDTO);
+	
+	public List<ReservationDTO> user_reservation(String u_id);
 }

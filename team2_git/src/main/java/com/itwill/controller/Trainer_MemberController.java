@@ -270,6 +270,13 @@ public class Trainer_MemberController {
 		}
 		
 	}
+	@RequestMapping(value = "/member/trainer_reservation", method = RequestMethod.GET)
+	public String trainer_reservation(HttpSession session, Model model) {
+		String t_id=(String)session.getAttribute("t_id");
+		List<ReservationDTO> trainer_reservation= trainer_memberService.trainer_reservation(t_id);
+		model.addAttribute("trainer_reservation",trainer_reservation);
+		return "member/trainer_reservation";
+	}
 }
 	
 

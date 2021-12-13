@@ -100,5 +100,10 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 		System.out.println("MemberDAOImpl insertReservation()");
 		sqlSession.insert(namespace+".insertReservation",reservationDTO);
 	}
+
+	@Override
+	public List<ReservationDTO> trainer_reservation(String t_id) {
+		return sqlSession.selectList(namespace+".trainer_getReservation",t_id);
+	}
 	
 }//Ŭ����
