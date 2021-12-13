@@ -35,10 +35,33 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b649801a0c9d18b92d1ff5e831d22ebe&libraries=services"></script>
 <script>
-
+function get(name){
+	   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+	      return decodeURIComponent(name[1]);
+}
+var t_dong = get('t_dong');
+console.log(t_dong);
 // map.jsp 페이지에서
 // AJAX로 주소 받아올 때 t_id 함께 받아옴
 // ajax 구현해야 가능한 기능
+
+$(document).ready(function(){
+// 	$('#btn').click(function(){
+		$.ajax('${pageContext.request.contextPath}/getAddress',{
+			data:{"t_extraAddress":t_dong},
+			success:function(rdata){
+				$.each(rdata,function(index,item){
+					console.log(index +" : "+ item.t_id);
+					console.log(index +" : "+ item.t_name);
+					console.log(index +" : "+ item.t_address);
+					console.log(index +" : "+ item.t_phone);
+				});
+			}
+		});
+// 	});
+});
+
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 mapOption = { 

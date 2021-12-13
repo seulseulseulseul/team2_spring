@@ -21,7 +21,7 @@ public class MapController {
 	private MapService mapService;
 	
 	@RequestMapping(value = "/dongSearch", method = RequestMethod.GET)
-	public String main(HttpServletRequest request){
+	public String main(){
 		
 		return "dongSearch";
 		
