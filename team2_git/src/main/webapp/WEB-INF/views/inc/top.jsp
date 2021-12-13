@@ -8,7 +8,9 @@
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="${pageContext.request.contextPath}/index">우리 동네 트레이너</a>		
+  				<br>
+  				<a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/resources/images/logo2.png" width="300px"></a>
+<%--   					<a class="navbar-brand w-100" href="${pageContext.request.contextPath}/index">우리 동네 트레이너</a>		 --%>
   					
 <c:if test="${empty sessionScope.id}">
 		<div id="login"><a href="${pageContext.request.contextPath}/member/start_login">로그인</a> | 
@@ -85,10 +87,10 @@
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/notice/list" class="nav-link">공지사항</a></li>
 			          <li class="nav-item"><a href="${pageContext.request.contextPath}/commu/list" class="nav-link">커뮤니티</a></li>
 			        </ul>
-			      	<br>
+			    
 	
 
-</div>
+	</div>
 </div>							
 			      				      
 			      </div>

@@ -3,10 +3,16 @@
  <footer class="ftco-footer ftco-section bg-light">
       <div class="container">
         <div class="row d-flex">
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+          <h3 class="ftco-heading-2">&nbsp;</h3>
+          <img src="${pageContext.request.contextPath}/resources/images/logo2.png" width="250px">  
+          </div>
+          </div>
+          
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">우리 동네 트레이너</h2>
-              <p>우리 동네 트레이너를 찾아보세요.</p>
+            <h2 class="ftco-heading-2">Contact Us</h2>
               <ul class="ftco-footer-social list-unstyled float-lft mt-3">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -27,21 +33,10 @@
 <!--           </div> -->
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">빠른 메뉴</h2>
-              <ul class="list-unstyled">
-                <li><a href="${pageContext.request.contextPath}/index">Home</a></li>
-                <li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
-                <li><a href="${pageContext.request.contextPath}/center/list">고객센터</a></li>
-                <li><a href="${pageContext.request.contextPath}/commu/list">커뮤니티</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Customer Center</h2>
+               <h2 class="ftco-heading-2">Customer Center</h2>
               <div class="block-23 mb-3">
                 <ul>
-                  <li><span class="icon icon-map-marker"></span><span class="text">부산시 부산진구 최강2조입니동</span></li>
+               	  <li><span class="icon icon-map-marker"></span><span class="text">부산시 부산진구 최강2조입니동</span></li>
                   <li><a href="#"><span class="icon icon-phone"></span><span class="text">1588-2222</span></a></li>
                   <li><a href="#"><span class="icon icon-envelope"></span><span class="text">OPEN : am10:00 - pm17:00<br>
                  																			 BREAK : pm12:00-pm13:00<br>
@@ -49,6 +44,17 @@
 																	</span></a></li>
                 </ul>
               </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Quick Menu</h2>
+              <ul class="list-unstyled">
+                <li><a href="${pageContext.request.contextPath}/index">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
+                <li><a href="${pageContext.request.contextPath}/center/list">고객센터</a></li>
+                <li><a href="${pageContext.request.contextPath}/commu/list">커뮤니티</a></li>
+              </ul>
             </div>
           </div>
         </div>

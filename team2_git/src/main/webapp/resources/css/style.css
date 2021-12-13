@@ -9410,19 +9410,19 @@ textarea.form-control {
       text-transform: uppercase; }
       .blog-entry .meta > div a:hover {
         color: #666666; }
-  .blog-entry.blog-entry-2 .block-20 {
-    width: 80%; }
-    @media (max-width: 767.98px) {
-      .blog-entry.blog-entry-2 .block-20 {
-        width: 100%; } }
-  .blog-entry.blog-entry-2 .text {
-    width: calc(100% - 40%
-    ); }
-    @media (max-width: 767.98px) {
-      .blog-entry.blog-entry-2 .text {
-        width: 100%; } }
-    .blog-entry.blog-entry-2 .text .heading {
-      font-size: 30px; }
+/*   .blog-entry.blog-entry-2 .block-20 { */
+/*     width: 80%; } */
+/*     @media (max-width: 767.98px) { */
+/*       .blog-entry.blog-entry-2 .block-20 { */
+/*         width: 100%; } } */
+/*   .blog-entry.blog-entry-2 .text { */
+/*     width: calc(100% - 40% */
+/*     ); } */
+/*     @media (max-width: 767.98px) { */
+/*       .blog-entry.blog-entry-2 .text { */
+/*         width: 100%; } } */
+/*     .blog-entry.blog-entry-2 .text .heading { */
+/*       font-size: 30px; } */
 
 .block-23 ul {
   padding: 0; }

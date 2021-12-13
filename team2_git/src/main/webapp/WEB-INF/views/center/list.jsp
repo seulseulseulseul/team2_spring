@@ -54,7 +54,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate">
-          	<div class="row">
+          	<div class="pt-5">
 <!-- 		              <a href="blog-single.html" class="block-20" style="background-image: url('${pageContext.request.contextPath}/resources/images/image_1.jpg');"> -->
 <!-- 		              </a> -->
 
