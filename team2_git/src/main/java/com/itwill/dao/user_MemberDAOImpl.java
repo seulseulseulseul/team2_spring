@@ -75,4 +75,11 @@ public class user_MemberDAOImpl implements user_MemberDAO {
 	public List<ReservationDTO> user_reservation(String u_id) {
 		return sqlSession.selectList(namespace+".user_getReservation",u_id);
 	}
+
+	@Override
+	public void user_cashUpdate(String u_id) {
+		sqlSession.update(namespace+".user_cashUpdate", u_id);
+
+		
+	}
 }//클래스

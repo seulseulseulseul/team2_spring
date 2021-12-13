@@ -29,4 +29,6 @@ public interface user_MemberService {
 	public void user_updateList(user_MemberDTO user_memberDTO);
 	
 	public List<ReservationDTO> user_reservation(String u_id);
+	
+	public void user_cashUpdate(String u_id);
 }

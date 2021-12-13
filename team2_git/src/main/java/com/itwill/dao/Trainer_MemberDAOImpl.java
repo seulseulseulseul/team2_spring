@@ -105,5 +105,12 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	public List<ReservationDTO> trainer_reservation(String t_id) {
 		return sqlSession.selectList(namespace+".trainer_getReservation",t_id);
 	}
+
+	@Override
+	public void trainer_cashUpdate(String t_id) {
+		sqlSession.update(namespace+".trainer_cashUpdate", t_id);
+	}
+	
+
 	
 }//Ŭ����

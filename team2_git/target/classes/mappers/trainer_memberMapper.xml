@@ -72,6 +72,10 @@
 		select *  from reservation where t_id=#{t_id}
 	</select>
 	
-
+<update id="trainer_cashUpdate">
+	update trainer
+	set t_cash=t_cash+1
+	where t_id=#{t_id}
+</update>
 	
 </mapper>

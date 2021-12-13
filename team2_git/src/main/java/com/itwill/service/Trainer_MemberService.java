@@ -37,4 +37,6 @@ public interface Trainer_MemberService{
 	public void insertReservation(ReservationDTO reservationDTO);
 	
 	public List<ReservationDTO> trainer_reservation(String t_id);
+	
+	public void trainer_cashUpdate(String t_id);
 }

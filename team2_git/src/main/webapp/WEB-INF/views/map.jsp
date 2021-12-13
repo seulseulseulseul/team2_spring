@@ -35,10 +35,33 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b649801a0c9d18b92d1ff5e831d22ebe&libraries=services"></script>
 <script>
-
+function get(name){
+	   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+	      return decodeURIComponent(name[1]);
+}
+var t_dong = get('t_dong');
+console.log(t_dong);
 // map.jsp 페이지에서
 // AJAX로 주소 받아올 때 t_id 함께 받아옴
 // ajax 구현해야 가능한 기능
+
+$(document).ready(function(){
+// 	$('#btn').click(function(){
+		$.ajax('${pageContext.request.contextPath}/getAddress',{
+			data:{"t_extraAddress":t_dong},
+			success:function(rdata){
+				$.each(rdata,function(index,item){
+					console.log(index +" : "+ item.t_id);
+					console.log(index +" : "+ item.t_name);
+					console.log(index +" : "+ item.t_address);
+					console.log(index +" : "+ item.t_phone);
+				});
+			}
+		});
+// 	});
+});
+
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 mapOption = { 
@@ -50,50 +73,59 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 
 //마커를 표시할 위치와 title 객체 배열입니다 (db에서 데이터 받아오기)
 var positions = [
-	{
-	    title: '조인형', 
+
+	{	
+		t_id:'trainer_1',
+	    title: '케이시', 
 	    addr: '부산광역시 부산진구 동천로 108',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.1584285771639, 129.0625107105665)
 	},
 	{
-	    title: '고라니', 
+		t_id:'trainer_2',
+	    title: '제이슨', 
 	    addr: '부산광역시 부산진구 전포동 서전로58번길 22',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.156901740197576, 129.06610355894085)
 	},
 	{
-	    title: '서명', 
+		t_id:'trainer_3',
+	    title: '벤토리', 
 	    addr: '부산광역시 부산진구 서면로74',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.15712748335726, 129.05815592509134)
 	},
 	{
-	    title: '진구', 
+		t_id:'trainer_4',
+	    title: '아지스', 
 	    addr: '부산광역시 부산진구 전포대로 250',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.1593325667776, 129.06581691426743)
 	},
 	{
-	    title: '아트', 
+		t_id:'trainer_5',
+	    title: '크리스탈', 
 	    addr: '부산광역시 해운대구 APEC로 58',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.16744146784642, 129.13708241811898)
 	},
 	{
-	    title: '급식', 
+		t_id:'trainer_6',
+	    title: '햄말론', 
 	    addr: '부산광역시 해운대구 해운대로469번길 96',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.16768704221481, 129.14519341772683)
 	},
 	{
-	    title: '부릉', 
+		t_id:'trainer_7',
+	    title: '몬스터', 
 	    addr: '부산광역시 해운대구 센텀4로 15',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.170704038216186, 129.12828477304168)
 	},
 	{
-	    title: '홈플', 
+		t_id:'trainer_8',
+	    title: '요도리', 
 	    addr: '부산광역시 해운대구 우동 해운대해변로 140',
 	    sns: '',
 	    latlng: new kakao.maps.LatLng(35.158916069357325, 129.14605172456365)
@@ -169,7 +201,7 @@ function displayMarker(data) {
       '            <div class="desc">' + 
       '                <div class="ellipsis">'+ data.addr +'</div>' + 
       '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-      '                <div><a href="${pageContext.request.contextPath}/trainer/about?t_id=${Trainer_MemberDTO.t_id}" target="_blank" class="link">프로필</a></div>' + 
+      '                <div> <a href="${pageContext.request.contextPath}/trainer/about?t_id='+ data.t_id + '" target="_blank" class="link">프로필</a></div>' + 
       '            </div>' + 
       '        </div>' + 
       '    </div>' +    

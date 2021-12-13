@@ -103,4 +103,11 @@ public class user_MemberServiceImpl implements user_MemberService {
 	public List<ReservationDTO> user_reservation(String u_id) {
 		return user_memberDAO.user_reservation(u_id);
 	}
+
+	@Override
+	public void user_cashUpdate(String u_id) {
+		System.out.println("MemberServiceImpl user_cashUpdate()");
+		user_memberDAO.user_cashUpdate(u_id);
+		
+	}
 }

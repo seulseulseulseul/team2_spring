@@ -221,7 +221,11 @@ public class Trainer_MemberController {
 	//예약하기
 	@RequestMapping(value = "/trainer/insertReservation", method = RequestMethod.POST)
 	public String insertReservation(ReservationDTO reservationDTO){
-		trainer_memberService.insertReservation(reservationDTO);
+		trainer_memberService.insertReservation(reservationDTO);		
+		
+		trainer_memberService.trainer_cashUpdate(reservationDTO.getT_id());
+		user_memberService.user_cashUpdate(reservationDTO.getU_id());
+		
 		//예약내역보기
 		return "redirect:/trainer/about?t_id="+reservationDTO.getT_id();
 	}
