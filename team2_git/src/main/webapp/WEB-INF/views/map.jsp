@@ -40,36 +40,61 @@ function get(name){
 	      return decodeURIComponent(name[1]);
 }
 var t_dong = get('t_dong');
-console.log(t_dong);
-// map.jsp 페이지에서
-// AJAX로 주소 받아올 때 t_id 함께 받아옴
-// ajax 구현해야 가능한 기능
 
-$(document).ready(function(){
-// 	$('#btn').click(function(){
-		$.ajax('${pageContext.request.contextPath}/getAddress',{
-			data:{"t_extraAddress":t_dong},
-			success:function(rdata){
-				$.each(rdata,function(index,item){
-					console.log(index +" : "+ item.t_id);
-					console.log(index +" : "+ item.t_name);
-					console.log(index +" : "+ item.t_address);
-					console.log(index +" : "+ item.t_phone);
-				});
-			}
-		});
-// 	});
-});
-
-
-
+//
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 mapOption = { 
     center: new kakao.maps.LatLng(35.1584285771639, 129.0625107105665), // 지도의 중심좌표
     level: 4 // 지도의 확대 레벨
 };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+// 지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+var coords = 0;
+
+// 주소로 좌표를 검색합니다
+var t_dong = geocoder.addressSearch(t_dong, function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords); // 다른 지역이 나오면 '부산 부전동' 형식으로 검색
+    } 
+});    
+
+
+// db에서 검색한 동과 관련된 t_address 가져오기
+
+// $(document).ready(function(){
+	
+	var result = (function(t_dong) { // function(t_dong) 에 위에서 정의한 var t_dong이 안들어가서 null임
+		var temp = null;
+// 		$('#btn').click(function(){
+			$.ajax('${pageContext.request.contextPath}/getAddress',{
+				data:{"t_extraAddress":t_dong},
+				success:function(rdata){
+					temp = rdata;
+				}
+			});
+			return temp;
+//	 	});
+	}());
+
+// }); // $(document).ready
+
+$.each(result,function(result,item){
+	console.log(result.item.t_id);
+	console.log(result.item.t_name);
+	console.log(result.item.t_address);
+	console.log(result.item.t_phone);
+});
 
 //마커를 표시할 위치와 title 객체 배열입니다 (db에서 데이터 받아오기)
 var positions = [
