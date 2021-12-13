@@ -148,7 +148,7 @@ $(document).ready(function(){
 
 	<input type="button" value="검색" id="btn">
 	<input type="text" id="placeSearch">
-	<div id="map" style="width:60%;	height:600px; margin: 0px auto; margin-top:50px;"></div>
+	<div id="map" style="width:60%;	height:600px;margin: 0px auto; margin-top:50px;"></div>
 
 	<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
