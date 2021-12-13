@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/map" method="get" onsubmit="return submitCheck(this);">
+<form action="${pageContext.request.contextPath}/mapTest" method="get" onsubmit="return submitCheck(this);">
 	<input type="text" name="t_dong" id="t_dong">
 	<input type="submit" value="검색" id="btn">
 </form>

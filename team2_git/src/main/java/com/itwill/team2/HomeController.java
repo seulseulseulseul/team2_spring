@@ -75,4 +75,5 @@ public class HomeController {
 	public String home10() {
 		return "trainer";
 	}
+
 }

@@ -281,6 +281,12 @@ public class Trainer_MemberController {
 		model.addAttribute("trainer_reservation",trainer_reservation);
 		return "member/trainer_reservation";
 	}
+	
+	
+	@RequestMapping(value = "/mapTest", method = RequestMethod.GET)
+	public String mapTest() {
+		return "mapTest";
+	}
 }
 	
 
