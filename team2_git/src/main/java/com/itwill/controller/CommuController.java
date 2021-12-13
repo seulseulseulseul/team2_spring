@@ -543,7 +543,7 @@ public class CommuController {
 		
 	}
 	// 댓글 수정
-	@RequestMapping(value = "/commu/updateReply", method = RequestMethod.GET)
+	@RequestMapping(value = "/commu/updateReply", method = RequestMethod.POST)
 	public String update(ReplyDTO replyDTO, ReplyDTO replyDTO2, HttpSession session, HttpServletRequest request, Model model){
 		// request에서 글번호, 댓글번호 가져오기
 		int c_num = 0;
@@ -594,7 +594,7 @@ public class CommuController {
 			replyService.updateBoard(replyDTO);
 			
 			// 알림창
-			model.addAttribute("msg", "댓글이 삭제되었습니다.");
+			model.addAttribute("msg", "댓글이 수정되었습니다.");
 			model.addAttribute("url", "/commu/content?c_num="+c_num);
 			return "commu/alert"; 
 		

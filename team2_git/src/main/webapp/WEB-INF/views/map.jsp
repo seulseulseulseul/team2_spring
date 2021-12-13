@@ -72,22 +72,49 @@ var t_dong = geocoder.addressSearch(t_dong, function(result, status) {
 
 // db에서 검색한 동과 관련된 t_address 가져오기
 
-// $(document).ready(function(){
+
+
+
+$(document).ready(function(t_dong){
 	
-	var result = (function(t_dong) { // function(t_dong) 에 위에서 정의한 var t_dong이 안들어가서 null임
-		var temp = null;
 // 		$('#btn').click(function(){
+			
 			$.ajax('${pageContext.request.contextPath}/getAddress',{
 				data:{"t_extraAddress":t_dong},
 				success:function(rdata){
-					temp = rdata;
+					$.each(rdata,function(index,item){
+						
+						 geocoder.addressSearch(item.t_address, function(result, status) {
+
+						    // 정상적으로 검색이 완료됐으면 
+						     if (status === kakao.maps.services.Status.OK) {
+
+						        t_coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+						        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						        map.setCenter(t_coords); // 다른 지역이 나오면 '부산 부전동' 형식으로 검색
+						    } 
+						});					
+						
+						var array = { "profile":item.t_id, "title":item.t_name, "addr":item.t_address, "phone":item.t_phone,
+										"sns":item.t_sns, "latlng" : item.t_coords};
+										
+						displayMarker(array);
+						
+					});
+					
 				}
 			});
-			return temp;
+			
 //	 	});
-	}());
+	
+			console.log(typeof t_dong);	
+	
+	var dong_case = new Function(t_dong, result);
 
-// }); // $(document).ready
+ }); // $(document).ready
+ 
+ var position = new array();
 
 $.each(result,function(result,item){
 	console.log(result.item.t_id);
@@ -97,56 +124,56 @@ $.each(result,function(result,item){
 });
 
 //마커를 표시할 위치와 title 객체 배열입니다 (db에서 데이터 받아오기)
-var positions = [
-	{
-	    title: '조인형', 
-	    addr: '부산광역시 부산진구 동천로 108',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.1584285771639, 129.0625107105665)
-	},
-	{
-	    title: '고라니', 
-	    addr: '부산광역시 부산진구 전포동 서전로58번길 22',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.156901740197576, 129.06610355894085)
-	},
-	{
-	    title: '서명', 
-	    addr: '부산광역시 부산진구 서면로74',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.15712748335726, 129.05815592509134)
-	},
-	{
-	    title: '진구', 
-	    addr: '부산광역시 부산진구 전포대로 250',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.1593325667776, 129.06581691426743)
-	},
-	{
-	    title: '아트', 
-	    addr: '부산광역시 해운대구 APEC로 58',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.16744146784642, 129.13708241811898)
-	},
-	{
-	    title: '급식', 
-	    addr: '부산광역시 해운대구 해운대로469번길 96',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.16768704221481, 129.14519341772683)
-	},
-	{
-	    title: '부릉', 
-	    addr: '부산광역시 해운대구 센텀4로 15',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.170704038216186, 129.12828477304168)
-	},
-	{
-	    title: '홈플', 
-	    addr: '부산광역시 해운대구 우동 해운대해변로 140',
-	    sns: '',
-	    latlng: new kakao.maps.LatLng(35.158916069357325, 129.14605172456365)
-	}
-];
+// var positions = [
+// 	{
+// 	    title: '조인형', 
+// 	    addr: '부산광역시 부산진구 동천로 108',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.1584285771639, 129.0625107105665)
+// 	},
+// 	{
+// 	    title: '고라니', 
+// 	    addr: '부산광역시 부산진구 전포동 서전로58번길 22',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.156901740197576, 129.06610355894085)
+// 	},
+// 	{
+// 	    title: '서명', 
+// 	    addr: '부산광역시 부산진구 서면로74',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.15712748335726, 129.05815592509134)
+// 	},
+// 	{
+// 	    title: '진구', 
+// 	    addr: '부산광역시 부산진구 전포대로 250',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.1593325667776, 129.06581691426743)
+// 	},
+// 	{
+// 	    title: '아트', 
+// 	    addr: '부산광역시 해운대구 APEC로 58',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.16744146784642, 129.13708241811898)
+// 	},
+// 	{
+// 	    title: '급식', 
+// 	    addr: '부산광역시 해운대구 해운대로469번길 96',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.16768704221481, 129.14519341772683)
+// 	},
+// 	{
+// 	    title: '부릉', 
+// 	    addr: '부산광역시 해운대구 센텀4로 15',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.170704038216186, 129.12828477304168)
+// 	},
+// 	{
+// 	    title: '홈플', 
+// 	    addr: '부산광역시 해운대구 우동 해운대해변로 140',
+// 	    sns: '',
+// 	    latlng: new kakao.maps.LatLng(35.158916069357325, 129.14605172456365)
+// 	}
+// ];
 
 	//마커 이미지의 이미지 주소
 	var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -157,11 +184,11 @@ var positions = [
 	// 마커 이미지를 생성  
 	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 	
-	for (var i = 0; i < positions.length; i ++) {
-		var data = positions[i];
-	    displayMarker(data);
+// 	for (var i = 0; i < positions.length; i ++) {
+// 		var data = positions[i];
+// 	    displayMarker(data);
 	    
-	}
+// 	}
 	
 	  function makeClickListener(map, marker, overlay) {
 

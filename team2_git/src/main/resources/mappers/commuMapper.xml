@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwill.mapper.CommuMapper">
+
+	<select id = "getMaxNum" resultType="java.lang.Integer">
+		select max(c_num) from commu
+	</select>
+
+	<insert id = "insertBoard">
+		insert into commu(c_num,u_id,nic,subject,content,readcount,date,file) values(#{c_num},#{u_id},#{nic},#{subject},#{content},#{readcount},#{date},#{file})
+	</insert>
+	
+	<select id="getBoardList" resultType="com.itwill.domain.CommuDTO">
+		select * from commu order by c_num desc limit #{startRow}, #{pageSize}
+	</select>
+	
+	<select id="getSearchList" resultType="com.itwill.domain.CommuDTO">
+		select * from commu where subject like CONCAT('%',#{search},'%') order by c_num desc limit #{startRow}, #{pageSize}
+	</select>
+	
+	<select id="getBoard" resultType="com.itwill.domain.CommuDTO">
+		select * from commu where c_num=#{c_num}
+	</select>
+	
+	<select id="numCheck" resultType="com.itwill.domain.CommuDTO">
+		select * from commu where c_num=#{c_num} and u_id=#{u_id}
+	</select>
+	
+	<update id="updateBoard">
+		update commu set subject=#{subject}, content=#{content}, file=#{file} where c_num=#{c_num}
+	</update>
+	
+	<delete id="deleteBoard">
+		delete from commu where c_num=#{c_num}
+	</delete>
+	
+	<update id="updateReadcount">
+		update commu set readcount=readcount+1 where c_num=#{c_num}
+	</update>
+	
+	<select id="getBoardCount" resultType="java.lang.Integer">
+		select count(*) from commu
+	</select>
+	
+	<select id="getSearchCount" resultType="java.lang.Integer">
+		select count(*) from commu where subject like CONCAT('%',#{search},'%')
+	</select>
+  
+</mapper>

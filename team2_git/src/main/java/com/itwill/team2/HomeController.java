@@ -63,10 +63,10 @@ public class HomeController {
 	public String home7() {
 		return "index";
 	}
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String home8() {
-		return "main";
-	}
+//	@RequestMapping(value = "/main", method = RequestMethod.GET)
+//	public String home8() {
+//		return "main";
+//	}
 	@RequestMapping(value = "/schedule", method = RequestMethod.GET)
 	public String home9() {
 		return "schedule";

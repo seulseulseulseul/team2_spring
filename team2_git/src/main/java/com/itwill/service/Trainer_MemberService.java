@@ -2,7 +2,6 @@ package com.itwill.service;
 
 import java.util.List;
 
-
 import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;

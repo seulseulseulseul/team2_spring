@@ -23,8 +23,9 @@ public class AjaxController {
 	@RequestMapping(value = "/getAddress", method = RequestMethod.GET)
 	public ResponseEntity<List<Trainer_MemberDTO>> getAddress(HttpServletRequest request){
 		
+		
 		String t_extraAddress = request.getParameter("t_extraAddress");
-		System.out.println(t_extraAddress);
+		System.out.println("t_extraAddress : " + t_extraAddress);
 		List<Trainer_MemberDTO> trainerList = mapService.getAddress(t_extraAddress);
 		System.out.println(trainerList.isEmpty());
 		ResponseEntity<List<Trainer_MemberDTO>> entity = new ResponseEntity<List<Trainer_MemberDTO>>(trainerList, HttpStatus.OK);
