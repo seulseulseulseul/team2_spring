@@ -227,7 +227,7 @@ public class Trainer_MemberController {
 		user_memberService.user_cashUpdate(reservationDTO.getU_id());
 		
 		//예약내역보기
-		return "redirect:/member/user_credit";
+		return "redirect:/member/user_reservation";
 	}
 //	@RequestMapping(value = "/trainer/deleteReview", method = RequestMethod.GET)
 //	public String delete(int re_num){
