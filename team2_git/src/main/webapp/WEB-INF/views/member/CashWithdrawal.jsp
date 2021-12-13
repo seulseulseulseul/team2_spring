@@ -140,7 +140,7 @@
             stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
    </div>
 
-
+<!-- 뭐가문제 -->
    <script
       src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
    <script
