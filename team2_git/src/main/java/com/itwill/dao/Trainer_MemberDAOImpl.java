@@ -7,7 +7,10 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwill.domain.ReservationDTO;
+import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
+
 
 @Repository
 public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
@@ -22,14 +25,6 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 	@Override
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("Trainer_MemberDAOImpl trainer_register()");
-		// ����۾� => JDBC ���α׷� ��ġ  Spring JDBC ��ġ => �ڵ����� ���α׷� ��ġ
-		//  ���̺�   ���α׷��� �ڵ����� ��ġ pom.xml ���̺��� ������ �ڵ带 ������ �ڵ����� �ٿ� �޾���
-		//  ���̺�(������α׷� ����) ����Ʈ => pom.xml �ڵ带 ������ => ����Ʈ���� �ڵ����� ��ǻ�ͷ� �ٿ�޾���
-		// https://mvnrepository.com/
-		
-		// ���ڿ��� sql����鼭 ����
-//		template.update(insertsql, memberDTO.getId(),memberDTO.getPass(),memberDTO.getName(),memberDTO.getDate());
-		// insert()  update()  delete()  selectOne()  selectList()
 		sqlSession.insert(namespace+".trainer_register", trainer_memberDTO);
 		
 	}
@@ -65,7 +60,57 @@ public class Trainer_MemberDAOImpl implements Trainer_MemberDAO{
 		int result = sqlSession.selectOne(namespace+".trainer_IdCheck",trainer_memberDTO);
 		return result;
 	}
+
+	@Override
+	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO) {
+		System.out.println("DAO insertT");
+		sqlSession.update(namespace+".insertTrainer", trainer_memberDTO);
+
+	}
 	
+	@Override
+	public void insertReview(ReviewDTO reviewDTO) {
+		System.out.println("DAO insertReview");
+		sqlSession.insert(namespace+".insertReview",reviewDTO);
+	}
+
+	@Override
+	public Integer getMaxNum() {
+		return sqlSession.selectOne(namespace+".getMaxNum");
+	}
+
+
+	@Override
+	public List<ReviewDTO> getReviewList(String t_id) {
+		return sqlSession.selectList(namespace+".getReviewList",t_id);
+	}
+	@Override
+	public List<Trainer_MemberDTO> trainer_list() {
+		System.out.println("MemberDAOImpl trainer_list()");
+		return sqlSession.selectList(namespace+".trainer_list");
+	}
+
+	@Override
+	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO) {
+		sqlSession.update(namespace+".trainer_updateList", trainer_memberDTO);
+	}
+
+	@Override
+	public void insertReservation(ReservationDTO reservationDTO) {
+		System.out.println("MemberDAOImpl insertReservation()");
+		sqlSession.insert(namespace+".insertReservation",reservationDTO);
+	}
+
+	@Override
+	public List<ReservationDTO> trainer_reservation(String t_id) {
+		return sqlSession.selectList(namespace+".trainer_getReservation",t_id);
+	}
+
+	@Override
+	public void trainer_cashUpdate(String t_id) {
+		sqlSession.update(namespace+".trainer_cashUpdate", t_id);
+	}
 	
+
 	
 }//Ŭ����

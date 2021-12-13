@@ -9,47 +9,20 @@ import org.springframework.stereotype.Service;
 
 import com.itwill.dao.Trainer_MemberDAO;
 import com.itwill.dao.Trainer_MemberDAOImpl;
+import com.itwill.domain.ReservationDTO;
+import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 
 @Service
 public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 
-	//������� 
-//	MemberDAO memberDAO=new MemberDAOImpl();
 	@Inject
 	private Trainer_MemberDAO trainer_memberDAO;
 	
-	//set�޼��� 
-//	@Inject
-//	public void setMemberDAO(MemberDAO memberDAO) {
-//		this.memberDAO = memberDAO;
-//	}
-
-	// ���ϰ����� insertMember(MemberDTO memberDTO) �޼��� ����
 	@Override
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO) {
 		System.out.println("MemberServiceImpl trainer_register()");
-		
-		// 1. ��ü����
-		// MemberDAOImpl ��ü����
-//	MemberDAOImpl 
-		//trainer_memberDAO=new Trainer_MemberDAOImpl();
-	// insertMember(memberDTO) �޼��� ȣ��
-//	memberDAO.insertMember(memberDTO);
-		
-		// 2. ��ü����  �����ּ�ȭ ��� =>  �θ��������̽� Ʋ  => �θ� = �ڽ� ��ü���� 
-		//  �θ��������̽� Ʋ  ��Ű�� com.itwillbs.dao �������̽� ���� MemberDAO �߻�޼��� ���� 
-		//              MemberDAOImpl �θ��������̽� ��� MemberDAO  �޼��� �������̵�
-//		// �θ��������̽� MemberDAO  = �ڽ�Ŭ���� ��ü���� MemberDAOImpl 
-//		MemberDAO memberDAO=new MemberDAOImpl();
-//		// �θ��������̽� ����.insertMember(memberDTO) �޼��� ȣ��
-//		memberDAO.insertMember(memberDTO);
-		
-		// 3. ��ü����
-		// ������ ��ü���� ��� => �������� ���� (DI Dependency Injection)
-		// ������� ����  <= �ܺο� �ִ� xml���� MemberDAOImpl ��ü�����Ѱ��� �����ؿ��� ����
-		// �޾ƿ��� ���  1. ������  2. set�޼���
-		
+	
 		trainer_memberDAO.trainer_register(trainer_memberDTO);
 		
 	}
@@ -78,8 +51,68 @@ public class Trainer_MemberServiceImpl implements Trainer_MemberService{
 		return result;
 	}
 
+	@Override
+	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO) {
+
+		System.out.println("service insertT");
+		trainer_memberDAO.insertTrainer(trainer_memberDTO);
+			
+		
+	}
+	
+	@Override
+	public void insertReview(ReviewDTO reviewDTO) {
+		//b_num max(b_num)+1,  date (디폴트)
+		if(trainer_memberDAO.getMaxNum()==null) {
+			//글이 없는 경우 1로 설정
+			reviewDTO.setRe_num(1);
+		}else {
+			//글이 있으면 max(b_num)+1
+			reviewDTO.setRe_num(trainer_memberDAO.getMaxNum()+1);
+		}
+		trainer_memberDAO.insertReview(reviewDTO);
+	}
+
+
+	@Override
+	public List<ReviewDTO> getReviewList(String t_id) {
+		System.out.println("Service getReviewList");
+		return trainer_memberDAO.getReviewList(t_id);
+	}
+
+//	@Override
+//	   public List<Trainer_MemberDTO> trainer_getinfo(String t_id)  {
+//	      System.out.println("TrainerService getInfo()");
+//	      return trainer_memberDAO.trainer_getinfo(t_id);
+//	
+//	}
+	@Override
+	public List<Trainer_MemberDTO> trainer_list() {
+		System.out.println("MemberServiceImpl user_list()");
+		return trainer_memberDAO.trainer_list();
+	}
+	
+	@Override
+	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO) {
+		System.out.println("MemberServiceImpl updateMember()");
+		trainer_memberDAO.trainer_updateList(trainer_memberDTO);
+	}
+
+	@Override
+	public void insertReservation(ReservationDTO reservationDTO) {
+		System.out.println("MemberServiceImpl insertReservation()");
+		trainer_memberDAO.insertReservation(reservationDTO);
+	}
+
+	@Override
+	public List<ReservationDTO> trainer_reservation(String t_id) {
+		return trainer_memberDAO.trainer_reservation(t_id);
+	}
+
+	@Override
+	public void trainer_cashUpdate(String t_id) {
+		System.out.println("MemberServiceImpl trainer_cashUpdate()");
+		trainer_memberDAO.trainer_cashUpdate(t_id);
+		
+	}
 }
-
-
-
-

@@ -23,4 +23,12 @@ public interface CenterDAO {
 	public Integer getMaxReply(int b_num);
 	
 	public List<CenterDTO> getReplyList(int b_num);
+	
+	public void deleteCenter(int b_num);
+	
+	public void deleteReply(CenterDTO centerDTO);
+	
+	public void updateCenter(CenterDTO centerDTO);
+	
+	public List<CenterDTO> getCenterList2();
 }

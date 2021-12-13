@@ -33,12 +33,24 @@
   <body>
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
-
-    <section class="ftco-section">
+  <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-              <div class="comment-form-wrap pt-5">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+                        <h1 class="mb-3 bread">로그인</h1>
+            <p class="breadcrumbs"> <span>트레이너 로그인</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h3 class="mb-5"></h3>
+    
+	<section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
                  <h3 class="mb-5">트레이너 로그인</h3>
 							<form action="${pageContext.request.contextPath}/member/trainer_loginPro" id="join" method="post">
 								<div class="form-group">
@@ -60,28 +72,14 @@
 								</div>
 								<div class="title-line">
 								</div>
-              	<a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
+              	 <h3 class="mb-5"></h3>
 							</form>
-              </div>
-            </div>
-			<!-- .col-md-8 -->
-<!--           <div class="col-lg-4 sidebar ftco-animate"> -->
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <div class="categories"> -->
-<!--                 <ul> -->
-<!--                 <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li> -->
-<!--                 <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li> -->
-<!--                 <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </div> -->
-
-
-<!--         </div> -->
-      </div>
-      </div>
-    </section> <!-- .section -->
-
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
       <jsp:include page="../inc/bottom.jsp"></jsp:include>
     
     

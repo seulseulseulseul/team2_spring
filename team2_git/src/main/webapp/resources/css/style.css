@@ -4,6 +4,22 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+/*  @font-face{font-family: 'NanumSquare'; */
+/* 	src: url('../fonts/naver/NanumSquareB.otf')format('opentype'), */
+/*     	 url(../fonts/naver/NanumSquareB.ttf')format('truetype'); */
+/*     font-weight: normal; */
+/*     font-style: normal; */
+/*     } */
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap') ;
+body
+{font-family: 'Jua', serif;};	
+p
+{font-family: 'Jua',  sans-serif;};
+/*   @font-face{font-family: 'Jua'; */
+/* 	src:  url(../fonts/naver/BMJUA_ttf.ttf')format('truetype'); */
+/*     font-weight: normal; */
+/*     font-style: normal; */
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -31,7 +47,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: 'Jua';
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -41,7 +57,7 @@
   box-sizing: border-box; }
 
 html {
-  font-family: sans-serif;
+  font-family: 'Jua';
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -51,8 +67,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
+  font-family: 'Jua';
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -153,7 +169,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Jua';
   font-size: 1em; }
 
 pre {
@@ -202,7 +218,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family: 'Jua';
   font-size: inherit;
   line-height: inherit; }
 
@@ -4884,7 +4900,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Jua';
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -4969,7 +4985,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:'Jua';
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7902,7 +7918,7 @@ button.bg-dark:focus {
     margin-left: auto !important; } }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important; }
+  font-family: 'Jua'; }
 
 .text-justify {
   text-align: justify !important; }
@@ -8133,7 +8149,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: 'Jua';
   font-size: 14px;
   line-height: 1.8;
   font-weight: 300;
@@ -8162,7 +8178,7 @@ h1, h2, h3, h4, h5,
   line-height: 1.4;
   color: #2c396b;
   font-weight: 400;
-  font-family: "EB Garamond", serif; }
+  font-family:'Jua';}
 
 .text-primary {
   color: #ffb5b5 !important; }
@@ -8202,7 +8218,7 @@ h1, h2, h3, h4, h5,
     font-weight: 400;
     color: #2c396b;
     text-transform: uppercase;
-    font-family: "EB Garamond", serif;
+    font-family:'Jua';
     position: relative;
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:after {
@@ -8352,7 +8368,7 @@ h1, h2, h3, h4, h5,
 .navbar-brand {
   font-weight: 400;
   font-size: 40px;
-  font-family: "EB Garamond", serif; }
+  font-family:'Jua' ;}
 
 .owl-carousel {
   position: relative; }
@@ -8456,7 +8472,7 @@ h1, h2, h3, h4, h5,
           color: #fff;
           line-height: 1.2;
           font-weight: 400;
-          font-family: "EB Garamond", serif; }
+          font-family:'Jua'; }
           .owl-carousel.home-slider .slider-item .slider-text h1 span {
             display: block;
             color: #000; }
@@ -8604,9 +8620,9 @@ h1, h2, h3, h4, h5,
       .hero-wrap .overlay {
         width: 100%; } }
   .hero-wrap.hero-wrap-2 {
-    height: 400px; }
+    height: 300px; }
     .hero-wrap.hero-wrap-2 .slider-text {
-      height: 400px !important; }
+      height: 300px !important; }
   .hero-wrap .slider-text {
     color: rgba(0, 0, 0, 0.4); }
     .hero-wrap .slider-text .icon {
@@ -8644,7 +8660,7 @@ h1, h2, h3, h4, h5,
       font-size: 40px;
       color: #000;
       font-weight: normal;
-      font-family: "EB Garamond", serif; }
+      font-family: 'Jua'; }
     .hero-wrap .slider-text h2 {
       font-weight: 200;
       font-size: 18px; }
@@ -8910,12 +8926,12 @@ h1, h2, h3, h4, h5,
 
 [data-toggle="collapse"] .fa:before {
   content: "\f1fc";
-  font-family: "Ionicons";
+  font-family: 'Jua';
   font-style: normal; }
 
 [data-toggle="collapse"].collapsed .fa:before {
   content: "\f102";
-  font-family: "Ionicons";
+  font-family:'Jua';
   font-style: normal; }
 
 .card-body ul {
@@ -9066,12 +9082,12 @@ h1, h2, h3, h4, h5,
     font-size: 20px;
     margin-bottom: 0;
     color: #2c396b;
-    font-family: "EB Garamond", serif; }
+    font-family:'Jua'; }
   .testimony-wrap .position {
     font-size: 13px; }
   .testimony-wrap .line p {
     font-size: 18px;
-    font-family: "EB Garamond", serif; }
+    font-family:'Jua' ;}
   .testimony-wrap .quote {
     position: absolute;
     top: 0;
@@ -9330,12 +9346,12 @@ textarea.form-control {
     font-weight: 400;
     font-size: 50px;
     color: #ffb5b5;
-    font-family: "EB Garamond", serif; }
+    font-family: 'Jua'; }
   .ftco-counter .text span {
     font-weight: 400;
     font-size: 18px;
     color: #ffb5b5;
-    font-family: "EB Garamond", serif; }
+    font-family: 'Jua'; }
   .ftco-counter .text:hover .icon span, .ftco-counter .text:focus .icon span {
     color: #000; }
   .ftco-counter .text:hover .icon:after, .ftco-counter .text:focus .icon:after {
@@ -9361,8 +9377,8 @@ textarea.form-control {
   background-position: center center;
   position: relative;
   display: block;
-  width: 100%;
-  height: 300px; }
+  width: 20%;
+  height: 400px; }
 
 .blog-entry {
   overflow: hidden; }
@@ -9395,12 +9411,13 @@ textarea.form-control {
       .blog-entry .meta > div a:hover {
         color: #666666; }
   .blog-entry.blog-entry-2 .block-20 {
-    width: 45%; }
+    width: 80%; }
     @media (max-width: 767.98px) {
       .blog-entry.blog-entry-2 .block-20 {
         width: 100%; } }
   .blog-entry.blog-entry-2 .text {
-    width: calc(100% - 45%); }
+    width: calc(100% - 40%
+    ); }
     @media (max-width: 767.98px) {
       .blog-entry.blog-entry-2 .text {
         width: 100%; } }
@@ -9433,7 +9450,7 @@ textarea.form-control {
 
 .block-27 ul {
   padding: 0;
-  margin: 0; }
+  margin: 0 0px 0 400px;}
   .block-27 ul li {
     display: inline-block;
     margin-bottom: 4px;

@@ -6,8 +6,8 @@
 <mapper namespace="com.itwill.mapper.trainer_memberMapper">
 
 	<insert id = "trainer_register">
-		insert into trainer(t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_phone,t_email) 
-		values(#{t_id},#{t_pass},#{t_name},#{t_nic},#{t_postcode},#{t_address},#{t_detailAddress},#{t_phone},#{t_email})
+		insert into trainer(t_id,t_pass,t_name,t_nic,t_postcode,t_address,t_detailAddress,t_extraAddress,t_phone,t_email) 
+		values(#{t_id},#{t_pass},#{t_name},#{t_nic},#{t_postcode},#{t_address},#{t_detailAddress},#{t_extraAddress},#{t_phone},#{t_email})
 	</insert>
 	
 	<select id="trainer_userCheck" resultType="com.itwill.domain.Trainer_MemberDTO">
@@ -28,4 +28,54 @@
 	<select id="trainer_IdCheck" resultType="int">
 		select count(*) from trainer where t_id=#{t_id}
 	</select>
+	
+	<update id = "insertTrainer">
+		update trainer
+		set t_intro=#{t_intro},profile_photo=#{profile_photo},
+			t_exp=#{t_exp},t_sns=#{t_sns}, t_program=#{t_program}, video=#{video}
+		where t_id=#{t_id}
+	</update>
+	
+	<insert id = "insertReview">
+	insert into review(re_num,t_id,u_id,u_nic,re_point,re_coment,re_date)
+		 values(#{re_num},#{t_id},#{u_id},#{u_nic},#{re_point},#{re_coment},#{re_date})
+	</insert>
+	
+	<select id = "getMaxNum" resultType="java.lang.Integer">
+		select max(re_num) from review
+	</select>
+	
+	<select id = "getReviewList" resultType="com.itwill.domain.ReviewDTO">
+		select * from review where t_id=#{t_id} order by re_num desc 
+	</select>
+	
+	<select id= "getCenterCount" resultType="java.lang.Integer">
+	</select>
+	
+		<select id="trainer_list" resultType="com.itwill.domain.Trainer_MemberDTO">
+		select * from trainer
+	</select>
+	
+	<update id="trainer_updateList">
+		update trainer 
+		set   t_cash=#{t_cash}
+		where t_id=#{t_id}
+	</update>
+	
+	<insert id="insertReservation">
+		insert into reservation(t_id,u_id,coment,book_date,book_time)
+		 values(#{t_id},#{u_id},#{coment},#{book_date},#{book_time})
+	</insert>
+	
+<!-- 	예약현황 불러오기 -->
+	<select id="trainer_getReservation" resultType="com.itwill.domain.ReservationDTO">
+		select *  from reservation where t_id=#{t_id}
+	</select>
+	
+<update id="trainer_cashUpdate">
+	update trainer
+	set t_cash=t_cash+1
+	where t_id=#{t_id}
+</update>
+	
 </mapper>

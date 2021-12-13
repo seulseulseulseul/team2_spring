@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwill.dao.user_MemberDAO;
+import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.user_MemberDTO;
-
 
 @Service
 public class user_MemberServiceImpl implements user_MemberService {
@@ -87,5 +87,33 @@ public class user_MemberServiceImpl implements user_MemberService {
 //		return memberDAO.getMemberList();
 //	}
 
+	@Override
+	public List<user_MemberDTO> user_list() {
+		System.out.println("MemberServiceImpl user_list()");
+		return user_memberDAO.user_list();
+	}
 
+	@Override
+	public void user_updateList(user_MemberDTO user_memberDTO) {
+		System.out.println("MemberServiceImpl updateMember()");
+		user_memberDAO.user_updateList(user_memberDTO);
+	}
+	
+	@Override
+	public List<ReservationDTO> user_reservation(String u_id) {
+		return user_memberDAO.user_reservation(u_id);
+	}
+
+	@Override
+	public void user_cashUpdate(String u_id) {
+		System.out.println("MemberServiceImpl user_cashUpdate()");
+		user_memberDAO.user_cashUpdate(u_id);
+		
+	}
+	
+	@Override
+	public user_MemberDTO naverUserCheck(String u_id) {
+		System.out.println("user_MemberServiceImpl naverUserCheck()");
+		return user_memberDAO.naverUserCheck(u_id);
+	}
 }

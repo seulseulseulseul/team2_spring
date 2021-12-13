@@ -62,12 +62,13 @@
                 <li><a href="${pageContext.request.contextPath}/member/trainer_login" class="btn py-3 px-4 btn-primary">트레이너 로그인 </a></li>
                 </ul>
                 
-				<!-- 네이버 로그인 창으로 이동 --> 
-				<div id="naver_id_login" style="text-align:center"><a href="${url}"> 
-				<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
-				</div> 
+                <br> 
+                <!-- 네이버 로그인 창으로 이동 --> 
+                <div id="naver_id_login" style="text-align:center">
+                <a href="${url}"> 
+                <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+                </div>
 				<br>
-				
               </div>
             </div>
             </div>

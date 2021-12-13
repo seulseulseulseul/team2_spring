@@ -28,7 +28,7 @@
 	<context:component-scan base-package="com.itwill.naver" /> 
 	
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 --> 
-	<beans:bean id="naverLoginBO" class="com.itwill.naver.NaverLoginBO" />
+	<beans:bean id="com.itwill.naverLoginBO" class="com.itwill.naver.NaverLoginBO" />
 	
 	<!-- 		 파일 업로드 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -37,7 +37,10 @@
 	
 	<!-- 	upload 폴더 만들고 업로드 경로 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\Users\ITWILL\Documents\kjs\workspace_git\team2_git\src\main\webapp\resources\upload"></beans:constructor-arg>
+		<beans:constructor-arg value="C:\\Users\\white\\git\\team2_spring\\team2_git\\src\\main\\webapp\\resources\\trainer_UploadPath"></beans:constructor-arg>
 	</beans:bean>
 	
+	<beans:bean id="commuUploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\Users\\white\\git\\team2_spring\\team2_git\\src\\main\\webapp\\resources\\commuUpload"></beans:constructor-arg>
+	</beans:bean>
 </beans:beans>

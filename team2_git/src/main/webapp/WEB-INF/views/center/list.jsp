@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,8 +43,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">문의사항</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>문의사항</span></p>
+            <h1 class="mb-3 bread">고객센터</h1>
+            <p class="breadcrumbs"> <span>문의사항을 남겨주세요. 관리자가 확인 후 답변드립니다.</span></p>
           </div>
         </div>
       </div>
@@ -64,9 +65,15 @@
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
-		                  <div><a href="#">${centerDTO.b_date}</a></div>
-		                  <div><a href="#">${centerDTO.u_id}</a></div>
-		                  
+		                  <div><a href="#"><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy.MM.dd"/></a></div>
+		                  <c:choose>
+		                  <c:when test="${!empty centerDTO.u_id}">
+		                  <div><a href="#">회원&nbsp;${centerDTO.u_id}</a></div>
+		                  </c:when>
+		                  <c:otherwise>
+		                  <div><a href="#">트레이너&nbsp;${centerDTO.t_id}</a></div>
+		                  </c:otherwise>
+		                  </c:choose>
 		                	<c:choose>
 		                	<c:when test="${centerDTO.isReply==0}">
 		                	<div><a href="#" class="meta-chat"><span class="icon-chat"></span>답변대기</a></div>
@@ -78,15 +85,31 @@
 		                  
 		                </div>
 
+
+						
 		                <c:choose>
+		                
 		                <c:when test="${centerDTO.secret==0}">
 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">${centerDTO.b_title}</a></h3>
+		                 <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
 		                </c:when> 
-		                <c:otherwise>
- 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글 입니다.</a></h3>
-		               </c:otherwise> 
+		                
+		                <c:when test="${!empty sessionScope.id &&(sessionScope.u_id==centerDTO.u_id or sessionScope.t_id==centerDTO.t_id or sessionScope.u_id=='admin')}">
+		                
+				<!-- 비밀글일 때 본인이 쓴것만 링크 연결 -->
+ 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글입니다.</a></h3>
+ 		                <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
+
+		               	
+						</c:when>
+						
+						<c:otherwise>
+		               	<h3 class="heading mt-2">비밀글은 작성자만 열람 가능합니다.</h3>
+		               	<p><a href="#" class="btn btn-outline-primary">비밀글</a></p>
+		               	</c:otherwise>
+						
  		                </c:choose>
-		                <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
+		               
 		              </div>
 		            </div>
 		          </div>
@@ -115,20 +138,13 @@
 		
          </div>
 		<div class="col-lg-4 sidebar ftco-animate">
-		   <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                	<div class="icon">
-	                  <span class="icon-search"></span>
-	                </div>
-                  <input type="text" class="form-control" placeholder="검색기능 구현">
-                </div>
-              </form>
-            </div>
+
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
+                <c:if test="${! empty sessionScope.id}">
                 <li><a href="${pageContext.request.contextPath}/center/insert" class="btn py-3 px-4 btn-primary">글쓰기 </a></li>
+                </c:if>
                 <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>

@@ -1,5 +1,7 @@
 package com.itwill.domain;
 
+import java.sql.Timestamp;
+
 public class user_MemberDTO {
 	private String u_id;
 	private String u_pass;

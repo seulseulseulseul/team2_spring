@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import org.springframework.stereotype.Repository;
 
+import com.itwill.domain.ReservationDTO;
 import com.itwill.domain.user_MemberDTO;
 
 @Repository
@@ -59,5 +60,32 @@ public class user_MemberDAOImpl implements user_MemberDAO {
 //		System.out.println("MemberDAOImpl getMemberList()");
 //		return sqlSession.selectList(namespace+".getMemberList");
 //	}
+	
+	@Override
+	public List<user_MemberDTO> user_list() {
+		System.out.println("MemberDAOImpl user_list()");
+		return sqlSession.selectList(namespace+".user_list");
+	}
+	@Override
+	public void user_updateList(user_MemberDTO user_memberDTO) {
+		sqlSession.update(namespace+".user_updateList", user_memberDTO);
+	}
+	
+	@Override
+	public List<ReservationDTO> user_reservation(String u_id) {
+		return sqlSession.selectList(namespace+".user_getReservation",u_id);
+	}
 
+	@Override
+	public void user_cashUpdate(String u_id) {
+		sqlSession.update(namespace+".user_cashUpdate", u_id);
+
+		
+	}
+
+	@Override
+	public user_MemberDTO naverUserCheck(String u_id) {
+		System.out.println("user_MemberDAOImpl user_userCheck()");
+		return sqlSession.selectOne(namespace+".naverUserCheck", u_id);
+	}
 }//클래스

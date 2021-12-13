@@ -48,7 +48,8 @@
     					alert("사용가능한 아이디입니다.");
     				}
     			}
-    		})}
+    		});
+    		}
     	
  </script>
 
@@ -56,24 +57,23 @@
   <body>
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
-
-<%--     <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5"> --%>
-<!--       <div class="overlay"></div> -->
-<!--       <div class="container"> -->
-<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
-<!--           <div class="col-md-9 ftco-animate text-center"> -->
-<!--             <h1 class="mb-3 bread">트레이너 회원가입</h1> -->
-<!--             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </section> -->
-
-    <section class="ftco-section">
+  <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-              <div class="comment-form-wrap pt-5">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+                        <h1 class="mb-3 bread">회원가입</h1>
+                 <p class="breadcrumbs"> <span>정보를 모두 입력해주세요.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+<h3 class="mb-5"></h3>
+     <section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
                 <h3 class="mb-5">트레이너 회원가입</h3>
                 <form action="${pageContext.request.contextPath}/member/trainer_registerPro" id="join" method="post" >
 								<div class="form-group">
@@ -106,6 +106,8 @@
 								<label>헬스장 상세주소</label>
 									<input type="text" name="t_detailAddress" id="t_detailAddress" class="form-control" placeholder="주소를 입력해주세요"><br>
 								</div>
+								<input type="hidden" name="t_extraAddress" id="t_extraAddress" >
+								<input type="hidden" name="t_jibunAddress" id="t_jibunAddress" >
 								<div class="form-group">
 									<label>전화번호</label>
 									<input type="text" name="t_phone" id="t_phone" class="form-control">
@@ -121,26 +123,12 @@
 									<span class="text-muted">Already have an account?</span> <a href="${pageContext.request.contextPath}/member/start_login">로그인</a>
 								</div>
 							</form>
-              </div>
-            </div>
-			<!-- .col-md-8 -->
-<!--           <div class="col-lg-4 sidebar ftco-animate"> -->
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <div class="categories"> -->
-<!--                 <ul> -->
-<!--                 <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li> -->
-<!--                 <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li> -->
-<!--                 <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </div> -->
-
-
-<!--         </div> -->
-      </div>
-      </div>
-    </section> <!-- .section -->
-
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+<h3 class="mb-5"></h3>
       <jsp:include page="../inc/bottom.jsp"></jsp:include>
     
     

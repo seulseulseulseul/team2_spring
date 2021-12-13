@@ -35,24 +35,23 @@
   <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
 
-<%--     <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5"> --%>
-<!--       <div class="overlay"></div> -->
-<!--       <div class="container"> -->
-<!--         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"> -->
-<!--           <div class="col-md-9 ftco-animate text-center"> -->
-<!--             <h1 class="mb-3 bread">유저 회원가입</h1> -->
-<!--             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </section> -->
+ <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+                        <h1 class="mb-3 bread">마이 페이지</h1>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">회원 정보수정</h3>
+                <h3 class="mb-5">회원정보 수정</h3>
 <!--                 <form action="user_registerPro.jsp" id="join" method="post" onsubmit="return user_CheckForm();"> -->
                                 <form action="${pageContext.request.contextPath}/member/user_updatePro" id="join" method="post">
 								<div class="form-group">
@@ -92,20 +91,11 @@
 							</form>
               </div>
             </div>
-			<!-- .col-md-8 -->
-<!--           <div class="col-lg-4 sidebar ftco-animate"> -->
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <div class="categories"> -->
-<!--                 <ul> -->
-<!--                 <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li> -->
-<!--                 <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li> -->
-<!--                 <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </div> -->
-
-
-<!--         </div> -->
+			
+<!-- 		유저 왼쪽 메뉴 -->
+         <jsp:include page="../inc/user_side.jsp"></jsp:include>
+             
+             
       </div>
       </div>
     </section> <!-- .section -->

@@ -2,23 +2,39 @@ package com.itwill.dao;
 
 import java.util.List;
 
+import com.itwill.domain.ReservationDTO;
+import com.itwill.domain.ReviewDTO;
 import com.itwill.domain.Trainer_MemberDTO;
 
 public interface Trainer_MemberDAO {
-	//ºÎ¸ğÀÇ °øÅëµÈ Æ² , ÀÎÅÍÆäÀÌ½º
-	// Ãß»ó¸Ş¼­µå Á¤ÀÇ
+
 	public void trainer_register(Trainer_MemberDTO trainer_memberDTO);
 	
-//  ¸®ÅÏÇÒÇü MemberDTO   userCheck(memberDTO)¸Ş¼­µå
 	public Trainer_MemberDTO trainer_userCheck(Trainer_MemberDTO trainer_memberDTO);
 	
-	// ¸®ÅÏÇÒÇü MemberDTO getMember(String id)
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MemberDTO getMember(String id)
 	public Trainer_MemberDTO trainer_getMember(String t_id);
 	
 	// memberService.updateMember(memberDTO);
 	public void trainer_updateMember(Trainer_MemberDTO trainer_memberDTO);
 	
-	// ¾ÆÀÌµğ Áßº¹Ã¼Å©
+	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å©
 	public int trainer_IdCheck(Trainer_MemberDTO trainer_memberDTO);
+	
+	// insert
+	public void insertTrainer(Trainer_MemberDTO trainer_memberDTO);
+
+	public void insertReview(ReviewDTO reviewDTO);
+	public Integer getMaxNum();
+	public List<ReviewDTO> getReviewList(String t_id);
+	public List<Trainer_MemberDTO> trainer_list();
+	
+	public void trainer_updateList(Trainer_MemberDTO trainer_memberDTO);
+	
+	public void insertReservation(ReservationDTO reservationDTO);
+	
+	public List<ReservationDTO> trainer_reservation(String t_id);
+	
+	public void trainer_cashUpdate(String t_id);
 }
  	

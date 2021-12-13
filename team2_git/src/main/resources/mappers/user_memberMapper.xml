@@ -35,5 +35,28 @@
 <!-- 	<delete id="deleteMember"> -->
 <!-- 		delete from member where id=#{id} -->
 <!-- 	</delete> -->
+	<select id="user_list" resultType="com.itwill.domain.user_MemberDTO">
+		select * from user
+	</select>
+	
+	<update id="user_updateList">
+		update user 
+		set   u_cash=#{u_cash}
+		where u_id=#{u_id}
+	</update>
+	
+	<select id="user_getReservation" resultType="com.itwill.domain.ReservationDTO">
+		select * from reservation where u_id=#{u_id}
+	</select>
+	
+	<update id="user_cashUpdate">
+	update user
+	set u_cash=u_cash-1
+	where u_id=#{u_id}
+	</update>
+	
+	<select id="naverUserCheck" resultType="com.itwill.domain.user_MemberDTO">
+		select * from user where u_id=#{u_id}
+	</select>
 	
 </mapper>

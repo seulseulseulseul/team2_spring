@@ -1,6 +1,7 @@
 package com.itwill.domain;
 
 public class Trainer_MemberDTO {
+	
 	private String t_id;
 	private String t_pass;
 	private String t_name;
@@ -8,14 +9,24 @@ public class Trainer_MemberDTO {
 	private String t_postcode;
 	private String t_address;
 	private String t_detailAddress;
+	private String t_extraAddress;
 	private String t_phone;
 	private String t_email;
 	private int t_cash;
-	private String t_introduce;
+	private String t_intro;
 	private String t_exp;
 	private String t_sns;
 	private String t_program;
+	private String profile_photo;
+	private String video;
 	
+	
+	public String getT_extraAddress() {
+		return t_extraAddress;
+	}
+	public void setT_extraAddress(String t_extraAddress) {
+		this.t_extraAddress = t_extraAddress;
+	}
 	public String getT_id() {
 		return t_id;
 	}
@@ -40,23 +51,17 @@ public class Trainer_MemberDTO {
 	public void setT_nic(String t_nic) {
 		this.t_nic = t_nic;
 	}
-	public String getT_postcode() {
-		return t_postcode;
-	}
-	public void setT_postcode(String t_postcode) {
-		this.t_postcode = t_postcode;
-	}
 	public String getT_address() {
 		return t_address;
 	}
 	public void setT_address(String t_address) {
 		this.t_address = t_address;
 	}
-	public String getT_detailAddress() {
-		return t_detailAddress;
+	public String getT_intro() {
+		return t_intro;
 	}
-	public void setT_detailAddress(String t_detailAddress) {
-		this.t_detailAddress = t_detailAddress;
+	public void setT_intro(String t_intro) {
+		this.t_intro = t_intro;
 	}
 	public String getT_phone() {
 		return t_phone;
@@ -76,12 +81,6 @@ public class Trainer_MemberDTO {
 	public void setT_cash(int t_cash) {
 		this.t_cash = t_cash;
 	}
-	public String getT_introduce() {
-		return t_introduce;
-	}
-	public void setT_introduce(String t_introduce) {
-		this.t_introduce = t_introduce;
-	}
 	public String getT_exp() {
 		return t_exp;
 	}
@@ -100,4 +99,33 @@ public class Trainer_MemberDTO {
 	public void setT_program(String t_program) {
 		this.t_program = t_program;
 	}
+	public String getProfile_photo() {
+		return profile_photo;
+	}
+	public void setProfile_photo(String profile_photo) {
+		this.profile_photo = profile_photo;
+	}
+	public String getT_detailAddress() {
+		return t_detailAddress;
+	}
+	public void setT_detailAddress(String t_detailAddress) {
+		this.t_detailAddress = t_detailAddress;
+	}
+	public String getVideo() {
+		return video;
+	}
+	public void setVideo(String video) {
+		this.video = video;
+	}
+	public String getT_postcode() {
+		return t_postcode;
+	}
+	public void setT_postcode(String t_postcode) {
+		this.t_postcode = t_postcode;
+	}
+	
+	
+	
+
+	
 }

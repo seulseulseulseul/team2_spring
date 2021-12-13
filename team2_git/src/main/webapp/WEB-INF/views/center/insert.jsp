@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,8 +40,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">문의사항</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
+                       <h1 class="mb-3 bread">고객센터</h1>
+            <p class="breadcrumbs"> <span>문의사항을 남겨주세요. 관리자가 확인 후 답변드립니다.</span></p>
           </div>
         </div>
       </div>
@@ -59,7 +60,14 @@
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="1234" readonly class="form-control" name="u_id">
+                    <c:choose>
+                    <c:when test="${sessionScope.id=='1'}">
+                    <input type="text" value="${sessionScope.u_id}" readonly class="form-control" name="u_id">
+                    </c:when>
+                    <c:otherwise>
+                    <input type="text" value="${sessionScope.t_id}" readonly class="form-control" name="t_id">
+                    </c:otherwise>
+                    </c:choose>
                   </div>
                   <div class="form-group">
                     <label for="secret">비밀글 *</label>
@@ -71,7 +79,7 @@
                   </div>
                   <div class="form-group">
                     <input type="submit" value="작성" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('문의가 접수되었습니다')">
+                    onclick="alert('문의가 접수되었습니다.');">
                     <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
                   </div>
 
@@ -83,9 +91,7 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li>
-                <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li>
-                <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li>
+                <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>
             </div>

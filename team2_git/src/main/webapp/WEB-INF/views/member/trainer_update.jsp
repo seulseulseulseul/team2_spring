@@ -34,14 +34,23 @@
   <body>
   		<jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- END nav -->
+  <section class="hero-wrap hero-wrap-2" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+                        <h1 class="mb-3 bread">마이 페이지</h1>
+          </div>
+        </div>
+      </div>
+    </section>
 
-
-	<section class="login first grey">
-			<div class="container">
-				<div class="box-wrapper">				
-					<div class="box box-border">
-						<div class="box-body">
-							<h4>트레이너정보 수정</h4>
+	<section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">트레이너 정보 수정</h3>
 <%-- 							<form action="${pageContext.request.contextPath}/member/updatePro" method="post"> --%>
 							<form action="${pageContext.request.contextPath}/member/trainer_updatePro" id="join" method="post">
 								<div class="form-group">
@@ -57,7 +66,7 @@
 								<div class="form-group">
 									<label class="fw">비밀번호</label>
 <!-- 									<input type="password" name="password" id="t_pass" class="form-control"> -->
-									<input class="form-control" type="password" name="t_pass" id="t_pass" value="${trainer_memberDTO.t_pass }">
+									<input class="form-control" type="password" name="t_pass" id="t_pass" placeholder="비밀번호를 입력하세요.">
 								</div>
 								<div class="form-group">
 									<label>트레이너 닉네임</label>
@@ -66,7 +75,7 @@
 								</div>
 								<div class="form-group">
 								<label>우편번호</label>
-								<button type="button" onclick="searchPostCode()" class="btn btn-primary">우편번호 검색</button><br>
+								<button type="button" onclick="searchPostCode();" class="btn btn-primary">우편번호 검색</button><br>
 <!-- 								<input type="text" name="postcode" id="t_postcode" class="form-control"> -->
 								<input class="form-control" type="text" name="t_postcode" id="t_postcode" value="${trainer_memberDTO.t_postcode }">
 							
@@ -79,7 +88,8 @@
 								<label>헬스장 상세주소</label>
 <!-- 									<input type="text" name="detailAddress" id="t_detailAddress" class="form-control"><br> -->
 								<input class="form-control" type="text" name="t_detailAddress" id="t_detailAddress" value="${trainer_memberDTO.t_detailAddress }">
-							
+								<input type="hidden" name="t_extraAddress" id="t_extraAddress" value="${trainer_memberDTO.t_extraAddress }">
+								<input type="hidden" name="t_jibunAddress" id="t_jibunAddress" value="">
 								</div>
 								<div class="form-group">
 									<label>전화번호</label>
@@ -100,14 +110,13 @@
 							</form>
 						</div>
 					</div>
-				</div>
+					
+<!-- 			트레이너 왼쪽메뉴 -->
+        <jsp:include page="../inc/trainer_side.jsp"></jsp:include>
+        
 			</div>
 		</section>
 
-
-
-
-		
 
      <jsp:include page="../inc/bottom.jsp"></jsp:include>
     

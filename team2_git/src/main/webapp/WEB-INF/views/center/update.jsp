@@ -1,7 +1,6 @@
-<%@page import="center.CenterDTO"%>
-<%@page import="center.CenterDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,50 +40,52 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">문의사항</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">공지사항</a></span> <span>Blog Single</span></p>
+                       <h1 class="mb-3 bread">고객센터</h1>
+            <p class="breadcrumbs"> <span>문의사항을 남겨주세요. 관리자가 확인 후 답변드립니다.</span></p>
           </div>
         </div>
       </div>
     </section>
-	<%
-	CenterDAO centerDAO = new CenterDAO();
-	int b_num = 0;
-	if(request.getParameter("b_num")!=null){
-	b_num = Integer.parseInt(request.getParameter("b_num")) ;}
-	CenterDTO centerDTO = centerDAO.getCenter(b_num);
-	%>
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">글 수정</h3>
-                <form action="updatePro.jsp" class="bg-light p-4" method="post">
+                <form action="${pageContext.request.contextPath}/center/updatePro" class="bg-light p-4" method="post">
                   <div class="form-group">
+                    <input type="hidden" name="b_num" value="${centerDTO.b_num}">
                     <label for="subject">제목 *</label>
-                    <input type="text" class="form-control bg-white" name="b_title" value="<%=centerDTO.getB_title() %>">
+                    <input type="text" class="form-control bg-white" name="b_title" value="${centerDTO.b_title }">
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="1234" readonly class="form-control" name="u_num">
+                  <c:choose>
+                    <c:when test="!empty ${centerDTO.u_id}">
+                    <input type="text" value="${centerDTO.u_id}" readonly class="form-control" name="u_id">
+                    </c:when>
+                    <c:otherwise>
+                    <input type="text" value="${centerDTO.t_id}" readonly class="form-control" name="t_id">
+                    </c:otherwise>
+                    </c:choose>
                   </div>
                   <div class="form-group">
                     <label for="secret">비밀글 *</label>
-	                <input type="checkbox" name="secret" id="secret" value="1" 
-                    <%if(centerDTO.getSecret()==1) {%>
+	                <input type="checkbox" name="secret" id="secret" value="1"
+	                <c:if test="${centerDTO.secret == 1}">
                     checked="checked"
-                    <%} %>
-                    >
+					</c:if>
+					>
                   </div>
                   <div class="form-group">
                     <label for="content">내용</label>
-                    <textarea name="b_content" id="b_content" cols="30" rows="10" class="form-control"><%=centerDTO.getB_content() %></textarea>
+                    <textarea name="b_content" id="b_content" cols="30" rows="10" class="form-control">${centerDTO.b_content}</textarea>
                   </div>
                   <div class="form-group">
                     <input type="submit" value="수정" class="btn py-3 px-4 btn-primary"
-                    onclick="alert('수정이 완료되었습니다')">
-                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
+                    onclick="alert('수정이 완료되었습니다.')">
+                    <input type="reset" value="취소" class="btn py-3 px-4 btn-primary"
+                    onclick="history.back();">
                   </div>
 
                 </form>
@@ -95,9 +96,9 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li>
-                <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li>
-                <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li>
+                <li><a href="${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}" class="btn py-3 px-4 btn-primary">글수정 </a></li>
+                <li><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}" class="btn py-3 px-4 btn-primary">글삭제 </a></li>
+                <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>
             </div>

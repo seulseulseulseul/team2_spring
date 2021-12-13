@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,8 +43,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">문의내역</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
+                        <h1 class="mb-3 bread">고객센터</h1>
+            <p class="breadcrumbs"> <span>문의사항을 남겨주세요. 관리자가 확인 후 답변드립니다.</span></p>
           </div>
         </div>
       </div>
@@ -52,42 +53,61 @@
 // 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
 	//dateFormat.format(centerDTO.getDate())
 	%>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate justify-content-center">
-          <div>${centerDTO.b_date}</div>
-		  <div>${centerDTO.u_id}</div>
+   <section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
+						<h3 class="mb-5">&nbsp;</h3>
+          <div><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy년 MM월 dd일"/></div>
+		 <c:choose>
+		 <c:when test="${!empty centerDTO.u_id }">
+		  <div>회원&nbsp;${centerDTO.u_id}</div>
+		  </c:when>
+		  <c:otherwise>
+		  <div>트레이너&nbsp;${centerDTO.t_id}</div>
+		  </c:otherwise>
+		  </c:choose>
             <h2 class="mb-3">${centerDTO.b_title}</h2>
             <p>${centerDTO.b_content}
             </p>
           	<div class="form-group">
-         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/update">
-         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/list">
-         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
+         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/list'">
+<!-- 				글쓴 사람 본인만 수정,삭제 가능하도록 -->
+
+				<c:if test="${ (replyDTO.u_id eq sessionScope.u_id) or (replyDTO.u_id eq sessionScope.t_id)}">
+         	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}'">
+         	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
+				</c:if>
+
          	 </div>
-		    답변 목록
+
 	 <div class="pt-5 mt-5">
-              <h3 class="mb-5">답변</h3>
+              <h3 class="mb-3">답변</h3>
               <ul class="comment-list">
         	<c:forEach var="centerDTO2" items="${replyList}">
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="{pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
+                    <img src="${pageContext.request.contextPath}/resources/images/admin.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h5>${centerDTO2.b_title}</h5>
-                    <div class="meta">${centerDTO2.b_date}</div>
+                    <div class="meta"><fmt:formatDate value="${centerDTO2.b_date}" pattern="yyyy년 MM월 dd일 hh시 mm분"/></div>
                     <p>${centerDTO2.b_content}</p>
-                    <p><a href="deleteReply?b_num=${centerDTO2.b_num}&b_reply=${centerDTO2.b_reply}" class="reply">삭제</a></p>
+<!--                     관리자만 답글 삭제 -->
+                    <c:if test="${ sessionScope.u_id=='admin' }">
+                    <p><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/center/deleteReply?b_num=${centerDTO2.b_num}&b_reply=${centerDTO2.b_reply}" class="reply">삭제</a></p>
+                  	</c:if>
                   </div>
                 </li>
 			 </c:forEach>
              </ul>
       </div>
-	 답변 등록
+      
+<!--       관리자만 답글 달기 -->
+	<c:if test="${ sessionScope.u_id=='admin' }">	
 	 <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">답변 등록</h3>
+                <h3 class="mb-3">답변 등록</h3>
                 <form action="${pageContext.request.contextPath}/center/insertReply" class="bg-light p-4" method="post">
                 <input type="hidden" name="b_num" value="${centerDTO.b_num}">
                   <div class="form-group">
@@ -107,6 +127,9 @@
 
                 </form>
         </div>
+      </c:if>
+      <h3 class="mb-5">&nbsp;</h3>
+      </div>
         </div>
         </div>
       </div>
