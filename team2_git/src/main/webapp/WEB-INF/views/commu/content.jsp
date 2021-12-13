@@ -70,7 +70,7 @@
           </c:if>
 		  <div>조회 ${commuDTO.readcount}</div>
             <h2 class="mb-3">${commuDTO.subject}</h2>
-            <p>${commuDTO.content}</p>
+            <p class="mb-3">${commuDTO.content}</p>
           	<div class="form-group">
           		<c:if test="${(commuDTO.u_id eq sessionScope.u_id) or (commuDTO.u_id eq sessionScope.t_id) }">
          	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/commu/update?c_num=${commuDTO.c_num}'">
