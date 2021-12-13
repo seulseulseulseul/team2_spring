@@ -78,10 +78,37 @@
                     <div class="meta">${replyDTO.nic} | ${replyDTO.date}</div>
                     <p>${replyDTO.content}</p>
                     <c:if test="${(replyDTO.u_id eq sessionScope.u_id) or (replyDTO.u_id eq sessionScope.t_id) }">
-	                    <p><a href="${pageContext.request.contextPath}/commu/updateReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">수정</a>
-	                    	<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/commu/deleteReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}" class="reply">삭제</a></p>
+                    
+                    
+                    <div class="dropdown1">
+						<button class="reply" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">댓글 수정</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						  <h3 class="mb-3">댓글 등록</h3>
+			              <form action="${pageContext.request.contextPath}/commu/updateReply" class="bg-light p-4" method="post">
+				        	<input type="hidden" name="c_num" value="${commuDTO.c_num}">
+				            <input type="hidden" name="r_num" value="${replyDTO.r_num}">
+			       			<div class="form-group">
+							  <label for="content">내용</label>
+			                  <textarea name="content" cols="30" rows="3" class="form-control"></textarea>
+							</div>
+			                <div class="form-group">
+			                  <input type="submit" value="작성" class="btn py-3 px-4 btn-primary">
+			                  <input type="reset" value="취소" class="btn py-3 px-4 btn-primary">
+			                </div>
+			              </form>	
+						</div>
+					  </div>
+					  
+					 <div class="dropdown">
+						<a><button class="reply" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+						onclick="if (confirm('정말로 삭제하시겠습니까?')){location.href='${pageContext.request.contextPath}/commu/deleteReply?r_num=${replyDTO.r_num}&c_num=${commuDTO.c_num}';}">댓글 삭제</button></a>
+				
+					  </div>                    	
+	                    	
                   	</c:if>
                     <c:if test="${sessionScope.id ne null }">
+<!--                      드롭다운 		-->
+
                       <div class="dropdown">
 						<button class="reply" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">댓글 작성</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -100,6 +127,9 @@
 			              </form>	
 						</div>
 					  </div>
+					  <!--                      드롭다운 		-->
+					  
+					  
 					</c:if>
                   </div>
                 </li>
