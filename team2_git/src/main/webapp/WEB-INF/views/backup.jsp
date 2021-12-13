@@ -134,7 +134,7 @@ function displayMarker(data) {
 //     '    <div class="info">' + 
 //     '        <div class="title">' + 
 //                 data.title + 
-//     '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+//     '            <div class="close" onclick="closeOverlay(this)" title="닫기"></div>' +  
 //     '        </div>' + 
 //     '        <div class="body">' + 
 //     '            <div class="img">' +
@@ -156,7 +156,7 @@ function displayMarker(data) {
       '    <div class="info">' + 
       '        <div class="title">' + 
                   data.title + 
-//       '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+//       '            <div class="close" onclick="closeOverlay(this)" title="닫기"></div>' + 
       '        </div>' + 
       '        <div class="body">' + 
       '            <div class="img">' +
@@ -190,8 +190,8 @@ function displayMarker(data) {
 		overlay.setMap(map);
 	});
 	
-	function closeOverlay() {
-	    overlay.setMap(null);     
+	function closeOverlay(overl) {
+		overl.overlay.setMap(null);     
 	}
 	
 }
