@@ -10,14 +10,7 @@ public class user_MemberDTO {
 	private String u_phone;
 	private String u_email;
 	private int u_cash;
-	private int u_num;
 	
-	public int getU_num() {
-		return u_num;
-	}
-	public void setU_num(int u_num) {
-		this.u_num = u_num;
-	}
 	public String getU_id() {
 		return u_id;
 	}

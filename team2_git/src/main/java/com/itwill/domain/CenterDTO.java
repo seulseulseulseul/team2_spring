@@ -1,17 +1,34 @@
 package com.itwill.domain;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class CenterDTO {
 	private int b_num;
-	private int t_num;
-	private int u_num;
+	private String t_id;
+	private String u_id;
 	private String admin_id;
 	private String b_title;
 	private String b_content;
 	private Timestamp b_date;
 	private int b_reply;
 	private int secret;
+	private int isReply;
+//	private String dateFormat;
+	public int getIsReply() {
+		return isReply;
+	}
+	public void setIsReply(int isreply) {
+		this.isReply = isreply;
+	}
+//	public String getDateFormat() {
+//		return dateFormat;
+//	}
+//	public void setDateFormat(String dateFormat) {
+//		this.dateFormat = dateFormat;
+//	}
 	public int getB_reply() {
 		return b_reply;
 	}
@@ -30,17 +47,17 @@ public class CenterDTO {
 	public void setB_num(int b_num) {
 		this.b_num = b_num;
 	}
-	public int getT_num() {
-		return t_num;
+	public String getT_id() {
+		return t_id;
 	}
-	public void setT_num(int t_num) {
-		this.t_num = t_num;
+	public void setT_id(String t_id) {
+		this.t_id = t_id;
 	}
-	public int getU_num() {
-		return u_num;
+	public String getU_id() {
+		return u_id;
 	}
-	public void setU_num(int u_num) {
-		this.u_num = u_num;
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
 	}
 	public String getAdmin_id() {
 		return admin_id;
@@ -65,6 +82,8 @@ public class CenterDTO {
 	}
 	public void setB_date(Timestamp b_date) {
 		this.b_date = b_date;
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+//		setDateFormat(dateFormat.format(b_date));
 	}
 	
 }

@@ -2,19 +2,12 @@ package com.itwill.dao;
 
 import java.util.List;
 
-import com.itwill.domain.TrainerDTO;
+import com.itwill.domain.PageDTO;
+import com.itwill.domain.ReviewDTO;
 
 public interface TrainerDAO {
-	
-	public void insertTrainer(TrainerDTO trainerDTO);
-	
-	public TrainerDTO trainerCheck(TrainerDTO trainerDTO);
-	
-	public TrainerDTO getTrainer(String t_id);
-	
-	public TrainerDTO updateTrainer(TrainerDTO trainerDTO);
-	
-	public List<TrainerDTO> getTrainerList();
-	
-		
+	public List getTrainer(String t_id);
+	public void insertReview(ReviewDTO reviewDTO);
+	public Integer getMaxNum();
+	public List<ReviewDTO> getReviewList(String t_id);
 }

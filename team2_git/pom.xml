@@ -33,6 +33,12 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
+		<dependency>
+		  <groupId>com.google.code.geocoder-java</groupId>
+		  <artifactId>geocoder-java</artifactId>
+		  <version>0.16</version>
+		</dependency>
+				
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 		    <groupId>mysql</groupId>

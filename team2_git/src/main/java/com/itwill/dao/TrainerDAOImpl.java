@@ -1,83 +1,145 @@
 package com.itwill.dao;
 
-
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-
+//import javax.annotation.Resources;
 import javax.inject.Inject;
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.itwill.domain.PageDTO;
+import com.itwill.domain.ReviewDTO;
+
+import java.io.IOException;
+
+import java.io.Reader;
+import java.sql.Connection;
+
+import org.apache.ibatis.io.Resources;
 
 import org.apache.ibatis.session.SqlSession;
 
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.itwill.domain.TrainerDTO;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 
 
 @Repository
 public class TrainerDAOImpl implements TrainerDAO{
+
+	
+	//@Autowired
 	@Inject
 	private SqlSession sqlSession;
 	
-	//디비연결 객체생성 받아오기
-//	private DataSource dataSource;
+	private static final String namespace="com.itwill.mapper.TraninrMapper";
 	
-	//sql구문 만들어서 시행 => SimpleJdbcTemplate
-//	private SimpleJdbcTemplate template;
-	
-	//set메서드
-//	@Inject
-//	public void setDataSource(DataSource dataSource) {
-//		template= new SimpleJdbcTemplate(dataSource);
-//	}
-	
-	private static final String namespace="com.itwillbs.mapper.TrainerMapper";
-	
-//	String insertsql = "insert into member(id,pass,name,date) values(?,?,?,?)";
-	@Override
-	public void insertTrainer(TrainerDTO trainerDTO) {
-		System.out.println("TrainerDAOImpl insertTrainer()");
-		//디비작업 => JDBC 프로그램 설치 Spring JDBC 설치 => 자동으로 프로그램 설치
-		//메이븐 프로그램을 자동으로 설치 pom.xml 메이븐이 제공한 코드를 적으면 자동으로 다운받아짐
-		//메이븐(모든프로그램 제공) 사이트 => pom.xml 코드를 적으면 => 사이트에서 자동으로 컴퓨터로 다운받아짐
-		// https://mvnrepository.com/
-		
-		//문자열을 sql만들면서 실행
-//		template.update(insertsql, trainerDTO.getId(),trainerDTO.getPass(),trainerDTO.getName(),trainerDTO.getDate());
-		//insert() update() delete() selectOne() selectList()
-		sqlSession.insert(namespace+".insertTrainer", trainerDTO);
-	}
-//	String userChecksql = "select * from member where id=? and pass=?";
-	@Override
-	public TrainerDTO trainerCheck(TrainerDTO trainerDTO) {
-		System.out.println("TrainerDAOImpl userCheck()");
-		//디비에서 가져온 내용을 TrainerDTO 매핑해서 저장
-//		RowMapper<TrainerDTO> mapper = new BeanPropertyRowMapper<TrainerDTO>(TrainerDTO.class);
-//		return template.queryForObject(userChecksql, mapper , trainerDTO.getId(),trainerDTO.getPass());
-		return sqlSession.selectOne(namespace+".trainerCheck", trainerDTO);
-	}
-//	String getTrainersql = "select * from member where id=?";
-	@Override
-	public TrainerDTO getTrainer(String t_id) {
-		// 디비에서 가져온 내용을 TrainerDTO 매핑해서 저장
-//		RowMapper<TrainerDTO> mapper = new BeanPropertyRowMapper<TrainerDTO>(TrainerDTO.class);
-//		return template.queryForObject(getTrainersql, mapper , id);
-		return sqlSession.selectOne(namespace+".getTrainer",t_id);
-	}
-	@Override
-	public TrainerDTO updateTrainer(TrainerDTO trainerDTO) {
-		System.out.println("TrainerDAOImpl updateTrainer()");
-		return sqlSession.selectOne(namespace+".updateTrainer",trainerDTO);
-	}
-//	@Override
-//	public void deleteTrainer(TrainerDTO trainerDTO) {
-//		System.out.println("TrainerDAOImpl deleteTrainer()");
-//		sqlSession.selectOne(namespace+".deleteTrainer",trainerDTO);
-//	}
-	@Override
-	public List<TrainerDTO> getTrainerList() {
-		System.out.println("TrainerDAOImpl getTrainerList()");
-		return sqlSession.selectList(namespace+".getTrainerList");
-	}
+ public List getTrainer(String t_id) {
 
-}//클래스
+	 
+	 System.out.println("sqlSession >>>>" + sqlSession);
+	 
+//	 Map map = sqlSession.selectMap("com.itwill.mapper.TraninrMapper.getTrainer",tid);
+	 
+//	 System.out.println("map >>>" + map);
+	 
+	 return sqlSession.selectList(namespace+".getTrainer",t_id);
+	 
+ }
+
+
+@Override
+public void insertReview(ReviewDTO reviewDTO) {
+	System.out.println("DAO insertReview");
+	sqlSession.insert(namespace+".insertReview",reviewDTO);
+}
+
+@Override
+public Integer getMaxNum() {
+	return sqlSession.selectOne(namespace+".getMaxNum");
+}
+
+
+@Override
+public List<ReviewDTO> getReviewList(String t_id) {
+	return sqlSession.selectList(namespace+".getReviewList",t_id);
+}
+ 
+// // DB 인설트
+// public static int insertDB(HashMap<String, Object> map) {
+//
+//	 // TODO Auto-generated method stub
+//
+//	  System.out.println("map >>>>>>>>>" + map);
+//	 
+//	  SqlSession session = SqlMapClient.getSqlSession();
+//	  
+//      int result = session.insert("test.InsertReceiveData",map);
+//      session.insert("test.InsertReceiveDataLog",map);
+//      
+//      return result;
+//
+//	 }
+// 
+// public static int updateWorkcenter(HashMap<String, Object> map) {
+//
+//	 // TODO Auto-generated method stub
+//
+//	  SqlSession session = SqlMapClient.getSqlSession();
+//	  
+//      int result = session.insert("test.updateReceiveData",map);
+//      return result;
+//
+//	 }
+// 
+//
+// public static void main(String args[]){
+//	 List list = getIP();
+//	 
+//	 for(int i = 0; i < list.size(); i++){
+//		 HashMap map = (HashMap)list.get(i);
+//		 
+//		 System.out.println(map.get("WORKCENTERNAME"));
+//	 }
+//	 
+// }
+// 
+// 
+// // 각 ip에 지정되어있는 채널 전체를 가져오는 쿼리 -> 테이블 추가가 필요
+// public static List getChannel(HashMap params) {
+//
+//	 // TODO Auto-generated method stub
+//
+//		 
+//		  SqlSession session = SqlMapClient.getSqlSession();
+//		  
+//	      List list = session.selectList("test.selectGetChannel",params);
+//	      
+//	      return list;
+//	 
+//
+//	 }
+//
+//
+// public static List getIP2(HashMap params) {
+//
+//	 // TODO Auto-generated method stub
+//
+//		 
+//		  SqlSession session = SqlMapClient.getSqlSession();
+//		  
+//	      List list = session.selectList("test.selectGetIp2",params);
+//	      
+//	      return list;
+//	 
+//
+//	 }
+ 
+}

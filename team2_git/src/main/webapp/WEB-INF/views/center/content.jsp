@@ -1,9 +1,9 @@
 <%@page import="java.util.List"%>
-<%@page import="center.CenterDTO"%>
-<%@page import="center.CenterDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,58 +50,54 @@
       </div>
     </section>
 	<%
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
-	CenterDAO centerDAO = new CenterDAO();
-	int b_num = Integer.parseInt(request.getParameter("b_num")) ;
-	CenterDTO centerDTO = centerDAO.getCenter(b_num);
+// 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분");
+	//dateFormat.format(centerDTO.getDate())
 	%>
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate justify-content-center">
-          <div><%= dateFormat.format(centerDTO.getDate())%></div>
-		  <div><%= centerDTO.getU_num()%></div>
-            <h2 class="mb-3"><%=centerDTO.getB_title() %></h2>
-            <p><%=centerDTO.getB_content()%>
+          <div><fmt:formatDate value="${centerDTO.b_date}" pattern="yyyy년 MM월 dd일"/></div>
+		  <div>${centerDTO.u_id}</div>
+            <h2 class="mb-3">${centerDTO.b_title}</h2>
+            <p>${centerDTO.b_content}
             </p>
           	<div class="form-group">
-         	 	<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='update.jsp'">
-         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='list.jsp'">
-         	 	<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="location.href='delete.jsp?b_num=<%=b_num%>'">
+         	 	<input type="button" value="글목록" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/list'">
+<!-- 				글쓴 사람 본인만 수정,삭제 가능하도록 -->
+				<c:if test="${ sessionScope.u_id==centerDTO.u_id }">
+         	 		<input type="button" value="글수정" class="btn py-3 px-4 btn-primary" onclick="location.href='${pageContext.request.contextPath}/center/update?b_num=${centerDTO.b_num}'">
+         	 		<input type="button" value="글삭제" class="btn py-3 px-4 btn-primary" onclick="if(confirm('정말로 삭제하시겠습니까?'))location.href='${pageContext.request.contextPath}/center/delete?b_num=${centerDTO.b_num}'">
+				</c:if>
          	 </div>
-        
-<!--     답변 목록 -->
+
 	 <div class="pt-5 mt-5">
-              <h3 class="mb-5">답변</h3>
+              <h3 class="mb-3">답변</h3>
               <ul class="comment-list">
-              <%
-				//메서드 호출
-				List<CenterDTO> replyList = centerDAO.getReplyList(b_num);
-				for(int i=0;i<replyList.size();i++){
-					centerDTO = (CenterDTO)replyList.get(i);
-              %>
+        	<c:forEach var="centerDTO2" items="${replyList}">
                 <li class="comment">
                   <div class="vcard bio">
                     <img src="${pageContext.request.contextPath}/resources/images/person_1.jpg" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
-                    <h5><%=centerDTO.getB_title() %></h5>
-                    <div class="meta"><%=dateFormat.format(centerDTO.getDate())%></div>
-                    <p><%=centerDTO.getB_content() %></p>
-                    <p><a href="deleteReply.jsp?b_num=<%=b_num%>&b_reply=<%=centerDTO.getB_reply()%>" class="reply">삭제</a></p>
+                    <h5>${centerDTO2.b_title}</h5>
+                    <div class="meta">${centerDTO2.b_date}</div>
+                    <p>${centerDTO2.b_content}</p>
+                    <p><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="${pageContext.request.contextPath}/center/deleteReply?b_num=${centerDTO2.b_num}&b_reply=${centerDTO2.b_reply}" class="reply">삭제</a></p>
                   </div>
                 </li>
-			<%} %>
-              </ul>
+			 </c:forEach>
+             </ul>
       </div>
-<!-- 	 답변 등록 -->
+
 	 <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">답변 등록</h3>
-                <form action="insertReply.jsp" class="bg-light p-4">
-                <input type="hidden" name="b_num" value=<%=b_num%>>
+                <h3 class="mb-3">답변 등록</h3>
+                <form action="${pageContext.request.contextPath}/center/insertReply" class="bg-light p-4" method="post">
+                <input type="hidden" name="b_num" value="${centerDTO.b_num}">
                   <div class="form-group">
                     <label for="subject">제목 *</label>
                     <input type="text" class="form-control bg-white" name="b_title">
+                    <input type="hidden" name="admin_id" value="admin">
                   </div>
                   <div class="form-group">
                     <label for="content">내용</label>

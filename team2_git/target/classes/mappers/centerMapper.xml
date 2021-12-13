@@ -6,8 +6,8 @@
 <mapper namespace="com.itwill.mapper.CenterMapper">
 
 	<insert id = "insertCenter">
-	insert into center(b_num,t_num,u_num,admin_id,b_title,b_content,b_date,b_reply,secret)
-	 values(#{b_num},#{t_num},#{u_num},#{admin_id},#{b_title},#{b_content},#{b_date},#{b_reply},#{secret})
+	insert into center(b_num,t_id,u_id,admin_id,b_title,b_content,b_date,b_reply,secret)
+	 values(#{b_num},#{t_id},#{u_id},#{admin_id},#{b_title},#{b_content},#{b_date},#{b_reply},#{secret})
 	</insert>
 	
 	<select id = "getMaxNum" resultType="java.lang.Integer">
@@ -15,11 +15,43 @@
 	</select>
 	
 	<select id = "getCenterList" resultType="com.itwill.domain.CenterDTO">
-		select * from center order by b_num desc limit #{startRow},#{pageSize}
+		select * from center where b_reply = 0 order by b_num desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id= "getCenterCount" resultType="java.lang.Integer">
-		select count(*) from center
+		select count(*) from center where b_reply = 0
 	</select>
-
+	
+	<select id="isReply" resultType="java.lang.Integer">
+		select max(b_reply) from center where b_num = #{b_num}
+	</select>
+	
+	<select id="getCenter" resultType="com.itwill.domain.CenterDTO">
+		select * from center where b_num = #{b_num} and b_reply = 0
+	</select>
+	
+	<select id = "getMaxReply" resultType="java.lang.Integer">
+		select max(b_reply) from center where b_num = #{b_num}
+	</select>
+	
+	<insert id = "insertReply">
+	insert into center(b_num,b_title,b_content,b_date,b_reply,admin_id) 
+	value(#{b_num},#{b_title},#{b_content},#{b_date},#{b_reply},#{admin_id})
+	</insert>
+	
+	<select id = "getReplyList" resultType="com.itwill.domain.CenterDTO">
+		select * from center where b_num = #{b_num} and b_reply>0 order by b_reply
+	</select>
+	
+	<delete id = "delete">
+		delete from center where b_num=#{b_num}
+	</delete>
+	
+	<delete id = "deleteReply">
+		delete from center where b_num=#{b_num} and b_reply= #{b_reply}
+	</delete>
+	
+	<update id="updateCenter">
+		update center set b_title=#{b_title},b_content=#{b_content} where b_num=#{b_num} and b_reply=0
+	</update>
 </mapper>

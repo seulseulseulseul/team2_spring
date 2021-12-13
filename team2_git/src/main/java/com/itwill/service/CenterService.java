@@ -12,4 +12,20 @@ public interface CenterService {
 	public List<CenterDTO> getCenterList(PageDTO pageDTO);
 	
 	public Integer getCenterCount();
+	
+	public Integer isReply(int b_num);
+	
+	public CenterDTO getCenter(int b_num);
+	
+	public void insertReply(CenterDTO centerDTO);
+	
+	public List<CenterDTO> getReplyList(int b_num);
+	
+	public void deleteCenter(int b_num);
+	
+	public void deleteReply(CenterDTO centerDTO);
+	
+	public void updateCenter(CenterDTO centerDTO);
+	
+	public List<CenterDTO> getCenterList2();
 }

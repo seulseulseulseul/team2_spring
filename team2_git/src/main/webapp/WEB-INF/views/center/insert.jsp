@@ -59,7 +59,7 @@
                   </div>
                   <div class="form-group">
                     <label for="name">작성자 *</label>
-                    <input type="text" value="1234" readonly class="form-control" name="u_num">
+                    <input type="text" value="${sessionScope.u_id}" readonly class="form-control" name="u_id">
                   </div>
                   <div class="form-group">
                     <label for="secret">비밀글 *</label>
@@ -83,9 +83,7 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <ul>
-                <li><a href="update.jsp" class="btn py-3 px-4 btn-primary">글수정 </a></li>
-                <li><a href="delete.jsp" class="btn py-3 px-4 btn-primary">글삭제 </a></li>
-                <li><a href="list.jsp" class="btn py-3 px-4 btn-primary">글목록 </a></li>
+                <li><a href="${pageContext.request.contextPath}/center/list" class="btn py-3 px-4 btn-primary">글목록 </a></li>
                 </ul>
               </div>
             </div>

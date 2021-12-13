@@ -1,24 +1,32 @@
 package com.itwill.domain;
 
 public class PageDTO {
-	//한 화면에 보여줄 글 개수 설정
 	private int pageSize;
 	private String pageNum;
 	private int currentPage;
-	//시작하는 행번호 구하기
 	private int startRow;
 	private int endRow;
-	
-	//게시판 전체 글 개수
 	private int count;
-	
-	//한페이지에 보여줄 페이지 개수 설정
 	private int pageBlock;
-	//시작하는 페이지 번호
 	private int startPage;
-	//끝나는 페이지 번호
 	private int endPage;
+	private int c_num;
 	private int pageCount;
+	private String search;
+	
+	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public int getC_num() {
+		return c_num;
+	}
+	public void setC_num(int c_num) {
+		this.c_num = c_num;
+	}
 	public int getPageSize() {
 		return pageSize;
 	}
@@ -54,22 +62,22 @@ public class PageDTO {
 	}
 	public void setCount(int count) {
 		this.count = count;
-		//페이지 설정 메서드 호출
+		
+		//페이지 설정 메서드 호출	
 		init();
+		
 	}
 	public void init() {
-		//한페이지에 보여줄 페이지 개수 설정
-		pageBlock=10;
-		//시작하는 페이지 번호
-		startPage = (currentPage-1)/pageBlock*pageBlock+1;
-		//끝나는 페이지 번호
-		endPage = startPage+pageBlock-1;
-		pageCount = count/pageSize+(count%endPage==0?0:1);
-		if(endPage>pageCount){
-			//끝나는 페이지번호 = 전체 글 페이지 수
+		pageBlock=5;
+		startPage=(currentPage-1)/pageBlock*pageBlock+1;
+		endPage=startPage+pageBlock-1;
+		pageCount=count/pageSize+(count%pageSize==0?0:1);
+		 if(endPage >  pageCount){
+		 // 끝나는페이지번호 = 전체글페이지수
 		 	endPage=pageCount;
-		}
+		 }
 	}
+	
 	public int getPageBlock() {
 		return pageBlock;
 	}
@@ -94,4 +102,8 @@ public class PageDTO {
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
 	}
+	
+	
+
+	
 }

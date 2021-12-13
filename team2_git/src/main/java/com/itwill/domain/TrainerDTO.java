@@ -1,23 +1,40 @@
 package com.itwill.domain;
 
 public class TrainerDTO {
-
-	private String t_id; 			// 트레이너 아이디
-	private String t_pass;			// 트레이너 비밀번호
-	private String t_name;			// 트레이너 이름
-	private String t_nic; 			// 트레이너 닉네임
-	private String t_phone; 		// 트레이너 전화번호
-	private String t_email;  		// 트레이너 이메일
-	private String t_intro; 		// 트레이너 자기소개
-	private String t_exp;			// 트레이너 경력
-	private String t_sns;			// 트레이너 SNS
-	private String t_program;		// 트레이너 프로그램
-	private String photo_name; 		// 트레이너 사진
-	private String video;			// 트레이너 비디오
-	private String t_postcode; 		// 트레이너 우편번호
-	private String t_address;		// 트레이너 주소
-	private String t_detailAddress; // 트레이너 상세주소
 	
+	private int t_num;
+	private String t_id;
+	private String t_pass;
+	private String t_name;
+	private String t_nic;
+	private String t_address;
+	private String t_intro;
+	private String t_phone;
+	private String t_email;
+	private int t_cash;
+	private String t_exp;
+	private String t_sns;
+	private String t_program;
+	private String profile_photo;
+	private String t_detailAddress;
+	private String video;
+	private String t_postecode;
+	private String t_dong;
+	
+	
+	
+	public String getT_dong() {
+		return t_dong;
+	}
+	public void setT_dong(String t_dong) {
+		this.t_dong = t_dong;
+	}
+	public int getT_num() {
+		return t_num;
+	}
+	public void setT_num(int t_num) {
+		this.t_num = t_num;
+	}
 	public String getT_id() {
 		return t_id;
 	}
@@ -42,6 +59,18 @@ public class TrainerDTO {
 	public void setT_nic(String t_nic) {
 		this.t_nic = t_nic;
 	}
+	public String getT_address() {
+		return t_address;
+	}
+	public void setT_address(String t_address) {
+		this.t_address = t_address;
+	}
+	public String getT_intro() {
+		return t_intro;
+	}
+	public void setT_intro(String t_intro) {
+		this.t_intro = t_intro;
+	}
 	public String getT_phone() {
 		return t_phone;
 	}
@@ -54,11 +83,11 @@ public class TrainerDTO {
 	public void setT_email(String t_email) {
 		this.t_email = t_email;
 	}
-	public String getT_intro() {
-		return t_intro;
+	public int getT_cash() {
+		return t_cash;
 	}
-	public void setT_intro(String t_intro) {
-		this.t_intro = t_intro;
+	public void setT_cash(int t_cash) {
+		this.t_cash = t_cash;
 	}
 	public String getT_exp() {
 		return t_exp;
@@ -78,29 +107,11 @@ public class TrainerDTO {
 	public void setT_program(String t_program) {
 		this.t_program = t_program;
 	}
-	public String getPhoto_name() {
-		return photo_name;
+	public String getProfile_photo() {
+		return profile_photo;
 	}
-	public void setPhoto_name(String photo_name) {
-		this.photo_name = photo_name;
-	}
-	public String getVideo() {
-		return video;
-	}
-	public void setVideo(String video) {
-		this.video = video;
-	}
-	public String getT_postcode() {
-		return t_postcode;
-	}
-	public void setT_postcode(String t_postcode) {
-		this.t_postcode = t_postcode;
-	}
-	public String getT_address() {
-		return t_address;
-	}
-	public void setT_address(String t_address) {
-		this.t_address = t_address;
+	public void setProfile_photo(String profile_photo) {
+		this.profile_photo = profile_photo;
 	}
 	public String getT_detailAddress() {
 		return t_detailAddress;
@@ -108,6 +119,20 @@ public class TrainerDTO {
 	public void setT_detailAddress(String t_detailAddress) {
 		this.t_detailAddress = t_detailAddress;
 	}
+	public String getVideo() {
+		return video;
+	}
+	public void setVideo(String video) {
+		this.video = video;
+	}
+	public String getT_postecode() {
+		return t_postecode;
+	}
+	public void setT_postecode(String t_postecode) {
+		this.t_postecode = t_postecode;
+	}
+	
+	
 
 	
 }
