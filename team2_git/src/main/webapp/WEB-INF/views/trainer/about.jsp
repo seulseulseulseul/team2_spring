@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>트레이너 소개</title>
+    <title>우리 동네 트레이너</title>
  
     
     <meta charset="utf-8">

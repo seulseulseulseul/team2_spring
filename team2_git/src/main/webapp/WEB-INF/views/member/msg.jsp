@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>member/msg.jsp</title>
+    <title>우리 동네 트레이너</title>
 </head>
 <body>
 <script type="text/javascript">

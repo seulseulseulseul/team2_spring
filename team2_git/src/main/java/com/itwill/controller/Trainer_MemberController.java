@@ -282,11 +282,6 @@ public class Trainer_MemberController {
 		return "member/trainer_reservation";
 	}
 	
-	
-	@RequestMapping(value = "/mapTest", method = RequestMethod.GET)
-	public String mapTest() {
-		return "mapTest";
-	}
 }
 	
 

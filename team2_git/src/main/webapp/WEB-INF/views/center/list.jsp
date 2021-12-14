@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>게시판 - 글 목록</title>
+    <title>우리 동네 트레이너</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -94,7 +94,7 @@
 		                 <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
 		                </c:when> 
 		                
-		                <c:when test="${!empty sessionScope.id &&(sessionScope.u_id==centerDTO.u_id or sessionScope.t_id==centerDTO.t_id or sessionScope.u_id=='admin')}">
+		                <c:when test="${(sessionScope.id=='1')&&(sessionScope.u_id==centerDTO.u_id or sessionScope.u_id=='admin')}">
 		                
 				<!-- 비밀글일 때 본인이 쓴것만 링크 연결 -->
  		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글입니다.</a></h3>
@@ -102,9 +102,18 @@
 
 		               	
 						</c:when>
+						<c:when test="${(sessionScope.id=='2')&&(sessionScope.t_id==centerDTO.t_id)}">
+		                
+						<!-- 비밀글일 때 본인이 쓴것만 링크 연결 -->
+ 		                <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}">비밀글입니다.</a></h3>
+ 		                <p><a href="${pageContext.request.contextPath}/center/content?b_num=${centerDTO.b_num}" class="btn btn-outline-primary">글 보기</a></p>
+
+		               	
+						</c:when>
+						
 						
 						<c:otherwise>
-		               	<h3 class="heading mt-2">비밀글은 작성자만 열람 가능합니다.</h3>
+		               	<h3 class="heading mt-2">비밀글은 작성자와 관리자만 열람 가능합니다.</h3>
 		               	<p><a href="#" class="btn btn-outline-primary">비밀글</a></p>
 		               	</c:otherwise>
 						
