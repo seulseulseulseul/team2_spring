@@ -77,7 +77,7 @@
 		               		</c:choose>
 		                </div>
 		                
-						 <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/notice/content?b_num=${noticesDTO.b_num}">${noticeDTO.b_title}</a></h3>
+						 <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/notice/content?b_num=${noticeDTO.b_num}">${noticeDTO.b_title}</a></h3>
 		                <p><a href="${pageContext.request.contextPath}/notice/content?b_num=${noticeDTO.b_num}"class="btn btn-outline-primary">글 보기</a></p>
 		              </div>
 		            </div>

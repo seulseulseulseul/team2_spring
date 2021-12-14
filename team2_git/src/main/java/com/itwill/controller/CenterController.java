@@ -1,5 +1,6 @@
 package com.itwill.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -123,14 +124,16 @@ public class CenterController {
 	public String center_list(Model model){
 
 		 List<CenterDTO> centerList = centerService.getCenterList2();
+		 List<CenterDTO> centerList2 = new ArrayList<CenterDTO>();
+		 System.out.println(centerList);
 		 for (int i = 0; i < centerList.size(); i++) {
 			CenterDTO centerDTO = centerList.get(i);
 			int isReply = centerService.isReply(centerDTO.getB_num());
-			if(isReply>0) {
-				centerList.remove(centerList.indexOf(centerDTO));
+			if(isReply==0) {
+				centerList2.add(centerDTO);
 			}
 		};
-		 model.addAttribute("centerList",centerList);
+		 model.addAttribute("centerList",centerList2);
 		 
 		 //데이터담기
 		return "center/center_list";

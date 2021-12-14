@@ -42,7 +42,7 @@
   <script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b649801a0c9d18b92d1ff5e831d22ebe&libraries=services"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ac8d5007893ea860bfc9b47b6f852222&libraries=services"></script>
   <script type="text/javascript">
   var positions = new Array();
 
@@ -183,41 +183,41 @@
 				<div class="row">
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-4.jpg;"></div>
-							<div class="text mt-4">
-								<h3 class="mb-4">모니카 트레이너</h3>
-<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 d-flex align-items-stretch">
-						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-3.jpg);"></div>
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/trainer_9.jpg;"></div>
 							<div class="text mt-4">
 								<h3 class="mb-4">허니제이 트레이너</h3>
-<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
+								<p class="mb-5">생활 습관을 바꾸는 일상 다이어트</p>
+								<p><a href="${pageContext.request.contextPath}/trainer/about?t_id=trainer_9" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-5.jpg);"></div>
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/trainer_10.jpg;"></div>
+							<div class="text mt-4">
+								<h3 class="mb-4">로빈 트레이너</h3>
+								<p class="mb-5">운동처방재활학과 졸업. 7년차 트레이너</p>
+								<p><a href="${pageContext.request.contextPath}/trainer/about?t_id=trainer_10" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 d-flex align-items-stretch">
+						<div class="offer-deal text-center">
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/trainer_11.jpg;"></div>
 							<div class="text mt-4">
 								<h3 class="mb-4">노제 트레이너</h3>
-<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
+								<p class="mb-5">소수 정예 회원 관리, 바디프로필 경력 다수</p>
+								<p><a href="${pageContext.request.contextPath}/trainer/about?t_id=trainer_11" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/gallery-7.jpg);"></div>
+							<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/images/trainer_12.jpg;"></div>
 							<div class="text mt-4">
-								<h3 class="mb-4">가비 트레이너</h3>
-<!-- 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-								<p><a href="#" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
+								<h3 class="mb-4">케빈 트레이너</h3>
+								<p class="mb-5">국제자격증 기반 체계적이고 전문적인 컨설팅</p>
+								<p><a href="${pageContext.request.contextPath}/trainer/about?t_id=trainer_12" class="btn btn-white px-4 py-3"> Learn more <span class="ion-ios-arrow-round-forward"></span></a></p>
 							</div>
 						</div>
 					</div>
@@ -243,7 +243,7 @@
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(35.1567, 129.0569), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
     };  
 

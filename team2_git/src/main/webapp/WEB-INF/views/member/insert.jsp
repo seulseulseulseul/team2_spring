@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">Trainer Profile</h3>
+                <h3 class="mb-5">Detail Update</h3>
                 <form action="${pageContext.request.contextPath}/member/trainer_insertPro" class="bg-light p-4" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="t_intro">자기소개 *</label>

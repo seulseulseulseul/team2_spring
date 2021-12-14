@@ -420,7 +420,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                <textarea rows="5" name="re_coment" id="re_coment" class="review_textarea"></textarea>
             </div>  
    	 		 <div class="foot">
-                <input type="submit" class="pop-btn confirm" id="confirm" value="등록" onclick="return CheckForm();">
+                <input type="submit" class="pop-btn confirm" id="confirm" value="등록" onclick="return CheckForm()">
  		  		<input type="reset" class="pop-btn close" id="close" value="취소">
      		 </div>
       		 </form>
@@ -453,7 +453,7 @@ MemberDTO memberDTO=memberDAO.getMember(t_id);
                <textarea rows="5" name="coment" id="coment" class="review_textarea">요청사항을 입력해주세요.</textarea>
             </div>  
    	 		 <div class="foot">
-                <input type="submit" class="pop-btn confirm" id="confirm2" value="예약" onclick="return CheckForm2();">
+                <input type="submit" class="pop-btn confirm" id="confirm2" value="예약" onclick="return CheckForm2()">
  		  		<input type="reset" class="pop-btn close" id="close2" value="취소">
      		 </div>
       		 </form>

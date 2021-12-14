@@ -7,6 +7,7 @@ $('.starRev span').click(function(){
 	  return false;
 	});
 });
+
 function CheckForm(){
 	var re_point = $("#re_point");
 	var u_id = $("#u_id");
@@ -31,6 +32,7 @@ function CheckForm(){
 	}
 	alert("리뷰 작성이 완료되었습니다.");
 };
+
 function CheckForm2(){
 	var u_id = $("#u_id");
 	var u_cash = $("#u_cash");
@@ -42,28 +44,26 @@ function CheckForm2(){
 		alert("일반회원으로 로그인해주세요.");
 		return false;
 	}
+	
 	if(u_cash.val()>0){
-			if(confirm('1크레딧이 차감됩니다. 예약하시겠습니까?')){
-
-				 //이름을 입력하지 않았을 경우
-				if (coment.val() == "") {
-						alert("요청사항을 남겨주세요.");
-						//return false;
-				}
-				else if (book_date.val() == "") {
-						alert("예약일자를 확인해주세요.");
-						//return false;
-				}
-				else if (book_time.val() == "") {
-						alert("예약시간을 확인해주세요.");
-						//return false;
-				}
-				else{alert("예약이 완료되었습니다.");
-				}
-			}else{return false;}
+		if(confirm('1크레딧이 차감됩니다. 예약하시겠습니까?')){
+		}else{
+		return false;	
+		}
 	}else{
 		alert("크레딧 충전이 필요합니다.");
+		return false;	
+	}
+	if (coment.val() == "") {
+		alert("요청사항을 남겨주세요.");
 		return false;
 	}
-
+	if (book_date .val() == "") {
+		alert("예약일자를 확인해주세요.");
+		return false;
+	}
+	if (book_time.val() == "") {
+		alert("예약시간을 확인해주세요.");
+		return false;
+	}
 };
