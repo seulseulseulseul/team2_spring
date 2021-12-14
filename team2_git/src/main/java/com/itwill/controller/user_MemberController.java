@@ -258,11 +258,11 @@ public class user_MemberController {
 			if(user_memberDTO!=null) {
 
 				user_memberService.user_updateList(user_memberDTO);
-				return "member/user_list";
+				return "redirect:/member/user_list";
 						
 			}else {
 
-				return "member/user_list";
+				return "redirect:/member/user_list";
 			}
 			
 		}

@@ -265,12 +265,12 @@ public class Trainer_MemberController {
 			if(trainer_memberDTO!=null) {
 
 			trainer_memberService.trainer_updateList(trainer_memberDTO);
-			return "member/trainer_list";
+			return "redirect:/member/trainer_list";
 					
 		}else {
 
 //			return "member/msg";
-			return "member/trainer_list";
+			return "redirect:/member/trainer_list";
 		}
 		
 	}

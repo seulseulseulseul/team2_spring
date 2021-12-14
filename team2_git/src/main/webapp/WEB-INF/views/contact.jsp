@@ -98,7 +98,7 @@
       </div>
     </section>
 
-    <div id="map" class="map"></div>
+<!--     <div id="map" class="map"></div> -->
 
    <jsp:include page="inc/bottom.jsp"></jsp:include>
     
